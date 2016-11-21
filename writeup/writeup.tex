@@ -1,0 +1,228 @@
+\documentclass[10pt]{revtex4}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{mathtools}
+
+\begin{document}
+
+The dynamics of complex adaptations, such as the probability that a particular complex adaptation will appear and its time to fixation, are increasingly well understood.
+However, traditional results only apply in populations where genetic drift, not genetic draft, is the major force that shapes neutral variation.
+As these are radically different forces (they result in completely different coalescent dynamics, and notably genetic draft does not allow for a diffusion approximation), we expect complex adaptations to behave differently in each situation.
+Neher and Hallatschek (2013) suggested that the determining factor is the compound parameter $N\sigma$, where $\sigma$ is the standard deviation in fitness and $N$ is the population size.
+When this product is much less than one, drift is more important.
+When it is much greater than one, draft is more important.
+We begin by outlining the results in the neutral (drift) case, as summarized by Weissman et al. (2009) and Weissman et al. (2010).
+We then move on to discuss Neher et al. (2009), which summarized the dynamics of genetic draft in asexual populations, and Neher et al. (2013), which extended these results to sexual populations using a scaling argument.
+
+Consider the case of a complex adaptation that requires two mutations, the first of which is neutral or deleterious and the second of which is beneficial, in the drift regime.
+There are several ways for the complex adaptation to appear (after which it must drift to enough individuals to sweep through the population).
+First, both mutations can appear in one individual (deterministic), which requires $N\mu^2 \sim 1$, with $\mu$ the mutation rate.
+Otherwise, the intermediate mutation must appear and drift to an appreciable frequency, at which point the second mutation can arise on a background containing that intermediate mutation.
+What constitutes an ``appreciable frequency" will depend on the population size $N$, the benefit $s$ associated with the adaptation, and the fitness penalty $\delta$ associated with the intermediate.
+For small populations or small fitness effects (where $\delta < 1/N$), the intermediate is essentially neutral and can drift to more or less the entire population (neutral or sequential fixation).
+Otherwise, the intermediate will appear and persist for short times, forming ``bubbles" that transiently persist at low frequencies (tunneling).
+The size of these bubbles is determined by the fitness detriment and advantage of the intermediate and the adaptation, respectively (Weissman refers to different regimes herein as neutral semi-deterministic, neutral stochastic, and deleterious tunneling, respectively).
+A final possibility is for the two mutations to arise on different genetic backgrounds, which recombine.
+This can speed up the rate of valley crossing somewhat, provided that $s > r$, roughly speaking.
+If this is true, the rate at which beneficial adaptations establish is higher than or at least comparable to the rate at which they are broken up by recombination.
+
+We will outline this in a little more detail now.
+Note that in the asexual case, the rate of valley crossing can be obtained by considering the establishment probability of the complex adaptation, which will depend (recursively) on the dynamics of each intermediate.
+
+\subsection{Valley crossing in asexual populations}
+
+We will briefly discuss the different possible parameter regimes and the valley crossing times that result therefrom.
+We first consider the regime where $N\mu$ is small.
+In this case, mutations are fairly rare: there will generally only be one intermediate mutation lineage at a time, and the first successful double mutant subpopulation that arises within this lineage determines the fixation probability.
+The important number in this regime is the weight $W(t) = \int_0^t n(t^\prime) dt^\prime$, with $n(t)$ the number of mutant individuals at time $t$.
+We also define the total weight $W = \int_0^T n(t)dt$, with $T$ the duration over which an intermediate ``bubble" persists.
+
+When a beneficial intermediate arises within such a ``bubble" and later sweeps to fixation, this is called \emph{tunneling}. The beneficial intermediate then fixes with probability $\frac{1-\exp{-s}}{1-\exp{-Ns}} \approx s$. Hence $Ws\mu$ gives the fixation probability.
+
+From diffusion theory, a neutral mutation will generally persist for about $T$ generations and reach a maximum frequency of $T$ individuals, with probability $1/T$.
+The weight is therefore of order $T^2$.
+Hence $T > 1/\sqrt{s\mu}$ is the condition for tunneling to be likely to occur, which implies that the fixation probability is roughly $p \sim \sqrt{s\mu}$. This is referred to as \emph{neutral tunneling}.
+
+If the lineage is not neutral ($\delta > 0$), the dynamics are not necessarily much different.
+Provided that $\delta < \sqrt{s\mu}$, the mutation will likely give rise to a beneficial subpopulation that is destined to fix well before it grows to order $1/\delta$ (at sizes smaller than this, its dynamics are effectively neutral).
+Note that this differs from the condition for conventional neutrality, $\delta < 1/N$.
+On the other hand, if $\delta > \sqrt{s\mu}$, then the mutant lineage's size is effectively capped at $1\delta$.
+The total weight will be of order $1/\delta^2$, and the fixation probability is $p \sim s\mu/delta$. This is the \emph{deleterious tunneling} regime.
+
+All of this assumes that the mutant subpopulation, while remaining small compared to $N$, can give rise to a beneficial mutant destined to fix: for effectively neutral mutations, this implies $1/\sqrt{s\mu} < N$.
+If this condition does not obtain, then intermediate mutants can drift to fixation (with probability $1/N$) before the beneficial mutant arises and fixes.
+This is the \emph{sequential fixation} regime, in which $p \sim 1/N$.
+For deleterious mutations, the same rules apply, except that the condition is $1/\delta > N$ instead of $1/\sqrt{s\mu} > N$.
+
+Finally, the preceding analysis has assumed that both intermediate and double mutants are sufficiently rare that only one such lineage exists at any given time. This assumption can be relaxed, though the results are not necessarily enlightening. The major effect is that as the number of mutations in the population increases, they will start to interfere with one another during expansion.
+
+\subsection{More rigorous analysis}
+
+The preceding argument has relied on estimating the average value of the weight $W$.
+The true distribution of bubble sizes will determine the probability that a particular mutant $k$ is successful, however, via
+
+\begin{equation}
+p_k = \int_0^\infty dw P(W = w) (1-e^{u_k p_{k+1}}) = 1-\mathbb{E}(e^{u_k p_{k+1}}).
+\end{equation}
+
+This has the form of a Laplace transform, with
+
+\begin{equation}
+p_k = 1-\varphi(\mu_k p_{k+1})
+\end{equation}
+and
+\begin{equation}
+\varphi(y) = \mathbb{E}(e^{-yW}).
+\end{equation}
+Calculating $\varphi$ is difficult because $W$ is not a Markov random variable. 
+However, we can instead consider the variable $n(t), W(t)$ and compute the transform $\Phi (x,y,t) = \mathbb{E}(e^{-xn-yW})$.
+Evaluating it at $x=0$ will average over all values of $n$ and return the Laplace transform $\phi$ for the weight.
+We proceed by considering the growth of a single mutant lineage as a branching process.
+The time evolution of $p(n,w)$, the probability that there are $n$ individuals and a total weight $w$ at a particular time $t$, is given by the master equation
+\begin{equation}
+p_{t+dt}(n,w) = (n+1)p_t(n+1,w)dt + (n-1)(1-\delta)p_t(n-1,w)dt + (1-(2-\delta)ndt)p_t(n,w-ndt).
+\end{equation}
+Using the relation $p(n,w-ndt) = p(n,w)-ndt\partial_w p_t(n,w)$ allows us to rewrite this as the partial differential equation
+\begin{equation}
+\partial_t p_t (n,w) = (n+1)p_t(n+1,w) + (n-1)(1-\delta) p_t(n-1,w) - n(2-\delta)p_t(n,w)-n\partial_w p_t(n,w).
+\end{equation}
+The transform $\Phi(x,y,t) = \sum_n^\infty \int_{-\infty}^\infty dw p_t(n,w) e^{-xn-yw}$.
+Differentiating both sides and substituting the above yields a PDE for $\Phi$, which can be arranged into
+\begin{equation}
+\partial_t \Phi = -e^x - (1-\delta e^{-x} + (2-\delta) + y)\partial_x \phi .
+\end{equation}
+This can be solved using the characteristic equation $\frac{dx}{dt} = e^x + (1-\delta)e^{-x} - 2+\delta-y$: the requirement that the lineage starts at $t=0$ with one individual means $p_0(n,w) = \delta_{1,n} \delta (w)$, with $\delta$ the Kronecker and Dirac deltas respectively.
+The boundary condition for $\Phi$ becomes $\Phi(x,y,0) = e^{-x}$. Solving for $\Phi$, then for $\phi(y,t) = \Phi(0,y,t)$, and finally for $\varphi = \lim_{t\to \infty} \phi (y,t)$ (the Laplace transform for the total bubble size) yields:
+\begin{equation}
+\varphi(y) = \frac{2-\delta+y-\sqrt{(2-\delta+y)^2 - 4(1-\delta)}}{2(1-\delta)}.
+\end{equation}
+This expression allows us to derive the ``weight" for each individual mutant bubble.
+We have assumed that the population size is large enough that transient bubble sizes don't ``butt up" against the population size. This assumption can be relaxed but is (to my mind) not particularly informative.
+
+\subsection{Valley crossing in sexual populations}
+
+In sexual populations, recombination can affect the valley crossing rate in one of two basic ways.
+First, recombination can increase the total number of double mutants that appear by causing deleterious single mutants to appear on the same genetic background.
+Second, recombination can slow the expansion of beneficial double mutants by forcing them to recombine with (mostly wild type) individuals.
+We will briefly consider some basic parameter regimes, then explore the analytics.
+
+First, suppose $r \gg s, \delta$.
+In this limit, the single mutants will be present at roughly linkage equilibrium: when their frequencies $x_a, x_b$ satisfy $(s+2\delta)x_ax_b - \delta(x_a+x_b) > 1/N$, the double mutant will begin to spread deterministically in the population (selection, the left side, will overwhelm drift, the right side).
+If selection against single mutants is strong, i.e., $\delta^2/s \gg \max (\mu, 1/N)$, the rate at which a population reaches this threshold will be sharply reduced.
+In linkage equilibrium, the frequencies will be distributed roughly as
+\begin{equation}
+P(x_a,x_b) \sim \exp(-N(\delta(x_a+x+b) - sx_ax_b).
+\end{equation}
+The population must drift along the ridge where $x_a = x_b$, which will take approximately $\tau \sim \exp(N\delta^2/s)$ generations: this is because the population must drift to the unstable saddle point at $x_a = x_b \approx \delta/s$ and then ride selection to the stable equilibrium at $x_a = x_b = 1$, and the exponent roughly sets the probability of making it to the saddle point from $x_a = x_b \approx 0$.
+
+Second, suppose $r \ll s$.
+A successful double mutant grows initially at a rate $s - r = \bar{s}$, which roughly sets the fixation probability.
+If $N\mu$ is large enough that single mutants are produced constantly, then the appearance of the single mutant is essentially deterministic, as in the asexual case.
+If not, then we must consider the branching process dynamics, but the wait time is dominated by the waiting time to the first successful single mutant (i.e., the first one destined for fixation), which is distributed as $\tau \approx 2N\mu/p$, with $p$ the success probability.
+$p$ can be decomposed into a probability that the mutation is successful due to successive mutations (something like tunneling, almost identical to the asexual case) or due to recombination between another nascent mutant subpopulation.
+
+We consider only the sexual case.
+During the time $T$ over which a bubble of genotype $Ab$ persists, a number of individuals $\approx N\mu T$ $aB$ individuals arise.
+The success probability is therefore related to $N\mu T \int P_{r,T^\prime} \mathrm{prob} (T^\prime) dT^\prime$, where the last term corresponds to the probability density $\mathrm{prob}(T^\prime)$ of wait times for the $aB$ lineage, times the probability $P_{r,T^\prime}$ of success contingent on $T$.
+The number of $AB$ lineages produced by recombination is of order $r/N \int n_{Ab}(t) n_{aB}(t) dt$, and the lineages reach sizes of $T$ and $T^\prime$ respectively, persisting for $T^\prime$ generations: so the total integral is simply $TT^{\prime 2}$.
+The total success probability $P_{r,T,T^\prime}$ therefore grows as $N\mu TT{^\prime 2}$ until it saturates near $1$ at $T^\prime \sim \sqrt{Nr\bar{s}}$.
+
+The preceding analysis has assumed implicitly that $\delta$ is somewhat small.
+If this assumption is relaxed, then $T$ and $T^\prime$ are roughly bounded by $1/\delta$, as in the asexual case.
+Interestingly, this causes the valley crossing time to be reduced by a much greater degree in the sexual case than in the asexual case, meaning that recombination facilitates the crossing of deep valleys.
+
+\subsection{Valley crossing when $N\sigma \gg 1$}
+
+The past sections have assumed that the distribution of fitnesses in the population is roughly equal, so that the primary force governing the behavior of neutral alleles is genetic drift.
+In this situation, standard diffusion results (including fixation probabilities) apply, and there is essentially no effect arising from genetic backgrounds of differential fitness.
+The condition $N\sigma \ll 1$ is sufficient, where $\sigma$ is the standard deviation in fitness.
+
+If, on the other hand, we have $N\sigma \gg 1$, then the fate of any individual mutation will depend sharply on the genetic background on which it arises.
+Mutations that arise on unfit backgrounds may be doomed to extinction, and mutations that arise on fit backgrounds may be destined for fixation even if their are themselves deleterious.
+If fitness variation is due to the effects of many weak loci, the population takes the form of a Gaussian traveling ``wave", and the mean fitness $\bar{x}$ advances due to selection at a rate $\dot{\bar{x}} = \sigma^2$.
+This advance is determined by the dynamics of the nose, where deviations from Gaussianity become important (due to the discrete number of individuals).
+Below some cutoff point $\Theta$, the establishment probability is essentially zero: above this cutoff point it starts to increase roughly as $P_\mathrm{fix} \sim x+s-r-\bar{x}$, so that the genetic background fitness $x$ may dominate. This may appear to increase markedly the probability of a successful double mutant, but the size of mutant bubbles will tend to be smaller due to the advancing mean fitness $\bar{x}$.
+
+We will focus solely on the valley crossing problem here.
+As in the sexual case, the birth of a double mutant can be interpreted as a Poisson process, so that
+\begin{equation}
+P(T) = e^{-\mu \int_0^T (n_1(t) + n(2)t) dt}
+\end{equation}
+gives the probability that a double mutant has not yet arisen.
+The time integrated bubble size (weight) then provides the number of chances for a successful double mutant to arise.
+This must be obtained by considering the dynamics of bubbles that arise on any of the genetic backgrounds $x$ in the population.
+As argued above, this is effectively negligible below a certain cutoff.
+The calculation still needs to be filled in, but the Laplace transform for the bubble size $\Phi(z) = \mathbb{E}(e^-zw)$ is given by
+\begin{equation}
+\Phi(z) =
+\begin{cases}
+ze^{r\sigma^{-1}\sqrt{-2\log z}} &|s| \ll re^{-r\sigma^{-1}\sqrt{-2\log z}} \\
+\frac{z}{|s|} &|s| \gg re^{-r\sigma^{-1}\sqrt{-2\log z}}.
+\end{cases}
+\end{equation}
+It is worth noting that $r$ here is the total recombination rate between two arbitrary loci, not necessarily between the two loci of interest.
+In the draft dominated regime, we can use the Laplace transform to compute the weight distribution, which scales as $P(w)\sim 1/w^2 \sqrt{2\log w}$, compared to $P(w) \sim w^{-3/2}$ in the drift case.
+As expected, draft decreases the bubble size distribution but lessens the dependence on $\delta$.
+Some more precise analytics will be needed here.
+
+\subsection{Valley crossing when $N\sigma \gg 1$ in the high recombination limit}
+
+At sufficiently high recombination rates $r$ between loci, the concept of those loci segregating within a common fitness wave will start to break down.
+In fact high enough recombination can effectively cause different parts of the genome to evolve neutrally even though the rate of adaptation is high.
+This is tantamount to a return to drift dominance.
+The relevant parameter turns out to be $N\sigma_b$, where $\sigma_b$ is the proportion of $\sigma$ that segregates within an ``effectively asexual" block: such a block will be large enough that recombination effectively ``cancels out" the amplification of fit variants due to selection.
+
+We proceed by identifying the block length.
+If $N\sigma \gg 1$, the fittest individuals are the only ones whose lineages stand a good chance of surviving.
+They are roughly $x_c = \sigma \sqrt{2 \log N\sigma}$ ahead of the mean, and their lineages will take approximately $\sigma^{-1} \sqrt{2 \log N\sigma}$ generations to dominate the population.
+Thus, two random individuals had a common ancestor roughly $\sigma^{-1} \sqrt{2 \log N\sigma}$ generations ago with probability of order $1$.
+On the other hand, if $N\sigma \ll 1$, coalescence is dominated by genetic drift and takes approximately $N$ generations. So the mean pair coalescence time is given by
+\begin{equation}
+\left< T_2 \right> \approx
+\begin{cases}
+N & \mathrm{if~} N\sigma \ll 1, \\
+c\sigma^{-1}\sqrt{2 log N\sigma} & \mathrm{if~} N\sigma \gg 1.
+\end{cases}
+\end{equation}
+
+Let $\xi$ be the characteristic distance over which loci share most of their history, which is the same as the appropriate block length.
+$\xi$ will decrease due to recombination:
+\begin{equation}
+\xi (t) = \frac{L}{1 + L\rho t} \approx \frac{1}{\rho t}.
+\end{equation}
+A block of the genome will harbor a fraction $\sigma_\xi^2$ of the total fitness variance, assuming that fitness variation is distributed roughly evenly throughout the genome.
+For a block of length $\xi$, this is
+\begin{equation}
+\sigma^2_\xi = \sigma^2 \frac{\xi}{L}.
+\end{equation}
+The relevant $\sigma_\xi$ is the amount of fitness variation $\sigma_b$ that segregates in a block of length $\xi_b$ that is unlikely to be broken up during the coalescence timescale.
+
+If fitness variation in the block is substantial (i.e., $N\sigma_b \gg 1$), coalescence in this part of the genome will occur in $\left< T_2 \right> = c \sqrt{2\log N\sigma_b}/\sigma_b$ generations.
+Hence
+\begin{equation}
+\xi_b = \frac{\sigma_b}{c\rho\sqrt{2\log N\sigma_b}},
+\end{equation}
+or equivalently
+\begin{equation}
+\sigma_b = \frac{\sigma^2}{L\rho c \sqrt{2 \log N\sigma_b}}
+\end{equation}
+and
+\begin{equation}
+\xi_b = \frac{\sigma^2}{2L\rho^2 c \log N\sigma_b}.
+\end{equation}
+
+If, on the other hand, coalescence in this block is \emph{not} primarily due to exponential amplification of fit lineages but rather due to drift processes, then we recover $\xi_b \sim (N\rho)^{-1}$, as expected under genetic drift.
+$\xi$ sets the characteristic distance over which linkage disequilibrium in the genome decays exponentially.
+Within blocks shorter than $\xi$, most loci tend to share most of their genetic history, and LD remains elevated.
+Sexual populations thereby behave quite similarly to asexual ones, with $\sigma$ being replaced by $\sigma_b$.
+When $N\sigma_b \ll 1$, the Kingman limit applies, and when $N\sigma_b \gg 1$, the BSC arises in the genetic block under consideration.
+
+We might therefore immediately consider two kinds of complex adaptation: one where the two loci occupy part of the same ``fitness wave" (because the distance between them is shorter than $\xi_b$) and one where they do not (and the recombination rate between them is arbitrarily large).
+We can immediately make two predictions, which still need a little bit of theory to back them up.
+In the first case, the valley crossing dynamics should be comparable to the ``singular traveling wave" case, with $\sigma_b$ substituted instead of $\sigma$.
+In the second case, we probably need to do a little bit more thinking.
+The traveling wave model should still set the fixation probability for each individual mutation, but then we need to consider a model similar to the $r > s$ limit in Weissman (2010) in order to obtain the full probability and wait time for the complex adaptation.
+
+\end{document}

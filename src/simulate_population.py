@@ -4,7 +4,6 @@ simulate_population.py
 Author: Taylor Kessinger
 Date: September 24, 2016
 Description: Simulation of valley crossing using FFPopSim.
-    A number of modifications to FFPopSim still TODO.
     Also TODO: direct calculation of Nsigma_b.
 '''
 import sys
@@ -13,30 +12,52 @@ import FFPopSim as h
 import random as rand
 import matplotlib.pyplot as plt
 from time import time
+import argparse
+import math
+import cPickle as pickle
 
 t0 = time()
 
+parser = argparse.ArgumentParser()
+parser.add_argument('--N', type=int, default=10000)
+parser.add_argument('--s', type=float, default=0.1)
+parser.add_argument('--delta', type=float, default=0.1)
+parser.add_argument('--rho', type=float, default=0.0)
+parser.add_argument('--sigma', type=float, default=0.1)
+parser.add_argument('--mu', type=float, default=0.001)
+parser.add_argument('--numsamples',type=int,default=10)
+parser.add_argument('--runno', type=int, default=0)
+parser.add_argument('--name', type=str, default='test')
+
+args=parser.parse_args()
+
 L = 300 #number of loci. 1000 is about as many as we're likely to need.
-N = 10000 #population size. recall that Nsigma is the main parameter.
-mu = 0 #with all_polymorphic, mutation rate is irrelevant anyway
-sigma = 0.05 #fixed fitness variance
-rho = 0.001 #outcrossing rate
-cx = 0.001 #per-locus crossover rate
+N = args.N #population size. recall that Nsigma is the main parameter.
+mu = args.mu #per site mutation rate for focal mutations
+sigma = args.sigma #fitness variance
+rho = args.rho #per generation outcrossing rate
+cx = 0 #per locus crossover rate
 #unfortunately, nonzero values of rho and cx increase the runtime somewhat
 
-fitness_check = N/2 #for debugging: number of generations to let pass before checking the gaussianity of the fitness distribution
+s = args.s
+delta = args.delta
 
-mutant_locs = np.array([int(L*0.35), int(L*0.65)]) #locations of the focal mutations: this should avoid "edge" effects
-deleterious_effects = [-0.001,-0.001] #fitness costs of single mutants
-beneficial_effect = 0.001 #fitness advantage of double mutant
+fitness_check = N*10 #for debugging: number of generations to let pass before checking the gaussianity of the fitness distribution
 
-pop = h.haploid_highd(L, all_polymorphic = True) #high-dimensional simulation
+mutant_locs = np.array([np.int32(L*0.35), np.int32(L*0.65)]) #locations of the focal mutations: this should avoid "edge" effects
+#i am not sure why int32 is required
+deleterious_effects = [delta,delta] #fitness costs of single mutants
+beneficial_effect = s #fitness advantage of double mutant
+
+pop = h.haploid_highd(L, most_polymorphic = True) #high-dimensional simulation
 #note: h.haploid_lowd() implements epistasis more easily, but we need highd to study draft
 #note: all_polymorphic is an infinite sites model.
 #loci whose frequencies hit 0 or 1 are automatically "injected" somewhere.
 #if they fixed, their selection coefficients are flipped.
 #i believe FFPopSim has some kind of flag to see whether fixation/extinction have occurred (need to look for this or write it).
 pop.carrying_capacity = N
+pop.mutation_rate = mu
+pop._set_mutant_loci(mutant_locs)
 pop.recombination_model = h.CROSSOVERS #recombination model, can be either FREE_RECOMBINATION or CROSSOVERS
 pop.outcrossing_rate = rho
 pop.crossover_rate = cx
@@ -64,6 +85,8 @@ pop.set_trait_additive(selection_coefficients)
 pop.add_trait_coefficient(-0.5, [mutant_locs[0]])
 pop.add_trait_coefficient(-0.5, [mutant_locs[1]]) #set the fitness of the deleterious mutants to (effectively) zero.
 pop.add_trait_coefficient(beneficial_effect, mutant_locs) #set the epistatic effect
+
+afreqs = []
 
 while pop.generation < run_time:
     if not pop.generation%fitness_check:
@@ -109,8 +132,10 @@ while pop.generation < run_time:
                 double_mut_in_play = False
             else:
                 dm_weights[-1].append(int(pop.get_pair_frequency(mutant_locs[0],mutant_locs[1])*pop.N))
+    afreqs.append(pop.get_allele_frequencies())
     pop.evolve(1)
 
+
+afreqs = np.array(afreqs)
 #still needed:
 #calculate Nsigma_b directly.
-#dump weights (or at least fixation/extinction times) to file.

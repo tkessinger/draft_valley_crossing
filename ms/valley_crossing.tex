@@ -1,0 +1,93 @@
+%\documentclass[rmp,twocolumn]{revtex4}
+\documentclass[rmp]{revtex4}
+\usepackage[english]{babel}
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage{color}
+\usepackage{breqn}
+\usepackage{graphicx}
+%\usepackage{caption}
+%\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{enumerate}
+
+% Code syntax highlighting
+\usepackage{listings}
+\lstloadlanguages{C++,Python}
+
+\newcommand{\EQ}[1]{Eq.~(\ref{eq:#1})}
+\newcommand{\EQS}[2]{Eqs.~(\ref{eq:#1}) and (\ref{eq:#2})}
+\newcommand{\FIG}[1]{Fig.~\ref{fig:#1}}
+\newcommand{\TAB}[1]{Tab.~\ref{tab:#1}}
+\newcommand{\REF}[1]{ref.~\citep{#1}}
+
+\newcommand{\comment}[1]{{\color{red}#1}}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.42}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Genetic draft and the evolution of ``irreducible complexity"}
+%\author{Taylor~Kessinger}
+%\author{Jeremy~Van~Cleve}
+%\affiliation{Department of Biology, University of Kentucky}
+
+
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+
+Living systems are characterized by complex adaptations, at least some of which have arisen by evolutionary paths whose intermediate states are neutral or even deleterious.
+Such adaptations have been termed ``irreducibly complex", and the process by which they evolve is known as ``crossing a fitness valley".
+Previous efforts have rigorously characterized the rate at which such complex adaptations evolve in populations of roughly equally fit individuals.
+However, populations that are very large or have broad fitness distributions, such as many microbial populations, adapt quickly, which substantially alters the fate of individual mutations.
+We investigate the rate at which ``irreducibly complexity" evolves in these rapidly adapting populations, including both asexual and sexual populations.
+We confirm that, as in neutrally evolving populations, recombination can aid in the crossing of deep fitness valleys but find that its effects are mitigated.
+\end{abstract}
+
+\maketitle
+
+\section*{Introduction}
+
+The simplest adaptive scenarios in evolution involve the arisal and fixation of successive beneficial mutations.
+This appears to be how Darwin thought most complex systems, such as the vertebrate eye, evolved (Darwin 1859), and this assumption underlies much of the field of adaptive dynamics.
+However, many adaptations exist that do not appear to have formed by this process.
+One class of such adaptations has been termed ``irreducibly complex" because, in their current forms, they cease to function when one or more of their parts is removed.
+Muller (1918) described one method by which such adaptations could evolve: components that originally served independent functions might become dependent on each other, giving the appearance of irreducibility.
+An alternate method comes from the metaphor of a ``fitness landscape": a wild type individual must traverse a lower fitness mutational ``valley" in order to reach a higher fitness ``peak".
+We seek to characterize this ``valley crossing" process, as there is reason to think it may in fact be a common mode of adaptation (Trotter et al. 2013).
+
+The rate of valley crossing in asexual populations is increasingly well understood (Weissman 2009).
+If the number of mutants produced every generation is high, the arisal of a complex adaptation that is destined to fix may be guaranteed.
+Otherwise, wild type individuals may give rise to neutral or deleterious intermediate mutants, which drift to fixation.
+A third possibility is for wild type individuals to birth mutant ``bubbles", or transient subpopulations.
+These bubbles are ordinarily doomed to extinction due to drift, but a lucky bubble may give rise to a complex adaptation that sweeps to fixation.
+These models were successfully extended to sexually reproducing populations by Weissman et al. (2010), which found that the criterion $r < s$, with $r$ the recombination rate and $s$ the selective advantage of the complex adaptation, is the necessary criterion for recombination to be helpful in crossing a valley.
+Fairly low recombination rates can bring mutant subpopulations together, increasing the rate at which complex adaptations arise and sweep.
+High recombination rates, on the other hand, lower the valley crossing rate by forcing fit individuals to outcross with the less fit wild type.
+
+Previous studies of valley crossing focused exclusively on populations where the background fitness variation is small enough to be negligible.
+In these populations, genetic drift governs the fate of neutral alleles, as well as the behavior of deleterious or beneficial alleles close to frequency zero or one.
+When population sizes are very large or the fitness variation in the population is substantial, however, the behavior of genetic variation is governed more by genetic \emph{draft} than by drift.
+In a drafting asexual population, the fate of an allele depends sharply on its genetic background.
+Only a handful of individuals near the ``nose" of the fitness distribution are likely to persist, and they give rise to the bulk of the future population, carrying linked alleles with them.
+In sexual populations, much the same description applies.
+The parameter that determines whether drift or draft is more important is the product of the population size $N$ and the standard deviation in fitness $\sigma$ (Neher and Shraiman 2011) or, in a sexual population, the proportion of fitness variation $\sigma_b$ that segregates within a small block length (Neher et al. 2013).
+
+Drift and draft are fundamentally different forces.
+It is not possible to rescale a drafting population, for example by defining a reduced ``effective population size".
+Drafting populations do not admit a diffusion approximation, and they exhibit qualitatively different genealogies and site frequency spectra relative to a drifting population.
+In fact, the possibility that neutral variants are affected more strongly by selection at linked sites than by genetic drift, even in organisms like \emph{Drosophila}, is one possible explanation for the ``paradox of variation", the fact that genetic diversity and population size often do not scale linearly.
+It is reasonable to suspect that draft might likewise have profoundly different effects on the evolution of complex adaptations, a notion that was explored in Neher and Shraiman (2011).
+We investigate this possibility using analytical approaches and forward simulations, confirming that fitness valley crossing occurs at an overall lower rate in rapidly adapting populations, but that much deeper valleys can be crossed.
+These observations add to the growing intuition that irreducible complexity may not be a surprising result of the evolutionary process, but rather an expected one.
+
+
+\end{document}

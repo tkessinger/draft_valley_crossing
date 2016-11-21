@@ -1,0 +1,19 @@
+### Derived output files
+
+output/*
+
+### Eclipse and Python metadata
+
+.metadata/*
+.project/*
+.pydevproject/*
+.settings/*
+
+### LaTeX user-specific files
+
+*.pdf
+*.aux
+*.log
+*.synctex.gz
+*.dvi
+*.out
