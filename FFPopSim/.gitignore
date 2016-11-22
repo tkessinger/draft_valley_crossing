@@ -1,0 +1,77 @@
+# Profile files
+profile/*.out
+profile/profile
+
+# Package files
+pkg/python/*
+pkg/include/*
+pkg/lib/*
+
+# Documentation
+doc/latex/*
+doc/html/*
+doc/python/build
+
+# Executables/ test files
+tests/lowd
+tests/highd
+tests/test.npz
+tests/test.txt
+tests/FFPopSim.py
+tests/FFPopSim.pyc
+tests/_FFPopSim.so
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.h.gch
+
+# Compiled Dynamic libraries
+*.so
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+# Byte-compiled Python
+*.pyc
+*.pyo
+
+# Packages
+*.egg
+*.egg-info
+dist
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+
+# Translations
+*.mo
+
+# Vim
+.*.sw[a-z]
+*.un~
+Session.vim
+
+# Eclipse
+.pydevproject
+Debug
+Release
+
+# (keep the static libraries and binaries)
+!static/*/lib/*.a
+!build/lib*/*.so
+
