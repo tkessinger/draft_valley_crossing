@@ -22,19 +22,20 @@ import cPickle as pickle
 t0 = time()
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--N', type=int, default=10000)
-parser.add_argument('--s', type=float, default=0.001)
-parser.add_argument('--delta', type=float, default=0.01)
+parser.add_argument('--N', type=int, default=1000)
+parser.add_argument('--s', type=float, default=0.1)
+parser.add_argument('--delta', type=float, default=0.0)
 parser.add_argument('--rho', type=float, default=0.0)
 parser.add_argument('--sigma', type=float, default=0.01)
 parser.add_argument('--mu', type=float, default=0.0001)
 parser.add_argument('--numsamples',type=int,default=10)
 parser.add_argument('--runno', type=int, default=0)
+parser.add_argument('--runtime', type=int, default=100000)
 parser.add_argument('--name', type=str, default='test')
 
 args=parser.parse_args()
 
-L = 100 #number of loci. 1000 is about as many as we're likely to need.
+L = 20 #number of loci. 1000 is about as many as we're likely to need.
 N = args.N #population size. recall that Nsigma is the main parameter.
 mu = args.mu #per site mutation rate for focal mutations
 sigma = args.sigma #fitness variance
@@ -55,7 +56,7 @@ beneficial_effect = delta/2+s/4
 #F = \sum_i f_i s_i + \sum_{i<j} f_{ij} s_i s_j + ...
 #the multiplication of indices is what makes the above necessary
 
-pop = h.haploid_highd(L, number_of_traits=2, most_polymorphic = True) #high-dimensional simulation
+pop = h.haploid_highd(L, number_of_traits=2, number_of_mutant_loci=2, most_polymorphic = True) #high-dimensional simulation
 #note: h.haploid_lowd() implements epistasis more easily, but we need highd to study draft
 #note: all_polymorphic is an infinite sites model.
 #loci whose frequencies hit 0 or 1 are automatically "injected" somewhere.
@@ -64,17 +65,18 @@ pop = h.haploid_highd(L, number_of_traits=2, most_polymorphic = True) #high-dime
 pop.carrying_capacity = N
 pop.mutation_rate = 0
 pop._set_mutant_loci(mutant_locs)
-pop.recombination_model = h.CROSSOVERS #recombination model, can be either FREE_RECOMBINATION or CROSSOVERS
+pop.recombination_model = h.FREE_RECOMBINATION #recombination model, can be either FREE_RECOMBINATION or CROSSOVERS
 pop.outcrossing_rate = rho
 pop.crossover_rate = cx
 
 pop.set_wildtype(N)
 
 s_mean = 1e-6 #average effect of beneficial mutations: this turns out to be mostly irrelevant due to sigma, above
-base_burn_time = N #number of generations to wait for population to equilibrate: ideally this should be of order T_MRCA
+base_burn_time = 0.1*N #number of generations to wait for population to equilibrate: ideally this should be of order T_MRCA
 burn_time = base_burn_time
 burned_in = False #flag for whether the population has equilibrated
-run_time = 1e6 #number of generations to simulate
+#run_time = np.max([1e6,10*N]) #number of generations to simulate
+run_time = args.runtime
 
 num_attempts = 0 #attempts at crossing the valley, i.e., number of deleterious or neutral single mutants
 num_beneficial = 0 #number of beneficial double mutants
@@ -108,6 +110,12 @@ pop.add_trait_coefficient(deleterious_effects[1],[mutant_locs[1]],1) #let the de
 pop.add_trait_coefficient(beneficial_effect, mutant_locs,1) #set the epistatic effect
 
 afreqs = []
+
+prefix = 'N_'+str(N)+'_sigma_'+str(sigma)+'_mu_'+str(mu)+'_rho_'+str(rho)+'_s_'+str(s)+'_delta_'+str(delta)
+
+if not os.path.exists('output/valley_crossing_sims_'+args.name):
+    os.makedirs('output/valley_crossing_sims_'+args.name)
+
 
 while pop.generation < run_time:
     pfit = pop.get_trait_statistics(0)
@@ -152,7 +160,7 @@ while pop.generation < run_time:
             if pop.get_pair_frequency(mutant_locs[0],mutant_locs[1]) == 0:
                 dm_bubble_closings.append(pop.generation)
                 double_mut_in_play = False
-            elif pop.get_pair_frequency(mutant_locs[0],mutant_locs[1]) > 0.9:
+            elif pop.get_pair_frequency(mutant_locs[0],mutant_locs[1]) > 0.5: #this is a decent proxy for establishment
                 #frequency 0.9 seems like about as good a cutoff as any
                 dm_successful_crossings.append(pop.generation-burn_time) #record the amount of time elapsed since the last burn-in
                 print 'successful crossing', pop.generation
@@ -169,7 +177,7 @@ while pop.generation < run_time:
                 double_mut_in_play = False
                 
                 pop.mutation_rate = 0
-                burn_time = pop.generation + 0.1*base_burn_time #we might as well let the population equilibrate again for a bit
+                burn_time = pop.generation + base_burn_time #we might as well let the population equilibrate again for a bit
                 burned_in = False
                 pop.trait_weights += np.array([0,-1.0]) #"turn off" the focal loci: just a failsafe
 
@@ -179,18 +187,24 @@ while pop.generation < run_time:
     dm_freqs.append(pop.get_pair_frequency(mutant_locs[0],mutant_locs[1]))
     mut_freqs[0].append(pop.get_allele_frequency(mutant_locs[0]))
     mut_freqs[1].append(pop.get_allele_frequency(mutant_locs[1]))
+    if not pop.generation%(10**4):
+        with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_dm_weights_'+str(args.runno)+'.pkl', 'w') as dm_weights_file:
+            pickle.dump(dm_weights, dm_weights_file)
+        with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_weights_'+str(args.runno)+'.pkl', 'w') as weights_file:
+            pickle.dump(weights, weights_file)
+        with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_dm_openings_'+str(args.runno)+'.pkl', 'w') as dm_openings_file:
+            pickle.dump(bubble_openings, dm_openings_file)
+        with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_openings_'+str(args.runno)+'.pkl', 'w') as openings_file:
+            pickle.dump(dm_bubble_openings, openings_file)
+        with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_dm_closings_'+str(args.runno)+'.pkl', 'w') as dm_closings_file:
+            pickle.dump(dm_bubble_closings, dm_closings_file)
+        with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_closings_'+str(args.runno)+'.pkl', 'w') as closings_file:
+            pickle.dump(bubble_closings, closings_file)        
+        with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_dm_successes_'+str(args.runno)+'.pkl', 'w') as dm_successes_file:
+            pickle.dump(dm_successful_crossings, dm_successes_file)
+        with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_current_generation.dat', 'w') as gen_file:
+            gen_file.write(str(pop.generation))
     pop.evolve(1)
-
-plt.figure()
-plt.plot(mut_freqs[0][::10])
-plt.plot(mut_freqs[1][::10])
-plt.plot(dm_freqs[::10])
-plt.show()
-
-prefix = 'N_'+str(N)+'_mu_'+str(mu)+'_s_'+str(s)+'_delta_'+str(delta)
-
-if not os.path.exists('output/valley_crossing_sims_'+args.name):
-    os.makedirs('output/valley_crossing_sims_'+args.name)
 
 with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_dm_weights_'+str(args.runno)+'.pkl', 'w') as dm_weights_file:
     pickle.dump(dm_weights, dm_weights_file)
@@ -204,9 +218,16 @@ with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_dm_closings_'+st
     pickle.dump(dm_bubble_closings, dm_closings_file)
 with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_closings_'+str(args.runno)+'.pkl', 'w') as closings_file:
     pickle.dump(bubble_closings, closings_file)
-
 with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_dm_successes_'+str(args.runno)+'.pkl', 'w') as dm_successes_file:
     pickle.dump(dm_successful_crossings, dm_successes_file)
+
+
+if __name__ == '__main__':
+    plt.figure()
+    plt.plot(mut_freqs[0][::10])
+    plt.plot(mut_freqs[1][::10])
+    plt.plot(dm_freqs[::10])
+    plt.show()
 
 
 
