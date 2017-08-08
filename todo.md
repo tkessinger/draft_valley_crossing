@@ -6,8 +6,8 @@
 - Create parameter set with fitness variance to add draft to valley crossing
 - Run simulations with above parameters and analyze results
 - Derive analytical expectations of expected valley crossing time with fitness variance
-  - expectations for Weissman results
-  - expectations for draft results
+	- expectations for Weissman results
+	- expectations for draft results
 - Write up analytical results
 - Write up simulations results
 
