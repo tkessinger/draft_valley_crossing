@@ -17,7 +17,7 @@ class BubbleRecorder(object):
         
     def __call__(self,pop):
         for mut in range(len(pop.mutations)):
-            # infinite sites model so each mutatio has unique position
+            # infinite sites model so each mutation has unique position
             mkey = pop.mutations[mut].pos
             # if mutation neutral (neutral ones draft) 
             if pop.mutations[mut].neutral:
