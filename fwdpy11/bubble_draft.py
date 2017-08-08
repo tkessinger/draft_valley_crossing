@@ -88,5 +88,6 @@ def plot_weight_dist(weights, kde = True, hist = False, bins = 20, loc = 3):
     plt.legend(loc = loc)
     plt.show()
 
-### ipython code
-%time pop, weights = evolve_draft(20000, 10000, 0.01, 0.001, 0.001, seed=314)
+### ipython code: this produces a very good fit to the drift case of -alpha = -3/2
+# %time pop, weights = evolve_draft(20000, 10000, 0.01, 0.001, 0.001, seed=314)
+# plot_weight_powerlaw(weights)
