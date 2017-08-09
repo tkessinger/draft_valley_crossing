@@ -4,15 +4,18 @@ import fwdpy11.model_params
 import fwdpy11.fitness
 import fwdpy11.wright_fisher
 
+# pybind11 C++ recorder
+import cppimport
+cppimport.set_quiet(False)
+bubble_recorder = cppimport.imp("bubble_recorder")
+
 # plotting stuff
 import matplotlib.pyplot as plt
 import seaborn as sns
 import powerlaw as pl
 
 class BubbleRecorder(object):
-    def __init__(self,ngens,N):
-        #An index variable referring to where we will next store data
-        self.i = 0
+    def __init__(self):
         self.weights = dict()
         
     def __call__(self,pop):
@@ -46,7 +49,8 @@ def evolve_draft(ngens, N, s, mu, r, burn = 500, seed = 42):
         demography = np.array([N]*ngens, dtype=np.uint32),
         rates=(mu, mu, r)
         )
-    recorder = BubbleRecorder(ngens, N)
+    # recorder = BubbleRecorder()
+    recorder = bubble_recorder.BubbleRecorder()
     
     fwdpy11.wright_fisher.evolve(rng,pop,params,recorder)
 
