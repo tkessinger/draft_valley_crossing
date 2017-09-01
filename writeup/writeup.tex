@@ -292,12 +292,12 @@ The relevant ``integrating factor" here is $\mu(\theta) = e^{\int -\theta d\thet
 We therefore obtain, in the low $\theta$ limit,
 
 \begin{equation}
-\phi(z,\chi) = \frac{\int_0^\tau (z+\tilde{r}\Phi(\tau^\prime)) e^{-\theta^\prime^2/2} d\tau^\prime}{e^{-\theta^2/2}}.
+\phi(z,\chi) = \frac{\int_0^\tau (z+\tilde{r}\Phi(\tau^\prime)) e^{-{\theta'}^2/2} d\tau^\prime}{e^{-\theta^2/2}}.
 \end{equation}
 
 The $z$ term in the integrand simply becomes $z\sqrt{2\pi} \sim z$.
 The second term needs to be treated with slightly more care.
-The major contribution to the integral will come from a well defined, large $\tau^\prime$, corresponding to the maximum of $\exp(-\theta^\prime^2/2 + \log \Phi(\tau^\prime))$ at $\tau^\prime = \tau - \theta$.
+The major contribution to the integral will come from a well defined, large $\tau^\prime$, corresponding to the maximum of $\exp(-\theta'^2/2 + \log \Phi(\tau^\prime))$ at $\tau^\prime = \tau - \theta$.
 $\Phi(\tau)$ changes slowly and can be pulled out of the integral, yielding another Gaussian integral.
 We therefore have $\phi(z,\chi) \approx (z+\tilde{r}\Phi(z))e^{\theta^2}/2$, or, summarizing:
 
@@ -448,13 +448,12 @@ Define $G(\lambda,t) = \sum_n \lambda^n p_t(n)$. Then
 
 \begin{equation}
 \partial_t G(\lambda,t) = (1+s+x-\bar{x})\sum_n (n-1) \lambda^n p_t(n-1) + \sum_n (n+1) \lambda^n p_t(n+1) - (2+s+x-\bar{x})\sum_n n \lambda^n p_t(n).
-
 \end{equation}
 
 The sum in the first right hand side term can be rewritten as $\sum_n (n-1) \lambda^n p_t(n-1) = \sum_n n\lambda^{n+1} p_t(n)$ by relabeling elements, which is just $\lambda^2 \sum_n n\lambda^{n-1} p_t(n)$, or $\lambda^2 \partial_\lambda G$. The second becomes $\sum_n (n+1) \lambda^n p_t(n+1) = \sum_n n \lambda^{n-1} p_n$, which is just $\partial_\lambda G$. The third becomes $\sum_n n \lambda^n p_t(n) = \lambda \sum_n n \lambda^{n-1} p_n$, which is just $\lambda \partial_\lambda G$. Thus
 
 \begin{equation}
-\partial_t G(\lambda,t) = \left( (1+s+x-\bar{x})\lambda^2 - (2+s+x-\bar{x})\lambda + 1)\partial_\lambda G(\lambda, t).
+\partial_t G(\lambda,t) = \left( (1+s+x-\bar{x})\lambda^2 - (2+s+x-\bar{x})\lambda + 1 \right)\partial_\lambda G(\lambda, t).
 \end{equation}
 
 If there were no $\bar{x}$ term, this could easily be solved via the method of characteristics, but unfortunately $\bar{x} = \bar{x}(t) = vt = \sigma^2 t$, which is time dependent.
@@ -502,7 +501,7 @@ The first equation we need to solve becomes:
 \end{equation}
 Decomposing $P$ and using partial fractions allows us to write
 \begin{equation}
-\int \frac{d\lambda}{P(s,x,\lambda, t)} = \int d\lambda\left(\frac{A}{\lambda - \frac{1}{\alpha}} + \frac{B}{\lambda - 1}),
+\int \frac{d\lambda}{P(s,x,\lambda, t)} = \int d\lambda\left(\frac{A}{\lambda - \frac{1}{\alpha}} + \frac{B}{\lambda - 1} \right),
 \end{equation}
 with $\alpha = s+x-\bar{x}$, $A = \frac{1}{\frac{1}{\alpha} - 1}$, $B = -A = \frac{-1}{\frac{1}{\alpha} - 1}$.
 Integrating the first term on the left yields $\frac{1}{\frac{1}{\alpha}-1}\log(\lambda - \frac{1}{\alpha})$, and the second term yields $-\frac{1}{\frac{1}{\alpha}-1}\log(\lambda - 1)$.
