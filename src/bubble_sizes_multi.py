@@ -72,7 +72,7 @@ pop = h.haploid_highd(L, number_of_traits=2, number_of_mutant_loci = 1, most_pol
 pop.carrying_capacity = N
 pop.mutation_rate = nothing
 #pop._set_mutant_loci([mutant_loc])
-pop._set_mutant_loci(mutant_loc)
+pop._set_mutant_loci(np.int32(mutant_loc))
 
 pop.recombination_model = h.FREE_RECOMBINATION #recombination model, can be either FREE_RECOMBINATION or CROSSOVERS
 pop.outcrossing_rate = rho
@@ -91,8 +91,8 @@ run_time = args.runtime
 #run_time = np.max([1e4,10*N]) #number of generations to simulate
 
 num_attempts = 0 #attempts at crossing the valley, i.e., number of deleterious or neutral single mutants
-mutation_in_play = False #flag to see whether the mutations are currently segregating
-weights = []
+mutation_in_play = [False for x in range(mut_loci)] #flag to see whether the mutations are currently segregating
+weights = [[] for x in range(mut_loci)]
 bubble_openings = []
 bubble_closings = []
 
@@ -110,11 +110,12 @@ selection_coefficients[mutant_loc]=1e-10
 pop.set_trait_additive(selection_coefficients,0)
 pop.set_trait_additive(np.zeros(L),1)
 
+
 #pop.trait_weights[0] = 0
 #print pop.trait_weights
 
-for loc in mutant_loc:
-    pop.add_trait_coefficient(deleterious_effects[0],loc,1)
+#for loc in mutant_loc:
+pop.add_trait_coefficient(deleterious_effects[0],np.int32(mutant_loc),1)
 #mutant_loc might need to be a list
 afreqs = []
 
@@ -127,26 +128,27 @@ if not os.path.exists('output/bubble_size_sims_'+args.name):
 
 vars = []
 
+
 while pop.generation < run_time:
 #    if pop.get_allele_frequency(mutant_loc) == 0:
 #        pop.flip_single_locus(mutant_loc)
     #print pop.generation
     pfit = pop.get_trait_statistics(0)
-    #pfit1 = pop.get_trait_statistics(1)
-    #fitvar = pop.get_fitness_statistics().variance
+    pfit1 = pop.get_trait_statistics(1)
+    fitvar = pop.get_fitness_statistics().variance
     #vars.append(pfit.variance)
-    #print np.sqrt(fitvar), np.sqrt(pfit.variance), np.sqrt(pfit1.variance), sigma, pop.trait_weights
+    #print np.sqrt(fitvar), np.sqrt(pfit.variance), np.sqrt(pfit1.variance), sigma, pop.trait_weights, np.sqrt(pfit.variance)*pop.trait_weights[0]
     #pfit = pop.get_fitness_statistics()
     if pfit.variance > 0 and pop.generation > np.min([100, burn_time]) and not args.s_mean:
         multiplier = sigma/np.sqrt(pfit.variance)
-        #pop.trait_weights -= [pop.trait_weights[0],0]
-        #pop.trait_weights += [multiplier,0]
+        pop.trait_weights -= [pop.trait_weights[0],0]
+        pop.trait_weights += [multiplier,0]
         #print pop.get_trait_additive(0)[0]
         #pop.trait_weights[1] = multiplier
         #print multiplier, pop.trait_weights
-        selection_coefficients *= multiplier
-        selection_coefficients[mutant_loc]=1e-10
-        pop.set_trait_additive(selection_coefficients,0)
+        #selection_coefficients *= multiplier
+        #selection_coefficients[mutant_loc]=1e-10
+        #pop.set_trait_additive(selection_coefficients,0)
         #normalizes the selection coefficients so that sigma stays constant.
         #the above is clunky compared to pop.trait_weights *= np.array([multiplier,1]),
         #but FFPopSim seems not to like trait weights higher than 1,
@@ -160,32 +162,33 @@ while pop.generation < run_time:
         pop.mutation_rate = mu #set the focal loci to start mutating
         burned_in = True
     if burned_in == True:
-        if pop.get_allele_frequency(mutant_loc) != 0 and mutation_in_play == False:
-            #if either mutant has appeared
-            mutation_in_play = True
-            bubble_openings.append(pop.generation)
-            num_attempts += 1
-            #print pop.get_allele_frequency(mutant_loc)*pop.N, int(np.ceil(pop.get_allele_frequency(mutant_loc)*pop.N))
-            weights.append([int(np.ceil(pop.get_allele_frequency(mutant_loc)*pop.N))]) #start a new bubble of size 1
-            pop.mutation_rate = nothing #turn off the bubbles
-        elif mutation_in_play == True:
-            #print pop.get_derived_allele_frequency(mutant_loc), pop.N*pop.get_allele_frequency(mutant_loc)
-            if pop.get_allele_frequency(mutant_loc) == 0:
-                mutation_in_play = False #if it's gone extinct, close the bubble
-                #print "bubble closed"
-                bubble_closings.append(pop.generation)
-                pop.mutation_rate = mu
-            elif pop.get_allele_frequency(mutant_loc) < 0.95:
-                weights[-1].append(int(np.ceil(pop.get_allele_frequency(mutant_loc)*pop.N))) #add the current size to the bubble history
-                    #ceil is needed to avoid rounding errors
-            else:# pop.get_allele_frequency(mutant_loc) > 0.99*N:
-                allele_freqs = pop.get_allele_frequencies() #if the locus fixes due to drift/draft
-                allele_freqs[mutant_loc] = nothing #set it back to zero
-                pop.set_allele_frequencies(allele_freqs,pop.N)
-                weights[-1].append('fixed')
-                mutation_in_play = False
-                pop.mutation_rate = mu
-                #print "removed rogue locus"
+        for li,loc in enumerate(mutant_loc):  
+            if pop.get_allele_frequency(loc) != 0 and mutation_in_play[li] == False:
+                #if either mutant has appeared
+                mutation_in_play[li] = True
+                #bubble_openings.append(pop.generation)
+                num_attempts += 1
+                #print pop.get_allele_frequency(mutant_loc)*pop.N, int(np.ceil(pop.get_allele_frequency(mutant_loc)*pop.N))
+                weights[li].append([int(np.ceil(pop.get_allele_frequency(loc)*pop.N))]) #start a new bubble of size 1
+                #pop.mutation_rate = nothing #turn off the bubbles
+            elif mutation_in_play[li] == True:
+                #print pop.get_derived_allele_frequency(mutant_loc), pop.N*pop.get_allele_frequency(mutant_loc)
+                if pop.get_allele_frequency(loc) == 0:
+                    mutation_in_play[li] = False #if it's gone extinct, close the bubble
+                    #print "bubble closed"
+                    #bubble_closings.append(pop.generation)
+                    #pop.mutation_rate = mu
+                elif pop.get_allele_frequency(loc)*N < N:
+                    weights[li][-1].append(int(np.ceil(pop.get_allele_frequency(loc)*pop.N))) #add the current size to the bubble history
+                        #ceil is needed to avoid rounding errors
+                else:# pop.get_allele_frequency(mutant_loc) > 0.99*N:
+                    allele_freqs = pop.get_allele_frequencies() #if the locus fixes due to drift/draft
+                    allele_freqs[loc] = nothing #set it back to zero
+                    pop.set_allele_frequencies(allele_freqs,pop.N)
+                    weights[li][-1].append('fixed')
+                    mutation_in_play[li] = False
+                    #pop.mutation_rate = mu
+                    #print "removed rogue locus"
         #if not pop.generation%(10**4):
         '''
         if num_attempts > 0 and not (num_attempts%1e2) and mutation_in_play==False:
@@ -215,7 +218,7 @@ while pop.generation < run_time:
         '''            
 
                 
-    mut_freqs.append(pop.get_allele_frequency(mutant_loc))
+    mut_freqs.append(pop.get_allele_frequencies()[mutant_loc])
     afreqs.append([pop.get_derived_allele_frequency(L/4),pop.get_derived_allele_frequency(3*L/4)])
     if not pop.generation%(10**4):
         with open('output/bubble_size_sims_'+args.name+'/'+prefix+'_weights_'+str(args.runno)+'.pkl', 'w') as weights_file:
@@ -235,6 +238,10 @@ with open('output/bubble_size_sims_'+args.name+'/'+prefix+'_closings_'+str(args.
 
 
 if __name__ == '__main__':
+    new_weights = []
+    [new_weights.extend(x) for x in weights]
+#    weights = [y for y in x for x in weights]
+    weights = new_weights
     plt.figure()
     plt.plot(mut_freqs[::1])
     ax=plt.gca()

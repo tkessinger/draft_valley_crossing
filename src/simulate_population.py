@@ -8,6 +8,7 @@ Description: Simulation of valley crossing using FFPopSim.
 '''
 import sys
 sys.path.append('/home/tkessinger/tools/FFPopSim/pkg/python/')
+sys.path.append('/home/tkessinger/Documents/draft_valley_crossing/FFPopSim/pkg/python/')
 import numpy as np
 import FFPopSim as h
 import random as rand
@@ -32,6 +33,7 @@ parser.add_argument('--numsamples',type=int,default=10)
 parser.add_argument('--runno', type=int, default=0)
 parser.add_argument('--runtime', type=int, default=100000)
 parser.add_argument('--name', type=str, default='test')
+parser.add_argument('--fixed_s', type=bool, default=False)
 
 args=parser.parse_args()
 
@@ -71,7 +73,11 @@ pop.crossover_rate = cx
 
 pop.set_wildtype(N)
 
-s_mean = 1e-6 #average effect of beneficial mutations: this turns out to be mostly irrelevant due to sigma, above
+if args.fixed_s:
+    s_mean = sigma
+    sigma_hist = []
+else:
+    s_mean = 1e-2 #average effect of beneficial mutations: this turns out to be mostly irrelevant due to sigma, above
 base_burn_time = 0.1*N #number of generations to wait for population to equilibrate: ideally this should be of order T_MRCA
 burn_time = base_burn_time
 burned_in = False #flag for whether the population has equilibrated
@@ -111,7 +117,10 @@ pop.add_trait_coefficient(beneficial_effect, mutant_locs,1) #set the epistatic e
 
 afreqs = []
 
-prefix = 'N_'+str(N)+'_sigma_'+str(sigma)+'_mu_'+str(mu)+'_rho_'+str(rho)+'_s_'+str(s)+'_delta_'+str(delta)
+if args.fixed_s:
+    prefix = 'N_'+str(N)+'_smean_'+str(sigma)+'_mu_'+str(mu)+'_rho_'+str(rho)+'_s_'+str(s)+'_delta_'+str(delta)
+else:
+    prefix = 'N_'+str(N)+'_sigma_'+str(sigma)+'_mu_'+str(mu)+'_rho_'+str(rho)+'_s_'+str(s)+'_delta_'+str(delta)
 
 if not os.path.exists('output/valley_crossing_sims_'+args.name):
     os.makedirs('output/valley_crossing_sims_'+args.name)
@@ -119,11 +128,10 @@ if not os.path.exists('output/valley_crossing_sims_'+args.name):
 
 while pop.generation < run_time:
     pfit = pop.get_trait_statistics(0)
-    if pfit.variance > 0 and pop.generation > np.min([100, burn_time]):
+    if pfit.variance > 0 and pop.generation > np.min([100, base_burn_time]) and not args.fixed_s:
         multiplier = sigma/np.sqrt(pfit.variance)
-        selection_coefficients *= multiplier
-        selection_coefficients[mutant_locs]=1e-10
-        pop.set_trait_additive(selection_coefficients,0)
+        pop.trait_weights -= [pop.trait_weights[0],0]
+        pop.trait_weights += [multiplier,0]
         #normalizes the selection coefficients so that sigma stays constant.
         #the above is clunky compared to pop.trait_weights *= np.array([multiplier,1]),
         #but FFPopSim seems not to like trait weights higher than 1,
@@ -171,8 +179,8 @@ while pop.generation < run_time:
                 pop.set_allele_frequencies(allele_freqs,pop.N)
                 pop.carrying_capacity = N #reset the carrying capacity to its desired value
                 
-                selection_coefficients = np.random.exponential(s_mean, size = L) #we might as well change up the background fitnesses at this point
-                selection_coefficients[mutant_locs]=1e-10
+                #selection_coefficients = np.random.exponential(s_mean, size = L) #we might as well change up the background fitnesses at this point
+                #selection_coefficients[mutant_locs]=1e-10
                 
                 double_mut_in_play = False
                 
@@ -187,6 +195,8 @@ while pop.generation < run_time:
     dm_freqs.append(pop.get_pair_frequency(mutant_locs[0],mutant_locs[1]))
     mut_freqs[0].append(pop.get_allele_frequency(mutant_locs[0]))
     mut_freqs[1].append(pop.get_allele_frequency(mutant_locs[1]))
+    if not pop.generation%(10**2) and pop.generation > base_burn_time and args.fixed_s:
+        sigma_hist.append([np.sqrt(pop.get_trait_statistics(0).variance), np.sqrt(pop.get_fitness_statistics().variance)])
     if not pop.generation%(10**4):
         with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_dm_weights_'+str(args.runno)+'.pkl', 'w') as dm_weights_file:
             pickle.dump(dm_weights, dm_weights_file)
@@ -202,6 +212,9 @@ while pop.generation < run_time:
             pickle.dump(bubble_closings, closings_file)        
         with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_dm_successes_'+str(args.runno)+'.pkl', 'w') as dm_successes_file:
             pickle.dump(dm_successful_crossings, dm_successes_file)
+        if args.fixed_s:
+            with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_sigma_hist_'+str(args.runno)+'.pkl', 'w') as sigma_hist_file:
+                pickle.dump(sigma_hist, sigma_hist_file)
         with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_current_generation.dat', 'w') as gen_file:
             gen_file.write(str(pop.generation))
     pop.evolve(1)
@@ -220,7 +233,9 @@ with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_closings_'+str(a
     pickle.dump(bubble_closings, closings_file)
 with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_dm_successes_'+str(args.runno)+'.pkl', 'w') as dm_successes_file:
     pickle.dump(dm_successful_crossings, dm_successes_file)
-
+if args.fixed_s:
+    with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_sigma_hist_'+str(args.runno)+'.pkl', 'w') as sigma_hist_file:
+        pickle.dump(sigma_hist, sigma_hist_file)
 
 if __name__ == '__main__':
     plt.figure()
