@@ -216,33 +216,34 @@ Let $x$ be the fitness of the lineage, $k$ be the number of mutants at the previ
 The fate of a mutant lineage is governed by the master equation
 \begin{align*}
 -\partial_t p(n,T|k,t,x) = &-k(2+x-\bar{x}+s+r)p(n,T|k,t,x) \\
-& + k(1+x-\bar{x}+s)p(n,T|k,t,x) \\
+& + k(1+x-\bar{x}+s)p(n,T|k+1,t,x) \\
 & +kp(n,T|k-1,t,x) \\
 &+rk\sum_{n^\prime} \int_{x^\prime} K_{x x^\prime} p(n-n^\prime , T|k-1, t, x) p(n^\prime,T|t,t,x^\prime).
 \end{align*}
 Here, $K$ represents a recombination ``kernel", i.e., a function that assigns to each $x$ an offspring fitness $x^\prime$ with some probability.
 The first term corresponds to the probability that nothing happens, the second to the duplication of one of the $k$ individuals (as usual, the death rate is normalized to $1$), the third to one of the $k$ individuals dying, and the last to outcrossing, yielding an individual with background fitness $x^\prime$.
 
-We can use generating functions to remove the convolution over $n$. Define $G(\lambda, T|k,t,x) = \sum_n \lambda^n p(n,T|k,t,x)$. Then
+We can use generating functions to remove the convolution over $n$. Define $\hat{p}(\lambda, T|k,t,x) = \sum_n \lambda^n p(n,T|k,t,x)$. Then
 \begin{align*}
--\partial_t G(\lambda,T|k,t,x) = &-k(2+x-\bar{x}+s+r)G(\lambda,T|k,t,x) \\
-& + k(1+x-\bar{x}+s)G(\lambda,T|k,t,x) \\
-& + kG(\lambda,T|k-1,t,x) \\
-& + rk\int_{x^\prime} K_{x x^\prime} G(\lambda, T|k-1, t, x) G(\lambda,T|t,t,x^\prime).
+-\partial_t \hat{p}(\lambda,T|k,t,x) = &-k(2+x-\bar{x}+s+r)\hat{p}(\lambda,T|k,t,x) \\
+& + k(1+x-\bar{x}+s)\hat{p}(\lambda,T|k+1,t,x) \\
+& + k\hat{p}(\lambda,T|k-1,t,x) \\
+& + rk\int_{x^\prime} K_{x x^\prime} \hat{p}(\lambda, T|k-1, t, x) \hat{p}(\lambda,T|t,t,x^\prime).
 \end{align*}
-From this we can use the fact that all $k$ individuals are independent, i.e., $G(\lambda,t|k,t,x) = G^k(\lambda,T|t,x)$.
-The right hand side becomes $-\partial_t G(\lambda,T|k,t,x) = -kG^{k-1}(\lambda,T|t,x)\partial_t G(\lambda,T|t,x)$. Dividing out $kG^{k-1}(\lambda,T|t,x)$ yields
+From this we can use the fact that all $k$ individuals are independent, i.e., $\hat{p}(\lambda,t|k,t,x) = \hat{p}^k(\lambda,T|t,x)$.
+The right hand side becomes $-\partial_t \hat{p}(\lambda,T|k,t,x) = -k\hat{p}^{k-1}(\lambda,T|t,x)\partial_t \hat{p}(\lambda,T|t,x)$.
+Dividing out $k\hat{p}^{k-1}(\lambda,T|t,x)$ yields
 \begin{align*}
--\partial_t G(\lambda,T|k,t,x) = &-(2+x-\bar{x}+s+r)G(\lambda,T|t,x) \\
-& + (1+x-\bar{x}+s)G^2(\lambda,T|t,x) \\
+-\partial_t \hat{p}(\lambda,T|k,t,x) = &-(2+x-\bar{x}+s+r)\hat{p}(\lambda,T|t,x) \\
+& + (1+x-\bar{x}+s)\hat{p}^2(\lambda,T|t,x) \\
 & + 1 \\
-& + r\int_{x^\prime} K_{x x^\prime} G(\lambda,T|t,t,x^\prime).
+& + r\int_{x^\prime} K_{x x^\prime} \hat{p}(\lambda,T|t,t,x^\prime).
 \end{align*}
-(The last term is justified by the fact that $G(\lambda,T|k-1,t,x)$ doesn't depend on $x^\prime$.)
-As usual, the boundary condition is $G(\lambda,T|T,x) = \lambda$.
-Substitutiong $\phi = 1 - G$ yields
+(The last term is justified by the fact that $\hat{p}(\lambda,T|k-1,t,x)$ doesn't depend on $x^\prime$.)
+As usual, the boundary condition is $\hat{p}(\lambda,T|T,x) = \lambda$, corresponding to one individual at time $0$.
+Substitutiong $\phi = 1 - \hat{p}$ yields
 \begin{align*}
-\partial_t \phi(\lambda,T|k,t,x) = &-(x-\bar{x}+s-r)G(\lambda,T|t,x) \\
+\partial_t \phi(\lambda,T|k,t,x) = &-(x-\bar{x}+s-r)\phi(\lambda,T|t,x) \\
 & + (1+x-\bar{x}+s)\phi^2(\lambda,T|t,x) \\
 & - r\int_{x^\prime} K_{x x^\prime} \phi(\lambda,T|t,t,x^\prime).
 \end{align*}
@@ -258,78 +259,260 @@ Similarly rescaling $\tilde{r} = r/\sigma$, $\tilde{s} = s/\sigma$, $\chi = x/\s
 \begin{align*}
 \partial_t \psi(\tau,\chi) = &\tilde{r}\int K_{\chi \chi^\prime} \psi (\tau, \chi^\prime) \\
 & + (\chi + \tau + \tilde{s} - \tilde{r}) \psi (\tau,\chi) \\
-& - \epsilon \psi^2 (\tau,chi).
+& - \epsilon \psi^2 (\tau,\chi).
 \end{align*}
-Integrating this over the fitness distribution $P(\chi,\tau)$ would yield the scaled generating function $\Phi(\tau) = \int d\chi P(\chi,tau)\psi(\tau,\chi)$.
+Integrating this over the fitness distribution $P(\chi,\tau)$ would yield the scaled generating function $\Phi(\tau) = \int d\chi P(\chi,\tau)\psi(\tau,\chi)$.
+(Note that integrating the recombination term over $P(\chi,\tau)$, in the free recombination model, yields simply $\tilde{r}\Phi(\tau)$.)
+
+Similar reasoning will allow us to derive the behavior of the weight distribution.
 We can proceed by leaving the bulk of the equation in the form of $\phi$, since ultimately what we will be interested in is the Laplace transform $\hat{p} (z,T|k,t,x) = \int dz e^{-zw} p(w,T|k,t,x)$.
 Here $w$ represents (as before) the weight of a mutant bubble and evolves according to
 \begin{align*}
 -(\partial_t -k\partial_w) p(w,T|k,t,x) = &-k(2+x-\bar{x}+s+r)p(w,T|k,t,x) \\
-& + k(1+x-\bar{x}+s)p(w,T|k,t,x) \\
+& + k(1+x-\bar{x}+s)p(w,T|k+1,t,x) \\
 & +kp(w,T|k-1,t,x) \\
 &+rk \int dw^\prime \int_{x^\prime} K_{x x^\prime} p(w-w^\prime , T|k-1, t, x) p(w^\prime,T|t,t,x^\prime).
 \end{align*}
-We still have that $\hat{p} (z,T|k,t,x) = \hat{p}^k (z,T|1,t,x)$.
-Rescaling variables as above and introducing $\theta = \chi+\tau+\tilde{s}+z-\tilde{r}$ and $\hat{\phi} = (1-\hat{p})/\sigma)$ yields
+We still have that $\hat{p} (z,T|k,t,x) = \hat{p}^k (z,T|1,t,x)$, by the fact that each of the $k$ copies of the mutant allele is independent of the other.
+Differentiating $\hat{p}$ with respect to $w$ pulls out a factor of $-z$, but otherwise the behavior is very similar to the previous case.
+Rescaling variables as above and introducing $\theta = \chi+\tau+\tilde{s}+z-\tilde{r}$ and $\phi = (1-\hat{p}(z,T|1,t,x))/\sigma)$ yields
 \begin{equation}
-\partial_t \hat{\phi}(\tau,z,\chi) = z + \tilde{r} \Phi(\tau, z) + \theta \hat{\phi}(\tau,z,\chi) - \hat{\phi}^2(\tau,z,\chi).
+\partial_\tau \phi(\tau,z,\chi) = z + \tilde{r} \Phi(\tau, z) + \theta \phi(\tau,z,\chi) - \phi^2(\tau,z,\chi),
 \end{equation}
-The boundary condition is given by $\hat{\phi}(0,z,\chi) = 0$, since the ``weight" is zero at time zero.
-We can solve this by sending $\tau$ to infinity, assuming that tunneling is rare and requires many mutant ``bubbles" to occur.
+where $\Phi(\tau, z) = \int d\chi P(\chi, \tau) \phi(\tau, z, \chi)$ is, as before, the rescaled version of $\phi$ when integrating over the entire fitness distribution $P(\chi, \tau)$.
+(In the communal recombination model, the contribution of the recombination term simply becomes $\tilde{r}\Phi$, since the fitness of an individual is, in that model, determined by simply sampling randomly from the population.)
 
-We will need to figure out what happens to mutations in the ``bulk" of the wave versus the ``nose".
-The above expression for $\Phi$ yields a differential equation
+We can send $\tau$ to infinity and look for steady state solutions, since all we are interested in is the size of a single, short lived bubble (i.e., there is only ever one bubble at a time).
+For large values of $\theta$, the dominant terms are $\theta \phi(\tau,z,\chi)$ and $-\phi^2(\tau,z,\chi)$.
+Setting their sum equal to zero (steady state solution) and solving for $\phi$ yields $\phi(z,\chi) \approx \theta$.
+
+For small values of $\theta$, the remaining terms are more important.
+We have $\partial_\tau \phi = z + \tilde{r} \Phi(z) + \theta \phi(z, \chi)$.
+The relevant ``integrating factor" here is $\mu(\theta) = e^{\int -\theta d\theta} = e^{-\theta^2/2}$ (the use of $\theta$ rather than $\tau$ is justified by the fact that they depend linearly on each other).
+We therefore obtain, in the low $\theta$ limit,
+
 \begin{equation}
-\partial_\tau \Phi(\tau) = \partial_\tau \int d\chi P(\chi,\tau)\psi(\tau,\chi) = \tilde{s} \Phi(\tau) - \epsilon \int d\chi P(\tau,\chi) \psi^2 (\tau,\chi).
+\phi(z,\chi) = \frac{\int_0^\tau (z+\tilde{r}\Phi(\tau^\prime)) e^{-\theta^\prime^2/2} d\tau^\prime}{e^{-\theta^2/2}}.
 \end{equation}
-Note that, for beneficial mutations, the two right hand terms balance each other over long time scales, but for neutral and deleterious mutations, no such steady state exists.
-For the ``communal" recombination model used in Neher and Shraiman (2011) and (2010), the recombination contribution in the ODE for $\psi$ simplifies to $\tilde{r} \Phi(\tau)$.
 
-We proceed in the limits of large positive and negative growth rate $\beta = \chi+\tau+\tilde{s}-\tilde{r}$.
-For $\beta < 0$, only the first term in the equation for $\psi$ matters, as $psi < 1/\epsilon$: for $\beta > 0$, only the second one matters.
-Accordingly,
+The $z$ term in the integrand simply becomes $z\sqrt{2\pi} \sim z$.
+The second term needs to be treated with slightly more care.
+The major contribution to the integral will come from a well defined, large $\tau^\prime$, corresponding to the maximum of $\exp(-\theta^\prime^2/2 + \log \Phi(\tau^\prime))$ at $\tau^\prime = \tau - \theta$.
+$\Phi(\tau)$ changes slowly and can be pulled out of the integral, yielding another Gaussian integral.
+We therefore have $\phi(z,\chi) \approx (z+\tilde{r}\Phi(z))e^{\theta^2}/2$, or, summarizing:
+
 \begin{equation}
-\psi(\tau,\chi) =
+\phi(z,\chi) \approx
 \begin{cases}
-\tilde{r} e^{\beta^2/2} \int^\tau_0 d\tau^\prime \Phi(\tau^\prime)e^{-\beta^2/2} & \beta < \beta_c (\tau) \\
-\beta/\epsilon & \beta > \beta_c (\tau).
+(z+\tilde{r}\Phi(z))e^{\theta^2}/2 & \theta \ll \Theta_c, \\
+\theta & \theta \gg \Theta_c.
 \end{cases}
 \end{equation}
 
-(Still to-do: write up $\beta_c$ and explain how the crossover occurs.
-Some of the following calculations will still need cleaning up.)
 
-Correspondingly,
+The crossover between these two solutions occurs roughly at some critical $\Theta_c$ given by setting them equal to each other: 
+
 \begin{equation}
-\hat{\phi}(z,\chi) =
+(z+\tilde{r}\Phi(z))e^{\Theta_c^2/2} = \Theta_c.
+\end{equation}
+
+We would still like to find $\Phi(z)$. The solvability condition given for $\Phi(z)$ by integrating the equation for $\partial_\tau \phi(z,\chi)$ over the fitness distribution is
+
+\begin{equation}
+0 = z + \tilde{s}\Phi(z) - \int \frac{d\chi}{\sqrt{2\pi}}e^{-\chi^2/2}\phi^2(z,\chi).
+\end{equation}
+
+For small $\tilde{r}$, the integral on the right is dominated by the crossover point $\Theta_c$. Using the above form of $\phi(z,\chi)$ allows us to solve the integral: it becomes $ze^{-\tilde{r}\Theta_c} + \tilde{r}e^{-\tilde{r}\Theta_c}\Phi(z)$. We thus have
+
+\begin{equation}
+\Phi(z) = z\frac{1-e^{-\tilde{r}\Theta_c}}{\tilde{r}e^{-\tilde{r}\Theta_c} - \tilde{s}}.
+\end{equation}
+
+Using the crossover condition gives us an expression for $\Theta_c$:
+
+\begin{equation}
+\Theta_c e^{-\Theta_c^2/2} = z\frac{\tilde{r}-\tilde{s}}{\tilde{r}e^{-\tilde{r}\Theta_c} - \tilde{s}}.
+\end{equation}
+
+If $\tilde{s}$ is more important than $\tilde{r}e^{-\tilde{r}\Theta_c}$, we have $\Theta_c = \sqrt{-2\log(ze^{\tilde{r}\Theta_c}/\Theta_c}$, which means
+
+\begin{equation}
+\Phi(z) = z\frac{e^{\tilde{r}\Theta_c - 1}}{\tilde{r}} =
 \begin{cases}
-e^{\beta^2/2}(z+\tilde{r}\Phi(z)) & \beta < \beta_c (\tau) \\
-\beta & \beta > \beta_c (\tau).
+z\sqrt{-2\log z} & \tilde{r}\Theta_c \ll 1 \\
+ze^{\tilde{r}\Theta_c}/\tilde{r} & \tilde{r}\Theta_c \gg 1.
 \end{cases}
 \end{equation}
 
-The jump from this condition to the Laplace transform for the bubble size $\Phi(z) = \mathbb{E}(e^{-zw})$ needs to be filled in, but the transform in the low $\tilde{s}$ (neutral) or high $\tilde{r}$ limit is given by
+If the opposite is true, we have instead
+
 \begin{equation}
-\Phi(z) = z\frac{e^{\tilde{r}\beta_c - 1}}{\tilde{r}} = 
+\Phi(z) = \frac{z}{\tilde{s}}(1-e^{\tilde{r}\Theta_c}) =
 \begin{cases}
-z\sqrt{-2\log z} & \tilde{r} \beta_c \ll 1 \\
-z e^{\tilde{r}\beta_c}/\tilde{r} & \beta_c \gg 1.
+\frac{z\tilde{r}\sqrt{-2\log z}}{\tilde{s}} & \tilde{r}\Theta_c \ll 1 \\
+\frac{z}{\tilde{s}} & \tilde{r}\Theta_c \gg 1.
 \end{cases}
 \end{equation}
-It is worth noting that $r$ here is the total recombination rate between two arbitrary loci, not necessarily between the two loci of interest.
 
-The inverse Laplace transform is then given by
+Note the dependence on $z\sqrt{-2\log z}$ in the low $\tilde{r}$ limit.
+We can now compute the weight distribution, having finally obtained $\Phi(z)$, the Laplace transform thereof.
+We have
+
 \begin{equation}
-P(w) = \oint \frac{dz}{2\pi i} e^{zw} \bar{\Phi}.
+P(w) = \oint_C \frac{dz}{2\pi i}e^{zw}\bar{\Phi}(z).
 \end{equation}
-The low-$r$ regime above yields
+
+Computing this integral with either of the $\tilde{r}\Theta_c \ll 1$ expressions will yield
+
 \begin{equation}
-P(w) = \oint \frac{dz}{2\pi i} e^{zw}z\sqrt{\log z^2} \sim \frac{1}{w^2\sqrt{\log w^2}}.
+P(w) \sim \oint_C \frac{dz}{2\pi i}e^{zw}z \sqrt{-2 \log z} = \int^\infty_0 \frac{dy y e^{-yw}}{\sqrt{\log y^{-2}}} \sim \frac{w^{-2}}{\log w^2}.
 \end{equation}
+
+%The boundary condition is given by $\hat{\phi}(0,z,\chi) = 0$, since the ``weight" is zero at time zero.
+%We can solve this by sending $\tau$ to infinity, assuming that tunneling is rare and requires many mutant ``bubbles" to occur.
+%
+%We will need to figure out what happens to mutations in the ``bulk" of the wave versus the ``nose".
+%The above expression for $\Phi$ yields a differential equation
+%\begin{equation}
+%\partial_\tau \Phi(\tau) = \partial_\tau \int d\chi P(\chi,\tau)\psi(\tau,\chi) = \tilde{s} \Phi(\tau) - \epsilon \int d\chi P(\tau,\chi) \psi^2 (\tau,\chi).
+%\end{equation}
+%Note that, for beneficial mutations, the two right hand terms balance each other over long time scales, but for neutral and deleterious mutations, no such steady state exists.
+%For the ``communal" recombination model used in Neher and Shraiman (2011) and (2010), the recombination contribution in the ODE for $\psi$ simplifies to $\tilde{r} \Phi(\tau)$.
+%
+%We proceed in the limits of large positive and negative growth rate $\beta = \chi+\tau+\tilde{s}-\tilde{r}$.
+%For $\beta < 0$, only the first term in the equation for $\psi$ matters, as $psi < 1/\epsilon$: for $\beta > 0$, only the second one matters.
+%Accordingly,
+%\begin{equation}
+%\psi(\tau,\chi) =
+%\begin{cases}
+%\tilde{r} e^{\beta^2/2} \int^\tau_0 d\tau^\prime \Phi(\tau^\prime)e^{-\beta^2/2} & \beta < \beta_c (\tau) \\
+%\beta/\epsilon & \beta > \beta_c (\tau).
+%\end{cases}
+%\end{equation}
+%
+%(Still to-do: write up $\beta_c$ and explain how the crossover occurs.
+%Some of the following calculations will still need cleaning up.)
+%
+%Correspondingly,
+%\begin{equation}
+%\hat{\phi}(z,\chi) =
+%\begin{cases}
+%e^{\beta^2/2}(z+\tilde{r}\Phi(z)) & \beta < \beta_c (\tau) \\
+%\beta & \beta > \beta_c (\tau).
+%\end{cases}
+%\end{equation}
+%
+%The jump from this condition to the Laplace transform for the bubble size $\Phi(z) = \mathbb{E}(e^{-zw})$ needs to be filled in, but the transform in the low $\tilde{s}$ (neutral) or high $\tilde{r}$ limit is given by
+%\begin{equation}
+%\Phi(z) = z\frac{e^{\tilde{r}\beta_c - 1}}{\tilde{r}} = 
+%\begin{cases}
+%z\sqrt{-2\log z} & \tilde{r} \beta_c \ll 1 \\
+%z e^{\tilde{r}\beta_c}/\tilde{r} & \beta_c \gg 1.
+%\end{cases}
+%\end{equation}
+%It is worth noting that $r$ here is the total recombination rate between two arbitrary loci, not necessarily between the two loci of interest.
+%
+%The inverse Laplace transform is then given by
+%\begin{equation}
+%P(w) = \oint \frac{dz}{2\pi i} e^{zw} \bar{\Phi}.
+%\end{equation}
+%The low-$r$ regime above yields
+%\begin{equation}
+%P(w) = \oint \frac{dz}{2\pi i} e^{zw}z\sqrt{\log z^2} \sim \frac{1}{w^2\sqrt{\log w^2}}.
+%\end{equation}
 The weight distribution scales as $P(w)\sim 1/w^2 \sqrt{2\log w}$, compared to $P(w) \sim w^{-3/2}$ in the drift case.
 As expected, draft decreases the bubble size distribution but lessens the dependence on $\delta$.
-Some more precise analytics will be needed here.
-In particular, note that, looking at the high and low $\tilde{r}$ expressions for $\Phi$, it seems the weight will barely depend at all on $\sigma$, which seems... wrong.
+The unfortunate effect of this calculation is that we have explicitly \emph{not} used the assumption of no recombination.
+That might simplify the analysis substantially and is the next thing to check.
+
+(Following is an aborted attempt to study the behavior of an allele directly using the generating function and an explicitly time dependent advancing wave. It is included for completeness.)
+Let's proceed using the assumption of no recombination, but that the effect of mutations is small enough (or the number of loci large enough) for the fitness distribution to remain roughly Gaussian.
+We have, as before,
+
+\begin{equation}
+p(n,t) = dt(n-1)(1+s+x-\bar{x})p(n-1,t-dt) + dt(n+1)p(n+1,t-dt) + (1-ndt(2+s+x-\bar{x}))p(n,t-dt).
+\end{equation}
+
+Rearranging yields
+\begin{equation}
+p(n,t) - p(n,t-dt) = dt(n-1)(1+s+x-\bar{x})p(n-1,t-dt) + dt(n+1)p(n+1,t-dt) - ndt(2+s+x-\bar{x})p(n,t-dt).
+\end{equation}
+
+The limit $dt \to 0$ (and dividing both sides by $dt$) then yields the master equation
+
+\begin{equation}
+\partial_t p_t(n) = (n-1)(1+s+x-\bar{x})p_t(n-1) + (n+1)p_t(n+1) - n(2+s+x-\bar{x})p_t(n).
+\end{equation}
+
+Define $G(\lambda,t) = \sum_n \lambda^n p_t(n)$. Then
+
+\begin{equation}
+\partial_t G(\lambda,t) = (1+s+x-\bar{x})\sum_n (n-1) \lambda^n p_t(n-1) + \sum_n (n+1) \lambda^n p_t(n+1) - (2+s+x-\bar{x})\sum_n n \lambda^n p_t(n).
+
+\end{equation}
+
+The sum in the first right hand side term can be rewritten as $\sum_n (n-1) \lambda^n p_t(n-1) = \sum_n n\lambda^{n+1} p_t(n)$ by relabeling elements, which is just $\lambda^2 \sum_n n\lambda^{n-1} p_t(n)$, or $\lambda^2 \partial_\lambda G$. The second becomes $\sum_n (n+1) \lambda^n p_t(n+1) = \sum_n n \lambda^{n-1} p_n$, which is just $\partial_\lambda G$. The third becomes $\sum_n n \lambda^n p_t(n) = \lambda \sum_n n \lambda^{n-1} p_n$, which is just $\lambda \partial_\lambda G$. Thus
+
+\begin{equation}
+\partial_t G(\lambda,t) = \left( (1+s+x-\bar{x})\lambda^2 - (2+s+x-\bar{x})\lambda + 1)\partial_\lambda G(\lambda, t).
+\end{equation}
+
+If there were no $\bar{x}$ term, this could easily be solved via the method of characteristics, but unfortunately $\bar{x} = \bar{x}(t) = vt = \sigma^2 t$, which is time dependent.
+We will obviously have to restrict our analysis to the case $1 + s + x > \bar{x}$, or else the lineage will (on average) shrink and any long time solution will end in extinction.
+Define the surface
+
+\begin{equation}
+a(\lambda,t)G_\lambda + b(\lambda,t)G_t + c(\lambda,t)G = f(\lambda,t,G).
+\end{equation}
+
+The normal to this integral surface is given by
+\begin{equation}
+\vec{n} = \vec{\nabla} F = G_\lambda \vec{i} + G_t \vec{j} - \vec{k}.
+\end{equation}
+So the PDE is simply $(a(\lambda,t),b(\lambda,t),f(\lambda,t,G)) \cdot \vec{n} = 0$, which is another way of saying that the PDE's vector field $\vec{v} = a(\lambda,t)\vec{i} + b(\lambda,t)\vec{j} + f(\lambda,t,G)\vec{k}$ is normal to the integral surface at every point.
+This means $\vec{v}$ can be written as a curve along the integral surface $F$.
+We can parametrize it using the dummy variable $\tau$ and write
+\begin{equation}
+\vec{p}(\tau ) = \lambda(\tau) \vec{i} + t(\tau) \vec{j} + G(\tau ) \vec{k},
+\end{equation}
+or
+\begin{equation}
+\vec{p}^\prime = \frac{d\vec{p}}{d\tau} = \frac{d\lambda}{d\tau} \vec{i} + \frac{dt}{d\tau} \vec{j} + \frac{dG}{d\tau} \vec{k},
+\end{equation}
+which is normal to $\vec{n}$ and hence proportional to $\vec{v}$.
+If the proportionality constant is $\kappa$, we have $\frac{d\lambda}{d\tau} = \kappa a(\lambda,t)$, $\frac{dt}{d\tau} = \kappa b(\lambda,t)$, and $\frac{dG}{d\tau} = \kappa f(\lambda,t,G)$, which gives us simply
+\begin{equation}
+\frac{d\lambda}{a} = \frac{dt}{b} = \frac{dG}{f}.
+\end{equation}
+In this case, we have $a(\lambda, t) = (1+s+x-\bar{x})\lambda^2 - (2+s+x-\bar{x})\lambda + 1)$, $b(\lambda, t) = -1$, and $c(\lambda, t) = f(\lambda,t,G) = 0$.
+To avoid a divide by zero error, we can simply flip the above equation.
+We end up with
+\begin{equation}
+\frac{d\lambda}{dt} = -((1+s+x-\bar{x})\lambda^2 - (2+s+x-\bar{x})\lambda + 1) = P(s,x,\lambda, t), \frac{dG}{dt} = 0,
+\end{equation}
+with the so called ``Cauchy data" (initial/boundary conditions) given above.
+It remains to solve these ODEs.
+It is worth noting that $P$ can be factored into
+\begin{equation}
+P(s,x,\lambda, t) = ((1+s+x-\bar{x})\lambda - 1)(\lambda - 1).
+\end{equation}
+The first equation we need to solve becomes:
+\begin{equation}
+\int \frac{d\lambda}{P(s,x,\lambda, t)} = \int dt
+\end{equation}
+Decomposing $P$ and using partial fractions allows us to write
+\begin{equation}
+\int \frac{d\lambda}{P(s,x,\lambda, t)} = \int d\lambda\left(\frac{A}{\lambda - \frac{1}{\alpha}} + \frac{B}{\lambda - 1}),
+\end{equation}
+with $\alpha = s+x-\bar{x}$, $A = \frac{1}{\frac{1}{\alpha} - 1}$, $B = -A = \frac{-1}{\frac{1}{\alpha} - 1}$.
+Integrating the first term on the left yields $\frac{1}{\frac{1}{\alpha}-1}\log(\lambda - \frac{1}{\alpha})$, and the second term yields $-\frac{1}{\frac{1}{\alpha}-1}\log(\lambda - 1)$.
+We thus have $\frac{1}{\frac{1}{\alpha}-1}\log(\frac{\lambda-\frac{1}{\alpha}}{\lambda-1}) + C_1$.
+The right hand side becomes of course simply $t$.
+Next, the equation $\frac{dG}{dt} = 0$ yields simply that $G = C_2$, or that $G$ depends on $t$ only through its dependence on $\lambda$.
+At this point, if $\alpha$ were simply a constant (in the case of no fitness variance, there would be no need to consider $x$ at all, and $\alpha$ would equal $s$), we could simply proceed to choose a clever value for $C_1$ and $C_2$ and solve for $\lambda(t)$.
+The Cauchy data $G(\lambda,0) = \lambda$ and $G(1,t) = 1$ would then guide us in determining the form of $t$.
+However, $\alpha$ is not a constant: it is hiding a nasty time dependence (via $\bar{x} = \sigma^2 t$).
+There might be a way around this, but it is not obvious.
 
 \subsection{Valley crossing when $N\sigma \gg 1$ in the high recombination limit}
 
