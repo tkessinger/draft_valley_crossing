@@ -1,0 +1,143 @@
+%\documentclass[rmp,twocolumn]{revtex4}
+\documentclass[rmp]{revtex4}
+\usepackage[english]{babel}
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage{color}
+\usepackage{breqn}
+\usepackage{graphicx}
+%\usepackage{caption}
+%\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{enumerate}
+
+% Code syntax highlighting
+\usepackage{listings}
+\lstloadlanguages{C++,Python}
+
+\newcommand{\EQ}[1]{Eq.~(\ref{eq:#1})}
+\newcommand{\EQS}[2]{Eqs.~(\ref{eq:#1}) and (\ref{eq:#2})}
+\newcommand{\FIG}[1]{Fig.~\ref{fig:#1}}
+\newcommand{\TAB}[1]{Tab.~\ref{tab:#1}}
+\newcommand{\REF}[1]{ref.~\citep{#1}}
+
+\newcommand{\comment}[1]{{\color{red}#1}}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.42}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Genetic draft and the evolution of ``irreducible complexity"}
+%\author{Taylor~Kessinger}
+%\author{Jeremy~Van~Cleve}
+%\affiliation{Department of Biology, University of Kentucky}
+
+
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+
+Living systems are characterized by complex adaptations, at least some of which have arisen by evolutionary paths whose intermediate states are neutral or even deleterious.
+Such adaptations have been termed ``irreducibly complex", and the process by which they evolve is known as ``crossing a fitness valley".
+Previous efforts have rigorously characterized the rate at which such complex adaptations evolve in populations of roughly equally fit individuals.
+However, populations that are very large or have broad fitness distributions, such as many microbial populations, adapt quickly, which substantially alters the fate of individual mutations.
+We investigate the rate at which ``irreducibly complexity" evolves in these rapidly adapting populations, including both asexual and sexual populations.
+We confirm that, as in neutrally evolving populations, recombination can aid in the crossing of deep fitness valleys but find that its effects are mitigated.
+\end{abstract}
+
+\maketitle
+
+\section*{Introduction}
+
+The simplest adaptive scenarios in evolution involve the arisal and fixation of successive beneficial mutations.
+This appears to be how Darwin thought most complex systems, such as the vertebrate eye, evolved (Darwin 1859), and this assumption underlies much of the field of adaptive dynamics.
+However, many adaptations exist that do not appear to have formed by this process.
+One class of such adaptations has been termed ``irreducibly complex" because, in their current forms, they cease to function when one or more of their parts is removed.
+Muller (1918) described one method by which such adaptations could evolve: components that originally served independent functions might become dependent on each other, giving the appearance of irreducibility.
+An alternate method comes from the metaphor of a ``fitness landscape": a wild type individual must traverse a lower fitness mutational ``valley" in order to reach a higher fitness ``peak".
+We seek to characterize this ``valley crossing" process, as there is reason to think it may in fact be a common mode of adaptation (Trotter et al. 2013).
+
+The rate of valley crossing in asexual populations is increasingly well understood (Weissman 2009).
+If the number of mutants produced every generation is high, the arisal of a complex adaptation that is destined to fix may be guaranteed.
+Otherwise, wild type individuals may give rise to neutral or deleterious intermediate mutants, which drift to fixation.
+A third possibility is for wild type individuals to birth mutant ``bubbles", or transient subpopulations.
+These bubbles are ordinarily doomed to extinction due to drift, but a lucky bubble may give rise to a complex adaptation that sweeps to fixation.
+These models were successfully extended to sexually reproducing populations by Weissman et al. (2010), which found that the criterion $r < s$, with $r$ the recombination rate and $s$ the selective advantage of the complex adaptation, is the necessary criterion for recombination to be helpful in crossing a valley.
+Fairly low recombination rates can bring mutant subpopulations together, increasing the rate at which complex adaptations arise and sweep.
+High recombination rates, on the other hand, lower the valley crossing rate by forcing fit individuals to outcross with the less fit wild type.
+
+Previous studies of valley crossing focused exclusively on populations where the background fitness variation is small enough to be negligible.
+In these populations, genetic drift governs the fate of neutral alleles, as well as the behavior of deleterious or beneficial alleles close to frequency zero or one.
+When population sizes are very large or the fitness variation in the population is substantial, however, the behavior of genetic variation is governed more by genetic \emph{draft} than by drift.
+In a drafting asexual population, the fate of an allele depends sharply on its genetic background.
+Only a handful of individuals near the ``nose" of the fitness distribution are likely to persist, and they give rise to the bulk of the future population, carrying linked alleles with them.
+In sexual populations, much the same description applies.
+The parameter that determines whether drift or draft is more important is the product of the population size $N$ and the standard deviation in fitness $\sigma$ (Neher and Shraiman 2011) or, in a sexual population, the proportion of fitness variation $\sigma_b$ that segregates within a small block length (Neher et al. 2013).
+
+Drift and draft are fundamentally different forces.
+It is not possible to rescale a drafting population, for example by defining a reduced ``effective population size".
+Drafting populations do not admit a diffusion approximation, and they exhibit qualitatively different genealogies and site frequency spectra relative to a drifting population.
+In fact, the possibility that neutral variants are affected more strongly by selection at linked sites than by genetic drift, even in organisms like \emph{Drosophila}, is one possible explanation for the ``paradox of variation", the fact that genetic diversity and population size often do not scale linearly.
+It is reasonable to suspect that draft might likewise have profoundly different effects on the evolution of complex adaptations, a notion that was explored in Neher and Shraiman (2011).
+We investigate this possibility using analytical approaches and forward simulations, confirming that fitness valley crossing occurs at an overall lower rate in rapidly adapting populations, but that much deeper valleys can be crossed.
+These observations add to the growing intuition that irreducible complexity may not be a surprising result of the evolutionary process, but rather an expected one.
+
+\section*{Model}
+
+Our model features a population of $N$ haploid individuals in which an effectively infinite number of ``background" loci, with weak fitness effects, are currently segregating.
+We focus on two loci, which are initially fixed for alleles $a$ and $b$.
+These alleles mutate to $A$ and $B$ at rates $\mu_a$ and $\mu_b$, respectively (we neglect back mutations).
+Genotypes $ab$, $Ab$, $aB$, and $AB$ have fitnesses $1$, $1-\delta_a$, $1-\delta_b$, and $1+s$ respectively, with $\delta \geq 0$ (so the intermediate genotypes are deleterious) and $1/N < s < 1$ (so the complex adaptation is strongly beneficial).
+For the remainder of our analysis, we will assume that $\mu_a = \mu_b$ and $\delta_a = \delta_b$: we discuss the effects of relaxing this assumption in the appendix.
+We further assume that the large number of loci of weak effect contribute to a background fitness variance $\sigma^2$ which, by Fisher's ``fundamental theorem" of natural selection, sets the rate at which the mean fitness advances.
+Organisms cross over at rate $\rho$ per site per generation.
+Our goal is to compute the expected time $\mathbb{E}\left[ T\right]$ for such a complex adaptation to arise and fix in the population, as a function of the parameters.
+
+In the case where $\rho = 0$ and the fitness variance $\sigma^2$ is small ($N\sigma \ll 1$), the rate of valley crossing agrees with Weissman et al. (2009): when $\rho > 0$, the rate agrees with Weissman et al. (2010).
+This is because, provided that $N\sigma \ll 1$, genetic drift is the major evolutionary process affecting the frequency of deleterious intermediates, and the fixation probability of the complex adaptation simply scales with $s$.
+We turn to the regime where $N\sigma \gg 1$, meaning that draft is more important than drift, but the fixation probability of the full complex adaptation is suppressed.
+By the central limit theorem, the background loci create a background fitness wave whose shape is roughly Gaussian.
+We assume that the constant influx of weak effect beneficial mutations keeps the fitness variance $\sigma^2$ roughly constant.
+We sketch some heuristics in this limit before providing a more formal analysis.
+
+First, we consider the case where $\rho = 0$ and focus on what Weissman et al. (2009) refer to as the process of ``stochastic tunneling", where $N\mu \ll 1$.
+As we shall see, the results in the $\rho = 0$ and low $\rho$ limits can easily be extended to sexually recombining populations: moreover, understanding the rate of tunneling will allow us to easily examine the rate at which sequential fixation and deterministic fixation occur.
+In stochastic tunneling, a deleterious intermediate arises (at rate $N\mu$), and its lineage persists over a short time $T$, forming a transient ``bubble".
+If the number of individuals in the lineage is given by $n(t)$, then the total number of individuals in the ``bubble" is $w = \int_{t_0}^T n(t) dt$.
+We refer to $w$ as the ``weight" of the bubble.
+The overall rate of valley crossing becomes $1/N\mu p$, with $p$ the probability that a particular bubble will give rise to a successful double mutant.
+Thus, given that a deleterious intermediate appears, it has $w$ ``chances" to generate a successful complex adaptation, which it does at rate $\sim \mu s$: double mutants arise at rate $\mu$ and have a probability $\sim s$ of fixing.
+The probability of achieving a weight of at least $w$ scales as $1/\sqrt{w}$ (or, equivalently, $P(w) \sim w^{-3/2}$), meaning that with probability $\sqrt{\mu s}$, a bubble gives rise to a successful single mutant.
+This probability drops off rapidly at $1/\delta^2$, so for higher values of $\delta$ (so called ``deleterious tunneling"), the rate at which new complex adaptations are generated starts to fall: the size of the mutant subpopulation is bounded from above by roughly $1/\delta$.
+
+In the high $N\sigma$ regime, the argument is much the same, but the underlying dynamics are different.
+In stark contrast to the drift case, the fate of a complex adaptation depends strongly on the fitness $x$ of the genetic background on which it appears.
+Individuals with fitness lower than some critical fitness $x_c$ are almost guaranteed to go extinct.
+This means the fixation probability of the complex adaptation no longer scales with $s$, and $P(w) \sim w^{-2}$ instead of $w^{-3/2}$, meaning that the probability of reaching weight $w$ is $\sim 1/w$.
+However, individuals with higher fitnesses can be destined for fixation, even if they are carrying a significant load of deleterious mutations.
+This means the dependence on $\delta$ is significantly lessened: even deep fitness valleys can be crossed by a rapid enough wave.
+(Still needed: expression for fixation probability of beneficial mutant--this should be easy enough to obtain.
+Can start with equation 3 of Neher and Shraiman (2009) and drop the recombination term.
+This is tantamount to a ``mean field" approximation but might still work out okay.
+Other possible approach is to use something like Desai and Fisher's (2007) expression for the fixation probability and rescale it to a traveling wave model.
+Once we have the fixation probability, studying sequential and deterministic fixation will be easier than studying tunneling, since sequential fixation is essentially two different fixation events.)
+
+We now turn to the case where $\rho > 0$.
+Because we are explicitly dealing with crossovers, the results of Neher, Shraiman, and Kessinger (2013) are useful here.
+We consider the genome as divided into a series of effectively asexual ``blocks" in which the recombination rate is very low.
+The size of each block is determined by a balance between recombination, which chops up the blocks, and the rate of adaptation, which amplifies them.
+The size of such a block is not a parameter of our model but is given by $\xi_b = \frac{\sigma^2}{2L\rho^2 c \log N\sigma_b}$, with $L$ the number of loci, $c$ a constant of order $1$, and $\sigma_b$ the proportion of the fitness variance segregating within the block.
+If $\xi_b$ is large enough that both focal loci fall within the same ``block", then an analysis similar to that of Neher and Shraiman (2009) may be appropriate: the two loci effectively segregate within the same traveling wave.
+If not, then the value of $N\sigma_b$ becomes the relevant factor.
+$N\sigma_b \gg 1$ implies that each locus effectively operates within its own traveling wave: in order for the full complex adaptation to arise, establish, and fix, both must be at high enough frequency at the same time for either mutation or recombination to produce a double mutant.
+On the other hand, $N\sigma_b \ll 1$ implies that each locus effectively evolves on a neutral genetic background neutrally, and we recover the dynamics of genetic drift.
+
+
+\end{document}
