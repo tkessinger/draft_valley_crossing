@@ -156,10 +156,43 @@ Ce^{\frac{(x+s)^2}{2v}} (\partial_x u + \frac{x+s}{v}u) = -Ce^{\frac{(x+s)^2}{2v
 \end{equation}
 The left side is simply $\partial_x(Ce^{\frac{(x+s)^2}{2v}}u)$, so (after dividing $C$ out) we can integrate both sides, then multiply by $e^{\frac{-(x+s)^2}{2v}}$ to obtain
 \begin{equation}
-u(x,s) =  -e^{\frac{-(x+s)^2}{2v}} \frac{\sqrt{\pi /2} \textrm{erfi}(\frac{x+s}{\sqrt{2v}}}{\sqrt{v}} - 1 + C(e^{\frac{-(x+s)^2}{2v}}),
+u(x,s) =  -e^{\frac{-(x+s)^2}{2v}} \frac{\sqrt{\pi /2} \textrm{erfi}(\frac{x+s}{\sqrt{2v}}}{\sqrt{v}}) - 1 + C(e^{\frac{-(x+s)^2}{2v}}),
 \end{equation}
-with C a constant.
-(Need to think about how to eliminate the constant: what are the boundary conditions here?)
+with $C$ a constant. Of course, $p = 1/u$.
+
+Unfortunately it is not clear how to get rid of $C$, as there is no obvious ``initial condition".
+The most we are likely to know about $p$ is that $p$ approaches $0$ in the limit of low $x$, but behaves $\sim s$ in the limit of high $x$ before saturating at $1$ (however, there are unlikely to be any individuals in the population at such high $x$).
+One possibility is to impose an \emph{ersatz} ``solvability condition": surely the fixation probability of a neutral mutation averaged over the entire population must equal $1/N$. We would then have
+\begin{equation}
+\int_{-\infty}^{\infty} P(x)p(x,0)dx = \frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^{\infty} \frac{e^{-x^2/2\sigma^2}}{-e^{-x^2/2\sigma^2} \frac{\sqrt{\pi /2} \textrm{erfi}(\frac{x}{\sqrt{2\sigma^2}})}{\sigma} - 1 + Ce^{-x^2/2\sigma^2}}dx = \frac{1}{N}.
+\end{equation}
+Multiplying the top and bottom of the integrand by $e^{x^2/2\sigma^2}$ would clean this up, yielding
+\begin{equation}
+\frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^{\infty} \frac{1}{-\frac{\sqrt{\pi /2} \textrm{erfi}(\frac{x}{\sqrt{2\sigma^2}})}{\sigma} - e^{x^2/2\sigma^2} + C}dx = \frac{1}{N}.
+\end{equation}
+Unfortunately this integral has an imaginary error function in the denominator, so there is not likely to be a closed form expression: we could explore it numerically and see where it peaks, however.
+
+Another idea would be to consider an alternative way of solving the differential equation for $p$.
+Return to
+\begin{equation}
+v \partial_x p(x,s) = (x+s)p(x,s) - (1+x+s)p(x,s)^2.
+\end{equation}
+Suppose we make the \emph{ansatz} that $x+s \ll 1$, and define $\chi = x/\sigma$, $\tilde{s} = s/\sigma$, and $\tilde{p}(\chi,\tilde{s}) = p(x,s)/\sigma$. Then
+\begin{equation}
+\partial_\chi \tilde{p}(\chi,\tilde{s}) = (\chi + \tilde{s})\tilde{p}(\chi,\tilde{s}) - \tilde{p}(\chi,\tilde{s})^2.
+\end{equation}
+Now define $q(\chi,\tilde{s})$ such that $\tilde{w}(\chi,\tilde{s}) = \partial_x \log q(\chi,\tilde{s})$.
+Then
+\begin{equation}
+\partial_\chi^2 q(\chi,\tilde{s}) - (\chi+\tilde{s})\partial_\chi q(\chi, \tilde{s}) = 0.
+\end{equation}
+Defining $\vartheta = \chi + \tilde{s}$ and $q(\vartheta) = e^{\vartheta^2/4}h(\vartheta)$ yields
+\begin{equation}
+\partial_\vartheta^2 h(\vartheta) - (\frac{1}{2} + \frac{\theta^2}{4})h(\vartheta) = 0,
+\end{equation}
+which is the parabolic cylinder equation.
+We then need to find the form of $q$ that has the correct asymptotics.
+(This does have a solution.)
 
 Next, we seek the weight distribution as a function of $x$.
 Let $p(w,T|k,t,x)$ be the probability that a bubble has attained a weight of $w$ at time $T$, given that there were $k$ individuals in the lineage at time $t$.
