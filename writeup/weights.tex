@@ -72,7 +72,7 @@ We therefore obtain, in the low $\theta$ limit,
 
 The $z$ term in the integrand simply becomes $z\sqrt{2\pi} \sim z$.
 The second term needs to be treated with slightly more care.
-The major contribution to the integral will come from a well defined, large $\tau^\prime$, corresponding to the maximum of $\exp(-\theta^\prime^2/2 + \log \Phi(\tau^\prime))$ at $\tau^\prime = \tau - \theta$.
+The major contribution to the integral will come from a well defined, large $\tau\prime$, corresponding to the maximum of $\exp(-\theta\prime^2/2 + \log \Phi(\tau^\prime))$ at $\tau\prime = \tau - \theta$.
 $\Phi(\tau)$ changes slowly and can be pulled out of the integral, yielding another Gaussian integral.
 We therefore have $\phi(z,\chi) \approx (z+\tilde{r}\Phi(z))e^{\theta^2}/2$, or, summarizing:
 
@@ -143,5 +143,69 @@ Now we need to be careful, because we are about to take the Laplace transform of
 \end{align*}
 
 In the last term, we could interchange the order of integration to get $\int dz e^{-zw} \int dw^\prime p(w-w\prime , T|k-1, t, x) p(w\prime,T|1,t,x+s)$, but then it is not totally obvious how to get rid of the convolution over $w\prime$. I still need to think about this.
+
+I have thought about this.
+Let's go back to that original differential equation arising from the master equation equation:
+\begin{align*}
+-(\partial_t -k\partial_w) p(w,T|k,t,x) = &-k(2+x-\bar{x}+s+r)p(w,T|k,t,x) \\
+& + k(1+x-\bar{x}+s)p(w,T|k+1,t,x) \\
+& +kp(w,T|k-1,t,x) \\
+&+rk \int dw\prime \int_{x\prime} K_{x x\prime} p(w-w\prime , T|k-1, t, x) p(w\prime,T|1,t,x\prime).
+\end{align*}
+The last term is the tricky bit, but it is important to remember that $K_{xx\prime}$ ``sends" $x$ to $x\prime$.
+The two terms in the inner integral refer to having one lineage that has reached weight $w - w\prime$ at time $T$, given that at time $t$ there were $k-1$ individuals, and a lineage with weight $w\prime$ at time $T$, given that at time $t$ a recombination event sent an individual in the original lineage  (carrying whatever focal mutation) into a new lineage of size $1$.
+We can now briefly reconsider what happens when we apply the Laplace transform (applying the integral operator $\int_0^\infty dw e^{-zw}$ to both sides--note that Neher and Shraiman (2011) actually has a typo here, as it uses $dz$ instead) to both sides.
+
+We have that $\int_0^\infty dw e^{-zw} \partial_t p(w,T|k,t,x) = \partial_t \int_0^\infty dw e^{-zw} p(w,T|k,t,x) = \partial_t \hat{p}(z,T|k,t,x) = \partial_t \hat{p}(z,T|1,t,x)^k = k\hat{p}(z,T|1,t,x)^k \partial_t p(z,T|1,t,x)$.
+Unfortunately we cannot simply exchange the order of integration in the second term, but we can use the Laplace transform identity $\mathcal{L}(df(t)/dt) = sF(s) - f(0)$, with $F(s)$ the transform of $f(t)$: this becomes $z\hat{p}(z,T|k,t,x) - \delta_{t,T}$, under the argument that the weight is zero at the initial timepoint but nonzero thereafter, provided the lineage doesn't immediately go extinct. So our preceding analysis holds.
+The last term remains tricky. It is not obvious what $\int dw e^{-zw} \int dw\prime \int_{x\prime} K_{x x\prime} p(w-w\prime , T|k-1, t, x) p(w\prime,T|1,t,x\prime)$.
+But it is instructive to note that the transform can basically be split into two parts, a contribution corresponding to $w\prime$ and another corresponding to $w - w\prime$, via $e^{-zw} = e^{-z(w-w\prime)}e^{-zw\prime}$.
+This causes the first term inside the integral to become $\hat{p}(z,T|k-1,t,x)$ and the second to become $\hat{p}(z,T|1,t,x\prime)$, consistent with our earlier argument.
+The fact that $K_{xx\prime}$ in the free recombination case is just a Gaussian centered around $\bar{x}$ is what causes that term to become $\Phi$.
+
+Now we need to think about what changes in the mutation case.
+Essentially, just as $K_{xx\prime}$ sends $x$ to $x\prime$, so too the distribution of mutational effects $\rho(s)$ sends $x$ to $x+s$.
+So the differential equation governing the evolution of $p$ becomes
+
+\begin{align*}
+-(\partial_t -k\partial_w) p(w,T|k,t,x) = &-k(2+x-\bar{x}+s+U)p(w,T|k,t,x) \\
+& + k(1+x-\bar{x})p(w,T|k+1,t,x) \\
+& +kp(w,T|k-1,t,x) \\
+&+Uk \int_0^w dw\prime \int_0^\infty ds \rho(s) p(w-w\prime , T|k-1, t, x) p(w\prime,T|1,t,x+s).
+\end{align*}
+
+This is starting to look like the differential equation of Good et al. (2012) for the fixation probability, though it took some thought to get there. By the same argument, the Laplace transform yields
+
+\begin{align*}
+-k\hat{p}(z,T|1,t,x)^{k-1} \partial_t\hat{p}(z,T|1,t,x) + kz\hat{p}(z,T|1,t,x)^k = &-k(2+x-\bar{x}+U)\hat{p}(z,T|1,t,x)^k \\
+& + k(1+x-\bar{x})\hat{p}(z,T|1,t,x)^{k+1} \\
+& +k\hat{p}(1,T|k,t,x)^{k-1} \\
+& +Uk \int_0^\infty ds \rho(s) \hat{p}(z,T|1, t, x)^{k-1} p(z,T|1,t,x+s).
+\end{align*}
+
+Note that the first term in the integral can be pulled out, as it doesn't depend on $s$.
+Collecting terms and dividing out by $k$ and $\hat{p}^{k-1}$ yields
+
+\begin{align*}
+-\partial_t\hat{p}(z,T|t,x) = &-z\hat{p}(z,T|t,x)\\
+&-(2+x-\bar{x}+U)\hat{p}(z,T|t,x) \\
+&+ (1+x-\bar{x})\hat{p}(z,T|t,x)^2 \\
+& + 1\\
+& +U \int_0^\infty ds \rho(s) \hat{p}(z,T|t, x+s).
+\end{align*}
+
+Swapping in $phi(z,T|t,x) = 1-\hat{p}(z,T|t,x)$ yields
+
+\begin{align*}\partial_t \phi(z,T|t,x) = z - (x-\bar{x} + s - r+z)\phi(z,T|t,x) + (1+x-\bar{x} + s)\phi(z,T|t,x)^2 - U\int_0^\infty ds \rho(s) \hat{p}(z,T|t,x_s),
+\end{align*}
+
+Switching variables as before and assuming $x-\bar{x} \ll 1$ yields
+
+\begin{equation}
+\partial_\tau \phi(\tau,z,\chi) = z + \tilde{U} \int_0^\infty d\tilde{s} \rho(\tilde{s}) \phi(\tau, z, \chi+\tilde{s}) + \theta \phi(\tau,z,\chi) - \phi^2(\tau,z,\chi).
+\end{equation}
+
+This is ultimately what we will need to solve.
+Using some tricks similar to Good et al. (2012) to get rid of the integral will hopefully be fruitful, though I still think the $U \to 0$ limit should be tractable (it just might be that asymptotic matching does not work).
 
 \end{document}
