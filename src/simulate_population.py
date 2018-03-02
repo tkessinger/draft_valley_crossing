@@ -37,7 +37,7 @@ parser.add_argument('--fixed_s', type=bool, default=False)
 
 args=parser.parse_args()
 
-L = 20 #number of loci. 1000 is about as many as we're likely to need.
+L = 200 #number of loci. 1000 is about as many as we're likely to need.
 N = args.N #population size. recall that Nsigma is the main parameter.
 mu = args.mu #per site mutation rate for focal mutations
 sigma = args.sigma #fitness variance
@@ -125,6 +125,8 @@ else:
 if not os.path.exists('output/valley_crossing_sims_'+args.name):
     os.makedirs('output/valley_crossing_sims_'+args.name)
 
+total_number_of_mutations = 0
+
 
 while pop.generation < run_time:
     pfit = pop.get_trait_statistics(0)
@@ -143,6 +145,7 @@ while pop.generation < run_time:
         pop.mutation_rate = mu #set the focal loci to start mutating
         burned_in = True
     if burned_in == True:
+        total_number_of_mutations += pop.number_of_mutations[-1]
         for di, del_locus in enumerate(mutant_locs):
             if pop.get_allele_frequency(del_locus) != 0 and mutations_in_play[di] == False:
             #if either mutant has appeared
@@ -198,6 +201,7 @@ while pop.generation < run_time:
     if not pop.generation%(10**2) and pop.generation > base_burn_time and args.fixed_s:
         sigma_hist.append([np.sqrt(pop.get_trait_statistics(0).variance), np.sqrt(pop.get_fitness_statistics().variance)])
     if not pop.generation%(10**4):
+        print pop.generation
         with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_dm_weights_'+str(args.runno)+'.pkl', 'w') as dm_weights_file:
             pickle.dump(dm_weights, dm_weights_file)
         with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_weights_'+str(args.runno)+'.pkl', 'w') as weights_file:
@@ -212,6 +216,8 @@ while pop.generation < run_time:
             pickle.dump(bubble_closings, closings_file)        
         with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_dm_successes_'+str(args.runno)+'.pkl', 'w') as dm_successes_file:
             pickle.dump(dm_successful_crossings, dm_successes_file)
+        with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_effective_mut_rate_'+str(args.runno)+'.pkl', 'w') as mut_rate_file:
+            pickle.dump([total_number_of_mutations, pop.generation - min([100,base_burn_time])], mut_rate_file)
         if args.fixed_s:
             with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_sigma_hist_'+str(args.runno)+'.pkl', 'w') as sigma_hist_file:
                 pickle.dump(sigma_hist, sigma_hist_file)
@@ -233,17 +239,21 @@ with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_closings_'+str(a
     pickle.dump(bubble_closings, closings_file)
 with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_dm_successes_'+str(args.runno)+'.pkl', 'w') as dm_successes_file:
     pickle.dump(dm_successful_crossings, dm_successes_file)
+with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_effective_mut_rate_'+str(args.runno)+'.pkl', 'w') as mut_rate_file:
+    pickle.dump([total_number_of_mutations, pop.generation - min([100,base_burn_time])], mut_rate_file)
 if args.fixed_s:
     with open('output/valley_crossing_sims_'+args.name+'/'+prefix+'_sigma_hist_'+str(args.runno)+'.pkl', 'w') as sigma_hist_file:
         pickle.dump(sigma_hist, sigma_hist_file)
 
+
+'''
 if __name__ == '__main__':
     plt.figure()
     plt.plot(mut_freqs[0][::10])
     plt.plot(mut_freqs[1][::10])
     plt.plot(dm_freqs[::10])
     plt.show()
-
+'''
 
 
 #afreqs = np.array(afreqs)
