@@ -1,0 +1,37 @@
+// set up a simple neutral simulation
+initialize() {
+	initializeMutationRate(1e-7);
+	
+	initializeMutationType("m1", 0.5, "f", 0.01);
+	initializeMutationType("m2", 0.5, "f", 0.0);
+	
+	initializeGenomicElementType("g1", m1, 1.0);
+	initializeGenomicElement(g1, 0, 99999);
+	initializeRecombinationRate(1e-8);
+}
+
+// create a population of 500 individuals
+1 {
+	sim.addSubpop("p1", 100);
+}
+
+100:200 late() {
+	cat("gen: " + sim.generation + "\n");
+	if (sim.generation == 100)
+	{
+		target = sample(p1.genomes, 1);		target.addNewDrawnMutation(m2, 50000);
+		bubbleindex = 0;	
+		bubblesizes = c(0);
+	}
+	if (sim.countOfMutationsOfType(m2) == 0 & sim.generation > 100)
+	{
+		target = sample(p1.genomes, 1);		target.addNewDrawnMutation(m2, 50000);
+		bubbleindex = bubbleindex + 1;
+		bubblesizes = c(bubblesizes, 0);
+	}
+	if (sim.countOfMutationsOfType(m2) > 0 & sim.generation > 100)
+	{
+		bubblesizes[bubbleindex] = bubblesizes[bubbleindex] +
+			sim.countOfMutationsOfType(m2);
+	}
+}

@@ -1,0 +1,99 @@
+\begin{thebibliography}{10}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Barton(1995)]{barton_1995}
+N~H Barton.
+\newblock Linkage and the limits to natural selection.
+\newblock \emph{Genetics}, 140\penalty0 (2):\penalty0 821--841, 1995.
+\newblock ISSN 0016-6731.
+\newblock URL \url{http://www.genetics.org/content/140/2/821}.
+
+\bibitem[Darwin(1859)]{darwin_1859}
+Charles Darwin.
+\newblock \emph{On the origin of species by means of natural selection, or, The
+  preservation of favoured races in the struggle for life /}, volume -1859.
+\newblock London :John Murray,, 1859.
+\newblock URL \url{http://www.biodiversitylibrary.org/item/135954}.
+\newblock http://www.biodiversitylibrary.org/bibliography/68064 --- Freeman,
+  R.B. Charles Darwin (2nd ed.), | 373 --- Garrison-Morton: | 220.
+
+\bibitem[Desai and Fisher(2007)]{desai_fisher_2007}
+Michael~M. Desai and Daniel~S. Fisher.
+\newblock Beneficial mutation{\textendash}selection balance and the effect of
+  linkage on positive selection.
+\newblock \emph{Genetics}, 176\penalty0 (3):\penalty0 1759--1798, 2007.
+\newblock ISSN 0016-6731.
+\newblock \doi{10.1534/genetics.106.067678}.
+\newblock URL \url{http://www.genetics.org/content/176/3/1759}.
+
+\bibitem[Muller(1918)]{muller_1918}
+Hermann~J. Muller.
+\newblock Genetic variability, twin hybrids and constant hybrids, in a case of
+  balanced lethal factors.
+\newblock \emph{Genetics}, 3\penalty0 (5):\penalty0 422--499, 1918.
+\newblock ISSN 0016-6731.
+\newblock URL \url{http://www.genetics.org/content/3/5/422}.
+
+\bibitem[Neher and Shraiman(2011)]{neher_shraiman_2011}
+R.~A. Neher and B.~I. Shraiman.
+\newblock Genetic draft and quasi-neutrality in large facultatively sexual
+  populations.
+\newblock \emph{Genetics}, 188\penalty0 (4):\penalty0 975--996, 2011.
+\newblock ISSN 0016-6731.
+\newblock \doi{10.1534/genetics.111.128876}.
+\newblock URL \url{http://www.genetics.org/content/188/4/975}.
+
+\bibitem[Neher and Hallatschek(2013)]{neher_hallatschek_2013}
+Richard~A. Neher and Oskar Hallatschek.
+\newblock Genealogies of rapidly adapting populations.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 110\penalty0
+  (2):\penalty0 437--442, 2013.
+\newblock \doi{10.1073/pnas.1213113110}.
+\newblock URL \url{http://www.pnas.org/content/110/2/437.abstract}.
+
+\bibitem[Neher et~al.(2013)Neher, Kessinger, and
+  Shraiman]{neher_kessinger_2013}
+Richard~A. Neher, Taylor~A. Kessinger, and Boris~I. Shraiman.
+\newblock Coalescence and genetic diversity in sexual populations under
+  selection.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 110\penalty0
+  (39):\penalty0 15836--15841, 2013.
+\newblock \doi{10.1073/pnas.1309697110}.
+\newblock URL \url{http://www.pnas.org/content/110/39/15836.abstract}.
+
+\bibitem[Trotter et~al.(2014)Trotter, Weissman, Peterson, Peck, and
+  Masel]{trotter_2014}
+Meredith~V. Trotter, Daniel~B. Weissman, Grant~I. Peterson, Kayla~M. Peck, and
+  Joanna Masel.
+\newblock Cryptic genetic variation can make “irreducible complexity” a
+  common mode of adaptation in sexual populations.
+\newblock \emph{Evolution}, 68\penalty0 (12):\penalty0 3357--3367, 2014.
+\newblock ISSN 1558-5646.
+\newblock \doi{10.1111/evo.12517}.
+\newblock URL \url{http://dx.doi.org/10.1111/evo.12517}.
+
+\bibitem[Weissman et~al.(2009)Weissman, Desai, Fisher, and
+  Feldman]{weissman_2009}
+Daniel~B. Weissman, Michael~M. Desai, Daniel~S. Fisher, and Marcus~W. Feldman.
+\newblock The rate at which asexual populations cross fitness valleys.
+\newblock \emph{Theoretical Population Biology}, 75\penalty0 (4):\penalty0 286
+  -- 300, 2009.
+\newblock ISSN 0040-5809.
+\newblock \doi{https://doi.org/10.1016/j.tpb.2009.02.006}.
+\newblock URL
+  \url{http://www.sciencedirect.com/science/article/pii/S0040580909000264}.
+\newblock Sam Karlin: Special Issue.
+
+\bibitem[Weissman et~al.(2010)Weissman, Feldman, and Fisher]{weissman_2010}
+Daniel~B. Weissman, Marcus~W. Feldman, and Daniel~S. Fisher.
+\newblock The rate of fitness-valley crossing in sexual populations.
+\newblock \emph{Genetics}, 186\penalty0 (4):\penalty0 1389--1410, 2010.
+\newblock ISSN 0016-6731.
+\newblock \doi{10.1534/genetics.110.123240}.
+\newblock URL \url{http://www.genetics.org/content/186/4/1389}.
+
+\end{thebibliography}
