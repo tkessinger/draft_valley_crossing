@@ -34,7 +34,7 @@ class BubbleRecorder(object):
                         self.weights[mkey] = pop.mcounts[mut]
 
 
-def evolve_draft(ngens, N, s, mu, r, burn=500, seed=42):
+def evolve_draft(ngens, N, s, mu, r, burn=500, seed=42, prune_selected=False):
     """
     Evolve drafting region and record bubble sizes
     """
@@ -48,7 +48,8 @@ def evolve_draft(ngens, N, s, mu, r, burn=500, seed=42):
         recregions=[fwdpy11.Region(0, 1, 1)],
         gvalue=fwdpy11.fitness.SlocusAdditive(2.0),
         demography=np.array([N]*ngens, dtype=np.uint32),
-        rates=(mu, mu, r)
+        rates=(mu, mu, r),
+        prune_selected=prune_selected
         )
     # recorder = BubbleRecorder()
     recorder = bubble_recorder.BubbleRecorder()
@@ -104,3 +105,10 @@ for i in range(0,len(weights)):
     plt.sca(axes[i])
     plot_weight_powerlaw(weights[i], N=Nvals[i], s=svals[i])
 plt.savefig('weight_vary-s.pdf')
+
+
+%time out = evolve_draft(20000, 10000, 0.05, 0.001, 0.0001, seed=314, prune_selected=True)
+plot_weight_powerlaw(out[1], N=10000, s=0.05)
+
+%time out = evolve_draft(20000, 10000, 0.05, 0.001, 0.0001, seed=314, prune_selected=False)
+plot_weight_powerlaw(out[1], N=10000, s=0.05)
