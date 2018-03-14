@@ -3,6 +3,7 @@ import fwdpy11
 import fwdpy11.model_params
 import fwdpy11.fitness
 import fwdpy11.wright_fisher
+import concurrent.futures
 
 # plotting stuff
 import matplotlib.pyplot as plt
@@ -34,7 +35,8 @@ class BubbleRecorder(object):
                         self.weights[mkey] = pop.mcounts[mut]
 
 
-def evolve_draft(ngens, N, s, mu, r, burn=500, seed=42, prune_selected=False):
+def evolve_draft(ngens, N, s, mu, r, burn=500, reps=10,
+                 seed=42, prune_selected=False, addfit=True):
     """
     Evolve drafting region and record bubble sizes
     """
@@ -42,21 +44,28 @@ def evolve_draft(ngens, N, s, mu, r, burn=500, seed=42, prune_selected=False):
     pop = fwdpy11.SlocusPop(N)
     rng = fwdpy11.GSLrng(seed)
 
-    params = fwdpy11.model_params.SlocusParams(
-        nregions=[fwdpy11.Region(0, 1, 1)],
-        sregions=[fwdpy11.ExpS(0, 1, 1, s, 1.0)],
-        recregions=[fwdpy11.Region(0, 1, 1)],
-        gvalue=fwdpy11.fitness.SlocusAdditive(2.0),
-        demography=np.array([N]*ngens, dtype=np.uint32),
-        rates=(mu, mu, r),
-        prune_selected=prune_selected
-        )
-    # recorder = BubbleRecorder()
-    recorder = bubble_recorder.BubbleRecorder()
+    pdict = dict(nregions=[fwdpy11.Region(0, 1, 1)],
+                 sregions=[fwdpy11.ExpS(0, 1, 1, s, 1.0)],
+                 recregions=[fwdpy11.Region(0, 1, 1)],
+                 rates=(mu, mu, r),
+                 prune_selected=prune_selected)
+    if addfit:
+        pdict.update(gvalue=fwdpy11.fitness.SlocusAdditive(2.0))
 
-    fwdpy11.wright_fisher.evolve(rng, pop, params, recorder)
+    weights = list()
+    for i in range(reps):
+        # burnin runs
+        pdict.update(demography=np.array([N]*burn, dtype=np.uint32))
+        params = fwdpy11.model_params.SlocusParams(**pdict)
+        fwdpy11.wright_fisher.evolve(rng, pop, params)
 
-    return pop, np.array(list(recorder.weights.values()))
+        # recorded runs
+        pdict.update(demography=np.array([N]*(ngens-burn), dtype=np.uint32))
+        recorder = bubble_recorder.BubbleRecorder()
+        fwdpy11.wright_fisher.evolve(rng, pop, params, recorder)
+        weights.append(np.array(list(recorder.weights.values())))
+
+    return pop, weights
 
 
 # plot using the 'powerlaw' package and show fit
@@ -64,9 +73,13 @@ def plot_weight_powerlaw(weights, fit=None, loc=3, N=None, s=None):
     if fit is None:
         fit = pl.Fit(weights, discrete=True)
 
-    fit.plot_pdf(color='b', label='empirical: N = ' + str(N) + ', s = ' + str(np.round(s,2)))
+    if s is None or N is None:
+        fit.plot_pdf(color='b', label='empirical')
+    else:
+        fit.plot_pdf(color='b',
+                     label='empirical: N = ' + str(N) + ', s = ' + str(np.round(s, 2)))
     fit.power_law.plot_pdf(color='b', linestyle='--',
-                           label=r'power law fit: $\alpha$ = ' + str(np.round(fit.alpha,3)))
+                           label=r'power law fit: $\alpha$ = ' + str(np.round(fit.alpha, 3)))
     plt.legend(loc=3)
 
     return fit
@@ -107,8 +120,29 @@ for i in range(0,len(weights)):
 plt.savefig('weight_vary-s.pdf')
 
 
-%time out = evolve_draft(20000, 10000, 0.05, 0.001, 0.0001, seed=314, prune_selected=True)
-plot_weight_powerlaw(out[1], N=10000, s=0.05)
+%time pop, weights = evolve_draft(20000, 10000, 0.01, 0.001, 0.0001, seed=314, prune_selected=True)
 
-%time out = evolve_draft(20000, 10000, 0.05, 0.001, 0.0001, seed=314, prune_selected=False)
-plot_weight_powerlaw(out[1], N=10000, s=0.05)
+svals = [0.01, 0.02, 0.03, 0.04, 0.05]
+avals = np.zeros((len(svals), 5))
+for i in range(len(svals)):
+    pop, weights = evolve_draft(20000, 10000, svals[i], 0.001, 0.0001,
+                                seed=314, burn=10000, reps=5,
+                                prune_selected=True, addfit=False)
+    avals[i] = [pl.Fit(weights[j], discrete=True, verbose=False).alpha
+                for j in range(5)]
+
+svals = [0.01, 0.02, 0.03, 0.04, 0.05, 0.06]
+reps = 10
+avals = np.zeros(len(svals))
+with concurrent.futures.ProcessPoolExecutor(max_workers=4) as executor:
+    futures = {executor.submit(evolve_draft, 30000, 10000, svals[i], 0.001, 0.0001,
+                               seed=314, burn=10000, reps=reps,
+                               prune_selected=True, addfit=True): i
+               for i in range(len(svals))}
+    for fut in concurrent.futures.as_completed(futures):
+        weights = fut.result()[1]
+        index = futures[fut]
+        avals[index] = [pl.Fit(weights[j], discrete=True, verbose=False).alpha
+                        for j in range(reps)]
+plt.plot(avals.mean(axis=1))
+

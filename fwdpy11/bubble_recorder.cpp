@@ -27,48 +27,63 @@ setup_pybind11(cfg)
 #include <type_traits>
 
 struct bubble_recorder
-  {
-    mutable std::map<double, uint64_t> weights;
+{
+    mutable std::map<std::tuple<double, double, std::uint32_t>, uint64_t> weights;
+    mutable std::vector<double> w_mean;
+    mutable std::vector<double> w_var;
 
-    void operator()(const fwdpy11::singlepop_t& pop) const
-      {
-        double mkey;
+    void
+    operator()(const fwdpy11::singlepop_t& pop) const
+    {
+	double w = 0.;
+        double w2 = 0.;
+        double N = static_cast<double>(pop.N);
 
         for (uint32_t mut = 0; mut < pop.mutations.size(); ++mut)
-          {
-	           mkey = pop.mutations[mut].pos;
-             if (pop.mutations[mut].neutral)
-              {
-                if (pop.mcounts[mut] > 0)
-                  {
-                    if (weights.find(mkey) != weights.end())
-                      {
-                        weights[mkey] += pop.mcounts[mut];
-                      }
-                    else
-		                  {
-	                      weights[mkey] = pop.mcounts[mut];
-                      }
-                  }
-              }
-          }
-      }
-  };
+            {
+                // mkey = pop.mutations[mut].pos;
+                if (pop.mutations[mut].neutral)
+                    {
+                        if (pop.mcounts[mut] > 0)
+                            {
+                                auto mkey
+                                    = std::make_tuple(pop.mutations[mut].pos,
+                                                      pop.mutations[mut].s,
+                                                      pop.mutations[mut].g);
+                                if (weights.find(mkey) != weights.end())
+                                    {
+                                        weights[mkey] += pop.mcounts[mut];
+                                    }
+                                else
+                                    {
+                                        weights[mkey] = pop.mcounts[mut];
+                                    }
+                            }
+                    }
+            }
+	
+	for (auto&& dip : pop.diploids)
+        {
+            w += dip.w;
+            w2 += dip.w * dip.w;
+        }
+        w_mean.push_back(w / N);
+        w_var.push_back(w2/N - w*w/(N*N));
+    }
+};
 
 namespace py = pybind11;
 
-PYBIND11_PLUGIN(bubble_recorder)
+PYBIND11_MODULE(bubble_recorder, m)
 {
-  pybind11::module m("bubble_recorder",
-		     "Record neutral mutant bubble sizes.");
+    m.doc() = "Record neutral mutant bubble sizes.";
 
-  py::class_<bubble_recorder>(m, "BubbleRecorder")
-    .def(py::init<>())
-    .def_readonly("weights", &bubble_recorder::weights, "bubble weights")
-    .def("__call__",
-	 [](const bubble_recorder& r, const fwdpy11::singlepop_t& pop) -> void {
-	   r(pop);
-	 });
-
-  return m.ptr();
+    py::class_<bubble_recorder>(m, "BubbleRecorder")
+        .def(py::init<>())
+        .def_readonly("weights", &bubble_recorder::weights, "bubble weights")
+        .def_readonly("w_mean", &bubble_recorder::w_mean, "fitness mean")
+        .def_readonly("w_var", &bubble_recorder::w_var, "fitness variance")
+        .def("__call__",
+	       [](const bubble_recorder& r, const fwdpy11::singlepop_t& pop) ->
+           void { r(pop); });
 }
