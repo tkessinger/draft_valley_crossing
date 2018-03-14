@@ -77,7 +77,6 @@ def main():
     if args.burn > args.ngens:
         parser.error('burn must be < ngens')
 
-    print(dict(args._get_kwargs()))
     pops, weights, alpha, means, vars = evolve_draft(args.ngens,
                                                      args.N,
                                                      args.s,
