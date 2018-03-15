@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import numpy as np
 import fwdpy11
 import fwdpy11.model_params

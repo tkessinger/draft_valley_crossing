@@ -16,22 +16,20 @@ reps = 10
 seed = 42
 
 pars = ['N', 's']
-parvals =  [[1000, 5000, 10000, 50000], list(np.linspace(0.001,0.06,60))]
+parvals =  [[1000, 5000, 10000, 50000], list(np.linspace(0.002,0.1,50))]
 
 parsets = list(it.product(*parvals))
 npars = len(pars)
 nsets = len(parsets)
 
-filename = 'bubble_sim_data.pkl'
+outputbase = 'bubble_sim_data_14-03-2018'
 
 for p in range(0,nsets):
     pset = parsets[p]
-
-    filebase = 'bubble_sim'
-    simstr = '{}.py '.format(filebase)
-
+    
+    simstr = 'bubble_sim.py '
     # add parameter values as command line options
-    simstr += '--file={} '.format(filename)
+    simstr += '--file={} '.format(outputbase + '.pkl')
     simstr += '--mu={} --r={} --ngens={} --burn={} --reps={} --seed={} '.format(mu,
                                                                                 r,
                                                                                 ngens,
@@ -40,9 +38,11 @@ for p in range(0,nsets):
                                                                                 seed)
     simstr += ' '.join(['--{}={}'.format(p[0], p[1]) for p in zip(pars, pset)])
 
-    cmdstr = 'sbatch --job-name=\'bubble_sim\' --output={}.out --wrap=\'{}\''.format(filebase, simstr)
+    cmdstr = 'sbatch --job-name=\'bubble_sim\' --output={}_{}.out --wrap=\'{}\''.format(outputbase,
+                                                                                        str(p+1).zfill(len(str(nsets))),
+                                                                                        simstr)
 
-    print(cmdstr)
+    # print(cmdstr)
     cmd = shlex.split(cmdstr)
 
     proc = subprocess.Popen(cmd)
