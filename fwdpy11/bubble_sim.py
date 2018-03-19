@@ -9,6 +9,7 @@ import powerlaw as pl
 import pickle
 import fcntl
 from argparse import ArgumentParser
+from datetime import datetime
 
 # pybind11 C++ recorder
 import cppimport
@@ -77,6 +78,8 @@ def main():
 
     args = parser.parse_args()
 
+    start = datetime.now()
+    print (':: sim started at ' + str(start))
     pops, weights, alpha, means, vars = evolve_draft(args.ngens,
                                                      args.N,
                                                      args.s,
@@ -95,6 +98,9 @@ def main():
              'alpha': alpha,
              'means': means,
              'vars': vars}, f)
+
+    end = datetime.now
+    print(':: sim finished at ' + str(end) + ' and took ' + str(end-start))
 
 
 if __name__ == "__main__":
