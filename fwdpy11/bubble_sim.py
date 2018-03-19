@@ -76,8 +76,6 @@ def main():
     parser.add_argument("--file", default='data.pkl', help="output file")
 
     args = parser.parse_args()
-    if args.burn > args.ngens:
-        parser.error('burn must be < ngens')
 
     pops, weights, alpha, means, vars = evolve_draft(args.ngens,
                                                      args.N,

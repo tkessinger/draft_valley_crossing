@@ -9,6 +9,7 @@ import itertools as it
 import numpy as np
 
 ngens = 10000
+burnx = 5
 theta = 0.4
 r = 1e-6
 reps = 10
@@ -25,7 +26,7 @@ outputbase = 'bubble_sim_data_18-03-2018'
 
 for p in range(0,nsets):
     pset = dict(zip(pars, parsets[p]))
-    
+
     simstr = 'bubble_sim.py '
     # add parameter values as command line options
     simstr += '--file={} '.format(outputbase + '.pkl')
@@ -36,7 +37,7 @@ for p in range(0,nsets):
                 theta/(4*pset['N']),
                 r,
                 ngens,
-                5*pset['N'],
+                burnx*pset['N'],
                 reps,
                 seed))
 
@@ -46,8 +47,8 @@ for p in range(0,nsets):
                 str(p+1).zfill(len(str(nsets))),
                 simstr))
 
-    print(cmdstr)
-    # cmd = shlex.split(cmdstr)
+    # print(cmdstr)
+    cmd = shlex.split(cmdstr)
 
-    # proc = subprocess.Popen(cmd)
-    # proc.wait()
+    proc = subprocess.Popen(cmd)
+    proc.wait()
