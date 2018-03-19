@@ -45,7 +45,7 @@ def evolve_draft(ngens, N, s, mu, r, burn=500, reps=10, seed=42):
         fwdpy11.wright_fisher.evolve(rng, pop, params)
 
         # recorded runs
-        pdict.update(demography=np.array([N]*(ngens-burn), dtype=np.uint32))
+        pdict.update(demography=np.array([N]*ngens, dtype=np.uint32))
         recorder = bubble_recorder.BubbleRecorder()
         fwdpy11.wright_fisher.evolve(rng, pop, params, recorder)
 
@@ -69,7 +69,7 @@ def main():
     parser.add_argument("--s", type=float, default=0.001, help="selection coefficient")
     parser.add_argument("--mu", type=float, default=0.0001, help="mutation rate")
     parser.add_argument("--r", type=float, default=0.00001, help="recombination rate")
-    parser.add_argument("--ngens", type=int, default=10000, help="number of generations")
+    parser.add_argument("--ngens", type=int, default=10000, help="number of generations (after burnin)")
     parser.add_argument("--burn", type=int, default=5000, help="burnin generations")
     parser.add_argument("--reps", type=int, default=10, help="number of replicates")
     parser.add_argument("--seed", type=int, default=42, help="random number seed")
@@ -88,7 +88,7 @@ def main():
                                                      args.reps,
                                                      args.seed)
 
-    with open(args.file, 'wb') as f:
+    with open(args.file, 'ab') as f:
         fcntl.flock(f, fcntl.LOCK_EX)
         pickle.dump(
             {'pars': dict(args._get_kwargs()),
