@@ -79,7 +79,8 @@ def main():
     args = parser.parse_args()
 
     start = datetime.now()
-    print (':: sim started at ' + str(start))
+    print (':: sim started at '
+           + start.isoformat(sep=' ', timespec='seconds'))
     pops, weights, alpha, means, vars = evolve_draft(args.ngens,
                                                      args.N,
                                                      args.s,
@@ -100,7 +101,9 @@ def main():
              'vars': vars}, f)
 
     end = datetime.now
-    print(':: sim finished at ' + str(end) + ' and took ' + str(end-start))
+    print(':: sim finished at '
+          + end.isoformat(sep=' ', timespec='seconds')
+          + ' and took ' + str(end-start))
 
 
 if __name__ == "__main__":

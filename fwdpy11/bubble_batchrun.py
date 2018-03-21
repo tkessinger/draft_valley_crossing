@@ -10,7 +10,7 @@ import numpy as np
 
 ngens = 10000
 burnx = 5
-theta = 0.4
+theta = 4.0
 r = 1e-6
 reps = 10
 seed = 42
@@ -22,9 +22,9 @@ parsets = list(it.product(*parvals))
 npars = len(pars)
 nsets = len(parsets)
 
-outputbase = 'bubble_sim_data_18-03-2018'
+outputbase = 'bubble_sim_data_21-03-2018'
 
-for p in range(0,nsets):
+for p in range(0, nsets):
     pset = dict(zip(pars, parsets[p]))
 
     simstr = 'bubble_sim.py '
