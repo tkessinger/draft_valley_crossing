@@ -81,8 +81,12 @@ In these populations, genetic drift governs the fate of neutral alleles, as well
 When population sizes are very large or the fitness variation in the population is substantial, however, the behavior of genetic variation is governed more by genetic \emph{draft} than by drift.
 In a drafting asexual population, the fate of an allele depends sharply on its genetic background.
 Only a handful of individuals near the ``nose" of the fitness distribution are likely to persist, and they give rise to the bulk of the future population, carrying linked alleles with them.
-In sexual populations, much the same description applies.
-The parameter that determines whether drift or draft is more important is the product of the population size $N$ and the standard deviation in fitness $\sigma$ \citep{neher_hallatschek_2013} or, in a sexual population, the proportion of fitness variation $\sigma_b$ that segregates within an effectively asexual block length \citep{neher_kessinger_2013}.
+The parameter that determines whether drift or draft is more important is the product of the population size $N$ and the standard deviation in fitness $\sigma$ \citep{neher_hallatschek_2013}.
+In sexual populations, the accuracy of this description depends on the recombination model.
+When recombination is ``free", meaning that child genomes are assembled by randomly shuffling those of their parents, there is a chance for new alleles on weak fitness backgrounds to jump onto fitter ones near the nose of the distribution \citep{neher_shraiman_2011}.
+Competition between recombination, which breaks up linkage, and adaptation, which creates it, determines whether draft or drift is more important.
+When recombination occurs via crossovers, genomes can be partitioned into effectively asexual ``blocks", whose size depends on the per-site crossover rate and the total fitness variation segregating in the population.
+If each block harbors some portion $\sigma_b$ of the total fitness standard deviation $\sigma$, then the conditions $N\sigma_b \gg 1$ and $N\sigma_b \ll 1$ correspond to draft and drift dominance, respectively.
 
 Drift and draft are fundamentally different forces.
 It is not possible to understand a drafting population in terms of a drifting one, for example by defining a reduced ``effective population size".
@@ -92,7 +96,11 @@ Draft likewise has profoundly different effects on the evolution of complex adap
 \citet{neher_shraiman_2011} explored the dynamics of stochastic tunneling in rapidly adapting sexual populations.
 The primary mode of recombination considered therein is ``free" recombination, in which parents essentially shuffle the entirety of their genomes during reproduction.
 We extend this to asexual populations and comment on alternate modes of recombination, such as crossovers.
-Using analytical approaches and forward simulations, we confirm that fitness valley crossing occurs at an overall lower rate in rapidly adapting populations, but that much deeper valleys can be crossed.
+
+The complicating factor is that, in an asexual population, the dynamics are governed almost entirely by what happens in the nose of the fitness distribution, and these dynamics can be highly stochastic without the ``smoothing" effect provided by recombination.
+We therefore must focus primarily on simulation approaches, as analytical solutions for the behavior of a mutation in the nose of an asexual population are very difficult to obtain.
+We confirm that fitness valley crossing occurs at an overall lower rate in rapidly adapting populations, but that much deeper valleys can be crossed.
+In addition, we confirm that, given the option of crossing a fitness valley or simply allowing a beneficial mutation to sweep, a rapidly adapting population is more likely to favor crossing a fitness valley.
 These observations add to the growing intuition that irreducible complexity may not be a surprising result of the evolutionary process, but rather an expected one.
 
 \section*{Model}
@@ -135,7 +143,7 @@ The expected valley crossing time then becomes $1/N\mu\Phi$.
 
 
 We begin by considering the dynamics of $p_{\mathrm {fix}}$ before moving on to consider the distribution of bubble sizes.
-Let $p = p_{\mathrm fix}(x,s,t)$ be the fixation probability of the double mutant as a function of the absolute fitness $x$.
+Let $p = p_{\mathrm{fix}}(x,s,t)$ be the fixation probability of the double mutant as a function of the absolute fitness $x$.
 In the absence of any perturbations, the evolution of $p$ can be described by a birth-death process, yielding
 \begin{equation}
 -\partial_t p(x,s,t) = Bp(x,s,t) - (B+D)p(x,s,t)^2
@@ -232,10 +240,9 @@ Knowing the form of $\phi$ and $z$ allows us to compute the overall tunneling pr
 To test our model, we perform forward simulations using a customized version of \texttt{FFPopSim} \citep{zanini_2012}, a discrete time forward simulation package.
 The simulation code is available from the authors upon request or via \texttt{GitHub}.
 We initialize a wild type population of $N$ individuals consisting of haploid genomes of length $L = 200$.
-For the genetic background, we make use of an \emph{ersatz} ``infinite sites" model.
-Any time a locus becomes monomorphic, a mutation is injected into a random individual in the population.
-Hence, the population experiences a constant influx of beneficial mutations at the background loci.
-Background fitness effects are drawn from an exponential distribution, and the background fitness variance is set to a constant value $\sigma^2$ by manually adjusting the selection coefficients every generation: they are multipled by the current variance and divided by $\sigma^2$.
+For the genetic background, we make use of an \emph{ersatz} ``infinite sites" model: any time a locus becomes monomorphic, a mutation at that locus is injected into a random individual in the population.
+In this way, the population experiences a constant influx of beneficial mutations at the background loci.
+These beneficial mutations' fitness effects are drawn from an exponential distribution, and the background fitness variance is set to a constant value $\sigma^2$ by manually adjusting the selection coefficients every generation: they are multipled by the current variance and divided by $\sigma^2$.
 In this way, $U$ and $\bar{\epsilon}$ are not parameters of our simulation model but must be directly measured from simulations: they are constrained by $L$ and $\sigma$.
 We estimate them by manually counting the number of injected mutations every generation and averaging over the fitness effect at each locus.
 
@@ -243,7 +250,8 @@ We set the ``focal" loci (the loci at which the epistatic alleles segregate) to 
 Simulations are allowed to proceed for an ``equilibration" time of $N/10$ generations to allow sufficient genetic diversity to be introduced.
 During this time, the mutation rate $\mu$ for the focal loci is set to zero.
 After equilibration, we set a per-site mutation rate $\mu$ for the focal loci, with single mutant fitness disadvantage $\delta$ and double mutant advantage $s$, consistent with our analytical model.
-When the double mutant reaches frequency $0.5$, we consider it to have fixed, then set the focal loci allele frequencies back to zero, randomize the selection coefficients for the genetic background, and allow the population to equilibrate for another $N/10$ generations.
+When the double mutant reaches frequency $0.5$, we consider it to have fixed.
+We then set the focal loci allele frequencies back to zero, randomize the selection coefficients for the genetic background, and allow the population to equilibrate for another $N/10$ generations.
 This offers some assurance that independent valley crossing trials are indeed independent despite occurring in the same simulation run.
 
 We partitioned our simulations as follows.
@@ -293,9 +301,17 @@ This supports the view that traversing rugged fitness landscapes by valley cross
 \label{fig:bands}
 \end{figure}
 
-Finally, we consider the effects of the compound parameter $N\sigma$, which has previously been shown to determine the coalescent behavior of populations \citep{neher_hallatschek_2013, neher_kessinger_2013}.
+In addition, we consider the effects of the compound parameter $N\sigma$, which has previously been shown to determine the coalescent behavior of populations \citep{neher_hallatschek_2013, neher_kessinger_2013}.
 Figure \ref{fig:bands} suggests that, at high values of $\sigma$, the value of $N\sigma$ is more important than $N$ itself in determining the valley crossing rate.
 The dependence on $N$ appears to be reduced, consistent with general features of very large, rapidly adapting populations.
+In a slowly adapting population, $N$ determines the transition from sequential fixation to tunneling: if bubbles reach a maximum size that is of order $N$, they start to noticeably decrease the mean fitness, making fixation easier.
+When $N\sigma \gg 1$, bubbles almost never reach a large enough size for this condition to obtain.
+
+Finally, we examine the ratio $\tau_{\mathrm{sweep}}/\tau_{\mathrm{valley}}$, where $\tau_{\mathrm{sweep}}$ is the time required for a particular beneficial mutation to sweep to fixation and $\tau_{\mathrm{valley}}$ is the time required for a valley crossing event to occur.
+Though this ratio will generally depend on $\delta$, as well as the selection coefficient $s_v$ of the complex adaptation and $s_u$ of the sweeping solo beneficial mutation, a general trend can nonetheless be observed.
+For several combinations of parameter values, we find that the ratio is higher for large $\sigma$ than for low $\sigma$.
+This confirms the intuition that traversing a rugged fitness landscape by valley crossing may be favored in rapidly adapting populations.
+These results contrast with those of \citet{ochs_2015}, which studied a similar problem (competition between a sweeping beneficial mutant and a valley crossing adaptation) in a slowly evolving population.
 
 \section*{Discussion}
 
