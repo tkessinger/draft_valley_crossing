@@ -100,7 +100,7 @@ def main():
              'means': means,
              'vars': vars}, f)
 
-    end = datetime.now
+    end = datetime.now()
     print(':: sim finished at '
           + end.isoformat(sep=' ', timespec='seconds')
           + ' and took ' + str(end-start))
