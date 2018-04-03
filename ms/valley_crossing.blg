@@ -11,45 +11,45 @@ Name 1 in "Darwin, Charles," has a comma at the end for entry darwin_1859
 while executing---line 1429 of file plainnat.bst
 Name 1 in "Darwin, Charles," has a comma at the end for entry darwin_1859
 while executing---line 1429 of file plainnat.bst
-You've used 10 entries,
+You've used 14 entries,
             2773 wiz_defined-function locations,
-            680 strings with 7326 characters,
-and the built_in function-call counts, 5085 in all, are:
-= -- 503
-> -- 240
-< -- 7
-+ -- 82
-- -- 72
-* -- 449
-:= -- 801
-add.period$ -- 56
-call.type$ -- 10
-change.case$ -- 53
-chr.to.int$ -- 10
-cite$ -- 20
-duplicate$ -- 204
-empty$ -- 409
-format.name$ -- 88
-if$ -- 1059
+            718 strings with 8280 characters,
+and the built_in function-call counts, 7280 in all, are:
+= -- 716
+> -- 369
+< -- 8
++ -- 125
+- -- 111
+* -- 660
+:= -- 1148
+add.period$ -- 79
+call.type$ -- 14
+change.case$ -- 78
+chr.to.int$ -- 14
+cite$ -- 28
+duplicate$ -- 287
+empty$ -- 571
+format.name$ -- 133
+if$ -- 1514
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 11
-newline$ -- 84
-num.names$ -- 40
-pop$ -- 69
+missing$ -- 15
+newline$ -- 115
+num.names$ -- 56
+pop$ -- 100
 preamble$ -- 1
-purify$ -- 44
+purify$ -- 65
 quote$ -- 0
-skip$ -- 151
+skip$ -- 213
 stack$ -- 0
-substring$ -- 269
-swap$ -- 11
+substring$ -- 366
+swap$ -- 16
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 105
+type$ -- 149
 warning$ -- 0
-while$ -- 45
+while$ -- 63
 width$ -- 0
-write$ -- 189
+write$ -- 263
 (There were 4 error messages)

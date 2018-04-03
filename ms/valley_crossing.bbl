@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{14}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -21,14 +21,25 @@ Charles Darwin.
 \newblock http://www.biodiversitylibrary.org/bibliography/68064 --- Freeman,
   R.B. Charles Darwin (2nd ed.), | 373 --- Garrison-Morton: | 220.
 
-\bibitem[Desai and Fisher(2007)]{desai_fisher_2007}
-Michael~M. Desai and Daniel~S. Fisher.
-\newblock Beneficial mutation{\textendash}selection balance and the effect of
-  linkage on positive selection.
-\newblock \emph{Genetics}, 176\penalty0 (3):\penalty0 1759--1798, 2007.
+\bibitem[Good et~al.(2012)Good, Rouzine, Balick, Hallatschek, and
+  Desai]{good_2012}
+Benjamin~H. Good, Igor~M. Rouzine, Daniel~J. Balick, Oskar Hallatschek, and
+  Michael~M. Desai.
+\newblock Distribution of fixed beneficial mutations and the rate of adaptation
+  in asexual populations.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 109\penalty0
+  (13):\penalty0 4950--4955, 2012.
+\newblock ISSN 0027-8424.
+\newblock \doi{10.1073/pnas.1119910109}.
+\newblock URL \url{http://www.pnas.org/content/109/13/4950}.
+
+\bibitem[Iwasa et~al.(2004)Iwasa, Michor, and Nowak]{iwasa_2004}
+Yoh Iwasa, Franziska Michor, and Martin~A. Nowak.
+\newblock Stochastic tunnels in evolutionary dynamics.
+\newblock \emph{Genetics}, 166\penalty0 (3):\penalty0 1571--1579, 2004.
 \newblock ISSN 0016-6731.
-\newblock \doi{10.1534/genetics.106.067678}.
-\newblock URL \url{http://www.genetics.org/content/176/3/1759}.
+\newblock \doi{10.1534/genetics.166.3.1571}.
+\newblock URL \url{http://www.genetics.org/content/166/3/1571}.
 
 \bibitem[Muller(1918)]{muller_1918}
 Hermann~J. Muller.
@@ -47,6 +58,14 @@ R.~A. Neher and B.~I. Shraiman.
 \newblock \doi{10.1534/genetics.111.128876}.
 \newblock URL \url{http://www.genetics.org/content/188/4/975}.
 
+\bibitem[Neher et~al.(2010)Neher, Shraiman, and Fisher]{neher_shraiman_2010}
+R.~A. Neher, B.~I. Shraiman, and D.~S. Fisher.
+\newblock Rate of adaptation in large sexual populations.
+\newblock \emph{Genetics}, 184\penalty0 (2):\penalty0 467--481, 2010.
+\newblock ISSN 0016-6731.
+\newblock \doi{10.1534/genetics.109.109009}.
+\newblock URL \url{http://www.genetics.org/content/184/2/467}.
+
 \bibitem[Neher and Hallatschek(2013)]{neher_hallatschek_2013}
 Richard~A. Neher and Oskar Hallatschek.
 \newblock Genealogies of rapidly adapting populations.
@@ -64,6 +83,16 @@ Richard~A. Neher, Taylor~A. Kessinger, and Boris~I. Shraiman.
   (39):\penalty0 15836--15841, 2013.
 \newblock \doi{10.1073/pnas.1309697110}.
 \newblock URL \url{http://www.pnas.org/content/110/39/15836.abstract}.
+
+\bibitem[Ochs and Desai(2015)]{ochs_2015}
+Ian~E. Ochs and Michael~M. Desai.
+\newblock The competition between simple and complex evolutionary trajectories
+  in asexual populations.
+\newblock \emph{BMC Evolutionary Biology}, 15\penalty0 (1):\penalty0 55, Mar
+  2015.
+\newblock ISSN 1471-2148.
+\newblock \doi{10.1186/s12862-015-0334-0}.
+\newblock URL \url{https://doi.org/10.1186/s12862-015-0334-0}.
 
 \bibitem[Trotter et~al.(2014)Trotter, Weissman, Peterson, Peck, and
   Masel]{trotter_2014}
@@ -95,5 +124,13 @@ Daniel~B. Weissman, Marcus~W. Feldman, and Daniel~S. Fisher.
 \newblock ISSN 0016-6731.
 \newblock \doi{10.1534/genetics.110.123240}.
 \newblock URL \url{http://www.genetics.org/content/186/4/1389}.
+
+\bibitem[Zanini and Neher(2012)]{zanini_2012}
+Fabio Zanini and Richard~A. Neher.
+\newblock Ffpopsim: an efficient forward simulation package for the evolution
+  of large populations.
+\newblock \emph{Bioinformatics}, 28\penalty0 (24):\penalty0 3332--3333, 2012.
+\newblock \doi{10.1093/bioinformatics/bts633}.
+\newblock URL \url{+ http://dx.doi.org/10.1093/bioinformatics/bts633}.
 
 \end{thebibliography}
