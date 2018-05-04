@@ -158,6 +158,15 @@ Then the fixation probability turns out to be governed by the integro-differenti
 v \partial_X p(X) = X p(X) + U \int \left[ p(X+\epsilon) - p(X)\right]\rho(\epsilon) d\epsilon - \frac{p(X)^2}{2},
 \end{equation}
 where $X = x-\sigma^2 t+s$ is the fitness relative to the (time dependent) mean fitness.
+
+We zero in on the ``infinitesimal" model, where mutations are of small effect compared to $\sigma$.
+In that case, the fixation probability is governed by the equation
+
+\begin{equation}
+v \partial_X p(X) = X p(X) + U \int \left[ p(X+\epsilon) - p(X)\right]\rho(\epsilon) d\epsilon - \frac{p(X)^2}{2},
+\end{equation}
+
+
 The perturbation provided by the mutation term is very important: without it, the equation is Bernoulli and can be solved readily, but the only solution is $p(X) = 0$ everywhere.
 This should be intuitive, as lineages in a large population are doomed to extinction as the mean fitness inexorably advances, unless they an increase their fitness via recombination or mutation.
 Assuming that $s$ is small compared to $\sigma$, a matched asymptotics analysis yields
@@ -362,6 +371,34 @@ If both $N\sigma$ and $N\sigma_b$ are large, and the focal loci segregate in the
 If, on the other hand, $N\sigma$ is large but $N\sigma_b$ is small, or the distance between the focal loci is much larger than the block length $\xi_b$, then recombination between the focal loci is likely to be effectively ``free".
 In that case, the communal recombination analysis of \citet{neher_shraiman_2011} and \citet{neher_shraiman_2010} is likely to be important.
 The rate at which complex adaptations arise and fix will depend sensitively not on the distribution of background mutation effects but on the dynamics of recombination.
+
+The dynamics by which rugged fitness landscapes are traversed has received significant attention in the literature in recent years.
+Valley crossing has previously been shown to be favored in small populations, where the effects of selection against intermediates are mitigated, and in large populations, where multiple mutants are much more likely to appear \citep{weissman_2009, ochs_2015}.
+Low amounts of recombination also appear to be helpful \citep{weissman_2010}.
+An additional effect that can heighten the rate at which valley crossing occurs is population subdivision \citep{Bitbol:Schwab:2014}: the population size within a subdivision is smaller, meaning that selection against potentially harmful intermediates is relaxed.
+Like population subdivision, genetic draft favors the appearance of complex adaptations by forcing selection to act on entire genotypes, which may be carrying useful but provisionally harmful deleterious intermediate mutations.
+This can be contrasted with effects such as high migration rates and high recombination rates \citep{neher_shraiman_2009}, which force selection to act on individual alleles rather than genotypes.
+
+Two further intuitions can be drawn from this argument.
+First, there is a sort of duality between the evolution of complex adaptations and the evolution of cooperation, which can be seen as a complex behavioral adaptation.
+It is well known that higher migration rates between demes, which cause organisms to be less likely to interact with close kin, disfavor the evolution of cooperation: likewise, when migration rates are low, cooperation can be favored \citep{van_cleve_2015} (cite some other support here).
+Evolutionary forces which strengthen existing associations between loci are more likely to lead to such complex phenotypes: evolutionary forces which weaken these associations hinder their evolution.
+This reasoning applies whether the loci in question appear in the same individual (as in the case of sign epistasis) or in different individuals (as in the case of social evolution).
+These effects can even interact: cooperation can function as an additional evolutionary force that favors valley crossing \citep{Obolski:Lewin-Epstein:2017} (cite some additional support, possible reference to evolutionary capacitance--there is some work on army ants that has similar implications).
+The interplay between cooperation and valley crossing is an area that needs further study, as it may shed light on the evolution of cooperation within large microbial populations such as (cite some examples here).
+
+Second, the relationship between genetic draft and valley crossing has implications for Wright's ``shifting balance theory".
+Population subdivision followed by colonization of a new fitness peak may be an important aspect of the evolutionary process, but it is not obvious \emph{how} important \citep{coyne_barton_turelli_2000}.
+However, populations which experience both subdivision \emph{and} rapid adaptation are ideal candidates in which the shifting balance theory may apply.
+Such populations include HIV, in which host-specific adaptations evolve quickly (cite some support) and in which deleterious mutations are known to hitchhike to high frequency \citep{zanini_2013, zanini_2015}.
+Our work also shines light on the likely pathway through which multi-drug resistance evolves in HIV.
+In recent years of the HIV pandemic, resistance has generally been slower to evolve \citep{feder_2015}, in general because more and stronger drugs are used.
+There are two possible explanations for this.
+One option is that the use of anti-HIV drugs decreases the number of virions segregating within an individual, thus lowering the number of possible chances for a resistant phenotype to appear.
+The other is that such drugs, especially when used in concert, contort the fitness landscape so that evolution of a phenotype that is resistant to a drug cocktail is more difficult.
+Both factors are likely to play a role.
+However, since HIV is a population in which draft, not drift, is the dominant factor and hence population size is less important in determining the evolutionary dynamics, our work suggests that the second is likely to be more significant compared to other populations.
+
 
 
 %In the case where $\rho = 0$ and the fitness variance $\sigma^2$ is small ($N\sigma \ll 1$), the rate of valley crossing agrees with \citet{weissman_2009}: when $\rho > 0$, the rate agrees with \citet{weissman_2010}.
