@@ -146,6 +146,28 @@ As a result, $W$ will depend on $x$ and $\delta$, and $p_{\mathrm fix}$ will dep
 These will have to be integrated over the fitness distribution $f(x)$ in order to obtain the total crossing probability $\Phi(s,\delta) = \int_{-\infty}^\infty \phi(x,s,\delta) f(x) dx$.
 The expected valley crossing time then becomes $1/N\mu\Phi$.
 
+We begin by considering the dynamics of $p_{\mathrm{fix}}(x,s)$ before moving on to consider the distribution of bubble sizes.
+We zero in on the ``weak driver" model, in which background mutations are frequent but of weak effect compared to $\sigma$.
+In this case, the background beneficial mutation rate $U_b$ and mean fitness effect $\bar{\epsilon}$ turn out not to matter: what is relevant is the product $D = U_b \bar{\epsilon}^2/2$.
+Taking the limit $U_b \to \infty$ and $\bar{\epsilon} \to 0$ yields the ``infinitesimal" model.
+(note: cite Hallatschek (2013) and \citet{good_2014} showed that the fixation probability in this regime obeys the differential equation 
+\begin{equation}
+v\partial_x p(x,s) = x p(x,s) + D\partial_x^2 p(x,s) - \frac{p(x,s)^2}{2},
+\end{equation}
+in which we have assumed that $v \approx \sigma^2$, which is tantamount to claiming that mutational effects are less important than selection in determining the advance of the mean fitness.
+The fixation probability then increases linearly in $x$ above some critical value $x_c$ and remains small otherwise, with $x_c \approx \sigma^4/4D$: when $\sigma$ is large, only mutations in the nose stand any chance of fixing unless they can be dragged to higher fitness by a background mutations (large $D$).
+
+In order to compute $\Phi$ we must next consider the behavior of mutant lineages.
+Since the tunneling probability for a lineage with background fitness $x$ is given by $\phi = \left< 1 - e^{-\mu p_{\mathrm fix} W} \right>$, we do not need to compute the full distribution of $W$ but rather only its Laplace transform: $\mathcal{L}\left[ p(w) \right] = \int_0^\infty e^{-zw} p(w) dw$, with $z = \mu p_{\mathrm {fix}}$.
+\citet{neher_shraiman_2011} showed that $\phi$ follows the equation
+\begin{equation}
+\partial_t \phi = z + (z + x - \sigma^2 t + \delta)\phi^2 - (1 + x - sigma^2 t + \delta)\phi^2,
+\end{equation}
+but their analysis also included a recombination term that made it possible to pull out the integrated Laplace transform $\int_{-\infty}^\infty p(x) \phi(x) dx$ without the need to actually solve this equation or send time to infinity.
+Unfortunately this method is not available to us, and the nose dominance of the bubble size distribution, combined with the $x$ dependence of $z$ (via $z = \mu p_{\mathrm{fix}}(x)$), means that a simple closed form expression for $\Phi$ is not forthcoming.
+We therefore focus on simulation methods to study the dynamics of valley crossing.
+
+\iffalse
 (Note: There is an alternate regime in the appendix of \citet{good_2014} that would be better here. Will amend accordingly.)
 We begin by considering the dynamics of $p_{\mathrm {fix}}$ before moving on to consider the distribution of bubble sizes.
 To do so, we follow the method of \citet{good_2012} and \citet{good_2014}.
@@ -226,6 +248,7 @@ Using matched asymptotics allows us to write
 \end{equation}
 Intuitively, this corresponds to stating that bubbles with a positive growth rate are likely to persist for some time, but bubbles with a negative growth rate are doomed to extinction: the only way they can succeed is to generate a successful double mutant in $O(1)$ generations.
 Knowing the form of $\phi$ and $z$ allows us to compute the overall tunneling probability and hence the expected time to a tunneling event, once we integrate over the fitness distribution $f(x)$.
+\fi
 
 %\begin{figure}
 \begin{figure}
@@ -327,25 +350,22 @@ When $N\sigma \gg 1$, bubbles almost never reach a large enough size for this co
 \fi
 
 \begin{figure}
-\begin{subfigure}[b]{0.2\textwidth}
+\begin{subfigure}[b]{0.25\textwidth}
 \includegraphics[width=\textwidth]{Figures/tau_valley_-6.pdf}
 \end{subfigure}
-\begin{subfigure}[b]{0.2\textwidth}
+\begin{subfigure}[b]{0.25\textwidth}
 \includegraphics[width=\textwidth]{Figures/tau_valley_-2.pdf}
 \end{subfigure}
-\begin{subfigure}[b]{0.2\textwidth}
-\includegraphics[width=\textwidth]{Figures/alpha_-6.pdf}
+\begin{subfigure}[b]{0.4\textwidth}
+\includegraphics[width=\textwidth]{Figures/alpha_ratios.pdf}
 \end{subfigure}
-\begin{subfigure}[b]{0.2\textwidth}
-\includegraphics[width=\textwidth]{Figures/alpha_-2.pdf}
-\end{subfigure}
-\caption{Behavior of valley crossing times for varied $\delta$, $N$, and $\sigma$. In all cases, $s_{\mathrm{sweep}} = 0.01$, $s_{\mathrm{sweep}} = 0.1$, and $\mu = 10^{-5}$. Left two plots: valley crossing times $\tau$ increase with $\delta$ and $\sigma$ but decrease with $N$, as predicted. Right two plots: the ratio $\alpha = \tau_{\mathrm{valley}}/\tau_{\mathrm{sweep}}$ as a function of $\delta$, $N$, and $\sigma$. Deeper valleys in smaller populations are disfavored relative to simple sweeps. But at higher values of $\sigma$, they can be favored ($\alpha < 1$: note the log scaled colorbar). In both plots, $N = 10^5$ is a fairly hard cutoff beyond which tunneling becomes semi-deterministic, as $N\mu > 1$ means that, on average, more than one mutant lineage is seeded every generation.}
+\caption{(note: combine left two figures so they have only one colorbar--this will be easy) Behavior of valley crossing times for varied $\delta$, $N$, and $\sigma$. In all cases, $s_{\mathrm{sweep}} = 0.01$, $s_{\mathrm{sweep}} = 0.1$, and $\mu = 10^{-5}$. Left two plots: valley crossing times $\tau$ increase with $\delta$ and $\sigma$ but decrease with $N$, as predicted. Right two plots: the ratio $\alpha = \tau_{\mathrm{valley}}/\tau_{\mathrm{sweep}}$ as a function of $\delta$, $N$, and $\sigma$. Deeper valleys in smaller populations are disfavored relative to simple sweeps. But at higher values of $\sigma$, they can be favored ($\alpha < 1$: note the log scaled colorbar). In both plots, $N = 10^5$ is a fairly hard cutoff beyond which tunneling becomes semi-deterministic, as $N\mu > 1$ means that, on average, more than one mutant lineage is seeded every generation.}
 \label{fig:ratios}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=0.4\textwidth]{Figures/alpha_ratio.pdf}
-\caption{Ratio of $\alpha$ values at high and low $\sigma$. Genetic draft is most helpful for crossing deep valleys at large population sizes.}
+\includegraphics[width=0.4\textwidth]{Figures/compare_ratios.pdf}
+\caption{Ratio of $\alpha$ values at high and low $\sigma$. Genetic draft is helpful for crossing deep valleys in the sequential fixation and tunneling regimes. But when semi-deterministic tunneling becomes more important than stochastic tunneling, it can slow down the crossing rate.}
 \label{fig:alpha_ratio}
 \end{figure}
 
@@ -355,6 +375,10 @@ Though the precise value of this ratio will generally depend on $\delta$, as wel
 In this case, we set $s_{\mathrm{sweep}} = 0.01$, $s_{\mathrm{sweep}} = 0.1$, and $\mu = 10^{-5}$.
 For several combinations of parameter values, we find that the ratio $\alpha$ is smaller for high $\sigma$ than for low $\sigma$: see figure \ref{fig:ratios}.
 In figure \ref{fig:alpha_ratio}, we consider the behavior of $\alpha(10^{-2})/\alpha(10^{-6})$, a measure of the extent to which rapid adaptation speeds up valley crossing relative to sweeping (lower values indicate that rapid adaptation favors valley crossing).
+Overall, we find that increasing $\sigma$ increases the extent to which valley crossing is favored \emph{except} when $N\mu > 1$.
+In this case, stochastic tunneling ceases to be the dominant mode of valley crossing.
+\citet{weissman_2009} referred to this regime as ``semi-deterministic tunneling": a more or less stable number of intermediate mutant individuals $N\mu/\delta$ persists in the population at low frequencies, which give rise to double mutnats at a low but constant rate.
+This relation more or less obtains in a rapidly adapting population as well, with substantial fluctuations, so $p_{\mathrm{fix}}$ becomes more important in determining the valley crossing rate: since this scales more weakly with $s$ under draft, the overall crossing rate is slowed.
 
 \section*{Discussion}
 
