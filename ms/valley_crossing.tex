@@ -82,10 +82,10 @@ Previous studies of valley crossing focused primarily on populations where all i
 This is tantamount to assuming that, if there is variation in the background fitness of the population, it is negligible.
 In such populations, genetic drift governs the fate of neutral alleles, as well as the behavior of deleterious or beneficial alleles close to frequency zero or one.
 Such alleles can be effectively modeled by a diffusion approximation, and the ancestry of a population is described well by the Kingman coalescent.
-When population sizes are very large or the fitness variation in the population is substantial, however, the behavior of genetic variation is governed more by genetic \emph{draft} than by drift.
+When population sizes are very large or the fitness variation in the population is substantial, however, the behavior of genetic variation is governed more by genetic \emph{draft} than by drift \citep{gillespie_2000, gillespie_2001, masel_2011, neher_shraiman_2011}.
 Whereas drift is the effect of imperfect sampling from generation to generation, draft is the sum total of hitchhiking effects due to the genetic background.
-Draft is fundamentally different from drift: for example, drafting populations exhibit genealogies that are better described by an alternative coalescent process such as the Bolthausen-Sznitman coalescent or another Beta coalescent, and allele frequencies experience large jumps that cannot be encapsulated by a diffusion approximation.
-In addition, the frequency spectrum of neutral alleles is non-monotonic, with a marked uptick near frequency 1--or, equivalently, a depression in intermediate frequency alleles, which are swept out quickly.
+Draft is fundamentally different from drift: for example, drafting populations exhibit genealogies that are better described by an alternative coalescent process such as the Bolthausen-Sznitman coalescent or another Beta coalescent \citep{neher_hallatschek_2013, brunet_2007, schweinsberg_2017}, and allele frequencies experience large jumps that cannot be encapsulated by a diffusion approximation \citep{neher_shraiman_2011}.
+In addition, the frequency spectrum of neutral alleles is non-monotonic, with a marked uptick near frequency 1--or, equivalently, a depression in intermediate frequency alleles, which are swept out quickly \citep{kosheleva_2013, neher_shraiman_2011}.
 Only a handful of individuals near the ``nose" of the fitness distribution are likely to persist, and they give rise to the bulk of the future population, carrying linked alleles with them.
 The parameter that determines whether drift or draft is more important is the product of the population size $N$ and the standard deviation in fitness $\sigma$ \citep{neher_hallatschek_2013}.
 
@@ -95,8 +95,8 @@ Competition between recombination, which breaks up linkage, and adaptation, whic
 When recombination occurs via crossovers, genomes can be partitioned into effectively asexual ``blocks", whose size depends on the per-site crossover rate and the total fitness variation segregating in the population.
 If each block harbors some portion $\sigma_b$ of the total fitness standard deviation $\sigma$, then the conditions $N\sigma_b \gg 1$ and $N\sigma_b \ll 1$ correspond to draft and drift dominance, respectively \citep{neher_kessinger_2013}.
 
-It is increasingly realized that draft may play a critical role in shaping genetic diversity, especially in many microbes of interest, where population sizes can be large but ``effective population sizes" are many orders of magnitude smaller.
-The possibility that neutral variants are affected more strongly by selection at linked sites than by genetic drift, even in organisms like \emph{Drosophila}, is one possible explanation for the ``paradox of variation", the fact that genetic diversity and population size often do not scale linearly.
+It is increasingly realized that draft may play a critical role in shaping genetic diversity, especially in many microbes of interest, where population sizes can be large but ``effective population sizes" are many orders of magnitude smaller \citep{masel_2011}.
+The possibility that neutral variants are affected more strongly by selection at linked sites than by genetic drift, even in organisms like \emph{Drosophila}, is one possible explanation for the ``paradox of variation", the fact that genetic diversity and population size often do not scale linearly \citep{gillespie_2000, gillespie_2001, neher_kessinger_2013, corbett-detig_2015}.
 Draft likewise has profoundly different effects on the evolution of complex adaptations.
 \citet{neher_shraiman_2011} explored the dynamics of stochastic tunneling in rapidly adapting sexual populations.
 The primary mode of recombination considered therein is ``free" recombination, in which parents essentially shuffle the entirety of their genomes during reproduction.
@@ -150,7 +150,7 @@ We begin by considering the dynamics of $p_{\mathrm{fix}}(x,s)$ before moving on
 We zero in on the ``weak driver" model, in which background mutations are frequent but of weak effect compared to $\sigma$.
 In this case, the background beneficial mutation rate $U_b$ and mean fitness effect $\bar{\epsilon}$ turn out not to matter: what is relevant is the product $D = U_b \bar{\epsilon}^2/2$.
 Taking the limit $U_b \to \infty$ and $\bar{\epsilon} \to 0$ yields the ``infinitesimal" model.
-(note: cite Hallatschek (2013) and \citet{good_2014} showed that the fixation probability in this regime obeys the differential equation 
+\citet{hallatschek_2011} and \citet{good_2014} showed that the fixation probability in this regime obeys the differential equation 
 \begin{equation}
 v\partial_x p(x,s) = x p(x,s) + D\partial_x^2 p(x,s) - \frac{p(x,s)^2}{2},
 \end{equation}
@@ -161,7 +161,7 @@ In order to compute $\Phi$ we must next consider the behavior of mutant lineages
 Since the tunneling probability for a lineage with background fitness $x$ is given by $\phi = \left< 1 - e^{-\mu p_{\mathrm fix} W} \right>$, we do not need to compute the full distribution of $W$ but rather only its Laplace transform: $\mathcal{L}\left[ p(w) \right] = \int_0^\infty e^{-zw} p(w) dw$, with $z = \mu p_{\mathrm {fix}}$.
 \citet{neher_shraiman_2011} showed that $\phi$ follows the equation
 \begin{equation}
-\partial_t \phi = z + (z + x - \sigma^2 t + \delta)\phi^2 - (1 + x - sigma^2 t + \delta)\phi^2,
+\partial_t \phi = z + (z + x - \sigma^2 t + \delta)\phi^2 - (1 + x - \sigma^2 t + \delta)\phi^2,
 \end{equation}
 but their analysis also included a recombination term that made it possible to pull out the integrated Laplace transform $\int_{-\infty}^\infty p(x) \phi(x) dx$ without the need to actually solve this equation or send time to infinity.
 Unfortunately this method is not available to us, and the nose dominance of the bubble size distribution, combined with the $x$ dependence of $z$ (via $z = \mu p_{\mathrm{fix}}(x)$), means that a simple closed form expression for $\Phi$ is not forthcoming.
@@ -350,16 +350,13 @@ When $N\sigma \gg 1$, bubbles almost never reach a large enough size for this co
 \fi
 
 \begin{figure}
-\begin{subfigure}[b]{0.25\textwidth}
-\includegraphics[width=\textwidth]{Figures/tau_valley_-6.pdf}
-\end{subfigure}
-\begin{subfigure}[b]{0.25\textwidth}
-\includegraphics[width=\textwidth]{Figures/tau_valley_-2.pdf}
+\begin{subfigure}[b]{0.43\textwidth}
+\includegraphics[width=\textwidth]{Figures/tau_compare.pdf}
 \end{subfigure}
 \begin{subfigure}[b]{0.4\textwidth}
 \includegraphics[width=\textwidth]{Figures/alpha_ratios.pdf}
 \end{subfigure}
-\caption{(note: combine left two figures so they have only one colorbar--this will be easy) Behavior of valley crossing times for varied $\delta$, $N$, and $\sigma$. In all cases, $s_{\mathrm{sweep}} = 0.01$, $s_{\mathrm{sweep}} = 0.1$, and $\mu = 10^{-5}$. Left two plots: valley crossing times $\tau$ increase with $\delta$ and $\sigma$ but decrease with $N$, as predicted. Right two plots: the ratio $\alpha = \tau_{\mathrm{valley}}/\tau_{\mathrm{sweep}}$ as a function of $\delta$, $N$, and $\sigma$. Deeper valleys in smaller populations are disfavored relative to simple sweeps. But at higher values of $\sigma$, they can be favored ($\alpha < 1$: note the log scaled colorbar). In both plots, $N = 10^5$ is a fairly hard cutoff beyond which tunneling becomes semi-deterministic, as $N\mu > 1$ means that, on average, more than one mutant lineage is seeded every generation.}
+\caption{Behavior of valley crossing times for varied $\delta$, $N$, and $\sigma$. In all cases, $s_{\mathrm{sweep}} = 0.01$, $s_{\mathrm{sweep}} = 0.1$, and $\mu = 10^{-5}$. Left two plots: valley crossing times $\tau$ increase with $\delta$ and $\sigma$ but decrease with $N$, as predicted. Right two plots: the ratio $\alpha = \tau_{\mathrm{valley}}/\tau_{\mathrm{sweep}}$ as a function of $\delta$, $N$, and $\sigma$. Deeper valleys in smaller populations are disfavored relative to simple sweeps. But at higher values of $\sigma$, they can be favored ($\alpha < 1$: note the log scaled colorbar). In both plots, $N = 10^5$ is a fairly hard cutoff beyond which tunneling becomes semi-deterministic, as $N\mu > 1$ means that, on average, more than one mutant lineage is seeded every generation.}
 \label{fig:ratios}
 \end{figure}
 
@@ -377,50 +374,51 @@ For several combinations of parameter values, we find that the ratio $\alpha$ is
 In figure \ref{fig:alpha_ratio}, we consider the behavior of $\alpha(10^{-2})/\alpha(10^{-6})$, a measure of the extent to which rapid adaptation speeds up valley crossing relative to sweeping (lower values indicate that rapid adaptation favors valley crossing).
 Overall, we find that increasing $\sigma$ increases the extent to which valley crossing is favored \emph{except} when $N\mu > 1$.
 In this case, stochastic tunneling ceases to be the dominant mode of valley crossing.
-\citet{weissman_2009} referred to this regime as ``semi-deterministic tunneling": a more or less stable number of intermediate mutant individuals $N\mu/\delta$ persists in the population at low frequencies, which give rise to double mutnats at a low but constant rate.
+\citet{weissman_2009} referred to this regime as ``semi-deterministic tunneling": a more or less stable number of intermediate mutant individuals $N\mu/\delta$ persists in the population at low frequencies, which give rise to double mutants at a low but constant rate.
+At high $\sigma$, the number of intermediate mutants is likely to fluctuate substantially \citep{cvijovic_2017}, but the average behavior is more or less the same.
 This relation more or less obtains in a rapidly adapting population as well, with substantial fluctuations, so $p_{\mathrm{fix}}$ becomes more important in determining the valley crossing rate: since this scales more weakly with $s$ under draft, the overall crossing rate is slowed.
 
 \section*{Discussion}
 
 We have used simulation methods to examine the rate at which rapidly adapting populations cross fitness valleys.
 Though the overall time required is generally higher than in slowly adapting (drifting) populations, there are two important caveats.
-First, the effect of the deleterious intermediate is much smaller.
+First, the effect of the deleterious intermediate is much smaller: for $\delta \lesssim \sigma$, the precise value of $\delta$ almost does not affect the crossing rate.
 Second, the time to the evolution of even \emph{simple} adaptations (i.e., ones requring substitution only at a single locus) is likely to be much longer in rapidly adapting populations.
 This means that the presence of a fitness valley is not as steep of an impediment to the evolution of a complex adaptation for a drafting population as it is for a drifting one.
 This confirms the intuition that traversing a rugged fitness landscape by valley crossing may be favored in rapidly adapting populations.
-These results compare favorably with those of \citet{ochs_2015}, which studied a similar problem (competition between a sweeping beneficial mutant and a valley crossing adaptation) in a slowly evolving population.
-They considered the scenario where a sweeping beneficial mutation \emph{competes} with a particular complex (valley crossing) adaptation, whereas we treat these two scenarios separately, but the trend is the same: in their simulations, the complicating factor is that a partially sweeping beneficial mutation increases the mean fitness, making valley crossing more difficult.
+These results compare favorably with those of \citet{ochs_2015}, which studied a similar problem in a slowly evolving population.
+They considered the scenario where a sweeping beneficial mutation \emph{competes} with a particular complex (valley crossing) adaptation, whereas we treat these two scenarios separately, but the trend is similar: in their model, the complicating factor is that a partially sweeping beneficial mutation increases the mean fitness, making valley crossing more difficult especially for populations of intermediate size.
 
 We have focused exclusively on asexual populations, but extensions to sexual populations are possible.
 The relevant parameter is likely to be the product of $N$ and the proportion of the fitness standard deviation segregating in a small, effectively asexual block, $\sigma_b$ \citep{neher_kessinger_2013}.
 If both $N\sigma$ and $N\sigma_b$ are large, and the focal loci segregate in the same block, then the analysis presented here should determine the crossing time.
-If, on the other hand, $N\sigma$ is large but $N\sigma_b$ is small, or the distance between the focal loci is much larger than the block length $\xi_b$, then recombination between the focal loci is likely to be effectively ``free".
-In that case, the communal recombination analysis of \citet{neher_shraiman_2011} and \citet{neher_shraiman_2010} is likely to be important.
-The rate at which complex adaptations arise and fix will depend sensitively not on the distribution of background mutation effects but on the dynamics of recombination.
+If, on the other hand, $N\sigma$ is large but $N\sigma_b$ is small, or the distance between the focal loci is much larger than the block length $\xi_b$, then recombination between the focal loci can be modeled as ``free", with individuals effectively shuffling their entire genomes every generation.
+In that case, the communal recombination analysis of \citet{neher_shraiman_2011} and \citet{neher_shraiman_2010} is likely to be important: the relationship between $\sigma$ and the recombination rate $\rho$ determines the crossing rate.
+If $\sigma$ is large, then draft dominates the crossing rate: if $\rho$ is large, then drift dominates it.
 
 The dynamics by which rugged fitness landscapes are traversed has received significant attention in the literature in recent years.
 Valley crossing has previously been shown to be favored in small populations, where the effects of selection against intermediates are mitigated, and in large populations, where multiple mutants are much more likely to appear \citep{weissman_2009, ochs_2015}.
-Low amounts of recombination also appear to be helpful \citep{weissman_2010}.
+Low amounts of recombination also appear to be helpful \citep{weissman_2010}: at high values of the recombination rate, double mutant individuals outcross with the wild type, producing more deleterious intermediates and retarding the growth of the double mutant.
 An additional effect that can heighten the rate at which valley crossing occurs is population subdivision \citep{Bitbol:Schwab:2014}: the population size within a subdivision is smaller, meaning that selection against potentially harmful intermediates is relaxed.
 Like population subdivision, genetic draft favors the appearance of complex adaptations by forcing selection to act on entire genotypes, which may be carrying useful but provisionally harmful deleterious intermediate mutations.
 This can be contrasted with effects such as high migration rates and high recombination rates \citep{neher_shraiman_2009}, which force selection to act on individual alleles rather than genotypes.
 
 Two further intuitions can be drawn from this argument.
 First, there is a sort of duality between the evolution of complex adaptations and the evolution of cooperation, which can be seen as a complex behavioral adaptation.
-It is well known that higher migration rates between demes, which cause organisms to be less likely to interact with close kin, disfavor the evolution of cooperation: likewise, when migration rates are low, cooperation can be favored \citep{van_cleve_2015} (cite some other support here).
+In social evolution theory, high migration rates between demes, which cause organisms to be less likely to interact with close kin, disfavor the evolution of cooperation: likewise, when migration rates are low, cooperation can be favored \citep{van_cleve_2015}.
 Evolutionary forces which strengthen existing associations between loci are more likely to lead to such complex phenotypes: evolutionary forces which weaken these associations hinder their evolution.
 This reasoning applies whether the loci in question appear in the same individual (as in the case of sign epistasis) or in different individuals (as in the case of social evolution).
-These effects can even interact: cooperation can function as an additional evolutionary force that favors valley crossing \citep{Obolski:Lewin-Epstein:2017} (cite some additional support, possible reference to evolutionary capacitance--there is some work on army ants that has similar implications).
-The interplay between cooperation and valley crossing is an area that needs further study, as it may shed light on the evolution of cooperation within large microbial populations such as (cite some examples here).
+These effects can even interact: cooperation can function as an additional evolutionary force that favors valley crossing \citep{Obolski:Lewin-Epstein:2017} and can in some cases be a valley crossing adaptation in itself \citep{van_cleve_2013}.
+The interplay between cooperation and valley crossing is an area that needs further study, as it may shed light on the evolution of cooperation within large microbial populations such as yeast \citep{gore_2009, gore_2013} and bacterial biofilms \citep{rainey_2003, van_gestel_2014}.
 
 Second, the relationship between genetic draft and valley crossing has implications for Wright's ``shifting balance theory".
 Population subdivision followed by colonization of a new fitness peak may be an important aspect of the evolutionary process, but it is not obvious \emph{how} important \citep{coyne_barton_turelli_2000}.
 However, populations which experience both subdivision \emph{and} rapid adaptation are ideal candidates in which the shifting balance theory may apply.
-Such populations include HIV, in which host-specific adaptations evolve quickly (cite some support) and in which deleterious mutations are known to hitchhike to high frequency \citep{zanini_2013, zanini_2015}.
+Such populations include HIV, in which host-specific adaptations evolve quickly \citep{zhang_1997, wain_2007, dapp_2017, theys_2018} and in which deleterious mutations are known to hitchhike to high frequency \citep{zanini_2013, zanini_2015}.
 Our work also shines light on the likely pathway through which multi-drug resistance evolves in HIV.
 In recent years of the HIV pandemic, resistance has generally been slower to evolve \citep{feder_2015}, in general because more and stronger drugs are used.
 There are two possible explanations for this.
-One option is that the use of anti-HIV drugs decreases the number of virions segregating within an individual, thus lowering the number of possible chances for a resistant phenotype to appear.
+One is that the use of anti-HIV drugs decreases the number of virions segregating within an individual, thus lowering the number of possible chances for a resistant phenotype to appear.
 The other is that such drugs, especially when used in concert, contort the fitness landscape so that evolution of a phenotype that is resistant to a drug cocktail is more difficult.
 Both factors are likely to play a role.
 However, since HIV is a population in which draft, not drift, is the dominant factor and hence population size is less important in determining the evolutionary dynamics, our work suggests that the second is likely to be more significant compared to other populations.
