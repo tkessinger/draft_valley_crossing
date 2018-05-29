@@ -1,136 +1,204 @@
-\begin{thebibliography}{14}
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{\texttt{#1}}
-\expandafter\ifx\csname urlstyle\endcsname\relax
-  \providecommand{\doi}[1]{doi: #1}\else
-  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+\begin{thebibliography}{39}
 
-\bibitem[Barton(1995)]{barton_1995}
-N~H Barton.
-\newblock Linkage and the limits to natural selection.
-\newblock \emph{Genetics}, 140\penalty0 (2):\penalty0 821--841, 1995.
-\newblock ISSN 0016-6731.
-\newblock URL \url{http://www.genetics.org/content/140/2/821}.
+\bibitem[{Bitbol {\rm and} Schwab}(2014)]{Bitbol:Schwab:2014}
+{Bitbol, A.-F. {\rm and} D.~J. Schwab}, 2014 Quantifying the role of population
+  subdivision in evolution on rugged fitness landscapes. PLoS Comput Biol {\bf
+  10}: e1003778.
 
-\bibitem[Darwin(1859)]{darwin_1859}
-Charles Darwin.
-\newblock \emph{On the origin of species by means of natural selection, or, The
-  preservation of favoured races in the struggle for life /}, volume -1859.
-\newblock London :John Murray,, 1859.
-\newblock URL \url{http://www.biodiversitylibrary.org/item/135954}.
-\newblock http://www.biodiversitylibrary.org/bibliography/68064 --- Freeman,
-  R.B. Charles Darwin (2nd ed.), | 373 --- Garrison-Morton: | 220.
+\bibitem[{Brunet {\em et~al.\/}}(2007){Brunet, Derrida, Mueller, {\rm and}
+  Munier}]{brunet_2007}
+{Brunet, E., B.~Derrida, A.~H. Mueller, {\rm and} S.~Munier}, 2007 Effect of
+  selection on ancestry: An exactly soluble case and its phenomenological
+  generalization. Phys. Rev. E {\bf 76}: 041104.
 
-\bibitem[Good et~al.(2012)Good, Rouzine, Balick, Hallatschek, and
-  Desai]{good_2012}
-Benjamin~H. Good, Igor~M. Rouzine, Daniel~J. Balick, Oskar Hallatschek, and
-  Michael~M. Desai.
-\newblock Distribution of fixed beneficial mutations and the rate of adaptation
-  in asexual populations.
-\newblock \emph{Proceedings of the National Academy of Sciences}, 109\penalty0
-  (13):\penalty0 4950--4955, 2012.
-\newblock ISSN 0027-8424.
-\newblock \doi{10.1073/pnas.1119910109}.
-\newblock URL \url{http://www.pnas.org/content/109/13/4950}.
+\bibitem[{Corbett-Detig {\em et~al.\/}}(2015){Corbett-Detig, Hartl, {\rm and}
+  Sackton}]{corbett-detig_2015}
+{Corbett-Detig, R.~B., D.~L. Hartl, {\rm and} T.~B. Sackton}, 2015 Natural
+  selection constrains neutral diversity across a wide range of species. PLOS
+  Biology {\bf 13}: 1--25.
 
-\bibitem[Iwasa et~al.(2004)Iwasa, Michor, and Nowak]{iwasa_2004}
-Yoh Iwasa, Franziska Michor, and Martin~A. Nowak.
-\newblock Stochastic tunnels in evolutionary dynamics.
-\newblock \emph{Genetics}, 166\penalty0 (3):\penalty0 1571--1579, 2004.
-\newblock ISSN 0016-6731.
-\newblock \doi{10.1534/genetics.166.3.1571}.
-\newblock URL \url{http://www.genetics.org/content/166/3/1571}.
+\bibitem[{Coyne {\em et~al.\/}}(2000){Coyne, Barton, {\rm and}
+  Turelli}]{coyne_barton_turelli_2000}
+{Coyne, J.~A., N.~H. Barton, {\rm and} M.~Turelli}, 2000 Is wright's shifting
+  balance process important in evolution? Evolution {\bf 54}: 306--317.
 
-\bibitem[Muller(1918)]{muller_1918}
-Hermann~J. Muller.
-\newblock Genetic variability, twin hybrids and constant hybrids, in a case of
-  balanced lethal factors.
-\newblock \emph{Genetics}, 3\penalty0 (5):\penalty0 422--499, 1918.
-\newblock ISSN 0016-6731.
-\newblock URL \url{http://www.genetics.org/content/3/5/422}.
+\bibitem[{Cvijovic {\em et~al.\/}}(2017){Cvijovic, Good, {\rm and}
+  Desai}]{cvijovic_2017}
+{Cvijovic, I., B.~H. Good, {\rm and} M.~M. Desai}, 2017 The effect of strong
+  purifying selection on genetic diversity. bioRxiv .
 
-\bibitem[Neher and Shraiman(2011)]{neher_shraiman_2011}
-R.~A. Neher and B.~I. Shraiman.
-\newblock Genetic draft and quasi-neutrality in large facultatively sexual
-  populations.
-\newblock \emph{Genetics}, 188\penalty0 (4):\penalty0 975--996, 2011.
-\newblock ISSN 0016-6731.
-\newblock \doi{10.1534/genetics.111.128876}.
-\newblock URL \url{http://www.genetics.org/content/188/4/975}.
+\bibitem[{Dapp {\em et~al.\/}}(2017){Dapp, Kober, Chen, Westfall, Wong, Zhao,
+  Hall, Deng, Sibley, Ghorai, Kim, Chen, McHugh, Au, Cohen, Anastos, {\rm and}
+  Mullins}]{dapp_2017}
+{Dapp, M.~J., K.~M. Kober, L.~Chen, D.~H. Westfall, K.~Wong, {\em et~al.\/}},
+  2017 Patterns and rates of viral evolution in hiv-1 subtype b infected
+  females and males. PLOS ONE {\bf 12}: 1--30.
 
-\bibitem[Neher et~al.(2010)Neher, Shraiman, and Fisher]{neher_shraiman_2010}
-R.~A. Neher, B.~I. Shraiman, and D.~S. Fisher.
-\newblock Rate of adaptation in large sexual populations.
-\newblock \emph{Genetics}, 184\penalty0 (2):\penalty0 467--481, 2010.
-\newblock ISSN 0016-6731.
-\newblock \doi{10.1534/genetics.109.109009}.
-\newblock URL \url{http://www.genetics.org/content/184/2/467}.
+\bibitem[{Darwin}(1859)]{darwin_1859}
+{Darwin, C.}, 1859 {\em On the Origin of Species by Means of Natural
+  Selection\/}. John Murray, London.
 
-\bibitem[Neher and Hallatschek(2013)]{neher_hallatschek_2013}
-Richard~A. Neher and Oskar Hallatschek.
-\newblock Genealogies of rapidly adapting populations.
-\newblock \emph{Proceedings of the National Academy of Sciences}, 110\penalty0
-  (2):\penalty0 437--442, 2013.
-\newblock \doi{10.1073/pnas.1213113110}.
-\newblock URL \url{http://www.pnas.org/content/110/2/437.abstract}.
+\bibitem[{Feder {\em et~al.\/}}(2015){Feder, Rhee, Shafer, Petrov, {\rm and}
+  Pennings}]{feder_2015}
+{Feder, A.~F., S.-Y. Rhee, R.~W. Shafer, D.~A. Petrov, {\rm and} P.~S.
+  Pennings}, 2015 More efficacious drugs lead to harder selective sweeps in the
+  evolution of drug resistance in hiv-1. bioRxiv .
 
-\bibitem[Neher et~al.(2013)Neher, Kessinger, and
-  Shraiman]{neher_kessinger_2013}
-Richard~A. Neher, Taylor~A. Kessinger, and Boris~I. Shraiman.
-\newblock Coalescence and genetic diversity in sexual populations under
-  selection.
-\newblock \emph{Proceedings of the National Academy of Sciences}, 110\penalty0
-  (39):\penalty0 15836--15841, 2013.
-\newblock \doi{10.1073/pnas.1309697110}.
-\newblock URL \url{http://www.pnas.org/content/110/39/15836.abstract}.
+\bibitem[{Gillespie}(2000)]{gillespie_2000}
+{Gillespie, J.~H.}, 2000 Genetic drift in an infinite population: The
+  pseudohitchhiking model. Genetics {\bf 155}: 909--919.
 
-\bibitem[Ochs and Desai(2015)]{ochs_2015}
-Ian~E. Ochs and Michael~M. Desai.
-\newblock The competition between simple and complex evolutionary trajectories
-  in asexual populations.
-\newblock \emph{BMC Evolutionary Biology}, 15\penalty0 (1):\penalty0 55, Mar
-  2015.
-\newblock ISSN 1471-2148.
-\newblock \doi{10.1186/s12862-015-0334-0}.
-\newblock URL \url{https://doi.org/10.1186/s12862-015-0334-0}.
+\bibitem[{Gillespie}(2001)]{gillespie_2001}
+{Gillespie, J.~H.}, 2001 Is the population size of a species relevant to its
+  evolution? Evolution {\bf 55}: 2161--2169.
 
-\bibitem[Trotter et~al.(2014)Trotter, Weissman, Peterson, Peck, and
-  Masel]{trotter_2014}
-Meredith~V. Trotter, Daniel~B. Weissman, Grant~I. Peterson, Kayla~M. Peck, and
-  Joanna Masel.
-\newblock Cryptic genetic variation can make “irreducible complexity” a
-  common mode of adaptation in sexual populations.
-\newblock \emph{Evolution}, 68\penalty0 (12):\penalty0 3357--3367, 2014.
-\newblock ISSN 1558-5646.
-\newblock \doi{10.1111/evo.12517}.
-\newblock URL \url{http://dx.doi.org/10.1111/evo.12517}.
+\bibitem[{Good {\rm and} Desai}(2014)]{good_2014}
+{Good, B.~H. {\rm and} M.~M. Desai}, 2014 Deleterious passengers in adapting
+  populations. Genetics {\bf 198}: 1183--1208.
 
-\bibitem[Weissman et~al.(2009)Weissman, Desai, Fisher, and
-  Feldman]{weissman_2009}
-Daniel~B. Weissman, Michael~M. Desai, Daniel~S. Fisher, and Marcus~W. Feldman.
-\newblock The rate at which asexual populations cross fitness valleys.
-\newblock \emph{Theoretical Population Biology}, 75\penalty0 (4):\penalty0 286
-  -- 300, 2009.
-\newblock ISSN 0040-5809.
-\newblock \doi{https://doi.org/10.1016/j.tpb.2009.02.006}.
-\newblock URL
-  \url{http://www.sciencedirect.com/science/article/pii/S0040580909000264}.
-\newblock Sam Karlin: Special Issue.
+\bibitem[{Gore {\em et~al.\/}}(2009){Gore, Youk, {\rm and} van
+  Oudenaarden}]{gore_2009}
+{Gore, J., H.~Youk, {\rm and} A.~van Oudenaarden}, 2009 Snowdrift game dynamics
+  and facultative cheating in yeast. Nature {\bf 459}: 253 EP --.
 
-\bibitem[Weissman et~al.(2010)Weissman, Feldman, and Fisher]{weissman_2010}
-Daniel~B. Weissman, Marcus~W. Feldman, and Daniel~S. Fisher.
-\newblock The rate of fitness-valley crossing in sexual populations.
-\newblock \emph{Genetics}, 186\penalty0 (4):\penalty0 1389--1410, 2010.
-\newblock ISSN 0016-6731.
-\newblock \doi{10.1534/genetics.110.123240}.
-\newblock URL \url{http://www.genetics.org/content/186/4/1389}.
+\bibitem[{Hallatschek}(2010)]{hallatschek_2011}
+{Hallatschek, O.}, 2010 The noisy edge of traveling waves. Proceedings of the
+  National Academy of Sciences .
 
-\bibitem[Zanini and Neher(2012)]{zanini_2012}
-Fabio Zanini and Richard~A. Neher.
-\newblock Ffpopsim: an efficient forward simulation package for the evolution
-  of large populations.
-\newblock \emph{Bioinformatics}, 28\penalty0 (24):\penalty0 3332--3333, 2012.
-\newblock \doi{10.1093/bioinformatics/bts633}.
-\newblock URL \url{+ http://dx.doi.org/10.1093/bioinformatics/bts633}.
+\bibitem[{Iwasa {\em et~al.\/}}(2004){Iwasa, Michor, {\rm and}
+  Nowak}]{iwasa_2004}
+{Iwasa, Y., F.~Michor, {\rm and} M.~A. Nowak}, 2004 Stochastic tunnels in
+  evolutionary dynamics. Genetics {\bf 166}: 1571--1579.
+
+\bibitem[{Kosheleva {\rm and} Desai}(2013)]{kosheleva_2013}
+{Kosheleva, K. {\rm and} M.~M. Desai}, 2013 The dynamics of genetic draft in
+  rapidly adapting populations. Genetics {\bf 195}: 1007--1025.
+
+\bibitem[{Masel}(2011)]{masel_2011}
+{Masel, J.}, 2011 Genetic drift. Current Biology {\bf 21}: R837--R838.
+
+\bibitem[{Muller}(1918)]{muller_1918}
+{Muller, H.~J.}, 1918 Genetic variability, twin hybrids and constant hybrids,
+  in a case of balanced lethal factors. Genetics {\bf 3}: 422--499.
+
+\bibitem[{Neher {\rm and} Hallatschek}(2013)]{neher_hallatschek_2013}
+{Neher, R.~A. {\rm and} O.~Hallatschek}, 2013 Genealogies of rapidly adapting
+  populations. Proceedings of the National Academy of Sciences {\bf 110}:
+  437--442.
+
+\bibitem[{Neher {\em et~al.\/}}(2013){Neher, Kessinger, {\rm and}
+  Shraiman}]{neher_kessinger_2013}
+{Neher, R.~A., T.~A. Kessinger, {\rm and} B.~I. Shraiman}, 2013 Coalescence and
+  genetic diversity in sexual populations under selection. Proceedings of the
+  National Academy of Sciences {\bf 110}: 15836--15841.
+
+\bibitem[{Neher {\rm and} Shraiman}(2009)]{neher_shraiman_2009}
+{Neher, R.~A. {\rm and} B.~I. Shraiman}, 2009 Competition between recombination
+  and epistasis can cause a transition from allele to genotype selection.
+  Proceedings of the National Academy of Sciences {\bf 106}: 6866--6871.
+
+\bibitem[{Neher {\rm and} Shraiman}(2011)]{neher_shraiman_2011}
+{Neher, R.~A. {\rm and} B.~I. Shraiman}, 2011 Genetic draft and
+  quasi-neutrality in large facultatively sexual populations. Genetics {\bf
+  188}: 975--996.
+
+\bibitem[{Neher {\em et~al.\/}}(2010){Neher, Shraiman, {\rm and}
+  Fisher}]{neher_shraiman_2010}
+{Neher, R.~A., B.~I. Shraiman, {\rm and} D.~S. Fisher}, 2010 Rate of adaptation
+  in large sexual populations. Genetics {\bf 184}: 467--481.
+
+\bibitem[{Obolski {\em et~al.\/}}(2017){Obolski, Lewin-Epstein, Even-Tov, Ram,
+  {\rm and} Hadany}]{Obolski:Lewin-Epstein:2017}
+{Obolski, U., O.~Lewin-Epstein, E.~Even-Tov, Y.~Ram, {\rm and} L.~Hadany}, 2017
+  With a little help from my friends: cooperation can accelerate the rate of
+  adaptive valley crossing. BMC Evol Biol {\bf 17}: 143.
+
+\bibitem[{Ochs {\rm and} Desai}(2015)]{ochs_2015}
+{Ochs, I.~E. {\rm and} M.~M. Desai}, 2015 The competition between simple and
+  complex evolutionary trajectories in asexual populations. BMC Evolutionary
+  Biology {\bf 15}: 55.
+
+\bibitem[{Rainey {\rm and} Rainey}(2003)]{rainey_2003}
+{Rainey, P.~B. {\rm and} K.~Rainey}, 2003 Evolution of cooperation and conflict
+  in experimental bacterial populations. Nature {\bf 425}: 72 EP --.
+
+\bibitem[{Sanchez {\rm and} Gore}(2013)]{gore_2013}
+{Sanchez, A. {\rm and} J.~Gore}, 2013 Feedback between population and
+  evolutionary dynamics determines the fate of social microbial populations.
+  PLOS Biology {\bf 11}: 1--9.
+
+\bibitem[{Schweinsberg}(2017)]{schweinsberg_2017}
+{Schweinsberg, J.}, 2017 Rigorous results for a population model with selection
+  ii: genealogy of the population. Electron. J. Probab. {\bf 22}: 54 pp.
+
+\bibitem[{Theys {\em et~al.\/}}(2018){Theys, Libin, Pineda-Peña, Nowé,
+  Vandamme, {\rm and} Abecasis}]{theys_2018}
+{Theys, K., P.~Libin, A.-C. Pineda-Peña, A.~Nowé, A.-M. Vandamme, {\em
+  et~al.\/}}, 2018 The impact of hiv-1 within-host evolution on transmission
+  dynamics. Current Opinion in Virology {\bf 28}: 92 -- 101, Emerging viruses:
+  intraspecies transmission • Viral Immunology.
+
+\bibitem[{Trotter {\em et~al.\/}}(2014){Trotter, Weissman, Peterson, Peck, {\rm
+  and} Masel}]{trotter_2014}
+{Trotter, M.~V., D.~B. Weissman, G.~I. Peterson, K.~M. Peck, {\rm and}
+  J.~Masel}, 2014 Cryptic genetic variation can make “irreducible
+  complexity” a common mode of adaptation in sexual populations. Evolution
+  {\bf 68}: 3357--3367.
+
+\bibitem[{{Van Cleve}}(2015)]{van_cleve_2015}
+{{Van Cleve}, J.}, 2015 Social evolution and genetic interactions in the short
+  and long term. Theoretical Population Biology {\bf 103}: 2 -- 26.
+
+\bibitem[{{Van Cleve} {\rm and} Lehmann}(2013)]{van_cleve_2013}
+{{Van Cleve}, J. {\rm and} L.~Lehmann}, 2013 Stochastic stability and the
+  evolution of coordination in spatially structured populations. Theoretical
+  Population Biology {\bf 89}: 75 -- 87.
+
+\bibitem[{van Gestel {\em et~al.\/}}(2014){van Gestel, Weissing, Kuipers, {\rm
+  and} Kovács}]{van_gestel_2014}
+{van Gestel, J., F.~J. Weissing, O.~P. Kuipers, {\rm and} �.~T. Kovács}, 2014
+  Density of founder cells affects spatial pattern formation and cooperation in
+  bacillus subtilis biofilms. The Isme Journal {\bf 8}: 2069 EP --, Original
+  Article.
+
+\bibitem[{Wain {\em et~al.\/}}(2007){Wain, Bailes, Bibollet-Ruche, Decker,
+  Keele, Van~Heuverswyn, Li, Takehisa, Ngole, Shaw, Peeters, Hahn, {\rm and}
+  Sharp}]{wain_2007}
+{Wain, L.~V., E.~Bailes, F.~Bibollet-Ruche, J.~M. Decker, B.~F. Keele, {\em
+  et~al.\/}}, 2007 Adaptation of hiv-1 to its human host. Molecular Biology and
+  Evolution {\bf 24}: 1853--1860.
+
+\bibitem[{Weissman {\em et~al.\/}}(2009){Weissman, Desai, Fisher, {\rm and}
+  Feldman}]{weissman_2009}
+{Weissman, D.~B., M.~M. Desai, D.~S. Fisher, {\rm and} M.~W. Feldman}, 2009 The
+  rate at which asexual populations cross fitness valleys. Theoretical
+  Population Biology {\bf 75}: 286 -- 300, Sam Karlin: Special Issue.
+
+\bibitem[{Weissman {\em et~al.\/}}(2010){Weissman, Feldman, {\rm and}
+  Fisher}]{weissman_2010}
+{Weissman, D.~B., M.~W. Feldman, {\rm and} D.~S. Fisher}, 2010 The rate of
+  fitness-valley crossing in sexual populations. Genetics {\bf 186}:
+  1389--1410.
+
+\bibitem[{Zanini {\em et~al.\/}}(2015){Zanini, Brodin, Thebo, Lanz, Bratt,
+  Albert, {\rm and} Neher}]{zanini_2015}
+{Zanini, F., J.~Brodin, L.~Thebo, C.~Lanz, G.~Bratt, {\em et~al.\/}}, 2015
+  Population genomics of intrapatient hiv-1 evolution. eLife {\bf 4}: e11282.
+
+\bibitem[{Zanini {\rm and} Neher}(2012)]{zanini_2012}
+{Zanini, F. {\rm and} R.~A. Neher}, 2012 Ffpopsim: an efficient forward
+  simulation package for the evolution of large populations. Bioinformatics
+  {\bf 28}: 3332--3333.
+
+\bibitem[{Zanini {\rm and} Neher}(2013)]{zanini_2013}
+{Zanini, F. {\rm and} R.~A. Neher}, 2013 Quantifying selection against
+  synonymous mutations in hiv-1 env evolution. Journal of Virology {\bf 87}:
+  11843--11850.
+
+\bibitem[{Zhang {\em et~al.\/}}(1997){Zhang, Diaz, Ho, Mosley, Busch, {\rm and}
+  Mayer}]{zhang_1997}
+{Zhang, L., R.~S. Diaz, D.~D. Ho, J.~W. Mosley, M.~P. Busch, {\em et~al.\/}},
+  1997 Host-specific driving force in human immunodeficiency virus type 1
+  evolution in vivo. Journal of Virology {\bf 71}: 2555--61.
 
 \end{thebibliography}
