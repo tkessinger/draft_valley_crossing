@@ -1,4 +1,10 @@
-\begin{thebibliography}{39}
+\begin{thebibliography}{47}
+
+\bibitem[{Aguilar-Rodríguez {\em et~al.\/}}(2017){Aguilar-Rodríguez, Payne,
+  {\rm and} Wagner}]{Aguilar-Rodriguez:Payne:2017}
+{Aguilar-Rodríguez, J., J.~L. Payne, {\rm and} A.~Wagner}, 2017 A thousand
+  empirical adaptive landscapes and their navigability. Nat Ecol Evol {\bf 1}:
+  0045.
 
 \bibitem[{Bitbol {\rm and} Schwab}(2014)]{Bitbol:Schwab:2014}
 {Bitbol, A.-F. {\rm and} D.~J. Schwab}, 2014 Quantifying the role of population
@@ -38,11 +44,34 @@
 {Darwin, C.}, 1859 {\em On the Origin of Species by Means of Natural
   Selection\/}. John Murray, London.
 
+\bibitem[{de~Visser {\rm and} Krug}(2014)]{Visser:Krug:2014}
+{de~Visser, J. A. G.~M. {\rm and} J.~Krug}, 2014 Empirical fitness landscapes
+  and the predictability of evolution. Nat Rev Genet {\bf 15}: 480--490.
+
+\bibitem[{Dercole {\rm and} Rinaldi}(2008)]{Dercole:Rinaldi:2008}
+{Dercole, F. {\rm and} S.~Rinaldi}, 2008 {\em Analysis of evolutionary
+  processes: the adaptive dynamics approach and its applications\/}. Princeton
+  University Press, Princeton, N.J.
+
 \bibitem[{Feder {\em et~al.\/}}(2015){Feder, Rhee, Shafer, Petrov, {\rm and}
   Pennings}]{feder_2015}
 {Feder, A.~F., S.-Y. Rhee, R.~W. Shafer, D.~A. Petrov, {\rm and} P.~S.
   Pennings}, 2015 More efficacious drugs lead to harder selective sweeps in the
   evolution of drug resistance in hiv-1. bioRxiv .
+
+\bibitem[{Geritz {\em et~al.\/}}(1998){Geritz, Kisdi, Meszena, {\rm and}
+  Metz}]{Geritz:Kisdi:1998}
+{Geritz, S. A.~H., {\'E}.~Kisdi, G.~Meszena, {\rm and} J.~A.~J. Metz}, 1998
+  Evolutionarily singular strategies and the adaptive growth and branching of
+  the evolutionary tree. Evol Ecol {\bf 12}: 35 -- 57.
+
+\bibitem[{Gillespie}(1983)]{Gillespie:1983}
+{Gillespie, J.~H.}, 1983 A simple stochastic gene substitution model. Theor
+  Popul Biol {\bf 23}: 202--215.
+
+\bibitem[{Gillespie}(1991)]{Gillespie:1991}
+{Gillespie, J.~H.}, 1991 {\em The causes of molecular evolution\/}. Oxford
+  University Press, New York.
 
 \bibitem[{Gillespie}(2000)]{gillespie_2000}
 {Gillespie, J.~H.}, 2000 Genetic drift in an infinite population: The
@@ -77,10 +106,6 @@
 \bibitem[{Masel}(2011)]{masel_2011}
 {Masel, J.}, 2011 Genetic drift. Current Biology {\bf 21}: R837--R838.
 
-\bibitem[{Muller}(1918)]{muller_1918}
-{Muller, H.~J.}, 1918 Genetic variability, twin hybrids and constant hybrids,
-  in a case of balanced lethal factors. Genetics {\bf 3}: 422--499.
-
 \bibitem[{Neher {\rm and} Hallatschek}(2013)]{neher_hallatschek_2013}
 {Neher, R.~A. {\rm and} O.~Hallatschek}, 2013 Genealogies of rapidly adapting
   populations. Proceedings of the National Academy of Sciences {\bf 110}:
@@ -113,10 +138,19 @@
   With a little help from my friends: cooperation can accelerate the rate of
   adaptive valley crossing. BMC Evol Biol {\bf 17}: 143.
 
+\bibitem[{Obolski {\em et~al.\/}}(2018){Obolski, Ram, {\rm and}
+  Hadany}]{Obolski:Ram:2018}
+{Obolski, U., Y.~Ram, {\rm and} L.~Hadany}, 2018 Key issues review: evolution
+  on rugged adaptive landscapes. Rep Progr Phys {\bf 81}: 012602.
+
 \bibitem[{Ochs {\rm and} Desai}(2015)]{ochs_2015}
 {Ochs, I.~E. {\rm and} M.~M. Desai}, 2015 The competition between simple and
   complex evolutionary trajectories in asexual populations. BMC Evolutionary
   Biology {\bf 15}: 55.
+
+\bibitem[{Orr}(1998)]{Orr:1998}
+{Orr, H.~A.}, 1998 The population genetics of adaptation: The distribution of
+  factors fixed during adaptive evolution. Evolution {\bf 52}: 935--949.
 
 \bibitem[{Rainey {\rm and} Rainey}(2003)]{rainey_2003}
 {Rainey, P.~B. {\rm and} K.~Rainey}, 2003 Evolution of cooperation and conflict
@@ -131,10 +165,16 @@
 {Schweinsberg, J.}, 2017 Rigorous results for a population model with selection
   ii: genealogy of the population. Electron. J. Probab. {\bf 22}: 54 pp.
 
+\bibitem[{Szendro {\em et~al.\/}}(2013){Szendro, Schenk, Franke, Krug, {\rm
+  and} Visser}]{Szendro:Schenk:2013}
+{Szendro, I.~G., M.~F. Schenk, J.~Franke, J.~Krug, {\rm and} J.~A. G. M.~d.
+  Visser}, 2013 Quantitative analyses of empirical fitness landscapes. J Stat
+  Mech Theory Exp {\bf 2013}: P01005.
+
 \bibitem[{Theys {\em et~al.\/}}(2018){Theys, Libin, Pineda-Peña, Nowé,
   Vandamme, {\rm and} Abecasis}]{theys_2018}
 {Theys, K., P.~Libin, A.-C. Pineda-Peña, A.~Nowé, A.-M. Vandamme, {\em
-  et~al.\/}}, 2018 The impact of hiv-1 within-host evolution on transmission
+  et~al.\/}}, 2018 The impact of {HIV-1} within-host evolution on transmission
   dynamics. Current Opinion in Virology {\bf 28}: 92 -- 101, Emerging viruses:
   intraspecies transmission • Viral Immunology.
 
@@ -156,10 +196,9 @@
 
 \bibitem[{van Gestel {\em et~al.\/}}(2014){van Gestel, Weissing, Kuipers, {\rm
   and} Kovács}]{van_gestel_2014}
-{van Gestel, J., F.~J. Weissing, O.~P. Kuipers, {\rm and} �.~T. Kovács}, 2014
-  Density of founder cells affects spatial pattern formation and cooperation in
-  bacillus subtilis biofilms. The Isme Journal {\bf 8}: 2069 EP --, Original
-  Article.
+{van Gestel, J., F.~J. Weissing, O.~P. Kuipers, {\rm and} {\'A}.~T. Kovács},
+  2014 Density of founder cells affects spatial pattern formation and
+  cooperation in bacillus subtilis biofilms. ISME J {\bf 8}: 2069--2079.
 
 \bibitem[{Wain {\em et~al.\/}}(2007){Wain, Bailes, Bibollet-Ruche, Decker,
   Keele, Van~Heuverswyn, Li, Takehisa, Ngole, Shaw, Peeters, Hahn, {\rm and}

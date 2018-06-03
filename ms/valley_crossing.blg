@@ -3,44 +3,44 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: valley_crossing.aux
 The style file: genetics.bst
 Database file #1: bib.bib
-You've used 39 entries,
+You've used 47 entries,
             2762 wiz_defined-function locations,
-            853 strings with 11591 characters,
-and the built_in function-call counts, 21543 in all, are:
-= -- 1932
-> -- 1326
-< -- 20
-+ -- 504
-- -- 377
-* -- 2315
-:= -- 3631
-add.period$ -- 78
-call.type$ -- 39
-change.case$ -- 326
-chr.to.int$ -- 39
-cite$ -- 39
-duplicate$ -- 909
-empty$ -- 1400
-format.name$ -- 440
-if$ -- 4217
+            909 strings with 12949 characters,
+and the built_in function-call counts, 25566 in all, are:
+= -- 2290
+> -- 1556
+< -- 24
++ -- 596
+- -- 440
+* -- 2741
+:= -- 4308
+add.period$ -- 94
+call.type$ -- 47
+change.case$ -- 385
+chr.to.int$ -- 47
+cite$ -- 47
+duplicate$ -- 1095
+empty$ -- 1675
+format.name$ -- 515
+if$ -- 4998
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 40
-newline$ -- 120
-num.names$ -- 156
-pop$ -- 269
+missing$ -- 50
+newline$ -- 144
+num.names$ -- 188
+pop$ -- 328
 preamble$ -- 1
-purify$ -- 288
+purify$ -- 341
 quote$ -- 0
-skip$ -- 555
+skip$ -- 660
 stack$ -- 0
-substring$ -- 1262
-swap$ -- 315
+substring$ -- 1485
+swap$ -- 379
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 348
+type$ -- 414
 warning$ -- 0
-while$ -- 164
+while$ -- 198
 width$ -- 0
-write$ -- 431
+write$ -- 518
