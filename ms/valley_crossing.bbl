@@ -1,243 +1,487 @@
-\begin{thebibliography}{47}
+\begin{thebibliography}{52}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname bibnamefont\endcsname\relax
+  \def\bibnamefont#1{#1}\fi
+\expandafter\ifx\csname bibfnamefont\endcsname\relax
+  \def\bibfnamefont#1{#1}\fi
+\expandafter\ifx\csname citenamefont\endcsname\relax
+  \def\citenamefont#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\eprint}[2][]{\url{#2}}
 
-\bibitem[{Aguilar-Rodríguez {\em et~al.\/}}(2017){Aguilar-Rodríguez, Payne,
-  {\rm and} Wagner}]{Aguilar-Rodriguez:Payne:2017}
-{Aguilar-Rodríguez, J., J.~L. Payne, {\rm and} A.~Wagner}, 2017 A thousand
-  empirical adaptive landscapes and their navigability. Nat Ecol Evol {\bf 1}:
-  0045.
+\bibitem[{\citenamefont{Aguilar-Rodríguez}
+  \emph{et~al.}(2017)\citenamefont{Aguilar-Rodríguez, Payne, and
+  Wagner}}]{Aguilar-Rodriguez:Payne:2017}
+\bibinfo{author}{\bibnamefont{Aguilar-Rodríguez}, \bibfnamefont{J.}},
+  \bibinfo{author}{\bibfnamefont{J.~L.} \bibnamefont{Payne}}, and
+  \bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Wagner}},
+  \bibinfo{year}{2017}, \bibinfo{journal}{Nat Ecol Evol}
+  \textbf{\bibinfo{volume}{1}}, \bibinfo{pages}{0045}, ISSN
+  \bibinfo{issn}{2397-334X},
+  \urlprefix\url{http://www.nature.com/articles/s41559-016-0045}.
 
-\bibitem[{Bitbol {\rm and} Schwab}(2014)]{Bitbol:Schwab:2014}
-{Bitbol, A.-F. {\rm and} D.~J. Schwab}, 2014 Quantifying the role of population
-  subdivision in evolution on rugged fitness landscapes. PLoS Comput Biol {\bf
-  10}: e1003778.
+\bibitem[{\citenamefont{Bitbol and Schwab}(2014)}]{Bitbol:Schwab:2014}
+\bibinfo{author}{\bibnamefont{Bitbol}, \bibfnamefont{A.-F.}}, and
+  \bibinfo{author}{\bibfnamefont{D.~J.} \bibnamefont{Schwab}},
+  \bibinfo{year}{2014}, \bibinfo{journal}{PLoS Comput Biol}
+  \textbf{\bibinfo{volume}{10}}(\bibinfo{number}{8}),
+  \bibinfo{pages}{e1003778},
+  \urlprefix\url{http://dx.doi.org/10.1371/journal.pcbi.1003778}.
 
-\bibitem[{Brunet {\em et~al.\/}}(2007){Brunet, Derrida, Mueller, {\rm and}
-  Munier}]{brunet_2007}
-{Brunet, E., B.~Derrida, A.~H. Mueller, {\rm and} S.~Munier}, 2007 Effect of
-  selection on ancestry: An exactly soluble case and its phenomenological
-  generalization. Phys. Rev. E {\bf 76}: 041104.
+\bibitem[{\citenamefont{Brunet} \emph{et~al.}(2007)\citenamefont{Brunet,
+  Derrida, Mueller, and Munier}}]{brunet_2007}
+\bibinfo{author}{\bibnamefont{Brunet}, \bibfnamefont{E.}},
+  \bibinfo{author}{\bibfnamefont{B.}~\bibnamefont{Derrida}},
+  \bibinfo{author}{\bibfnamefont{A.~H.} \bibnamefont{Mueller}}, and
+  \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Munier}},
+  \bibinfo{year}{2007}, \bibinfo{journal}{Phys. Rev. E}
+  \textbf{\bibinfo{volume}{76}}, \bibinfo{pages}{041104},
+  \urlprefix\url{https://link.aps.org/doi/10.1103/PhysRevE.76.041104}.
 
-\bibitem[{Corbett-Detig {\em et~al.\/}}(2015){Corbett-Detig, Hartl, {\rm and}
-  Sackton}]{corbett-detig_2015}
-{Corbett-Detig, R.~B., D.~L. Hartl, {\rm and} T.~B. Sackton}, 2015 Natural
-  selection constrains neutral diversity across a wide range of species. PLOS
-  Biology {\bf 13}: 1--25.
+\bibitem[{\citenamefont{Corbett-Detig}
+  \emph{et~al.}(2015)\citenamefont{Corbett-Detig, Hartl, and
+  Sackton}}]{corbett-detig_2015}
+\bibinfo{author}{\bibnamefont{Corbett-Detig}, \bibfnamefont{R.~B.}},
+  \bibinfo{author}{\bibfnamefont{D.~L.} \bibnamefont{Hartl}}, and
+  \bibinfo{author}{\bibfnamefont{T.~B.} \bibnamefont{Sackton}},
+  \bibinfo{year}{2015}, \bibinfo{journal}{PLOS Biology}
+  \textbf{\bibinfo{volume}{13}}(\bibinfo{number}{4}), \bibinfo{pages}{1},
+  \urlprefix\url{https://doi.org/10.1371/journal.pbio.1002112}.
 
-\bibitem[{Coyne {\em et~al.\/}}(2000){Coyne, Barton, {\rm and}
-  Turelli}]{coyne_barton_turelli_2000}
-{Coyne, J.~A., N.~H. Barton, {\rm and} M.~Turelli}, 2000 Is wright's shifting
-  balance process important in evolution? Evolution {\bf 54}: 306--317.
+\bibitem[{\citenamefont{Coyne} \emph{et~al.}(2000)\citenamefont{Coyne, Barton,
+  and Turelli}}]{coyne_barton_turelli_2000}
+\bibinfo{author}{\bibnamefont{Coyne}, \bibfnamefont{J.~A.}},
+  \bibinfo{author}{\bibfnamefont{N.~H.} \bibnamefont{Barton}}, and
+  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Turelli}},
+  \bibinfo{year}{2000}, \bibinfo{journal}{Evolution}
+  \textbf{\bibinfo{volume}{54}}(\bibinfo{number}{1}), \bibinfo{pages}{306},
+  ISSN \bibinfo{issn}{1558-5646},
+  \urlprefix\url{http://dx.doi.org/10.1111/j.0014-3820.2000.tb00033.x}.
 
-\bibitem[{Cvijovic {\em et~al.\/}}(2017){Cvijovic, Good, {\rm and}
-  Desai}]{cvijovic_2017}
-{Cvijovic, I., B.~H. Good, {\rm and} M.~M. Desai}, 2017 The effect of strong
-  purifying selection on genetic diversity. bioRxiv .
+\bibitem[{\citenamefont{Cvijovic} \emph{et~al.}(2017)\citenamefont{Cvijovic,
+  Good, and Desai}}]{cvijovic_2017}
+\bibinfo{author}{\bibnamefont{Cvijovic}, \bibfnamefont{I.}},
+  \bibinfo{author}{\bibfnamefont{B.~H.} \bibnamefont{Good}}, and
+  \bibinfo{author}{\bibfnamefont{M.~M.} \bibnamefont{Desai}},
+  \bibinfo{year}{2017}, \bibinfo{journal}{bioRxiv}
+  \eprint{https://www.biorxiv.org/content/early/2017/10/30/211557.full.pdf},
+  \urlprefix\url{https://www.biorxiv.org/content/early/2017/10/30/211557}.
 
-\bibitem[{Dapp {\em et~al.\/}}(2017){Dapp, Kober, Chen, Westfall, Wong, Zhao,
-  Hall, Deng, Sibley, Ghorai, Kim, Chen, McHugh, Au, Cohen, Anastos, {\rm and}
-  Mullins}]{dapp_2017}
-{Dapp, M.~J., K.~M. Kober, L.~Chen, D.~H. Westfall, K.~Wong, {\em et~al.\/}},
-  2017 Patterns and rates of viral evolution in hiv-1 subtype b infected
-  females and males. PLOS ONE {\bf 12}: 1--30.
+\bibitem[{\citenamefont{Dapp} \emph{et~al.}(2017)\citenamefont{Dapp, Kober,
+  Chen, Westfall, Wong, Zhao, Hall, Deng, Sibley, Ghorai, Kim, Chen}
+  \emph{et~al.}}]{dapp_2017}
+\bibinfo{author}{\bibnamefont{Dapp}, \bibfnamefont{M.~J.}},
+  \bibinfo{author}{\bibfnamefont{K.~M.} \bibnamefont{Kober}},
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Chen}},
+  \bibinfo{author}{\bibfnamefont{D.~H.} \bibnamefont{Westfall}},
+  \bibinfo{author}{\bibfnamefont{K.}~\bibnamefont{Wong}},
+  \bibinfo{author}{\bibfnamefont{H.}~\bibnamefont{Zhao}},
+  \bibinfo{author}{\bibfnamefont{B.~M.} \bibnamefont{Hall}},
+  \bibinfo{author}{\bibfnamefont{W.}~\bibnamefont{Deng}},
+  \bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Sibley}},
+  \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Ghorai}},
+  \bibinfo{author}{\bibfnamefont{K.}~\bibnamefont{Kim}},
+  \bibinfo{author}{\bibfnamefont{N.}~\bibnamefont{Chen}}, \emph{et~al.},
+  \bibinfo{year}{2017}, \bibinfo{journal}{PLOS ONE}
+  \textbf{\bibinfo{volume}{12}}(\bibinfo{number}{10}), \bibinfo{pages}{1},
+  \urlprefix\url{https://doi.org/10.1371/journal.pone.0182443}.
 
-\bibitem[{Darwin}(1859)]{darwin_1859}
-{Darwin, C.}, 1859 {\em On the Origin of Species by Means of Natural
-  Selection\/}. John Murray, London.
+\bibitem[{\citenamefont{Darwin}(1859)}]{darwin_1859}
+\bibinfo{author}{\bibnamefont{Darwin}, \bibfnamefont{C.}},
+  \bibinfo{year}{1859}, \emph{\bibinfo{title}{On the Origin of Species by Means
+  of Natural Selection}} (\bibinfo{publisher}{John Murray},
+  \bibinfo{address}{London}).
 
-\bibitem[{de~Visser {\rm and} Krug}(2014)]{Visser:Krug:2014}
-{de~Visser, J. A. G.~M. {\rm and} J.~Krug}, 2014 Empirical fitness landscapes
-  and the predictability of evolution. Nat Rev Genet {\bf 15}: 480--490.
+\bibitem[{\citenamefont{Dercole and Rinaldi}(2008)}]{Dercole:Rinaldi:2008}
+\bibinfo{author}{\bibnamefont{Dercole}, \bibfnamefont{F.}}, and
+  \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Rinaldi}},
+  \bibinfo{year}{2008}, \emph{\bibinfo{title}{Analysis of evolutionary
+  processes: the adaptive dynamics approach and its applications}}
+  (\bibinfo{publisher}{Princeton University Press},
+  \bibinfo{address}{Princeton, N.J.}), ISBN \bibinfo{isbn}{9780691120065}.
 
-\bibitem[{Dercole {\rm and} Rinaldi}(2008)]{Dercole:Rinaldi:2008}
-{Dercole, F. {\rm and} S.~Rinaldi}, 2008 {\em Analysis of evolutionary
-  processes: the adaptive dynamics approach and its applications\/}. Princeton
-  University Press, Princeton, N.J.
+\bibitem[{\citenamefont{Feder} \emph{et~al.}(2015)\citenamefont{Feder, Rhee,
+  Shafer, Petrov, and Pennings}}]{feder_2015}
+\bibinfo{author}{\bibnamefont{Feder}, \bibfnamefont{A.~F.}},
+  \bibinfo{author}{\bibfnamefont{S.-Y.} \bibnamefont{Rhee}},
+  \bibinfo{author}{\bibfnamefont{R.~W.} \bibnamefont{Shafer}},
+  \bibinfo{author}{\bibfnamefont{D.~A.} \bibnamefont{Petrov}}, and
+  \bibinfo{author}{\bibfnamefont{P.~S.} \bibnamefont{Pennings}},
+  \bibinfo{year}{2015}, \bibinfo{journal}{bioRxiv}
+  \eprint{https://www.biorxiv.org/content/early/2015/08/07/024109.full.pdf},
+  \urlprefix\url{https://www.biorxiv.org/content/early/2015/08/07/024109}.
 
-\bibitem[{Feder {\em et~al.\/}}(2015){Feder, Rhee, Shafer, Petrov, {\rm and}
-  Pennings}]{feder_2015}
-{Feder, A.~F., S.-Y. Rhee, R.~W. Shafer, D.~A. Petrov, {\rm and} P.~S.
-  Pennings}, 2015 More efficacious drugs lead to harder selective sweeps in the
-  evolution of drug resistance in hiv-1. bioRxiv .
+\bibitem[{\citenamefont{Fisher}(1930)}]{Fisher:1930}
+\bibinfo{author}{\bibnamefont{Fisher}, \bibfnamefont{R.~A.}},
+  \bibinfo{year}{1930}, \emph{\bibinfo{title}{The Genetical Theory of Natural
+  Selection}} (\bibinfo{publisher}{The Clarendon Press},
+  \bibinfo{address}{Oxford}).
 
-\bibitem[{Geritz {\em et~al.\/}}(1998){Geritz, Kisdi, Meszena, {\rm and}
-  Metz}]{Geritz:Kisdi:1998}
-{Geritz, S. A.~H., {\'E}.~Kisdi, G.~Meszena, {\rm and} J.~A.~J. Metz}, 1998
-  Evolutionarily singular strategies and the adaptive growth and branching of
-  the evolutionary tree. Evol Ecol {\bf 12}: 35 -- 57.
+\bibitem[{\citenamefont{Geritz} \emph{et~al.}(1998)\citenamefont{Geritz, Kisdi,
+  Meszena, and Metz}}]{Geritz:Kisdi:1998}
+\bibinfo{author}{\bibnamefont{Geritz}, \bibfnamefont{S.~A.~H.}},
+  \bibinfo{author}{\bibfnamefont{{\'E}.}~\bibnamefont{Kisdi}},
+  \bibinfo{author}{\bibfnamefont{G.}~\bibnamefont{Meszena}}, and
+  \bibinfo{author}{\bibfnamefont{J.~A.~J.} \bibnamefont{Metz}},
+  \bibinfo{year}{1998}, \bibinfo{journal}{Evol Ecol}
+  \textbf{\bibinfo{volume}{12}}(\bibinfo{number}{1}), \bibinfo{pages}{35 }.
 
-\bibitem[{Gillespie}(1983)]{Gillespie:1983}
-{Gillespie, J.~H.}, 1983 A simple stochastic gene substitution model. Theor
-  Popul Biol {\bf 23}: 202--215.
+\bibitem[{\citenamefont{van Gestel} \emph{et~al.}(2014)\citenamefont{van
+  Gestel, Weissing, Kuipers, and Kovács}}]{van_gestel_2014}
+\bibinfo{author}{\bibnamefont{van Gestel}, \bibfnamefont{J.}},
+  \bibinfo{author}{\bibfnamefont{F.~J.} \bibnamefont{Weissing}},
+  \bibinfo{author}{\bibfnamefont{O.~P.} \bibnamefont{Kuipers}}, and
+  \bibinfo{author}{\bibfnamefont{{\'A}.~T.} \bibnamefont{Kovács}},
+  \bibinfo{year}{2014}, \bibinfo{journal}{ISME J}
+  \textbf{\bibinfo{volume}{8}}(\bibinfo{number}{10}), \bibinfo{pages}{2069},
+  ISSN \bibinfo{issn}{1751-7362},
+  \urlprefix\url{http://www.nature.com/ismej/journal/v8/n10/full/ismej201452a.html}.
 
-\bibitem[{Gillespie}(1991)]{Gillespie:1991}
-{Gillespie, J.~H.}, 1991 {\em The causes of molecular evolution\/}. Oxford
-  University Press, New York.
+\bibitem[{\citenamefont{Gillespie}(1983)}]{Gillespie:1983}
+\bibinfo{author}{\bibnamefont{Gillespie}, \bibfnamefont{J.~H.}},
+  \bibinfo{year}{1983}, \bibinfo{journal}{Theor Popul Biol}
+  \textbf{\bibinfo{volume}{23}}(\bibinfo{number}{2}), \bibinfo{pages}{202},
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/004058098390014X}.
 
-\bibitem[{Gillespie}(2000)]{gillespie_2000}
-{Gillespie, J.~H.}, 2000 Genetic drift in an infinite population: The
-  pseudohitchhiking model. Genetics {\bf 155}: 909--919.
+\bibitem[{\citenamefont{Gillespie}(1991)}]{Gillespie:1991}
+\bibinfo{author}{\bibnamefont{Gillespie}, \bibfnamefont{J.~H.}},
+  \bibinfo{year}{1991}, \emph{\bibinfo{title}{The causes of molecular
+  evolution}} (\bibinfo{publisher}{Oxford University Press},
+  \bibinfo{address}{New York}), ISBN \bibinfo{isbn}{0195068831 (acid-free
+  paper)}.
 
-\bibitem[{Gillespie}(2001)]{gillespie_2001}
-{Gillespie, J.~H.}, 2001 Is the population size of a species relevant to its
-  evolution? Evolution {\bf 55}: 2161--2169.
+\bibitem[{\citenamefont{Gillespie}(2000)}]{gillespie_2000}
+\bibinfo{author}{\bibnamefont{Gillespie}, \bibfnamefont{J.~H.}},
+  \bibinfo{year}{2000}, \bibinfo{journal}{Genetics}
+  \textbf{\bibinfo{volume}{155}}(\bibinfo{number}{2}), \bibinfo{pages}{909},
+  ISSN \bibinfo{issn}{0016-6731},
+  \urlprefix\url{http://www.genetics.org/content/155/2/909}.
 
-\bibitem[{Good {\rm and} Desai}(2014)]{good_2014}
-{Good, B.~H. {\rm and} M.~M. Desai}, 2014 Deleterious passengers in adapting
-  populations. Genetics {\bf 198}: 1183--1208.
+\bibitem[{\citenamefont{Gillespie}(2001)}]{gillespie_2001}
+\bibinfo{author}{\bibnamefont{Gillespie}, \bibfnamefont{J.~H.}},
+  \bibinfo{year}{2001}, \bibinfo{journal}{Evolution}
+  \textbf{\bibinfo{volume}{55}}(\bibinfo{number}{11}), \bibinfo{pages}{2161},
+  ISSN \bibinfo{issn}{0014-3820},
+  \urlprefix\url{http://www.bioone.org/doi/abs/10.1554/0014-3820%282001%29055%5B2161%3AITPSOA%5D2.0.CO%3B2}.
 
-\bibitem[{Gore {\em et~al.\/}}(2009){Gore, Youk, {\rm and} van
-  Oudenaarden}]{gore_2009}
-{Gore, J., H.~Youk, {\rm and} A.~van Oudenaarden}, 2009 Snowdrift game dynamics
-  and facultative cheating in yeast. Nature {\bf 459}: 253 EP --.
+\bibitem[{\citenamefont{Good and Desai}(2014)}]{good_2014}
+\bibinfo{author}{\bibnamefont{Good}, \bibfnamefont{B.~H.}}, and
+  \bibinfo{author}{\bibfnamefont{M.~M.} \bibnamefont{Desai}},
+  \bibinfo{year}{2014}, \bibinfo{journal}{Genetics}
+  \textbf{\bibinfo{volume}{198}}(\bibinfo{number}{3}), \bibinfo{pages}{1183},
+  ISSN \bibinfo{issn}{0016-6731},
+  \urlprefix\url{http://www.genetics.org/content/198/3/1183}.
 
-\bibitem[{Hallatschek}(2010)]{hallatschek_2011}
-{Hallatschek, O.}, 2010 The noisy edge of traveling waves. Proceedings of the
-  National Academy of Sciences .
+\bibitem[{\citenamefont{Gore} \emph{et~al.}(2009)\citenamefont{Gore, Youk, and
+  van Oudenaarden}}]{gore_2009}
+\bibinfo{author}{\bibnamefont{Gore}, \bibfnamefont{J.}},
+  \bibinfo{author}{\bibfnamefont{H.}~\bibnamefont{Youk}}, and
+  \bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{van Oudenaarden}},
+  \bibinfo{year}{2009}, \bibinfo{journal}{Nature}
+  \textbf{\bibinfo{volume}{459}}, \bibinfo{pages}{253 EP },
+  \urlprefix\url{http://dx.doi.org/10.1038/nature07921}.
 
-\bibitem[{Iwasa {\em et~al.\/}}(2004){Iwasa, Michor, {\rm and}
-  Nowak}]{iwasa_2004}
-{Iwasa, Y., F.~Michor, {\rm and} M.~A. Nowak}, 2004 Stochastic tunnels in
-  evolutionary dynamics. Genetics {\bf 166}: 1571--1579.
+\bibitem[{\citenamefont{Hallatschek}(2010)}]{hallatschek_2011}
+\bibinfo{author}{\bibnamefont{Hallatschek}, \bibfnamefont{O.}},
+  \bibinfo{year}{2010}, \bibinfo{journal}{Proceedings of the National Academy
+  of Sciences} ISSN \bibinfo{issn}{0027-8424},
+  \eprint{http://www.pnas.org/content/early/2010/12/22/1013529108.full.pdf},
+  \urlprefix\url{http://www.pnas.org/content/early/2010/12/22/1013529108}.
 
-\bibitem[{Kosheleva {\rm and} Desai}(2013)]{kosheleva_2013}
-{Kosheleva, K. {\rm and} M.~M. Desai}, 2013 The dynamics of genetic draft in
-  rapidly adapting populations. Genetics {\bf 195}: 1007--1025.
+\bibitem[{\citenamefont{Iwasa} \emph{et~al.}(2004)\citenamefont{Iwasa, Michor,
+  and Nowak}}]{iwasa_2004}
+\bibinfo{author}{\bibnamefont{Iwasa}, \bibfnamefont{Y.}},
+  \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Michor}}, and
+  \bibinfo{author}{\bibfnamefont{M.~A.} \bibnamefont{Nowak}},
+  \bibinfo{year}{2004}, \bibinfo{journal}{Genetics}
+  \textbf{\bibinfo{volume}{166}}(\bibinfo{number}{3}), \bibinfo{pages}{1571},
+  ISSN \bibinfo{issn}{0016-6731},
+  \urlprefix\url{http://www.genetics.org/content/166/3/1571}.
 
-\bibitem[{Masel}(2011)]{masel_2011}
-{Masel, J.}, 2011 Genetic drift. Current Biology {\bf 21}: R837--R838.
+\bibitem[{\citenamefont{Kimura}(1955)}]{Kimura:1955}
+\bibinfo{author}{\bibnamefont{Kimura}, \bibfnamefont{M.}},
+  \bibinfo{year}{1955}, \bibinfo{journal}{Proc Natl Acad Sci U S A}
+  \textbf{\bibinfo{volume}{41}}(\bibinfo{number}{3}), \bibinfo{pages}{144},
+  ISSN \bibinfo{issn}{0027-8424, 1091-6490},
+  \urlprefix\url{http://www.pnas.org/content/41/3/144}.
 
-\bibitem[{Neher {\rm and} Hallatschek}(2013)]{neher_hallatschek_2013}
-{Neher, R.~A. {\rm and} O.~Hallatschek}, 2013 Genealogies of rapidly adapting
-  populations. Proceedings of the National Academy of Sciences {\bf 110}:
-  437--442.
+\bibitem[{\citenamefont{Kimura}(1957)}]{Kimura:1957}
+\bibinfo{author}{\bibnamefont{Kimura}, \bibfnamefont{M.}},
+  \bibinfo{year}{1957}, \bibinfo{journal}{Ann Math Stat}
+  \textbf{\bibinfo{volume}{28}}(\bibinfo{number}{4}), \bibinfo{pages}{882},
+  ISSN \bibinfo{issn}{0003-4851},
+  \urlprefix\url{http://links.jstor.org/sici?sici=0003-4851(195712)28:4%3C882:SPOSPI%3E2.0.CO;2-P}.
 
-\bibitem[{Neher {\em et~al.\/}}(2013){Neher, Kessinger, {\rm and}
-  Shraiman}]{neher_kessinger_2013}
-{Neher, R.~A., T.~A. Kessinger, {\rm and} B.~I. Shraiman}, 2013 Coalescence and
-  genetic diversity in sexual populations under selection. Proceedings of the
-  National Academy of Sciences {\bf 110}: 15836--15841.
+\bibitem[{\citenamefont{Kingman}(1982)}]{Kingman:1982}
+\bibinfo{author}{\bibnamefont{Kingman}, \bibfnamefont{J.~F.~C.}},
+  \bibinfo{year}{1982}, \bibinfo{journal}{Stochastic Process Appl}
+  \textbf{\bibinfo{volume}{13}}(\bibinfo{number}{3}), \bibinfo{pages}{235 },
+  ISSN \bibinfo{issn}{0304-4149}.
 
-\bibitem[{Neher {\rm and} Shraiman}(2009)]{neher_shraiman_2009}
-{Neher, R.~A. {\rm and} B.~I. Shraiman}, 2009 Competition between recombination
-  and epistasis can cause a transition from allele to genotype selection.
-  Proceedings of the National Academy of Sciences {\bf 106}: 6866--6871.
+\bibitem[{\citenamefont{Kosheleva and Desai}(2013)}]{kosheleva_2013}
+\bibinfo{author}{\bibnamefont{Kosheleva}, \bibfnamefont{K.}}, and
+  \bibinfo{author}{\bibfnamefont{M.~M.} \bibnamefont{Desai}},
+  \bibinfo{year}{2013}, \bibinfo{journal}{Genetics}
+  \textbf{\bibinfo{volume}{195}}(\bibinfo{number}{3}), \bibinfo{pages}{1007},
+  ISSN \bibinfo{issn}{0016-6731},
+  \urlprefix\url{http://www.genetics.org/content/195/3/1007}.
 
-\bibitem[{Neher {\rm and} Shraiman}(2011)]{neher_shraiman_2011}
-{Neher, R.~A. {\rm and} B.~I. Shraiman}, 2011 Genetic draft and
-  quasi-neutrality in large facultatively sexual populations. Genetics {\bf
-  188}: 975--996.
+\bibitem[{\citenamefont{Masel}(2011)}]{masel_2011}
+\bibinfo{author}{\bibnamefont{Masel}, \bibfnamefont{J.}}, \bibinfo{year}{2011},
+  \bibinfo{journal}{Current Biology}
+  \textbf{\bibinfo{volume}{21}}(\bibinfo{number}{20}), \bibinfo{pages}{R837},
+  ISSN \bibinfo{issn}{0960-9822},
+  \urlprefix\url{http://dx.doi.org/10.1016/j.cub.2011.08.007}.
 
-\bibitem[{Neher {\em et~al.\/}}(2010){Neher, Shraiman, {\rm and}
-  Fisher}]{neher_shraiman_2010}
-{Neher, R.~A., B.~I. Shraiman, {\rm and} D.~S. Fisher}, 2010 Rate of adaptation
-  in large sexual populations. Genetics {\bf 184}: 467--481.
+\bibitem[{\citenamefont{Neher and Hallatschek}(2013)}]{neher_hallatschek_2013}
+\bibinfo{author}{\bibnamefont{Neher}, \bibfnamefont{R.~A.}}, and
+  \bibinfo{author}{\bibfnamefont{O.}~\bibnamefont{Hallatschek}},
+  \bibinfo{year}{2013}, \bibinfo{journal}{Proceedings of the National Academy
+  of Sciences} \textbf{\bibinfo{volume}{110}}(\bibinfo{number}{2}),
+  \bibinfo{pages}{437},
+  \urlprefix\url{http://www.pnas.org/content/110/2/437.abstract}.
 
-\bibitem[{Obolski {\em et~al.\/}}(2017){Obolski, Lewin-Epstein, Even-Tov, Ram,
-  {\rm and} Hadany}]{Obolski:Lewin-Epstein:2017}
-{Obolski, U., O.~Lewin-Epstein, E.~Even-Tov, Y.~Ram, {\rm and} L.~Hadany}, 2017
-  With a little help from my friends: cooperation can accelerate the rate of
-  adaptive valley crossing. BMC Evol Biol {\bf 17}: 143.
+\bibitem[{\citenamefont{Neher} \emph{et~al.}(2013)\citenamefont{Neher,
+  Kessinger, and Shraiman}}]{neher_kessinger_2013}
+\bibinfo{author}{\bibnamefont{Neher}, \bibfnamefont{R.~A.}},
+  \bibinfo{author}{\bibfnamefont{T.~A.} \bibnamefont{Kessinger}}, and
+  \bibinfo{author}{\bibfnamefont{B.~I.} \bibnamefont{Shraiman}},
+  \bibinfo{year}{2013}, \bibinfo{journal}{Proceedings of the National Academy
+  of Sciences} \textbf{\bibinfo{volume}{110}}(\bibinfo{number}{39}),
+  \bibinfo{pages}{15836},
+  \urlprefix\url{http://www.pnas.org/content/110/39/15836.abstract}.
 
-\bibitem[{Obolski {\em et~al.\/}}(2018){Obolski, Ram, {\rm and}
-  Hadany}]{Obolski:Ram:2018}
-{Obolski, U., Y.~Ram, {\rm and} L.~Hadany}, 2018 Key issues review: evolution
-  on rugged adaptive landscapes. Rep Progr Phys {\bf 81}: 012602.
+\bibitem[{\citenamefont{Neher and Shraiman}(2009)}]{neher_shraiman_2009}
+\bibinfo{author}{\bibnamefont{Neher}, \bibfnamefont{R.~A.}}, and
+  \bibinfo{author}{\bibfnamefont{B.~I.} \bibnamefont{Shraiman}},
+  \bibinfo{year}{2009}, \bibinfo{journal}{Proceedings of the National Academy
+  of Sciences} \textbf{\bibinfo{volume}{106}}(\bibinfo{number}{16}),
+  \bibinfo{pages}{6866}, ISSN \bibinfo{issn}{0027-8424},
+  \urlprefix\url{http://www.pnas.org/content/106/16/6866}.
 
-\bibitem[{Ochs {\rm and} Desai}(2015)]{ochs_2015}
-{Ochs, I.~E. {\rm and} M.~M. Desai}, 2015 The competition between simple and
-  complex evolutionary trajectories in asexual populations. BMC Evolutionary
-  Biology {\bf 15}: 55.
+\bibitem[{\citenamefont{Neher and Shraiman}(2011)}]{neher_shraiman_2011}
+\bibinfo{author}{\bibnamefont{Neher}, \bibfnamefont{R.~A.}}, and
+  \bibinfo{author}{\bibfnamefont{B.~I.} \bibnamefont{Shraiman}},
+  \bibinfo{year}{2011}, \bibinfo{journal}{Genetics}
+  \textbf{\bibinfo{volume}{188}}(\bibinfo{number}{4}), \bibinfo{pages}{975},
+  ISSN \bibinfo{issn}{0016-6731},
+  \urlprefix\url{http://www.genetics.org/content/188/4/975}.
 
-\bibitem[{Orr}(1998)]{Orr:1998}
-{Orr, H.~A.}, 1998 The population genetics of adaptation: The distribution of
-  factors fixed during adaptive evolution. Evolution {\bf 52}: 935--949.
+\bibitem[{\citenamefont{Neher} \emph{et~al.}(2010)\citenamefont{Neher,
+  Shraiman, and Fisher}}]{neher_shraiman_2010}
+\bibinfo{author}{\bibnamefont{Neher}, \bibfnamefont{R.~A.}},
+  \bibinfo{author}{\bibfnamefont{B.~I.} \bibnamefont{Shraiman}}, and
+  \bibinfo{author}{\bibfnamefont{D.~S.} \bibnamefont{Fisher}},
+  \bibinfo{year}{2010}, \bibinfo{journal}{Genetics}
+  \textbf{\bibinfo{volume}{184}}(\bibinfo{number}{2}), \bibinfo{pages}{467},
+  ISSN \bibinfo{issn}{0016-6731},
+  \urlprefix\url{http://www.genetics.org/content/184/2/467}.
 
-\bibitem[{Rainey {\rm and} Rainey}(2003)]{rainey_2003}
-{Rainey, P.~B. {\rm and} K.~Rainey}, 2003 Evolution of cooperation and conflict
-  in experimental bacterial populations. Nature {\bf 425}: 72 EP --.
+\bibitem[{\citenamefont{Obolski} \emph{et~al.}(2017)\citenamefont{Obolski,
+  Lewin-Epstein, Even-Tov, Ram, and Hadany}}]{Obolski:Lewin-Epstein:2017}
+\bibinfo{author}{\bibnamefont{Obolski}, \bibfnamefont{U.}},
+  \bibinfo{author}{\bibfnamefont{O.}~\bibnamefont{Lewin-Epstein}},
+  \bibinfo{author}{\bibfnamefont{E.}~\bibnamefont{Even-Tov}},
+  \bibinfo{author}{\bibfnamefont{Y.}~\bibnamefont{Ram}}, and
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Hadany}},
+  \bibinfo{year}{2017}, \bibinfo{journal}{BMC Evol Biol}
+  \textbf{\bibinfo{volume}{17}}(\bibinfo{number}{1}), \bibinfo{pages}{143},
+  ISSN \bibinfo{issn}{1471-2148},
+  \urlprefix\url{https://link.springer.com/article/10.1186/s12862-017-0983-2}.
 
-\bibitem[{Sanchez {\rm and} Gore}(2013)]{gore_2013}
-{Sanchez, A. {\rm and} J.~Gore}, 2013 Feedback between population and
-  evolutionary dynamics determines the fate of social microbial populations.
-  PLOS Biology {\bf 11}: 1--9.
+\bibitem[{\citenamefont{Obolski} \emph{et~al.}(2018)\citenamefont{Obolski, Ram,
+  and Hadany}}]{Obolski:Ram:2018}
+\bibinfo{author}{\bibnamefont{Obolski}, \bibfnamefont{U.}},
+  \bibinfo{author}{\bibfnamefont{Y.}~\bibnamefont{Ram}}, and
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Hadany}},
+  \bibinfo{year}{2018}, \bibinfo{journal}{Rep Progr Phys}
+  \textbf{\bibinfo{volume}{81}}(\bibinfo{number}{1}), \bibinfo{pages}{012602},
+  ISSN \bibinfo{issn}{0034-4885},
+  \urlprefix\url{http://stacks.iop.org/0034-4885/81/i=1/a=012602}.
 
-\bibitem[{Schweinsberg}(2017)]{schweinsberg_2017}
-{Schweinsberg, J.}, 2017 Rigorous results for a population model with selection
-  ii: genealogy of the population. Electron. J. Probab. {\bf 22}: 54 pp.
+\bibitem[{\citenamefont{Ochs and Desai}(2015)}]{ochs_2015}
+\bibinfo{author}{\bibnamefont{Ochs}, \bibfnamefont{I.~E.}}, and
+  \bibinfo{author}{\bibfnamefont{M.~M.} \bibnamefont{Desai}},
+  \bibinfo{year}{2015}, \bibinfo{journal}{BMC Evolutionary Biology}
+  \textbf{\bibinfo{volume}{15}}(\bibinfo{number}{1}), \bibinfo{pages}{55}, ISSN
+  \bibinfo{issn}{1471-2148},
+  \urlprefix\url{https://doi.org/10.1186/s12862-015-0334-0}.
 
-\bibitem[{Szendro {\em et~al.\/}}(2013){Szendro, Schenk, Franke, Krug, {\rm
-  and} Visser}]{Szendro:Schenk:2013}
-{Szendro, I.~G., M.~F. Schenk, J.~Franke, J.~Krug, {\rm and} J.~A. G. M.~d.
-  Visser}, 2013 Quantitative analyses of empirical fitness landscapes. J Stat
-  Mech Theory Exp {\bf 2013}: P01005.
+\bibitem[{\citenamefont{Orr}(1998)}]{Orr:1998}
+\bibinfo{author}{\bibnamefont{Orr}, \bibfnamefont{H.~A.}},
+  \bibinfo{year}{1998}, \bibinfo{journal}{Evolution}
+  \textbf{\bibinfo{volume}{52}}(\bibinfo{number}{4}), \bibinfo{pages}{935},
+  ISSN \bibinfo{issn}{0014-3820},
+  \urlprefix\url{http://www.jstor.org/stable/2411226}.
 
-\bibitem[{Theys {\em et~al.\/}}(2018){Theys, Libin, Pineda-Peña, Nowé,
-  Vandamme, {\rm and} Abecasis}]{theys_2018}
-{Theys, K., P.~Libin, A.-C. Pineda-Peña, A.~Nowé, A.-M. Vandamme, {\em
-  et~al.\/}}, 2018 The impact of {HIV-1} within-host evolution on transmission
-  dynamics. Current Opinion in Virology {\bf 28}: 92 -- 101, Emerging viruses:
-  intraspecies transmission • Viral Immunology.
+\bibitem[{\citenamefont{Rainey and Rainey}(2003)}]{rainey_2003}
+\bibinfo{author}{\bibnamefont{Rainey}, \bibfnamefont{P.~B.}}, and
+  \bibinfo{author}{\bibfnamefont{K.}~\bibnamefont{Rainey}},
+  \bibinfo{year}{2003}, \bibinfo{journal}{Nature}
+  \textbf{\bibinfo{volume}{425}}, \bibinfo{pages}{72 EP },
+  \urlprefix\url{http://dx.doi.org/10.1038/nature01906}.
 
-\bibitem[{Trotter {\em et~al.\/}}(2014){Trotter, Weissman, Peterson, Peck, {\rm
-  and} Masel}]{trotter_2014}
-{Trotter, M.~V., D.~B. Weissman, G.~I. Peterson, K.~M. Peck, {\rm and}
-  J.~Masel}, 2014 Cryptic genetic variation can make “irreducible
-  complexity” a common mode of adaptation in sexual populations. Evolution
-  {\bf 68}: 3357--3367.
+\bibitem[{\citenamefont{Sanchez and Gore}(2013)}]{gore_2013}
+\bibinfo{author}{\bibnamefont{Sanchez}, \bibfnamefont{A.}}, and
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Gore}}, \bibinfo{year}{2013},
+  \bibinfo{journal}{PLOS Biology}
+  \textbf{\bibinfo{volume}{11}}(\bibinfo{number}{4}), \bibinfo{pages}{1},
+  \urlprefix\url{https://doi.org/10.1371/journal.pbio.1001547}.
 
-\bibitem[{{Van Cleve}}(2015)]{van_cleve_2015}
-{{Van Cleve}, J.}, 2015 Social evolution and genetic interactions in the short
-  and long term. Theoretical Population Biology {\bf 103}: 2 -- 26.
+\bibitem[{\citenamefont{Schweinsberg}(2017)}]{schweinsberg_2017}
+\bibinfo{author}{\bibnamefont{Schweinsberg}, \bibfnamefont{J.}},
+  \bibinfo{year}{2017}, \bibinfo{journal}{Electron. J. Probab.}
+  \textbf{\bibinfo{volume}{22}}, \bibinfo{pages}{54 pp.},
+  \urlprefix\url{https://doi.org/10.1214/17-EJP58}.
 
-\bibitem[{{Van Cleve} {\rm and} Lehmann}(2013)]{van_cleve_2013}
-{{Van Cleve}, J. {\rm and} L.~Lehmann}, 2013 Stochastic stability and the
-  evolution of coordination in spatially structured populations. Theoretical
-  Population Biology {\bf 89}: 75 -- 87.
+\bibitem[{\citenamefont{Szendro} \emph{et~al.}(2013)\citenamefont{Szendro,
+  Schenk, Franke, Krug, and Visser}}]{Szendro:Schenk:2013}
+\bibinfo{author}{\bibnamefont{Szendro}, \bibfnamefont{I.~G.}},
+  \bibinfo{author}{\bibfnamefont{M.~F.} \bibnamefont{Schenk}},
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Franke}},
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Krug}}, and
+  \bibinfo{author}{\bibfnamefont{J.~A. G. M.~d.} \bibnamefont{Visser}},
+  \bibinfo{year}{2013}, \bibinfo{journal}{J Stat Mech Theory Exp}
+  \textbf{\bibinfo{volume}{2013}}(\bibinfo{number}{01}),
+  \bibinfo{pages}{P01005}, ISSN \bibinfo{issn}{1742-5468},
+  \urlprefix\url{http://iopscience.iop.org/1742-5468/2013/01/P01005}.
 
-\bibitem[{van Gestel {\em et~al.\/}}(2014){van Gestel, Weissing, Kuipers, {\rm
-  and} Kovács}]{van_gestel_2014}
-{van Gestel, J., F.~J. Weissing, O.~P. Kuipers, {\rm and} {\'A}.~T. Kovács},
-  2014 Density of founder cells affects spatial pattern formation and
-  cooperation in bacillus subtilis biofilms. ISME J {\bf 8}: 2069--2079.
+\bibitem[{\citenamefont{Theys} \emph{et~al.}(2018)\citenamefont{Theys, Libin,
+  Pineda-Peña, Nowé, Vandamme, and Abecasis}}]{theys_2018}
+\bibinfo{author}{\bibnamefont{Theys}, \bibfnamefont{K.}},
+  \bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Libin}},
+  \bibinfo{author}{\bibfnamefont{A.-C.} \bibnamefont{Pineda-Peña}},
+  \bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Nowé}},
+  \bibinfo{author}{\bibfnamefont{A.-M.} \bibnamefont{Vandamme}}, and
+  \bibinfo{author}{\bibfnamefont{A.~B.} \bibnamefont{Abecasis}},
+  \bibinfo{year}{2018}, \bibinfo{journal}{Current Opinion in Virology}
+  \textbf{\bibinfo{volume}{28}}, \bibinfo{pages}{92 }, ISSN
+  \bibinfo{issn}{1879-6257}, \bibinfo{note}{emerging viruses: intraspecies
+  transmission • Viral Immunology},
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S1879625717301372}.
 
-\bibitem[{Wain {\em et~al.\/}}(2007){Wain, Bailes, Bibollet-Ruche, Decker,
-  Keele, Van~Heuverswyn, Li, Takehisa, Ngole, Shaw, Peeters, Hahn, {\rm and}
-  Sharp}]{wain_2007}
-{Wain, L.~V., E.~Bailes, F.~Bibollet-Ruche, J.~M. Decker, B.~F. Keele, {\em
-  et~al.\/}}, 2007 Adaptation of hiv-1 to its human host. Molecular Biology and
-  Evolution {\bf 24}: 1853--1860.
+\bibitem[{\citenamefont{Trotter} \emph{et~al.}(2014)\citenamefont{Trotter,
+  Weissman, Peterson, Peck, and Masel}}]{trotter_2014}
+\bibinfo{author}{\bibnamefont{Trotter}, \bibfnamefont{M.~V.}},
+  \bibinfo{author}{\bibfnamefont{D.~B.} \bibnamefont{Weissman}},
+  \bibinfo{author}{\bibfnamefont{G.~I.} \bibnamefont{Peterson}},
+  \bibinfo{author}{\bibfnamefont{K.~M.} \bibnamefont{Peck}}, and
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Masel}},
+  \bibinfo{year}{2014}, \bibinfo{journal}{Evolution}
+  \textbf{\bibinfo{volume}{68}}(\bibinfo{number}{12}), \bibinfo{pages}{3357},
+  ISSN \bibinfo{issn}{1558-5646},
+  \urlprefix\url{http://dx.doi.org/10.1111/evo.12517}.
 
-\bibitem[{Weissman {\em et~al.\/}}(2009){Weissman, Desai, Fisher, {\rm and}
-  Feldman}]{weissman_2009}
-{Weissman, D.~B., M.~M. Desai, D.~S. Fisher, {\rm and} M.~W. Feldman}, 2009 The
-  rate at which asexual populations cross fitness valleys. Theoretical
-  Population Biology {\bf 75}: 286 -- 300, Sam Karlin: Special Issue.
+\bibitem[{\citenamefont{{Van Cleve}}(2015)}]{van_cleve_2015}
+\bibinfo{author}{\bibnamefont{{Van Cleve}}, \bibfnamefont{J.}},
+  \bibinfo{year}{2015}, \bibinfo{journal}{Theoretical Population Biology}
+  \textbf{\bibinfo{volume}{103}}, \bibinfo{pages}{2 }, ISSN
+  \bibinfo{issn}{0040-5809},
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0040580915000544}.
 
-\bibitem[{Weissman {\em et~al.\/}}(2010){Weissman, Feldman, {\rm and}
-  Fisher}]{weissman_2010}
-{Weissman, D.~B., M.~W. Feldman, {\rm and} D.~S. Fisher}, 2010 The rate of
-  fitness-valley crossing in sexual populations. Genetics {\bf 186}:
-  1389--1410.
+\bibitem[{\citenamefont{{Van Cleve} and Lehmann}(2013)}]{van_cleve_2013}
+\bibinfo{author}{\bibnamefont{{Van Cleve}}, \bibfnamefont{J.}}, and
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Lehmann}},
+  \bibinfo{year}{2013}, \bibinfo{journal}{Theoretical Population Biology}
+  \textbf{\bibinfo{volume}{89}}, \bibinfo{pages}{75 }, ISSN
+  \bibinfo{issn}{0040-5809},
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0040580913000804}.
 
-\bibitem[{Zanini {\em et~al.\/}}(2015){Zanini, Brodin, Thebo, Lanz, Bratt,
-  Albert, {\rm and} Neher}]{zanini_2015}
-{Zanini, F., J.~Brodin, L.~Thebo, C.~Lanz, G.~Bratt, {\em et~al.\/}}, 2015
-  Population genomics of intrapatient hiv-1 evolution. eLife {\bf 4}: e11282.
+\bibitem[{\citenamefont{de~Visser and Krug}(2014)}]{Visser:Krug:2014}
+\bibinfo{author}{\bibnamefont{de~Visser}, \bibfnamefont{J.~A. G.~M.}}, and
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Krug}}, \bibinfo{year}{2014},
+  \bibinfo{journal}{Nat Rev Genet}
+  \textbf{\bibinfo{volume}{15}}(\bibinfo{number}{7}), \bibinfo{pages}{480},
+  ISSN \bibinfo{issn}{1471-0056},
+  \urlprefix\url{http://www.nature.com/nrg/journal/v15/n7/full/nrg3744.html}.
 
-\bibitem[{Zanini {\rm and} Neher}(2012)]{zanini_2012}
-{Zanini, F. {\rm and} R.~A. Neher}, 2012 Ffpopsim: an efficient forward
-  simulation package for the evolution of large populations. Bioinformatics
-  {\bf 28}: 3332--3333.
+\bibitem[{\citenamefont{Wain} \emph{et~al.}(2007)\citenamefont{Wain, Bailes,
+  Bibollet-Ruche, Decker, Keele, Van~Heuverswyn, Li, Takehisa, Ngole, Shaw,
+  Peeters, Hahn} \emph{et~al.}}]{wain_2007}
+\bibinfo{author}{\bibnamefont{Wain}, \bibfnamefont{L.~V.}},
+  \bibinfo{author}{\bibfnamefont{E.}~\bibnamefont{Bailes}},
+  \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Bibollet-Ruche}},
+  \bibinfo{author}{\bibfnamefont{J.~M.} \bibnamefont{Decker}},
+  \bibinfo{author}{\bibfnamefont{B.~F.} \bibnamefont{Keele}},
+  \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Van~Heuverswyn}},
+  \bibinfo{author}{\bibfnamefont{Y.}~\bibnamefont{Li}},
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Takehisa}},
+  \bibinfo{author}{\bibfnamefont{E.~M.} \bibnamefont{Ngole}},
+  \bibinfo{author}{\bibfnamefont{G.~M.} \bibnamefont{Shaw}},
+  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Peeters}},
+  \bibinfo{author}{\bibfnamefont{B.~H.} \bibnamefont{Hahn}}, \emph{et~al.},
+  \bibinfo{year}{2007}, \bibinfo{journal}{Molecular Biology and Evolution}
+  \textbf{\bibinfo{volume}{24}}(\bibinfo{number}{8}), \bibinfo{pages}{1853},
+  \urlprefix\url{http://dx.doi.org/10.1093/molbev/msm110}.
 
-\bibitem[{Zanini {\rm and} Neher}(2013)]{zanini_2013}
-{Zanini, F. {\rm and} R.~A. Neher}, 2013 Quantifying selection against
-  synonymous mutations in hiv-1 env evolution. Journal of Virology {\bf 87}:
-  11843--11850.
+\bibitem[{\citenamefont{Weissman} \emph{et~al.}(2009)\citenamefont{Weissman,
+  Desai, Fisher, and Feldman}}]{weissman_2009}
+\bibinfo{author}{\bibnamefont{Weissman}, \bibfnamefont{D.~B.}},
+  \bibinfo{author}{\bibfnamefont{M.~M.} \bibnamefont{Desai}},
+  \bibinfo{author}{\bibfnamefont{D.~S.} \bibnamefont{Fisher}}, and
+  \bibinfo{author}{\bibfnamefont{M.~W.} \bibnamefont{Feldman}},
+  \bibinfo{year}{2009}, \bibinfo{journal}{Theoretical Population Biology}
+  \textbf{\bibinfo{volume}{75}}(\bibinfo{number}{4}), \bibinfo{pages}{286 },
+  ISSN \bibinfo{issn}{0040-5809}, \bibinfo{note}{sam Karlin: Special Issue},
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0040580909000264}.
 
-\bibitem[{Zhang {\em et~al.\/}}(1997){Zhang, Diaz, Ho, Mosley, Busch, {\rm and}
-  Mayer}]{zhang_1997}
-{Zhang, L., R.~S. Diaz, D.~D. Ho, J.~W. Mosley, M.~P. Busch, {\em et~al.\/}},
-  1997 Host-specific driving force in human immunodeficiency virus type 1
-  evolution in vivo. Journal of Virology {\bf 71}: 2555--61.
+\bibitem[{\citenamefont{Weissman} \emph{et~al.}(2010)\citenamefont{Weissman,
+  Feldman, and Fisher}}]{weissman_2010}
+\bibinfo{author}{\bibnamefont{Weissman}, \bibfnamefont{D.~B.}},
+  \bibinfo{author}{\bibfnamefont{M.~W.} \bibnamefont{Feldman}}, and
+  \bibinfo{author}{\bibfnamefont{D.~S.} \bibnamefont{Fisher}},
+  \bibinfo{year}{2010}, \bibinfo{journal}{Genetics}
+  \textbf{\bibinfo{volume}{186}}(\bibinfo{number}{4}), \bibinfo{pages}{1389},
+  ISSN \bibinfo{issn}{0016-6731},
+  \urlprefix\url{http://www.genetics.org/content/186/4/1389}.
+
+\bibitem[{\citenamefont{Wright}(1945)}]{Wright:1945}
+\bibinfo{author}{\bibnamefont{Wright}, \bibfnamefont{S.}},
+  \bibinfo{year}{1945}, \bibinfo{journal}{Proc Natl Acad Sci U S A}
+  \textbf{\bibinfo{volume}{31}}(\bibinfo{number}{12}), \bibinfo{pages}{382},
+  ISSN \bibinfo{issn}{0027-8424, 1091-6490},
+  \urlprefix\url{http://www.pnas.org.proxy.lib.duke.edu/content/31/12/382}.
+
+\bibitem[{\citenamefont{Zanini} \emph{et~al.}(2015)\citenamefont{Zanini,
+  Brodin, Thebo, Lanz, Bratt, Albert, and Neher}}]{zanini_2015}
+\bibinfo{author}{\bibnamefont{Zanini}, \bibfnamefont{F.}},
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Brodin}},
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Thebo}},
+  \bibinfo{author}{\bibfnamefont{C.}~\bibnamefont{Lanz}},
+  \bibinfo{author}{\bibfnamefont{G.}~\bibnamefont{Bratt}},
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Albert}}, and
+  \bibinfo{author}{\bibfnamefont{R.~A.} \bibnamefont{Neher}},
+  \bibinfo{year}{2015}, \bibinfo{journal}{eLife} \textbf{\bibinfo{volume}{4}},
+  \bibinfo{pages}{e11282}, ISSN \bibinfo{issn}{2050-084X},
+  \urlprefix\url{https://doi.org/10.7554/eLife.11282}.
+
+\bibitem[{\citenamefont{Zanini and Neher}(2012)}]{zanini_2012}
+\bibinfo{author}{\bibnamefont{Zanini}, \bibfnamefont{F.}}, and
+  \bibinfo{author}{\bibfnamefont{R.~A.} \bibnamefont{Neher}},
+  \bibinfo{year}{2012}, \bibinfo{journal}{Bioinformatics}
+  \textbf{\bibinfo{volume}{28}}(\bibinfo{number}{24}), \bibinfo{pages}{3332},
+  \urlprefix\url{+ http://dx.doi.org/10.1093/bioinformatics/bts633}.
+
+\bibitem[{\citenamefont{Zanini and Neher}(2013)}]{zanini_2013}
+\bibinfo{author}{\bibnamefont{Zanini}, \bibfnamefont{F.}}, and
+  \bibinfo{author}{\bibfnamefont{R.~A.} \bibnamefont{Neher}},
+  \bibinfo{year}{2013}, \bibinfo{journal}{Journal of Virology}
+  \textbf{\bibinfo{volume}{87}}(\bibinfo{number}{21}), \bibinfo{pages}{11843},
+  \urlprefix\url{http://jvi.asm.org/content/87/21/11843.abstract}.
+
+\bibitem[{\citenamefont{Zhang} \emph{et~al.}(1997)\citenamefont{Zhang, Diaz,
+  Ho, Mosley, Busch, and Mayer}}]{zhang_1997}
+\bibinfo{author}{\bibnamefont{Zhang}, \bibfnamefont{L.}},
+  \bibinfo{author}{\bibfnamefont{R.~S.} \bibnamefont{Diaz}},
+  \bibinfo{author}{\bibfnamefont{D.~D.} \bibnamefont{Ho}},
+  \bibinfo{author}{\bibfnamefont{J.~W.} \bibnamefont{Mosley}},
+  \bibinfo{author}{\bibfnamefont{M.~P.} \bibnamefont{Busch}}, and
+  \bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Mayer}},
+  \bibinfo{year}{1997}, \bibinfo{journal}{Journal of Virology}
+  \textbf{\bibinfo{volume}{71}}(\bibinfo{number}{3}), \bibinfo{pages}{2555},
+  \urlprefix\url{http://jvi.asm.org/content/71/3/2555.abstract}.
 
 \end{thebibliography}
