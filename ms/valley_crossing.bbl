@@ -1,4 +1,4 @@
-\begin{thebibliography}{52}
+\begin{thebibliography}{54}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname bibnamefont\endcsname\relax
   \def\bibnamefont#1{#1}\fi
@@ -184,12 +184,10 @@
   \textbf{\bibinfo{volume}{459}}, \bibinfo{pages}{253 EP },
   \urlprefix\url{http://dx.doi.org/10.1038/nature07921}.
 
-\bibitem[{\citenamefont{Hallatschek}(2010)}]{hallatschek_2011}
+\bibitem[{\citenamefont{Hallatschek}(2011)}]{hallatschek_2011}
 \bibinfo{author}{\bibnamefont{Hallatschek}, \bibfnamefont{O.}},
-  \bibinfo{year}{2010}, \bibinfo{journal}{Proceedings of the National Academy
-  of Sciences} ISSN \bibinfo{issn}{0027-8424},
-  \eprint{http://www.pnas.org/content/early/2010/12/22/1013529108.full.pdf},
-  \urlprefix\url{http://www.pnas.org/content/early/2010/12/22/1013529108}.
+  \bibinfo{year}{2011}, \bibinfo{journal}{Proc Natl Acad Sci U S A}
+  \textbf{\bibinfo{volume}{108}}(\bibinfo{number}{5}), \bibinfo{pages}{1783}.
 
 \bibitem[{\citenamefont{Iwasa} \emph{et~al.}(2004)\citenamefont{Iwasa, Michor,
   and Nowak}}]{iwasa_2004}
@@ -214,6 +212,11 @@
   \textbf{\bibinfo{volume}{28}}(\bibinfo{number}{4}), \bibinfo{pages}{882},
   ISSN \bibinfo{issn}{0003-4851},
   \urlprefix\url{http://links.jstor.org/sici?sici=0003-4851(195712)28:4%3C882:SPOSPI%3E2.0.CO;2-P}.
+
+\bibitem[{\citenamefont{Kimura}(1971)}]{Kimura:1971}
+\bibinfo{author}{\bibnamefont{Kimura}, \bibfnamefont{M.}},
+  \bibinfo{year}{1971}, \bibinfo{journal}{Theor Popul Biol}
+  \textbf{\bibinfo{volume}{2}}(\bibinfo{number}{2}), \bibinfo{pages}{174}.
 
 \bibitem[{\citenamefont{Kingman}(1982)}]{Kingman:1982}
 \bibinfo{author}{\bibnamefont{Kingman}, \bibfnamefont{J.~F.~C.}},
@@ -416,6 +419,11 @@
   \bibinfo{year}{2007}, \bibinfo{journal}{Molecular Biology and Evolution}
   \textbf{\bibinfo{volume}{24}}(\bibinfo{number}{8}), \bibinfo{pages}{1853},
   \urlprefix\url{http://dx.doi.org/10.1093/molbev/msm110}.
+
+\bibitem[{\citenamefont{Watterson}(1975)}]{Watterson:1975}
+\bibinfo{author}{\bibnamefont{Watterson}, \bibfnamefont{G.~A.}},
+  \bibinfo{year}{1975}, \bibinfo{journal}{Theor Popul Biol}
+  \textbf{\bibinfo{volume}{7}}(\bibinfo{number}{2}), \bibinfo{pages}{256}.
 
 \bibitem[{\citenamefont{Weissman} \emph{et~al.}(2009)\citenamefont{Weissman,
   Desai, Fisher, and Feldman}}]{weissman_2009}
