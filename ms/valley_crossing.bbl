@@ -61,14 +61,15 @@
   ISSN \bibinfo{issn}{1558-5646},
   \urlprefix\url{http://dx.doi.org/10.1111/j.0014-3820.2000.tb00033.x}.
 
-\bibitem[{\citenamefont{Cvijovic} \emph{et~al.}(2017)\citenamefont{Cvijovic,
-  Good, and Desai}}]{cvijovic_2017}
-\bibinfo{author}{\bibnamefont{Cvijovic}, \bibfnamefont{I.}},
+\bibitem[{\citenamefont{Cvijović} \emph{et~al.}(2018)\citenamefont{Cvijović,
+  Good, and Desai}}]{Cvijovic:Good:2018}
+\bibinfo{author}{\bibnamefont{Cvijović}, \bibfnamefont{I.}},
   \bibinfo{author}{\bibfnamefont{B.~H.} \bibnamefont{Good}}, and
   \bibinfo{author}{\bibfnamefont{M.~M.} \bibnamefont{Desai}},
-  \bibinfo{year}{2017}, \bibinfo{journal}{bioRxiv}
-  \eprint{https://www.biorxiv.org/content/early/2017/10/30/211557.full.pdf},
-  \urlprefix\url{https://www.biorxiv.org/content/early/2017/10/30/211557}.
+  \bibinfo{year}{2018}, \bibinfo{journal}{Genetics} ,
+  \bibinfo{pages}{genetics.301058.2018}ISSN \bibinfo{issn}{0016-6731,
+  1943-2631},
+  \urlprefix\url{http://www.genetics.org.proxy.lib.duke.edu/content/early/2018/05/29/genetics.118.301058}.
 
 \bibitem[{\citenamefont{Dapp} \emph{et~al.}(2017)\citenamefont{Dapp, Kober,
   Chen, Westfall, Wong, Zhao, Hall, Deng, Sibley, Ghorai, Kim, Chen}

@@ -250,15 +250,15 @@ To determine the effect of $\sigma$ on this ratio, we performed simulations at b
 \label{fig:tunneling}
 \end{figure}
 
-Here we present the key results of our simulation runs.
-In general, we expect valley crossing in rapidly adapting populations to require more time, as bubbles are doomed to extinction more quickly and beneficial lineages are less likely to fix, especially when valleys are shallow.
+Here we present the key results of our simulation analysis.
+In general, we expect valley crossing to require more time in rapidly adapting populations (large $N \sigma$) experiencing genetic draft as bubbles are doomed to extinction more quickly \jcomment[inline]{I was going to add something like, ``(bubbles of intermediate size are less likely to occur under draft)'' to explain this, but is it more general (since you bring it up only under tunneling below)? Maybe add a short parenthetical explanation?} and beneficial lineages are less likely to fix, especially when valleys are shallow.
 Figures \ref{fig:deterministic} and \ref{fig:tunneling} confirm these expectations: the overall rate of valley crossing is generally slowed as $\sigma$ increases.
 It is tempting to interpret this as a reduced $N_e$ due to a decrease in genetic diversity and the strength of selection.
-The underlying dynamics are more complicated, however.
-As $\sigma$ increases, the effect of the genetic background becomes more significant in determining the fate of an allele than the allele's fitness effect is.
-The frequency of alleles is buffeted by genetic draft, so alleles behave as though they are more neutral than they really are.
-This depresses the fixation probability of the complex adaptation, which appears to account for the majority of the change in fixation time.
-In the case of stochastic tunneling, the overall size distribution of bubble sizes is reduced, as well: the distribution $P(w)$ scales not as $w^{-3/2}$ but as $w^{-2}$ \citep{neher_shraiman_2011}, so there are fewer chances for the complex adaptation to arise and fix.
+The underlying dynamics are more complicated, however.\jcomment{Yes, but the following sentences don't highlight specifically enough I think why; e.g., what about a simple reduction in $N_{e}$ cannot explain what happens in this draft case?}
+As $\sigma$ increases, the effect of the genetic background in which an mutation finds itself becomes more significant in determining the fate of that mutation than the fitness effect of the mutation itself.
+This genetic draft buffets the frequency of mutations so that these mutations behave as though they are more neutral than they really are.
+This depresses the fixation probability of the double mutant and other complex adaptations, which appears to account for the majority of the change in fixation time.
+In the case of stochastic tunneling, the overall size distribution of bubble sizes is reduced as well: the distribution $P(w)$ scales not as $w^{-3/2}$ but as $w^{-2}$ \citep{neher_shraiman_2011}, so there are fewer chances for the complex adaptation to arise on a mutant background and fix.
 
 \begin{figure}
 \includegraphics[width=0.4\textwidth]{Figures/var_sigma_delta.pdf}
@@ -266,34 +266,24 @@ In the case of stochastic tunneling, the overall size distribution of bubble siz
 \label{fig:sigma_delta}
 \end{figure}
 
-On the other hand, the reduced effectiveness of selection should generally be helpful in crossing deeper valleys, by mitigating the deleterious effect of single mutants.
+On the other hand, the reduced effectiveness of selection should generally be helpful in crossing deeper valleys by mitigating the deleterious effect of single mutants.
 This can be seen in figure \ref{fig:sigma_delta}.
-At high values of $\sigma$, the fitness effect of the deleterious intermediate \emph{almost does not matter}, meaning that very deep valleys can be crossed.
-This supports the view that traversing rugged fitness landscapes by valley crossing may be enhanced in rapidly adapting populations.
-
-% \iffalse
-% \begin{figure}
-% \includegraphics[width=0.4\textwidth]{Figures/bands.pdf}
-% \caption{Valley crossing times for fixed $N\sigma$, with $N$ allowed to vary up or down by a factor of $2$ (and $\sigma$ adjusted accordingly). Error bars are quartile ranges. Here, $\mu = 3 \times 10^{-6}$, $\delta = 10^{-3}$, and $s = 10^{-2}$.}
-% \label{fig:bands}
-% \end{figure}
-
-% In addition, we consider the effects of the compound parameter $N\sigma$, which has previously been shown to determine the coalescent behavior of populations \citep{neher_hallatschek_2013, neher_kessinger_2013}.
-% Figure \ref{fig:bands} suggests that, at high values of $\sigma$, the value of $N\sigma$ is more important than $N$ itself in determining the valley crossing rate.
-% The dependence on $N$ appears to be reduced, consistent with general features of very large, rapidly adapting populations.
-% In a slowly adapting population, $N$ determines the transition from sequential fixation to tunneling: if bubbles reach a maximum size that is of order $N$, they start to noticeably decrease the mean fitness, making fixation easier.
-% When $N\sigma \gg 1$, bubbles almost never reach a large enough size for this condition to obtain.
-% \fi
+At high values of $\sigma$, the fitness effect of the deleterious intermediate mutation has very little effect of the valley crossing time, which means that very deep valleys can be crossed.
+This suggests that traversing rugged fitness landscapes by valley crossing may be enhanced in rapidly adapting populations.
 
 \begin{figure}
-\begin{subfigure}[b]{0.43\textwidth}
-\includegraphics[width=\textwidth]{Figures/tau_compare.pdf}
+\begin{subfigure}[b]{0.475\textwidth}
+  \includegraphics[width=\textwidth]{Figures/tau_compare_crop.pdf}
+  \caption{Valley crossing times on a $\log_{10}$ scale}
+  \label{fig:tau}
 \end{subfigure}
-\begin{subfigure}[b]{0.4\textwidth}
-\includegraphics[width=\textwidth]{Figures/alpha_ratios.pdf}
+\begin{subfigure}[b]{0.475\textwidth}
+  \includegraphics[width=\textwidth]{Figures/alpha_ratios_crop.pdf}
+  \caption{Ratio $\alpha = \tau_{\mathrm{valley}}/\tau_{\mathrm{sweep}}$ on a $\log_{10}$ scale}
+  \label{fig:ratios}
 \end{subfigure}
-\caption{Behavior of valley crossing times for varied $\delta$, $N$, and $\sigma$. In all cases, $s_{\mathrm{sweep}} = 0.01$, $s_{\mathrm{sweep}} = 0.1$, and $\mu = 10^{-5}$. Left two plots: valley crossing times $\tau$ increase with $\delta$ and $\sigma$ but decrease with $N$, as predicted. Right two plots: the ratio $\alpha = \tau_{\mathrm{valley}}/\tau_{\mathrm{sweep}}$ as a function of $\delta$, $N$, and $\sigma$. Deeper valleys in smaller populations are disfavored relative to simple sweeps. But at higher values of $\sigma$, they can be favored ($\alpha < 1$: note the log scaled colorbar). In both plots, $N = 10^5$ is a fairly hard cutoff beyond which tunneling becomes semi-deterministic, as $N\mu > 1$ means that, on average, more than one mutant lineage is seeded every generation.}
-\label{fig:ratios}
+\caption{Behavior of valley crossing times for varied $\delta$, $N$, and $\sigma$. In all cases, $s_{\mathrm{sweep}} = 0.01$, $s_{\mathrm{sweep}} = 0.1$, and $\mu = 10^{-5}$. Panel (a) shows valley crossing times $\tau$ increase with $\delta$ and $\sigma$ but decrease with $N$, as predicted. Panel (b) shows the ratio $\alpha = \tau_{\mathrm{valley}}/\tau_{\mathrm{sweep}}$ as a function of $\delta$, $N$, and $\sigma$.}
+\label{fig:tau-ratios}
 \end{figure}
 
 \begin{figure}
@@ -302,17 +292,23 @@ This supports the view that traversing rugged fitness landscapes by valley cross
 \label{fig:alpha_ratio}
 \end{figure}
 
-Finally, we examine the ratio $\alpha = \tau_{\mathrm{valley}}/\tau_{\mathrm{sweep}}$, where $\tau_{\mathrm{sweep}}$ is the time required for a beneficial mutation to sweep to fixation and $\tau_{\mathrm{valley}}$ is the time required for a valley crossing event to occur.
+So far, we can see that valley crossing is slower in rapidly adapting populations but the crossing time is less sensitive to the depth of the valley. How do these two effects combine to shape the likelihood of valley crossing in rapidly adapting populations experiencing genetic draft compared to populations only experiencing drift? To explore this, we first introduce the ratio $\alpha = \tau_{\mathrm{valley}}/\tau_{\mathrm{sweep}}$, where $\tau_{\mathrm{sweep}}$ is the time required for a beneficial mutation to sweep to fixation and $\tau_{\mathrm{valley}}$ is the time required for a valley crossing event to occur.
 By comparing how $\alpha$ changes as a function of the strength of selection on linked variation, $\sigma$, we can determine how $\sigma$ affects the speed of valley crossing relative to simple beneficial sweeps. Higher (or lower) values of $\alpha$ mean that valley crossing times increase (or decrease) relative to the time required for a simple beneficial sweep.
-Though the precise value of this ratio depends on $\delta$ and the selection coefficients $s_{\mathrm{valley}}$ of the complex adaptation and $s_{\mathrm{sweep}}$ of the sweeping solo beneficial mutation, a general trend nonetheless emerges.
-In this case, we set $s_{\mathrm{sweep}} = 0.01$, $s_{\mathrm{sweep}} = 0.1$, and $\mu = 10^{-5}$.
-For several combinations of parameter values, we find that the ratio $\alpha$ is smaller for high $\sigma$ than for low $\sigma$: see figure \ref{fig:ratios}.
-In figure \ref{fig:alpha_ratio}, we consider the behavior of $\alpha(10^{-2})/\alpha(10^{-6})$, a measure of the extent to which rapid adaptation speeds up valley crossing relative to sweeping (lower values indicate that rapid adaptation favors valley crossing).
-Overall, we find that increasing $\sigma$ increases the extent to which valley crossing is favored \emph{except} when $N\mu > 1$.
-In this case, stochastic tunneling ceases to be the dominant mode of valley crossing.
-\citet{weissman_2009} referred to this regime as ``semi-deterministic tunneling": a more or less stable number of intermediate mutant individuals $N\mu/\delta$ persists in the population at low frequencies, which give rise to double mutants at a low but constant rate.
-At high $\sigma$, the number of intermediate mutants is likely to fluctuate substantially \citep{cvijovic_2017}, but the average behavior is more or less the same.
-This relation more or less obtains in a rapidly adapting population as well, with substantial fluctuations, so $\pfix$ becomes more important in determining the valley crossing rate: since this scales more weakly with $s$ under draft, the overall crossing rate is slowed.
+Though the precise value of this ratio depends on $\delta$ and on the selection coefficients $s_{\mathrm{valley}}$ and $s_{\mathrm{sweep}}$ of the complex adaptation and the single beneficial mutation, respectively, a general trend nonetheless emerges.
+In Figure \ref{fig:tau-ratios}, we set $s_{\mathrm{sweep}} = 0.01$, $s_{\mathrm{sweep}} = 0.1$, and $\mu = 10^{-5}$.
+Figure \ref{fig:ratios} shows the expected pattern that deeper valleys in smaller populations take longer to cross.
+At a higher value of $\sigma$, valley depth has a weaker effect of the valley crossing time in both an absolute sense (Figure \ref{fig:tau}) and relative to the time for a single beneficial sweep (Figure \ref{fig:ratios}).
+Moreover, values of $\alpha$ are generally lower for the population with higher $\sigma$ experiencing genetic draft than for the population with lower $\sigma$ experiencing only drift.
+This implies that draft tends reduce the valley crossing time relative to the time a single beneficial mutation to sweep.
+
+We can get a clearer picture of how draft affects valley crossing times relative to single beneficial sweeps by plotting the ratio $\alpha(10^{-2})/\alpha(10^{-6})$ in Figure \ref{fig:alpha_ratio}, which is a measure of the extent to which rapid adaptation speeds up valley crossing relative to sweeping (lower values indicate that rapid adaptation favors valley crossing).
+Overall, we find that increasing $\sigma$ increases the extent to which valley crossing is favored for $N < 10^{5}$. In this regime, increasing $\delta$ also increases the degree to which valley crossing is favored under draft, which means that the deeper the valley, the more that draft increases the likelihood of valley crossing relative to a single beneficial mutation.
+For $N > 10^5$ in the low $\sigma$ case, tunneling becomes semi-deterministic where $N\mu > 1$ and, on average, more than one mutant lineage is generated every generation.\jcomment{Another figure presumably from simulations that you're running...}
+These mutants then give rise to double mutants at a low but constant rate that is not sensitive to the valley depth (Figure \ref{fig:tau-ratios} and equation 35 in \citealp{weissman_2009}) and that is much faster than in the stochastic tunneling case. In contrast, $N > 10^{5}$ for high $\sigma$ does not produce the same order of magnitude increase in valley crossing rates, which is likely due to no analogous qualitative change in valley crossing dynamics.
+Thus, for large enough population sizes, draft does not significantly improve the valley crossing rate relative to the rate of single beneficial sweeps.\jcomment{Double check my explanation here :-)}
+
+At high $\sigma$, the number of intermediate mutants is likely to fluctuate substantially \citep{Cvijovic:Good:2018}, but the average behavior is more or less the same.
+This relation more or less obtains in a rapidly adapting population as well, with substantial fluctuations, so $\pfix$ becomes more important in determining the valley crossing rate: since this scales more weakly with $s$ under draft, the overall crossing rate is slowed.\jcomment{I still don't get what the point of mentioning this is here; how does this connection to the behavior of the ratio of $\alpha$s?}
 
 \section*{Discussion}
 
