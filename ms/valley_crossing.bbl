@@ -1,4 +1,4 @@
-\begin{thebibliography}{54}
+\begin{thebibliography}{58}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname bibnamefont\endcsname\relax
   \def\bibnamefont#1{#1}\fi
@@ -190,6 +190,12 @@
   \bibinfo{year}{2011}, \bibinfo{journal}{Proc Natl Acad Sci U S A}
   \textbf{\bibinfo{volume}{108}}(\bibinfo{number}{5}), \bibinfo{pages}{1783}.
 
+\bibitem[{\citenamefont{Hamilton}(1970)}]{Hamilton:1970}
+\bibinfo{author}{\bibnamefont{Hamilton}, \bibfnamefont{W.~D.}},
+  \bibinfo{year}{1970}, \bibinfo{journal}{Nature}
+  \textbf{\bibinfo{volume}{228}}(\bibinfo{number}{5277}),
+  \bibinfo{pages}{1218}.
+
 \bibitem[{\citenamefont{Iwasa} \emph{et~al.}(2004)\citenamefont{Iwasa, Michor,
   and Nowak}}]{iwasa_2004}
 \bibinfo{author}{\bibnamefont{Iwasa}, \bibfnamefont{Y.}},
@@ -328,6 +334,13 @@
   \textbf{\bibinfo{volume}{425}}, \bibinfo{pages}{72 EP },
   \urlprefix\url{http://dx.doi.org/10.1038/nature01906}.
 
+\bibitem[{\citenamefont{Rousset}(2004)}]{Rousset:2004}
+\bibinfo{author}{\bibnamefont{Rousset}, \bibfnamefont{F.}},
+  \bibinfo{year}{2004}, \emph{\bibinfo{title}{Genetic structure and selection
+  in subdivided populations}}, volume~\bibinfo{volume}{40}
+  (\bibinfo{publisher}{Princeton University Press},
+  \bibinfo{address}{Princeton, N.J.}), ISBN \bibinfo{isbn}{0691088160}.
+
 \bibitem[{\citenamefont{Sanchez and Gore}(2013)}]{gore_2013}
 \bibinfo{author}{\bibnamefont{Sanchez}, \bibfnamefont{A.}}, and
   \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Gore}}, \bibinfo{year}{2013},
@@ -394,6 +407,15 @@
   \bibinfo{issn}{0040-5809},
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0040580913000804}.
 
+\bibitem[{\citenamefont{Van~Cleve and
+  Weissman}(2015)}]{Van-Cleve:Weissman:2015}
+\bibinfo{author}{\bibnamefont{Van~Cleve}, \bibfnamefont{J.}}, and
+  \bibinfo{author}{\bibfnamefont{D.~B.} \bibnamefont{Weissman}},
+  \bibinfo{year}{2015}, \bibinfo{journal}{Proc Natl Acad Sci U S A}
+  \textbf{\bibinfo{volume}{112}}(\bibinfo{number}{24}), \bibinfo{pages}{7345},
+  ISSN \bibinfo{issn}{0027-8424, 1091-6490},
+  \urlprefix\url{http://www.pnas.org/content/112/24/7345}.
+
 \bibitem[{\citenamefont{de~Visser and Krug}(2014)}]{Visser:Krug:2014}
 \bibinfo{author}{\bibnamefont{de~Visser}, \bibfnamefont{J.~A. G.~M.}}, and
   \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Krug}}, \bibinfo{year}{2014},
@@ -446,6 +468,12 @@
   \textbf{\bibinfo{volume}{186}}(\bibinfo{number}{4}), \bibinfo{pages}{1389},
   ISSN \bibinfo{issn}{0016-6731},
   \urlprefix\url{http://www.genetics.org/content/186/4/1389}.
+
+\bibitem[{\citenamefont{Wright}(1932)}]{Wright:1932}
+\bibinfo{author}{\bibnamefont{Wright}, \bibfnamefont{S.}},
+  \bibinfo{year}{1932}, in \emph{\bibinfo{booktitle}{Proceedings of the Sixth
+  International Congress on Genetics}}, volume~\bibinfo{volume}{1}, pp.
+  \bibinfo{pages}{356--366}.
 
 \bibitem[{\citenamefont{Wright}(1945)}]{Wright:1945}
 \bibinfo{author}{\bibnamefont{Wright}, \bibfnamefont{S.}},

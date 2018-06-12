@@ -6,44 +6,46 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: bib.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-You've used 54 entries,
+Warning--can't use both volume and number fields in Wright:1932
+You've used 58 entries,
             3359 wiz_defined-function locations,
-            1543 strings with 22487 characters,
-and the built_in function-call counts, 43213 in all, are:
-= -- 2668
-> -- 1853
-< -- 133
-+ -- 1468
-- -- 468
-* -- 5793
-:= -- 4801
-add.period$ -- 54
-call.type$ -- 54
-change.case$ -- 372
-chr.to.int$ -- 54
-cite$ -- 54
-duplicate$ -- 3408
-empty$ -- 3353
-format.name$ -- 882
-if$ -- 8216
+            1574 strings with 23157 characters,
+and the built_in function-call counts, 45725 in all, are:
+= -- 2835
+> -- 1910
+< -- 141
++ -- 1498
+- -- 483
+* -- 6092
+:= -- 5100
+add.period$ -- 58
+call.type$ -- 58
+change.case$ -- 393
+chr.to.int$ -- 58
+cite$ -- 59
+duplicate$ -- 3629
+empty$ -- 3582
+format.name$ -- 911
+if$ -- 8710
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 587
-newline$ -- 177
-num.names$ -- 216
-pop$ -- 900
+missing$ -- 628
+newline$ -- 189
+num.names$ -- 232
+pop$ -- 961
 preamble$ -- 1
-purify$ -- 370
+purify$ -- 391
 quote$ -- 0
-skip$ -- 1628
+skip$ -- 1724
 stack$ -- 0
-substring$ -- 1284
-swap$ -- 2998
-text.length$ -- 102
+substring$ -- 1388
+swap$ -- 3173
+text.length$ -- 106
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 474
-warning$ -- 0
-while$ -- 211
+type$ -- 507
+warning$ -- 1
+while$ -- 228
 width$ -- 0
-write$ -- 632
+write$ -- 677
+(There was 1 warning)
