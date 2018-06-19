@@ -9,43 +9,43 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--can't use both volume and number fields in Wright:1932
 You've used 58 entries,
             3359 wiz_defined-function locations,
-            1574 strings with 23157 characters,
-and the built_in function-call counts, 45725 in all, are:
-= -- 2835
-> -- 1910
+            1574 strings with 23132 characters,
+and the built_in function-call counts, 45455 in all, are:
+= -- 2816
+> -- 1898
 < -- 141
-+ -- 1498
-- -- 483
-* -- 6092
-:= -- 5100
++ -- 1484
+- -- 480
+* -- 6070
+:= -- 5075
 add.period$ -- 58
 call.type$ -- 58
-change.case$ -- 393
+change.case$ -- 392
 chr.to.int$ -- 58
 cite$ -- 59
-duplicate$ -- 3629
-empty$ -- 3582
-format.name$ -- 911
-if$ -- 8710
+duplicate$ -- 3623
+empty$ -- 3561
+format.name$ -- 908
+if$ -- 8645
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 628
 newline$ -- 189
 num.names$ -- 232
-pop$ -- 961
+pop$ -- 951
 preamble$ -- 1
-purify$ -- 391
+purify$ -- 390
 quote$ -- 0
-skip$ -- 1724
+skip$ -- 1703
 stack$ -- 0
-substring$ -- 1388
-swap$ -- 3173
-text.length$ -- 106
+substring$ -- 1338
+swap$ -- 3176
+text.length$ -- 105
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 507
 warning$ -- 1
 while$ -- 228
 width$ -- 0
-write$ -- 677
+write$ -- 678
 (There was 1 warning)

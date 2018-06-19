@@ -158,23 +158,20 @@ Computing the expected value of this quantity over all bubble sizes, $\phi = \le
 One difficulty in computing the rate of tunneling in the high $N\sigma$ case (where genetic draft is significant) is that the expected bubble size and fixation probability will both turn out to depend on the background fitness of an individual.
 That is to say, it is not possible to simply compute $\pfix$ and the weight distribution by themselves, but rather one must convolute both of them over the background fitness.
 Individuals whose background fitness is near the nose of the fitness distribution will tend to give rise to longer-lived lineages, and if those individuals give rise to the complex adaptation, it will therefore likewise be more likely to fix.
-Thus, $W$ will depend on the background fitness $x$ and the valley depth $\delta$, and $p_{\mathrm fix}$ will depend on $x$ and the peak height $s$.
+Thus, $W$ will depend on the background fitness $x$ and the valley depth $\delta$, and $\pfix$ will depend on $x$ and the peak height $s$.
 These will have to be integrated over the fitness distribution $f(x)$ in order to obtain the total crossing probability $\Phi(s,\delta) = \int_{-\infty}^\infty \phi(x,s,\delta) f(x) dx$.
 The expected valley crossing time then becomes $1/N\mu\Phi$.
 
 We begin by considering the dynamics of $\pfix(x,s)$ before moving on to consider the distribution of bubble sizes.
 We focus on the case where background mutations are frequent but of weak effect--that is, the mean effect of background mutations $\bar{\epsilon}$ is small compared to $\sigma$, but background mutations occur at a high rate $U_b$.
-\iffalse
-In this case, the exact values of $U_b$ and $\bar{\epsilon}$ turn out not to matter: what is relevant is the product $D = U_b \bar{\epsilon}^2/2$.
-\fi
 \citet{hallatschek_2011} and \citet{good_2014} showed that the fixation probability in this regime obeys the differential equation 
 \begin{equation}
-v\partial_x p(x,s) = x p(x,s) + \frac{U_b\bar{\epsilon}^2}{2}\partial_x^2 p(x,s) - \frac{p(x,s)^2}{2},
+v\partial_x \pfix(x,s) = x \pfix(x,s) + \frac{U_b\bar{\epsilon}^2}{2}\partial_x^2 \pfix(x,s) - \frac{\pfix(x,s)^2}{2},
 \end{equation}
 in which we have further assumed that $v \approx \sigma^2$, which is tantamount to claiming that mutational effects are less important than selection in determining the advance of the mean fitness.
 For a neutral mutation ($s = 0$), the fixation probability is effectively zero at low $x$ but increases exponentially up until $x_c$, at which it becomes roughly linear in $x$.
-In this regime, $x_c \approx 2\sigma^4/U_b\bar{\epsilon}^2$: when $\sigma$ is large, only mutations in the nose stand any chance of fixing unless they can be dragged to higher fitness by a background mutations (large $D$).
-The effect of introducing a nonzero $s$ is essentially to shift the value of $x$ and $x_c$: for large negative $s$, $x_c$ may be far enough in the nose that it is unlikely any individuals will actually be present, and for large positive $s$, even unfit individuals can give rise to a lineage that is destined to fix.
+In this regime, $x_c \approx 2\sigma^4/U_b\bar{\epsilon}^2$: when $\sigma$ is large, only mutations in the nose stand any chance of fixing unless they can be dragged to higher fitness by a background mutations.
+The effect of introducing a nonzero $s$ is essentially to shift the value of $x$ and $x_c$: for large negative $s$, $x_c$ may be far enough in the nose of the Gaussian distribution that it is unlikely any individuals will have a high enough background fitness to fix, and for large positive $s$, even individuals with an unfit genetic background can give rise to a lineage that is destined to fix.
 
 In order to obtain the total valley crossing probability $\Phi$, the only remaining element to compute is the distribution of mutant bubble sizes $W$ as function of their background fitness $x$.
 Since the tunneling probability for a lineage with background fitness $x$ is given by $\phi = \left< 1 - e^{-\mu \pfix W} \right>$, we do not need to compute the full distribution of $W$ but rather only its Laplace transform: $\mathcal{L}\left[ p(w) \right] = \int_0^\infty e^{-zw} p(w) dw$, with $z = \mu \pfix$.
@@ -211,8 +208,6 @@ This ensures that independent valley crossing trials are independent despite occ
 
 We partitioned our simulations as follows.
 We first studied the effect of increasing $\sigma$ in the sequential fixation, stochastic tunneling, semi-deterministic tunneling, and sequential fixation regimes \citep{weissman_2009}.
-\jcomment{commented out some text here; put back into the results if the pattern described is evident there}
-% In the case of sequential fixation, the valley crossing time is dominated by the time until a deleterious mutant that is destined to fix arises: once it does, it does so in order $T_{\mathrm{MRCA}}$ generations, which is of order $N$ for low $N\sigma$ and scales weakly with $N$ for higher $N\sigma$ \citep{neher_hallatschek_2013}.
 For small populations, sequential fixation applies when $N \ll \min(1/\delta, 1/\sqrt{\mu s})$, so that a successful mutant is unlikely to arise until the intermediate has fixed, but the intermediate's fitness disadvantage is too weak for selection to inhibit it.
 Tunneling becomes relevant when $N$ is too large for sequential fixation, i.e., the tunneling probability becomes more significant than the probability that the intermediate will fix: this mandates $N \gtrsim 1/\sqrt{\mu s}$.
 It also requires that $N \ll 1/\mu$, meaning that only one mutant lineage is likely to be extant at any given time and, if lineages do co-occur, they are unlikely to interfere with each other or substantially affect the mean fitness.
@@ -266,8 +261,8 @@ In the case of stochastic tunneling, the overall size distribution of bubble siz
 
 On the other hand, the reduced effectiveness of selection should generally be helpful in crossing deeper valleys by mitigating the deleterious effect of single mutants.
 This can be seen in figure \ref{fig:sigma_delta}.
-At high values of $\sigma$, the fitness effect of the deleterious intermediate mutation has very little effect on the valley crossing time, which means that very deep valleys can be crossed.
-This suggests that traversing rugged fitness landscapes by valley crossing may be enhanced in rapidly adapting populations: as previously mentioned, they appear to be ``flattened".
+At high values of $\sigma$, the fitness effect of the deleterious intermediate mutation has very little effect on the valley crossing time, which means that deep valleys can be more easily crossed.
+This suggests that the ``flattening'' of rugged fitness landscapes due to genetic draft may in fact yield some benefits to valley crossing in rapidly adapting populations easier.
 
 \begin{figure}
 \begin{subfigure}[b]{0.475\textwidth}
@@ -305,15 +300,10 @@ We can get a clearer picture of how draft affects valley crossing times relative
 The ratio can be seen in Figure \ref{fig:alpha_ratio}.
 Overall, we find that raising $\sigma$ increases the extent to which valley crossing is favored for lower population sizes: for this combination of parameters, the condition is $N < 10^{5}$.
 In this regime, raising $\delta$ also increases the degree to which valley crossing is favored under draft, which means that the deeper the valley, the more that draft increases the likelihood of valley crossing relative to a single beneficial mutation.
-For $N > 10^5$ in the low $\sigma$ case, the product $N\mu > 1$: tunneling becomes semi-deterministic and, on average, more than one mutant lineage is produced every generation.
+For $N > 10^5$ in the low $\sigma$ case, tunneling becomes semi-deterministic where $N\mu > 1$ and, on average, more than one mutant lineage is produced every generation.
 These mutants then give rise to double mutants at a low but constant rate that is not sensitive to the valley depth (Figure \ref{fig:tau-ratios} and equation 35 in \citealp{weissman_2009}) and that is much faster than in the stochastic tunneling case.
 In contrast, $N > 10^{5}$ for high $\sigma$ does not produce the same order of magnitude increase in valley crossing rates, which is likely due to no analogous qualitative change in valley crossing dynamics.
 Thus, for large enough population sizes, draft does not significantly improve the valley crossing rate relative to the rate of single beneficial sweeps.
-\iffalse
-\jcomment{Double check my explanation here :-)}
-At high $\sigma$, the number of intermediate mutants is likely to fluctuate substantially \citep{Cvijovic:Good:2018}, but the average behavior is more or less the same.
-This relation more or less obtains in a rapidly adapting population as well, with substantial fluctuations, so $\pfix$ becomes more important in determining the valley crossing rate: since this scales more weakly with $s$ under draft, the overall crossing rate is slowed.\jcomment{I still don't get what the point of mentioning this is here; how does this connection to the behavior of the ratio of $\alpha$s?}
-\fi
 
 \section*{Discussion}
 
@@ -333,7 +323,6 @@ They find that large populations are more likely to cross valleys than fix a sim
 However, they also find that intermediate-sized populations in which stochastic tunneling occurs are the least likely to cross a fitness valley instead of fixing a beneficial mutation.
 In contrast, our results suggest that the stochastic tunneling regime is where rapid adaptation and genetic draft increase the likelihood of valley crossing relative to a simple beneficial mutation.
 Thus, it is possible that genetic draft improves the likelihood of valley crossing precisely where it is least likely under genetic drift. 
-% in their model, the complicating factor is that a partially sweeping beneficial mutation increases the mean fitness, making valley crossing more difficult especially for populations of intermediate size.
 
 We have focused exclusively on asexual populations, but extensions to sexual populations are possible.
 The relevant parameter is likely to be the product of $N$ and the proportion of the fitness standard deviation segregating in a small, effectively asexual block, $\sigma_b$ \citep{neher_kessinger_2013}.
@@ -371,6 +360,7 @@ The interplay between cooperation and valley crossing is an area that needs furt
 
 This work is supported by the National Science Foundation under Cooperative Agreement No. 1355438.
 
+\clearpage
 \bibliographystyle{genetics}
 \bibliography{bib}
 

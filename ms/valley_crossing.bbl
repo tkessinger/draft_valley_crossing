@@ -61,16 +61,6 @@
   ISSN \bibinfo{issn}{1558-5646},
   \urlprefix\url{http://dx.doi.org/10.1111/j.0014-3820.2000.tb00033.x}.
 
-\bibitem[{\citenamefont{Cvijović} \emph{et~al.}(2018)\citenamefont{Cvijović,
-  Good, and Desai}}]{Cvijovic:Good:2018}
-\bibinfo{author}{\bibnamefont{Cvijović}, \bibfnamefont{I.}},
-  \bibinfo{author}{\bibfnamefont{B.~H.} \bibnamefont{Good}}, and
-  \bibinfo{author}{\bibfnamefont{M.~M.} \bibnamefont{Desai}},
-  \bibinfo{year}{2018}, \bibinfo{journal}{Genetics} ,
-  \bibinfo{pages}{genetics.301058.2018}ISSN \bibinfo{issn}{0016-6731,
-  1943-2631},
-  \urlprefix\url{http://www.genetics.org.proxy.lib.duke.edu/content/early/2018/05/29/genetics.118.301058}.
-
 \bibitem[{\citenamefont{Dapp} \emph{et~al.}(2017)\citenamefont{Dapp, Kober,
   Chen, Westfall, Wong, Zhao, Hall, Deng, Sibley, Ghorai, Kim, Chen}
   \emph{et~al.}}]{dapp_2017}
@@ -103,6 +93,14 @@
   processes: the adaptive dynamics approach and its applications}}
   (\bibinfo{publisher}{Princeton University Press},
   \bibinfo{address}{Princeton, N.J.}), ISBN \bibinfo{isbn}{9780691120065}.
+
+\bibitem[{\citenamefont{Desai and Fisher}(2007)}]{desai_fisher_2007}
+\bibinfo{author}{\bibnamefont{Desai}, \bibfnamefont{M.~M.}}, and
+  \bibinfo{author}{\bibfnamefont{D.~S.} \bibnamefont{Fisher}},
+  \bibinfo{year}{2007}, \bibinfo{journal}{Genetics}
+  \textbf{\bibinfo{volume}{176}}(\bibinfo{number}{3}), \bibinfo{pages}{1759},
+  ISSN \bibinfo{issn}{0016-6731},
+  \urlprefix\url{http://www.genetics.org/content/176/3/1759}.
 
 \bibitem[{\citenamefont{Feder} \emph{et~al.}(2015)\citenamefont{Feder, Rhee,
   Shafer, Petrov, and Pennings}}]{feder_2015}
