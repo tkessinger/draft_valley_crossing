@@ -111,7 +111,7 @@ Here, we extend these previous results by studying how genetic draft in asexual 
 The complicating factor is that, in an asexual population, the dynamics are governed almost entirely by what happens in the nose of the fitness distribution, and these dynamics can be highly stochastic. In previous approaches, these stochastic effects were smoothed due to the presence of recombination \citep{neher_shraiman_2011, neher_shraiman_2009}.
 We therefore must focus primarily on simulation approaches, as analytical solutions for the behavior of a mutation in the nose of an asexual population are difficult to obtain.
 We show that fitness valley crossing occurs at an overall lower rate in rapidly adapting populations.
-However, this is consistent with the fact that \emph{all} forms of adaptation are slowed down.
+However, this is consistent with the fact that \emph{all} forms of adaptation are slowed down due to clonal interference and genetic background effects.
 In addition, we confirm that in rapidly adapting populations, adaptive fixations of alleles are more likely to be complex adaptations involving a fitness valley than they are in populations where genetic drift is the primary force shaping genetic variation at linked sites; essentially, genetic draft maintains the linkage that makes it possible to leap across fitness landscapes rather than adapt primarily by climbing to local peaks.
 These observations add to the growing intuition that complex adaptations that involve evolution across fitness valleys may not be a surprising result of the evolutionary process, but rather an expected one.
 
@@ -128,7 +128,7 @@ These observations add to the growing intuition that complex adaptations that in
 Our model features a population of $N$ haploid individuals in which an effectively infinite number of ``background" loci, with weak fitness effects, are currently segregating.
 We focus on two loci, which are initially fixed for alleles $a$ and $b$.
 These alleles mutate to $A$ and $B$ at rates $\mu_A$ and $\mu_B$, respectively (we neglect back mutations).
-Genotypes $ab$, $Ab$, $aB$, and $AB$ have fitnesses $1$, $1-\delta_A$, $1-\delta_B$, and $1+s$ respectively, with $\delta \geq 0$ (intermediate genotypes are deleterious) and $1/N < s < 1$ (double mutant $AB$ is strongly beneficial).
+Genotypes $ab$, $Ab$, $aB$, and $AB$ have fitnesses $1$, $1-\delta_A$, $1-\delta_B$, and $1+s$ respectively, with $\delta \geq 0$ (intermediate genotypes are deleterious) and $1/N < s < 1$ (double mutant $AB$ is strongly beneficial); see \ref{fig:landscape}.
 For the remainder of our analysis, we will assume that $\mu_A = \mu_B = \mu$ and $\delta_A = \delta_B = \delta$.
 We further assume that the large number of loci of weak effect contribute to a constant background fitness variance $\sigma^2$.
 By Fisher's ``fundamental theorem" of natural selection \citep{Fisher:1930}, the rate $v$ at which the mean fitness advances due to selection is set to $\sigma^{2}$.
@@ -140,7 +140,7 @@ For the most part, we assume that the focal loci are either at low enough freque
 In very large populations, enough double mutants are generated that the valley crossing time is dominated by the time required for a double mutant to sweep through the population.
 At the other extreme, in small populations, the crossing time is dominated by the wait for a deleterious single mutant to fix: only thereafter does a successful double mutant appear.
 We zero in on the intermediate case: stochastic tunneling, the most interesting and mathematically demanding mode of valley crossing.
-We will review existing theory for this case, discuss the difficulty in the mathematical analysis due to genetic draft, and then present results for valley crossing times using forward-time simulations across a range of population sizes that include the sequential fixation, tunneling, and deterministic fixation cases.
+We will review existing theory for this case, discuss the difficulty in the mathematical analysis due to genetic draft, and then present results for valley crossing times using forward-time simulations across a range of population sizes that include the sequential fixation, stochastic tunneling, and semi-deterministic tunneling cases.
 
 There are three components to the process of stochastic tunneling.
 First, a single mutant lineage must appear, which occurs with rate $N\mu$.
@@ -158,26 +158,32 @@ Computing the expected value of this quantity over all bubble sizes, $\phi = \le
 One difficulty in computing the rate of tunneling in the high $N\sigma$ case (where genetic draft is significant) is that the expected bubble size and fixation probability will both turn out to depend on the background fitness of an individual.
 That is to say, it is not possible to simply compute $\pfix$ and the weight distribution by themselves, but rather one must convolute both of them over the background fitness.
 Individuals whose background fitness is near the nose of the fitness distribution will tend to give rise to longer-lived lineages, and if those individuals give rise to the complex adaptation, it will therefore likewise be more likely to fix.
-Thus, $W$ will depend on the background fitness $x$ and the valley depth $\delta$, and $\pfix$ will depend on $x$ and the peak height $s$.
+Thus, $W$ will depend on the background fitness $x$ and the valley depth $\delta$, and $p_{\mathrm fix}$ will depend on $x$ and the peak height $s$.
 These will have to be integrated over the fitness distribution $f(x)$ in order to obtain the total crossing probability $\Phi(s,\delta) = \int_{-\infty}^\infty \phi(x,s,\delta) f(x) dx$.
 The expected valley crossing time then becomes $1/N\mu\Phi$.
+An additional difficulty is that technically, $\pfix$ will depend not on the fitness of the initial lineage in a bubble but on the fitness of the specific background on which the double mutant arose.
+These will not necessarily be the same; for example, individuals within the single mutant lineage may accumulate additional background mutations.
+Assuming that this does \emph{not} happen, that is, assuming that $\pfix$ depends on the fitness $x$ of the founding single mutant lineage, is tantamount to assuming that bubbles are too short lived to accumulate background mutations that significantly affect their fitness.
 
 We begin by considering the dynamics of $\pfix(x,s)$ before moving on to consider the distribution of bubble sizes.
 We focus on the case where background mutations are frequent but of weak effect--that is, the mean effect of background mutations $\bar{\epsilon}$ is small compared to $\sigma$, but background mutations occur at a high rate $U_b$.
+\iffalse
+In this case, the exact values of $U_b$ and $\bar{\epsilon}$ turn out not to matter: what is relevant is the product $D = U_b \bar{\epsilon}^2/2$.
+\fi
 \citet{hallatschek_2011} and \citet{good_2014} showed that the fixation probability in this regime obeys the differential equation 
 \begin{equation}
-v\partial_x \pfix(x,s) = x \pfix(x,s) + \frac{U_b\bar{\epsilon}^2}{2}\partial_x^2 \pfix(x,s) - \frac{\pfix(x,s)^2}{2},
+v\partial_x p(x,s) = x p(x,s) + \frac{U_b\bar{\epsilon}^2}{2}\partial_x^2 p(x,s) - \frac{p(x,s)^2}{2},
 \end{equation}
 in which we have further assumed that $v \approx \sigma^2$, which is tantamount to claiming that mutational effects are less important than selection in determining the advance of the mean fitness.
 For a neutral mutation ($s = 0$), the fixation probability is effectively zero at low $x$ but increases exponentially up until $x_c$, at which it becomes roughly linear in $x$.
-In this regime, $x_c \approx 2\sigma^4/U_b\bar{\epsilon}^2$: when $\sigma$ is large, only mutations in the nose stand any chance of fixing unless they can be dragged to higher fitness by a background mutations.
-The effect of introducing a nonzero $s$ is essentially to shift the value of $x$ and $x_c$: for large negative $s$, $x_c$ may be far enough in the nose of the Gaussian distribution that it is unlikely any individuals will have a high enough background fitness to fix, and for large positive $s$, even individuals with an unfit genetic background can give rise to a lineage that is destined to fix.
+In this regime, $x_c \approx 2\sigma^4/U_b\bar{\epsilon}^2$: when $\sigma$ is large, only mutations in the nose stand any chance of fixing unless they can be dragged to higher fitness by background mutations.
+The effect of introducing a nonzero $s$ is essentially to shift the value of $x$ and $x_c$: for large negative $s$, $x_c$ may be far enough in the nose that it is unlikely any individuals will actually be present, and for large positive $s$, even unfit individuals can give rise to a lineage that is destined to fix.
 
 In order to obtain the total valley crossing probability $\Phi$, the only remaining element to compute is the distribution of mutant bubble sizes $W$ as function of their background fitness $x$.
 Since the tunneling probability for a lineage with background fitness $x$ is given by $\phi = \left< 1 - e^{-\mu \pfix W} \right>$, we do not need to compute the full distribution of $W$ but rather only its Laplace transform: $\mathcal{L}\left[ p(w) \right] = \int_0^\infty e^{-zw} p(w) dw$, with $z = \mu \pfix$.
 \citet{neher_shraiman_2011} showed that $\phi$ follows the equation
 \begin{equation}
-\partial_t \phi = z + (z + x - \sigma^2 t + \delta)\phi^2 - (1 + x - \sigma^2 t + \delta)\phi^2,
+\partial_t \phi = z + (z + x - \sigma^2 t + \delta)\phi - (1 + x - \sigma^2 t + \delta)\phi^2,
 \end{equation}
 but their analysis also included a recombination term that made it possible to pull out the integrated Laplace transform $\int_{-\infty}^\infty p(x) \phi(x) dx$ without the need to actually solve this equation.
 They also avoided the need to explicitly send time to infinity, which is necessary to incorporate all possible bubble sizes and lifetimes.
@@ -201,13 +207,14 @@ We estimate them by manually counting the number of injected mutations every gen
 
 Simulations are allowed to proceed for an equilibration time of $N/10$ generations to allow sufficient genetic diversity to be introduced.
 During this time, the mutation rate $\mu$ for the focal loci is set to zero.
-After equilibration, we set a per-site mutation rate $\mu$ for the focal loci (allowing forward and backward mutations) with single mutant fitness disadvantage $\delta$ and double mutant advantage $s$.
+After equilibration, we set the per-site mutation rate $\mu$ for the focal loci (allowing forward and backward mutations) with single mutant fitness disadvantage $\delta$ and double mutant advantage $s$.
 When the double mutant reaches frequency $0.5$, we consider it to have fixed.
 We then set the focal loci allele frequencies back to zero, randomize the selection coefficients for the genetic background by drawing anew from an exponential distribution, and allow the population to equilibrate for another $N/10$ generations.
 This ensures that independent valley crossing trials are independent despite occurring in the same simulation run.
 
 We partitioned our simulations as follows.
-We first studied the effect of increasing $\sigma$ in the sequential fixation, stochastic tunneling, semi-deterministic tunneling, and sequential fixation regimes \citep{weissman_2009}.
+We first studied the effect of increasing $\sigma$ in the sequential fixation, stochastic tunneling, semi-deterministic tunneling, and deterministic fixation regimes \citep{weissman_2009}.
+% In the case of sequential fixation, the valley crossing time is dominated by the time until a deleterious mutant that is destined to fix arises: once it does, it does so in order $T_{\mathrm{MRCA}}$ generations, which is of order $N$ for low $N\sigma$ and scales weakly with $N$ for higher $N\sigma$ \citep{neher_hallatschek_2013}.
 For small populations, sequential fixation applies when $N \ll \min(1/\delta, 1/\sqrt{\mu s})$, so that a successful mutant is unlikely to arise until the intermediate has fixed, but the intermediate's fitness disadvantage is too weak for selection to inhibit it.
 Tunneling becomes relevant when $N$ is too large for sequential fixation, i.e., the tunneling probability becomes more significant than the probability that the intermediate will fix: this mandates $N \gtrsim 1/\sqrt{\mu s}$.
 It also requires that $N \ll 1/\mu$, meaning that only one mutant lineage is likely to be extant at any given time and, if lineages do co-occur, they are unlikely to interfere with each other or substantially affect the mean fitness.
@@ -229,7 +236,7 @@ To determine the effect of $\sigma$ on this ratio, we performed simulations at b
 \begin{subfigure}[b]{0.4\textwidth}
 \includegraphics[width=\textwidth]{Figures/det_fix.pdf}
 \end{subfigure}
-\caption{Valley crossing times in the semi-deterministic tunneling (left) and deterministic fixation (right) regimes as a function of $\sigma$. In both figures, $s = 10^{-2}$ and $\delta = 10^{-3}$: on the left, $N = 10^5$ and $\mu = 10^{-4}$, and on the right, $N = 10^6$ and $\mu = 10^{-3}$. Orange lines are averages, boxes are interquartile ranges, and end caps are overall ranges. Each box represents about $100$ simulation runs.}
+\caption{Valley crossing times in the semi-deterministic tunneling regime as a function of $\sigma$. In both figures, $s = 10^{-2}$ and $\delta = 10^{-3}$: on the left, $N = 10^5$ and $\mu = 10^{-4}$, and on the right, $N = 10^6$ and $\mu = 10^{-3}$; the right figure has a high enough value of $N\mu^2$ that fixation is almost deterministic. Orange lines are averages, boxes are interquartile ranges, and end caps are overall ranges. Each box represents about $100$ simulation runs.}
 \label{fig:deterministic}
 \end{figure}
 
@@ -261,8 +268,8 @@ In the case of stochastic tunneling, the overall size distribution of bubble siz
 
 On the other hand, the reduced effectiveness of selection should generally be helpful in crossing deeper valleys by mitigating the deleterious effect of single mutants.
 This can be seen in figure \ref{fig:sigma_delta}.
-At high values of $\sigma$, the fitness effect of the deleterious intermediate mutation has very little effect on the valley crossing time, which means that deep valleys can be more easily crossed.
-This suggests that the ``flattening'' of rugged fitness landscapes due to genetic draft may in fact yield some benefits to valley crossing in rapidly adapting populations easier.
+At high values of $\sigma$, the fitness effect of the deleterious intermediate mutation has very little effect on the valley crossing time, which means that very deep valleys can be crossed.
+This suggests that traversing rugged fitness landscapes by valley crossing may be enhanced in rapidly adapting populations: as previously mentioned, they appear to be ``flattened".
 
 \begin{figure}
 \begin{subfigure}[b]{0.475\textwidth}
@@ -280,8 +287,8 @@ This suggests that the ``flattening'' of rugged fitness landscapes due to geneti
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=0.4\textwidth]{Figures/compare_ratios.pdf}
-\caption{Ratio of $\alpha$ values at high and low $\sigma$. Genetic draft is helpful for crossing deep valleys in the sequential fixation and tunneling regimes. But when semi-deterministic tunneling becomes more important than stochastic tunneling, it can slow down the crossing rate.}
+\includegraphics[width=0.95\textwidth]{Figures/compare_ratios_multi.pdf}
+\caption{Ratio of $\alpha$ values at high and low $\sigma$, for varied values of $\mu$. Genetic draft is helpful for crossing deep valleys in the sequential fixation and tunneling regimes, though at large population sizes it can slow down the crossing rate for deep valleys: at higher values of $\mu$ this limitation disappears.}
 \label{fig:alpha_ratio}
 \end{figure}
 
@@ -296,14 +303,14 @@ At a higher value of $\sigma$, valley depth has a weaker effect on the valley cr
 Moreover, values of $\alpha$ are generally lower for the population with higher $\sigma$ experiencing genetic draft than for the population with lower $\sigma$ experiencing only drift.
 This implies that draft tends reduce the valley crossing time relative to the time for a single beneficial mutation to sweep.
 
-We can get a clearer picture of how draft affects valley crossing times relative to single beneficial sweeps by considering the ratio $\alpha(10^{-2})/\alpha(10^{-6})$, which is a measure of the extent to which rapid adaptation speeds up valley crossing relative to sweeping (lower values indicate that rapid adaptation favors valley crossing).
+We can get a clearer picture of how draft affects valley crossing times relative to single beneficial sweeps by considering the ratio $\alpha(10^{-2})/\alpha(10^{-6})$ (the arguments are values of $\sigma$), which is a measure of the extent to which rapid adaptation speeds up valley crossing relative to sweeping (lower values indicate that rapid adaptation favors valley crossing).
 The ratio can be seen in Figure \ref{fig:alpha_ratio}.
 Overall, we find that raising $\sigma$ increases the extent to which valley crossing is favored for lower population sizes: for this combination of parameters, the condition is $N < 10^{5}$.
 In this regime, raising $\delta$ also increases the degree to which valley crossing is favored under draft, which means that the deeper the valley, the more that draft increases the likelihood of valley crossing relative to a single beneficial mutation.
-For $N > 10^5$ in the low $\sigma$ case, tunneling becomes semi-deterministic where $N\mu > 1$ and, on average, more than one mutant lineage is produced every generation.
-These mutants then give rise to double mutants at a low but constant rate that is not sensitive to the valley depth (Figure \ref{fig:tau-ratios} and equation 35 in \citealp{weissman_2009}) and that is much faster than in the stochastic tunneling case.
-In contrast, $N > 10^{5}$ for high $\sigma$ does not produce the same order of magnitude increase in valley crossing rates, which is likely due to no analogous qualitative change in valley crossing dynamics.
-Thus, for large enough population sizes, draft does not significantly improve the valley crossing rate relative to the rate of single beneficial sweeps.
+The exception is at very high values of $N$ and $\delta$ and low values of $\mu$, where draft turns out again not to be helpful; see the lower right part of the leftmost plot.
+In this regime, $\delta$ is on the order of $\sigma$ in our draft simulations, meaning that single mutant lineages are rapidly cut off by the advancing mean fitness and are likely almost never present in the nose of the fitness distribution.
+Essentially, the population size is large enough that intermediate mutants can be ``seen" by selection, but the fitness detriment is severe enough compared to $\sigma$ that draft is no longer helpful in allowing mutant lineages to reach high frequency.
+This problem disappears as $\mu$ increases (center and right plots) and the population is far beyond the semi-deterministic tunneling barrier.
 
 \section*{Discussion}
 
@@ -323,6 +330,7 @@ They find that large populations are more likely to cross valleys than fix a sim
 However, they also find that intermediate-sized populations in which stochastic tunneling occurs are the least likely to cross a fitness valley instead of fixing a beneficial mutation.
 In contrast, our results suggest that the stochastic tunneling regime is where rapid adaptation and genetic draft increase the likelihood of valley crossing relative to a simple beneficial mutation.
 Thus, it is possible that genetic draft improves the likelihood of valley crossing precisely where it is least likely under genetic drift. 
+% in their model, the complicating factor is that a partially sweeping beneficial mutation increases the mean fitness, making valley crossing more difficult especially for populations of intermediate size.
 
 We have focused exclusively on asexual populations, but extensions to sexual populations are possible.
 The relevant parameter is likely to be the product of $N$ and the proportion of the fitness standard deviation segregating in a small, effectively asexual block, $\sigma_b$ \citep{neher_kessinger_2013}.
@@ -360,7 +368,6 @@ The interplay between cooperation and valley crossing is an area that needs furt
 
 This work is supported by the National Science Foundation under Cooperative Agreement No. 1355438.
 
-\clearpage
 \bibliographystyle{genetics}
 \bibliography{bib}
 
