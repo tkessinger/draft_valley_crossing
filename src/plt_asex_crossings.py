@@ -29,7 +29,7 @@ sns.set_style('ticks')
 #var_sigma_8: variable sigma, N = 10**5
 
 
-name = 'var_sigma_sequential_fix_N_4_delta_-5'
+name = 'var_sigma_tunneling_3'
 
 numruns = {}
 sigma_range = {}
@@ -348,6 +348,31 @@ if name == 'var_sigma_tunneling':
     sigma_range[name] = [10**x for x in range(-5,-1)] + [2*10**x for x in range(-5,-1)] + [8*10**x for x in range(-5,-1)] + [5*10**x for x in range(-5,-1)]    
     sigma_range[name] = np.sort(sigma_range[name])
     delta_range[name] = [10**-3] #range of deleterious intermediate coefficients
+    s_range[name] = [10**-2] #range of selection coefficients for the adaptation
+    mu_range[name] = [1*10**-6]
+    numruns[name] = 3
+    run_time[name] = 10000000
+    rho = 0.0
+    fixed_s = False
+    graphtype = 'sigma'
+
+if name == 'var_delta':
+    N_range[name] = [10**5]#,3*10**4,10**5,3*10**5,10**6] #range of population size values
+    sigma_range[name] = [5e-6,5e-2]
+    delta_range[name] = [10**-6,10**-5,10**-4,10**-3,10**-2] #range of deleterious intermediate coefficients
+    s_range[name] = [10**-1] #range of selection coefficients for the adaptation
+    mu_range[name] = [3*10**-6]
+    numruns[name] = 3
+    run_time[name] = 1000000
+    rho = 0.0
+    fixed_s = False
+    graphtype = 's_delta'
+
+if name == 'var_sigma_tunneling_3':
+    N_range[name] = [10**5]#,3*10**4,10**5,3*10**5,10**6] #range of population size values
+    sigma_range[name] = [10**x for x in range(-5,-1)] + [2*10**x for x in range(-5,-1)] + [8*10**x for x in range(-5,-1)] + [5*10**x for x in range(-5,-1)]    
+    sigma_range[name] = np.sort(sigma_range[name])
+    delta_range[name] = [10**-4] #range of deleterious intermediate coefficients
     s_range[name] = [10**-2] #range of selection coefficients for the adaptation
     mu_range[name] = [1*10**-6]
     numruns[name] = 3
@@ -681,11 +706,11 @@ def plt_s_delta_dependence():
                             if not params in inferred_Uvals.keys():
                                 inferred_Uvals[params] = []
                             tmp_Uvals = []
-                            with open('output/valley_crossing_sims_'+name+'/'+prefix+'_effective_mut_rate_'+str(runno)+'.pkl', 'r') as Uval_hist_file:
-                                Uvals = pickle.load(Uval_hist_file)
-                                for Uval in Uvals:
-                                    tmp_Uvals.append(Uval)
-                        inferred_Uvals[params] = 1.0*np.sum(tmp_Uvals)/N/200
+                            #with open('output/valley_crossing_sims_'+name+'/'+prefix+'_effective_mut_rate_'+str(runno)+'.pkl', 'r') as Uval_hist_file:
+                            #    Uvals = pickle.load(Uval_hist_file)
+                            #    for Uval in Uvals:
+                            #        tmp_Uvals.append(Uval)
+                        #inferred_Uvals[params] = 1.0*np.sum(tmp_Uvals)/N/200
                         print N, sigma, s, delta,len(crossing_times[params])
     for sigma in sigma_range[name]:
         for s in [s_range[name][0],s_range[name][-1]]:

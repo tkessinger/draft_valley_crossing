@@ -34,6 +34,7 @@ parser.add_argument('--runno', type=int, default=0)
 parser.add_argument('--runtime', type=int, default=100000)
 parser.add_argument('--name', type=str, default='test')
 parser.add_argument('--fixed_s', type=bool, default=False)
+parser.add_argument('--expected_crossings', type=int, default=100)
 
 args=parser.parse_args()
 
@@ -44,6 +45,7 @@ sigma = args.sigma #fitness variance
 rho = args.rho #per generation outcrossing rate
 cx = 0 #per locus crossover rate
 #unfortunately, nonzero values of rho and cx increase the runtime somewhat
+expected_crossings = args.expected_crossings
 
 s = args.s
 delta = args.delta
@@ -128,7 +130,8 @@ if not os.path.exists('output/valley_crossing_sims_'+args.name):
 total_number_of_mutations = 0
 
 
-while pop.generation < run_time:
+#while pop.generation < run_time:
+while len(dm_successful_crossings) < expected_crossings:
     pfit = pop.get_trait_statistics(0)
     if pfit.variance > 0 and pop.generation > np.min([100, base_burn_time]) and not args.fixed_s:
         multiplier = sigma/np.sqrt(pfit.variance)
@@ -182,13 +185,13 @@ while pop.generation < run_time:
                 pop.set_allele_frequencies(allele_freqs,pop.N)
                 pop.carrying_capacity = N #reset the carrying capacity to its desired value
                 
-                #selection_coefficients = np.random.exponential(s_mean, size = L) #we might as well change up the background fitnesses at this point
-                #selection_coefficients[mutant_locs]=1e-10
+                selection_coefficients = np.random.exponential(s_mean, size = L) #we might as well change up the background fitnesses at this point
+                selection_coefficients[mutant_locs]=1e-10
                 
                 double_mut_in_play = False
                 
                 pop.mutation_rate = 0
-                burn_time = pop.generation + base_burn_time #we might as well let the population equilibrate again for a bit
+                burn_time = pop.generation + base_burn_time/10 #we might as well let the population equilibrate again for a bit
                 burned_in = False
                 pop.trait_weights += np.array([0,-1.0]) #"turn off" the focal loci: just a failsafe
 
