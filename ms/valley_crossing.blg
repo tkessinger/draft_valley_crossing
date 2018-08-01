@@ -1,51 +1,48 @@
 This is BibTeX, Version 0.99d (TeX Live 2018)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: valley_crossing.aux
-The style file: apsrmp.bst
-Reallocated singl_function (elt_size=4) to 100 items from 50.
+The style file: genetics.bst
 Database file #1: bib.bib
-Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--can't use both volume and number fields in Wright:1932
 You've used 58 entries,
-            3359 wiz_defined-function locations,
-            1574 strings with 23132 characters,
-and the built_in function-call counts, 45455 in all, are:
-= -- 2816
-> -- 1898
-< -- 141
-+ -- 1484
-- -- 480
-* -- 6070
-:= -- 5075
-add.period$ -- 58
+            2762 wiz_defined-function locations,
+            990 strings with 14382 characters,
+and the built_in function-call counts, 30408 in all, are:
+= -- 2780
+> -- 1679
+< -- 39
++ -- 646
+- -- 473
+* -- 3167
+:= -- 5128
+add.period$ -- 116
 call.type$ -- 58
-change.case$ -- 392
+change.case$ -- 451
 chr.to.int$ -- 58
 cite$ -- 59
-duplicate$ -- 3623
-empty$ -- 3561
-format.name$ -- 908
-if$ -- 8645
+duplicate$ -- 1344
+empty$ -- 2080
+format.name$ -- 563
+if$ -- 5979
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 628
-newline$ -- 189
+missing$ -- 63
+newline$ -- 177
 num.names$ -- 232
-pop$ -- 951
+pop$ -- 366
 preamble$ -- 1
-purify$ -- 390
+purify$ -- 396
 quote$ -- 0
-skip$ -- 1703
+skip$ -- 807
 stack$ -- 0
-substring$ -- 1338
-swap$ -- 3176
-text.length$ -- 105
+substring$ -- 1896
+swap$ -- 444
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 507
 warning$ -- 1
-while$ -- 228
+while$ -- 250
 width$ -- 0
-write$ -- 678
+write$ -- 643
 (There was 1 warning)

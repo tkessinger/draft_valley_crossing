@@ -1,24 +1,9 @@
-\documentclass[rmp]{revtex4}
-\usepackage[english]{babel}
-\usepackage{amssymb,amsfonts,amsmath}
-\usepackage{xcolor}
+\documentclass[10pt,twocolumn,twoside]{gsajnl}
+\articletype{inv} % article type: {inv} Investigation
+
 \usepackage{breqn}
-\usepackage{graphicx}
-\usepackage{caption}
+
 \usepackage{subcaption}
-\captionsetup{compatibility=false}
-
-\usepackage{amsmath}
-\usepackage{natbib}
-\usepackage{hyperref}
-\usepackage{enumerate}
-%\usepackage{subfig}
-
-\usepackage{fontspec}
-
-% Code syntax highlighting
-\usepackage{listings}
-\lstloadlanguages{C++,Python}
 
 \newcommand{\EQ}[1]{Eq.~\eqref{eq:#1}}
 \newcommand{\EQS}[2]{Eqs.~\eqref{eq:#1} and \eqref{eq:#2}}
@@ -28,29 +13,22 @@
 
 \newcommand{\jcomment}[2][noinline]{\todo[size=\tiny,author=JVC,color=red,#1,caption={},fancyline]{#2}}
 
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.42}
-
 %%% math macros
 \DeclareMathOperator*{\argmin}{arg\,min}
 \newcommand{\pfix}{p_{\mathrm{fix}}}
 
 \usepackage{setspace}
-\usepackage[colorinlistoftodos]{todonotes}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{Genetic draft and valley crossing}
-\author{Taylor~Kessinger}
-\author{Jeremy~Van~Cleve}
-%\affiliation{Department of Biology, University of Kentucky}
+\author[$\ast$]{Taylor Kessinger}
+\author[$\ast$,1]{Jeremy Van Cleve}
+\affil[$\ast$]{Department of Biology, University of Kentucky}
 
+\keywords{genetic drift; rapid adaptation; epistasis; fitness landscape}
+\runningtitle{Genetic draft and valley crossing}
+\runningauthor{Kessinger and Van Cleve}
 
-\date{\today}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
 Living systems are characterized by complex adaptations which require multiple coordinated mutations in order to function. Empirical studies of fitness landscapes that result from the many possible mutations in a gene region reveal many fitness peaks and valleys that connect them. Thus, it is possible that some complex adaptations have arisen by evolutionary paths whose intermediate states are neutral or even deleterious.
 When intermediates are deleterious, traversing such an evolutionary path is known as ``crossing a fitness valley".
@@ -60,10 +38,21 @@ We investigate the rate at which complex adaptations evolve in these rapidly ada
 We confirm that rapid adaptation overall increases the time required to cross a valley; however, rapid adaptation can make it easier for deeper valleys to be crossed relative to the time required for single beneficial mutations to sweep to fixation.
 \end{abstract}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
 \maketitle
+\thispagestyle{firststyle}
+\marginmark
+\firstpagefootnote
+
+\correspondingauthoraffiliation{1}{Corresponding author: Department of Biology, University of Kentucky. E-mail: \href{emailto:jvancleve@uky.edu}{jvancleve@uky.edu}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \begin{spacing}{1.5}
-  
+
 \section*{Introduction}
 
 The simplest adaptive scenarios in evolution involve the arisal and fixation of successive beneficial mutations.
@@ -117,7 +106,7 @@ These observations add to the growing intuition that complex adaptations that in
 
 \section*{Mathematical background}
 
-\begin{figure}
+\begin{figure}[t]
 \begin{center}
   \includegraphics[scale=0.75]{Figures/valley.pdf}
   \caption{Fitness landscape.}
@@ -225,7 +214,7 @@ To determine the effect of $\sigma$ on this ratio, we performed simulations at b
 
 \section*{Results}
 
-\begin{figure}
+\begin{figure}[t]
 \begin{subfigure}[b]{0.4\textwidth}
 \includegraphics[width=\textwidth]{Figures/det_tunnel.pdf}
 \end{subfigure}
@@ -236,8 +225,7 @@ To determine the effect of $\sigma$ on this ratio, we performed simulations at b
 \label{fig:deterministic}
 \end{figure}
 
-
-\begin{figure}
+\begin{figure}[t]
 \begin{subfigure}[b]{0.4\textwidth}
 \includegraphics[width=\textwidth]{Figures/seq_fix.pdf}
 \end{subfigure}
@@ -256,7 +244,7 @@ This genetic draft buffets the frequency of mutations so that these mutations be
 This depresses the fixation probability of the double mutant and other complex adaptations, which appears to account for the majority of the change in fixation time.
 In the case of stochastic tunneling, the overall size distribution of bubble sizes is reduced as well: the distribution $P(w)$ scales not as $w^{-3/2}$ but as $w^{-2}$ \citep{neher_shraiman_2011}, so there are fewer chances for the complex adaptation to arise on a mutant background and fix.
 
-\begin{figure}
+\begin{figure}[t]
 \includegraphics[width=0.4\textwidth]{Figures/var_sigma_delta.pdf}
 \caption{Valley crossing times for varied $\sigma$ and $\delta$. In these simulations, $N = 10^5$, $\mu = 3 \times 10^{-6}$, and $s = 10^{-2}$. Note the lack of dependence on $\delta$ at high $\sigma$.}
 \label{fig:sigma_delta}
@@ -267,7 +255,7 @@ This can be seen in figure \ref{fig:sigma_delta}.
 At high values of $\sigma$, the fitness effect of the deleterious intermediate mutation has very little effect on the valley crossing time, which means that deep valleys can be crossed.
 This suggests that traversing rugged fitness landscapes by valley crossing may be enhanced in rapidly adapting populations as landscapes under genetic draft appear to be ``flattened".
 
-\begin{figure}
+\begin{figure}[t]
 \begin{subfigure}[b]{0.475\textwidth}
   \includegraphics[width=\textwidth]{Figures/tau_compare_crop.pdf}
   \caption{Valley crossing times on a $\log_{10}$ scale}
@@ -282,12 +270,6 @@ This suggests that traversing rugged fitness landscapes by valley crossing may b
 \label{fig:tau-ratios}
 \end{figure}
 
-\begin{figure}
-\includegraphics[width=0.95\textwidth]{Figures/compare_ratios_multi.pdf}
-\caption{Ratio of $\alpha$ values at high and low $\sigma$ ($\log \left( \alpha_{\sigma_2} / \alpha_{\sigma_1} \right)$ where $\sigma_1=10^{-6}$ and $\sigma_2=10^{-2}$), for varied values of $\mu$. Genetic draft is helpful for crossing deep valleys in the sequential fixation and tunneling regimes, though at large population sizes it can slow down the crossing rate for deep valleys; at higher values of $\mu$ this limitation disappears.}
-\label{fig:alpha_ratio}
-\end{figure}
-
 So far, we can see that valley crossing is slower in rapidly adapting populations but the crossing time is less sensitive to the depth of the valley.
 How do these two effects combine to shape the likelihood of valley crossing in rapidly adapting populations experiencing genetic draft compared to populations only experiencing drift?
 To explore this, we first introduce the ratio $\alpha = \tau_{\mathrm{valley}}/\tau_{\mathrm{sweep}}$, where $\tau_{\mathrm{sweep}}$ is the time required for a single beneficial mutation to sweep to fixation and $\tau_{\mathrm{valley}}$ is the time required for a valley crossing event to occur.
@@ -298,6 +280,12 @@ Figure \ref{fig:ratios} shows the expected pattern that deeper valleys in smalle
 At a higher value of $\sigma$, valley depth has a weaker effect on the valley crossing time in both an absolute sense (Figure \ref{fig:tau}) and relative to the time for a single beneficial sweep (Figure \ref{fig:ratios}).
 Moreover, values of $\alpha$ are generally lower for the population with higher $\sigma$ experiencing genetic draft than for the population with lower $\sigma$ experiencing only drift.
 This implies that draft tends reduce the valley crossing time relative to the time for a single beneficial mutation to sweep.
+
+\begin{figure*}[t]
+\includegraphics[width=0.95\textwidth]{Figures/compare_ratios_multi.pdf}
+\caption{Ratio of $\alpha$ values at high and low $\sigma$ ($\log \left( \alpha_{\sigma_2} / \alpha_{\sigma_1} \right)$ where $\sigma_1=10^{-6}$ and $\sigma_2=10^{-2}$), for varied values of $\mu$. Genetic draft is helpful for crossing deep valleys in the sequential fixation and tunneling regimes, though at large population sizes it can slow down the crossing rate for deep valleys; at higher values of $\mu$ this limitation disappears.}
+\label{fig:alpha_ratio}
+\end{figure*}
 
 We can get a clearer picture of how draft affects valley crossing times relative to single beneficial sweeps by considering the ratio $\alpha_{\sigma_2} / \alpha_{\sigma_1}$ where $\sigma_1=10^{-6}$ and $\sigma_2=10^{-2}$, which is a measure of the extent to which rapid adaptation speeds up valley crossing relative to sweeping (lower values indicate that rapid adaptation favors valley crossing).
 The ratio can be seen in Figure \ref{fig:alpha_ratio}.
@@ -363,8 +351,6 @@ The interplay between cooperation and valley crossing is an area that needs furt
 
 This work is supported by the National Science Foundation under Cooperative Agreement No. 1355438.
 
-\clearpage
-\bibliographystyle{genetics}
 \bibliography{bib}
 
 \end{spacing}
