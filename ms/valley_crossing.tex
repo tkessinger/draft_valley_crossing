@@ -53,7 +53,7 @@ We confirm that rapid adaptation overall increases the time required to cross a 
 
 \begin{spacing}{1.5}
 
-\section*{Introduction}
+\section{Introduction}
 
 The simplest adaptive scenarios in evolution involve the arisal and fixation of successive beneficial mutations.
 This appears to be how Darwin thought even complex systems, such as the vertebrate eye, evolved \citep{darwin_1859}, and this assumption underlies many models in evolutionary theory including the those from adaptive dynamics \citep{Geritz:Kisdi:1998,Dercole:Rinaldi:2008} and theories of adaptation \citep{Gillespie:1983,Orr:1998,Gillespie:1991}.
@@ -104,7 +104,7 @@ However, this is consistent with the fact that \emph{all} forms of adaptation ar
 In addition, we confirm that in rapidly adapting populations, adaptive fixations of alleles are more likely to be complex adaptations involving a fitness valley than they are in populations where genetic drift is the primary force shaping genetic variation at linked sites; essentially, genetic draft maintains the linkage that makes it possible to leap across fitness landscapes rather than adapt primarily by climbing to local peaks.
 These observations add to the growing intuition that complex adaptations that involve evolution across fitness valleys may not be a surprising result of the evolutionary process, but rather an expected one.
 
-\section*{Mathematical background}
+\section{Mathematical background}
 
 \begin{figure}[t]
 \begin{center}
@@ -148,8 +148,8 @@ One difficulty in computing the rate of tunneling in the high $N\sigma$ case (wh
 That is to say, it is not possible to simply compute $\pfix$ and the weight distribution by themselves, but rather one must convolute both of them over the background fitness.
 Individuals whose background fitness is near the nose of the fitness distribution will tend to give rise to longer-lived lineages, and if those individuals give rise to the complex adaptation, it will therefore likewise be more likely to fix.
 Thus, $W$ will depend on the background fitness $x$ and the valley depth $\delta$, and $\pfix$ will depend on $x$ and the peak height $s$.
-These will have to be integrated over the fitness distribution $f(x)$ in order to obtain the total crossing probability $\Phi(s,\delta) = \int_{-\infty}^\infty \phi(x,s,\delta) f(x) dx$.
-The expected valley crossing time then becomes $1/N\mu\Phi$.
+These will have to be integrated over the fitness distribution $f(x)$ in order to obtain the total crossing probability $\upPhi(s,\delta) = \int_{-\infty}^\infty \phi(x,s,\delta) f(x) dx$.
+The expected valley crossing time then becomes $1/N\mu\upPhi$.
 An additional difficulty is that technically, $\pfix$ will depend not on the fitness of the initial lineage in a bubble but on the fitness of the specific background on which the double mutant arose.
 These will not necessarily be the same; for example, individuals within the single mutant lineage may accumulate additional background mutations.
 Assuming that this does \emph{not} happen, that is, assuming that $\pfix$ depends on the fitness $x$ of the founding single mutant lineage, is tantamount to assuming that bubbles are too short lived to accumulate background mutations that significantly affect their fitness.
@@ -165,7 +165,7 @@ For a neutral mutation ($s = 0$), the fixation probability is effectively zero a
 In this regime, $x_c \approx 2\sigma^4/U_b\bar{\epsilon}^2$: when $\sigma$ is large, only mutations in the nose stand any chance of fixing unless they can be dragged to higher fitness by background mutations.
 The effect of introducing a nonzero $s$ is essentially to shift the value of $x$ and $x_c$: for large negative $s$, $x_c$ may be far enough in the nose that it is unlikely any individuals will actually be present, and for large positive $s$, even unfit individuals can give rise to a lineage that is destined to fix.
 
-In order to obtain the total valley crossing probability $\Phi$, the only remaining element to compute is the distribution of mutant bubble sizes $W$ as function of their background fitness $x$.
+In order to obtain the total valley crossing probability $\upPhi$, the only remaining element to compute is the distribution of mutant bubble sizes $W$ as function of their background fitness $x$.
 Since the tunneling probability for a lineage with background fitness $x$ is given by $\phi = \left< 1 - e^{-\mu \pfix W} \right>$, we do not need to compute the full distribution of $W$ but rather only its Laplace transform: $\mathcal{L}\left[ p(w) \right] = \int_0^\infty e^{-zw} p(w) dw$, with $z = \mu \pfix$.
 \citet{neher_shraiman_2011} showed that $\phi$ follows the equation
 \begin{equation}
@@ -173,10 +173,10 @@ Since the tunneling probability for a lineage with background fitness $x$ is giv
 \end{equation}
 but their analysis also included a recombination term that made it possible to pull out the integrated Laplace transform $\int_{-\infty}^\infty p(x) \phi(x) dx$ without the need to actually solve this equation.
 They also avoided the need to explicitly send time to infinity, which is necessary to incorporate all possible bubble sizes and lifetimes.
-Unfortunately this method is not available to us, and the nose dominance of the bubble size distribution, combined with the $x$ dependence of $z$ (via $z = \mu \pfix(x)$), lead to difficulty in deriving a simple closed form expression for $\Phi$.
+Unfortunately this method is not available to us, and the nose dominance of the bubble size distribution, combined with the $x$ dependence of $z$ (via $z = \mu \pfix(x)$), lead to difficulty in deriving a simple closed form expression for $\upPhi$.
 Therefore, we focus on simulation methods to study the dynamics of valley crossing.
 
-\section*{Simulation methods}
+\section{Simulation methods}
 
 To analyze our model, we perform forward simulations using a customized version of \texttt{FFPopSim} \citep{zanini_2012}, a discrete time forward simulation package that implements a modified Wright-Fisher model.
 The simulation code is available via \texttt{GitHub}.
@@ -212,7 +212,11 @@ We recorded the time for a beneficial mutation to arise and reach frequency $0.5
 We then computed the ratio of the sweep time to the valley crossing time for a complex adaptation, with valley depth $\delta$ and larger fitness advantage $s_{\mathrm{valley}}$.
 To determine the effect of $\sigma$ on this ratio, we performed simulations at both high and low $\sigma$ and computed the ratio of these ratios: the result is a measure of the extent to which rapid adaptation increases the likelihood of valley crossing relative to the speed of simple sweeps.
 
-\section*{Results}
+\subsection*{Data availability}
+
+Simulation and analysis scripts needed to replicate the results are available at \url{https://github.com/tkessinger/draft_valley_crossing} under the Creative Commons BY-NC-SA license (\url{https://creativecommons.org/licenses/by-nc-sa/4.0/}).
+
+\section{Results}
 
 \begin{figure}[t]
 \begin{subfigure}[b]{0.4\textwidth}
@@ -296,7 +300,7 @@ In this regime, $\delta$ is on the order of $\sigma$ in our draft simulations, m
 Essentially, the population size is large enough that intermediate mutants can be ``seen" by selection, but the fitness detriment is severe enough compared to $\sigma$ that draft is no longer helpful in allowing mutant lineages to reach high frequency.
 This problem disappears as $\mu$ increases (center and right plots) and the population is beyond the deleterious tunneling barrier where the valley crossing time depends on the depth of the valley $\delta$.
 
-\section*{Discussion}
+\section{Discussion}
 
 We have used simulation methods to examine the rate of crossing fitness valleys in rapidly adapting populations that experience genetic draft.
 We find that although the overall valley crossing time is longer in rapidly adapting than in slowly adapting (drifting) populations, a higher fraction of adaptive events in rapidly adapting populations will occur through valley crossing than in slowly adapting populations.
