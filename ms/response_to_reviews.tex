@@ -1,0 +1,208 @@
+\documentclass[11pt]{article}
+
+\usepackage{natbib}
+%\setcitestyle{numbers}
+
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsthm,amssymb}
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage[letterpaper]{geometry} % easy way to set margins and paper size
+\geometry{hmargin={1in,1in},vmargin={1in,1in}}
+
+\usepackage[hidelinks]{hyperref}
+
+%%% Check for xetex or luatex
+\usepackage{ifxetex,ifluatex}
+\newif\ifxetexorluatex % a new conditional starts as false
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi>0
+\xetexorluatextrue
+\fi
+%%%
+
+%%% Font settings
+\ifxetexorluatex
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{TeX Gyre Pagella}
+\setsansfont[Scale=MatchLowercase]{Myriad Pro}
+\setmonofont[Scale=MatchLowercase]{Fira Code}
+
+\usepackage{unicode-math}
+\setmathfont[Scale=MatchLowercase]{TeX Gyre Pagella Math}
+\else
+\usepackage[T1]{fontenc}
+\usepackage{tgpagella}
+\fi
+%%%
+
+\usepackage{setspace}
+\usepackage{parskip}
+
+\usepackage[explicit]{titlesec}
+
+
+% new math operators
+\newcommand{\der}{\mathop{}\!\mathrm{d}}
+\DeclareMathOperator{\E}{E}
+\DeclareMathOperator{\var}{Var}
+\DeclareMathOperator{\cov}{Cov}
+
+\newenvironment{reviewerquote}{\begin{quote}\color{black}\itshape}{\end{quote}}
+\newenvironment{response}{\color{DarkBlue}}{}
+
+\begin{document}
+
+\section*{Associate Editor}
+
+\begin{reviewerquote}
+As mentioned by all referees, the non-standard setup of the simulation scheme makes it very difficult to relate the results to previous work. Although your main conclusion may well be confirmed for a standard infinite-sites model without constraining the background variance, this is by no means guaranteed (see the remarks about the infinitesimal limit by referee 2). To address this point (in the absence of analytical results), there is probably no way around individual-based simulations.
+\end{reviewerquote}
+
+\begin{reviewerquote}
+The first point by referee 2 is particularly important: Indeed, it is not clear that serial substitutions and tunneling will dominate in the same parameter regions as for drift (it also may depend on the depth of the fitness valley and on other parameters like the background mutation rate). In your simulations, this point is not addressed at all. However, in the absence of theoretical results, we need an even more comprehensive numerical study.
+\end{reviewerquote}
+
+\begin{reviewerquote}
+As mentioned by both referees, also your parameter choices are too limited. Note that additional figures can always be part of an electronic supplement.
+\end{reviewerquote}
+
+\begin{reviewerquote}
+Your ms (and in particular the mathematical background part) has clearly been written for specialists. This is ok, but still the comments of referee 3, who is an interested non-specialist, may help you to identify points where points can be made clearer to reach a broader audience.
+\end{reviewerquote}
+
+
+\section*{Reviewer \#2}
+
+\begin{reviewerquote}
+Primarily, I’m concerned that the simulations have been used to explore a very sparse set of parameters, and I’m not convinced they provide a comprehensive picture. Furthermore, the theoretical motivation for picking these exact parameters is also not obviously justified. In sum, these shortcomings make it difficult to evaluate the conclusions drawn from these results as well as the mechanisms put forward as explanations. The work would be substantially improved if the simulations were expanded to cover a broader range of parameters, so that known limiting forms at the ends of the parameter range can be recovered, and sanity checks are added. I give several suggestions below.
+\end{reviewerquote}
+
+\begin{reviewerquote}
+1. The authors justify the choice of parameters and regimes to focus on by quoting the results from the analysis of valley crossing in non-drafting populations by Weissman et al. (2009). Yet, as the authors point out at several points, evolutionary dynamics and genealogies are very different in rapidly adapting populations. It is not clear to me that the regimes in rapidly adapting populations are likely to be the same as the regimes in the cases studied by Weissman et al. (2009), or that they occur at the same transition points in terms of the parameters.
+
+For instance, the authors primarily focus on tunneling (where the beneficial mu- tation arises on the background of a polymorphic deleterious mutation that is not destined to fix), which in the limit studied by Weissman et al. (2009) requires that 1 􏰀 N 􏰀 1 . The lower limit of 1 comes from the calculation of bubble sizes in √μs μ √μs
+the limit considered by Weissman et al. (2009). However, the distribution of bubble sizes will be very different in the limit that the authors consider. Therefore it is unclear why this is a relevant scale. Furthermore, it is unclear whether (depending on the population size, fitness effects, mutation rates, etc.) tunneling is likely to be an equally broad regime in rapidly adapting populations. Here, deleterious hitchhik- ers can have a substantial probability of fixation, which sensitively depends on the mentioned parameters and increases with the size of the population (see e.g. Good and Desai (2014)). Thus, I would expect that the regime of sequential fixation can be much broader in rapidly adapting populations, and that the precise population size at which it gives way to the tunneling regime would be a much more complicated function of the parameters.
+
+In principle, it should be possible to increase the range of parameters explored by simulation and see whether, e.g. transitions in the quantities measured seem to occur at anticipated transition points, whether the behavior is monotonic (see next point), and at what parameter values known limiting forms are achieved (e.g. in Figure 2, how do the rates compare to the values anticipated in the limits of low σ calculated by Weissman et al. (2009)?).
+\end{reviewerquote}
+
+\begin{reviewerquote}
+2. Furthermore, there seems to be substantial variance in the outcomes in drafting populations, so that though the average time to crossing the valley is increased, there are lucky occurrences where the time to crossing the valley can be substantially shorter than in non-drafting populations. This variance appears larger than the difference between the means, so that reporting the average behavior doesn’t seem to capture the complete picture. Is this variance in outcomes driven by differences in the fitness of the background that the mutation arises on, so that some valleys are guaranteed to be crossed if the process is initiated in a high-fitness individual? Is the variance reduced when the depth of the valley is reduced? In addition, in Figure 2, though the average appears to asymptote, the fastest time appears non-monotonic. Is this a result of the relatively small number of replicates of the simulations (∼ 100), or an phenomenon that arises from the dynamics? Answering these questions would be important to interpreting the results, and would make me more comfortable about the verbal interpretations of the figures.
+\end{reviewerquote}
+
+
+\begin{reviewerquote}
+3. In addition to this, because there are no calculations to guide interpretation, it would be important to add additional simulations to measure these quantities. Specifically, I might be missing something in the design of the simulations, but it’s not entirely clear to me that what the authors are observing is true tunneling for all parameters considered. Might it be that the deleterious intermediates are fixing prior to the arising of the second “valley crossing mutation”? It might be a good idea to record the fixation times of both the intermediate and the double mutant to help interpret these results.
+4. The way the simulations have been set up is non-standard and makes it hard to use previous results to interpret which regime the populations are in. For instance, the authors’ claim is that the population is in the infinitesimal limit, where the only relevant parameter is σ (or, more accurately, Nσ). Yet Good et al. (2014) showed that for moderate Nσ there is a whole manifold of behaviors depending on the mutation rates and selection coefficients, and that observables do not always agree with asymptotically large Nσ limits. The fact that fitness effects of “background” mutations in these simulations are adjusted every generation to keep σ constant makes it difficult to understand what the background selection coefficients and overall background mutation rates are. Furthermore, the choice of exponential distribution for the selection coefficients of the genetic background may put the population in a regime where the infinitesimal limit may not always apply (see Fisher (2013)). Finally, the equilibration time of N/10 generations seems potentially short (one would hope for minimally a timescale of coalescence, and it’s not possible to interpret whether this is satisfied here).
+\end{reviewerquote}
+
+
+\begin{reviewerquote}
+1. Page 2, column 2: “Alleles whose dynamics are primarily governed by genetic drift can be effectively modeled by a diffusion approximation” and “drafting populations experience quite large jumps in allele frequencies that cannot be encapsulated by a diffusion approximation”: I’m not sure this is correct: allele frequency trajectories can in fact be modeled by a diffusion equation, albeit a more complicated one (e.g. the reference cited, Neher and Shraiman (2011a), uses such an approach). I’m also not sure what is meant by ‘jumps’ here – allele frequency trajectories tend to be no less smooth in drafting populations than in drifting populations.
+\end{reviewerquote}
+
+
+\begin{reviewerquote}
+2. Page 3, column 1: “small bubbles are more common, but large bubbles are very rare”: I don’t think the first half of this statement is correct. If mutations arise equally frequently in both cases, small bubbles must be equally common.
+\end{reviewerquote}
+
+
+\begin{reviewerquote}
+3. Page 3, column 2: “In previous approaches, these stochastic effects were smoothed out due to the presence of recombination”: Perhaps I don’t understand what is meant here, but this strikes me as inaccurate. The effects of drift are in the nose of the dis- tribution are of critical importance in the case considered by Neher and Shraiman (2011a): these authors do take them into account to obtain the establishment prob- abilities and allele frequency trajectories (e.g. Eq. 4 in that work).
+\end{reviewerquote}
+
+
+\begin{reviewerquote}
+4. Page 3, column 2: “This is consistent with the fact that all forms of adaptation are slowed down due to clonal interference and genetic background effects”: Does it mean to imply that the rate at which valleys are crossed is reduced by the same amount by the rate at which beneficial mutations of effect s are likely to fix compared to NUbs? This is a quantitative claim, and I don’t think it’s been shown. If I’m missing it, then perhaps a reference to a figure would be appropriate.
+\end{reviewerquote}
+
+
+\begin{reviewerquote}
+5. Page 4, column 1: “By Fisher’s “fundamental theorem”, the rate v at which the mean fitness advances is set to σ2”: this implies that v = σ2, ignoring the μ⟨s⟩ term [in v = σ2 + μ⟨s⟩] that arises in the full moment expansion, e.g. see Neher and Shraiman (2011b) for a recent review. This term is sometimes subdominant, but not in all regimes (and it’s not obvious it’s subdominant in the simulations carried out by the authors).
+\end{reviewerquote}
+
+
+\begin{reviewerquote}
+6. Page 4, column 2: The analysis of timescales seems inaccurate: the estimate that T0 is of order 1 log(Ns) is not appropriate for drafting populations.
+\end{reviewerquote}
+
+
+\section*{Reviewer \#3}
+
+\begin{reviewerquote}
+However, in my opinion the manuscript does not satisfy the criteria of quality and scientific substance required for publication in Genetics, for two main reasons. First, the modeling setup seems in several respects arbitrary and poorly motivated. Rather than using a true 'infinite sites' model for the background mutations as is standard in the fitness wave studies mentioned above, the authors choose a genome of 200 loci, two of which are designated as focal; the positioning of the focal loci is specified, though obviously this cannot matter in the absence of recombination. Although the authors do not explicitly say so, I assume that the background fitness is additive or multiplicative across loci. However, rather than simply letting background loci mutate to a new state with a randomly chosen selection coefficients, the authors impose a mutation scheme where a locus mutates whenever it becomes monomorphic. This seems like a highly unrealistic and awkward choice which makes it effectively impossible to externally control parameters such as the background mutation rate and selection coefficients. I find it hard to assess to what extent the results presented here generalize to a more reasonable modeling framework. 
+\end{reviewerquote}
+
+
+\begin{reviewerquote}
+Compared to the extensive (and well-written) review of the state of the art on pages 1-5, the results section* of the paper is remarkably meager. Results are exclusively numerical, subject to large error bars, and largely qualitative. Again, arbitrary parameter choices make it hard to assess the generality of these results. For example, for the comparison between the times required for a valley 
+crossing and the sweep of a single beneficial mutation the authors arbitrarily choose the 'valley' selection coefficient to be ten times that of the sweep. It would seem that choosing the selection coefficients to be same would be more informative.
+\end{reviewerquote}
+
+
+\begin{reviewerquote}
+1. page 5, second column: It seems to me that in the discussion below Eq.(1), the background fitness x should be replaced by $x - \bar{x}$ (fitness relative to mean fitness). 
+\end{reviewerquote}
+
+\begin{reviewerquote}
+2. page 6, second column, second paragraph: Here the authors say that backward mutations at the focal loci are allowed. This contradicts the statement in the first column on page 4.
+\end{reviewerquote}
+
+
+\begin{reviewerquote}
+3. page 7, first paragraph of Results: Why is the null expectation that genetic draft increases the time for valley crossing? At least in their abstract, Neher \& Shraiman (2011) appear to claim the opposite trend (last sentence). Or is this only true in the presence of recombination?
+\end{reviewerquote}
+
+
+\begin{reviewerquote}
+4. page 8, second column, line 14: $s_{sweep}$ -> $s_{valley}$
+\end{reviewerquote}
+
+\section*{Reviewer \#4}
+
+\begin{reviewerquote}
+1. Page 3: “The possibility that neutral variants are affected more strongly by selection at linked sites than by genetic drift, even in organisms like Drosophila, is one possible explanation for the ‘paradox of variation’, the fact that genetic diversity and population size often do not scale linearly”.
+How do the authors reconcile this suggestion with the fact that natural populations of Drosophila show very small levels of LD? (e.g. Mackay et al. 2012)
+\end{reviewerquote}
+
+\begin{reviewerquote}
+2. Pages 3-6: A long discussion of analytical math is provided in the introduction only to conclude that it is not applicable to the scenario investigated in this paper - which only uses simulations. The math section* should be shortened significantly or moved to the supplement.
+\end{reviewerquote}
+
+\begin{reviewerquote}
+3. Page 6: It seems like only beneficial mutations are modeled in the background loci. The reality is that most background mutations are deleterious, so beneficial focal mutations are more likely to be “dragged” down by linked deleterious alleles than “drafted” up by beneficial ones. Is it realistic to completely ignore negative selection on linked sites?
+\end{reviewerquote}
+
+\begin{reviewerquote}
+4. Page 6: “the population experiences a constant influx of beneficial mutations at the background loci. These mutations’ fitness effects are drawn from an exponential distribution”. In page 4 (mathematical description of the system): “If x is the background fitness of a lineage, then the distribution of background fitnesses f (x) is assumed to be roughly Gaussian”. How can sampling from an exponential distribution produce a Gaussian background? Any part of the mathematical discussion that does not pertain to the assumptions of this study should either be removed or explicitly mentioned to be not relevant to simulations done here.
+\end{reviewerquote}
+
+\begin{reviewerquote}
+5. Page 6: “any time a locus becomes monomorphic, a mutation at that locus is injected into a random individual in the population. In this way, the population experiences a constant influx of beneficial mutations at the background loci.” This practice seems to me to mask one of the important effects of population size: the total number of mutations introduced every generation. So, it does not seem appropriate at least when the question is the effect of Ne on likelihood or time of valley crossing.
+\end{reviewerquote}
+
+\begin{reviewerquote}
+6. Pages 7-9: Do all simulations always successfully cross the valley? If not, the rate of success should be reported in addition to the required time.
+\end{reviewerquote}
+
+\begin{reviewerquote}
+7. Page 7-9: As the authors discuss, when 𝜎 is high, the effect of linked background loci might be more important in determining the fate of a lineage than the focal loci. A question then arises: what is the distribution of background fitness of the lineages that make the crossing? Do only focal mutations on favorable backgrounds cross the valley? If all of them cross, then a plot or summary statistics of dependence of 𝜏 on the lineages’ background fitness (averaged over loci and time to simplify) would be informative.
+\end{reviewerquote}
+
+\begin{reviewerquote}
+8. Page 8, right column: “In Figure 5, we set ssweep = 0.01, ssweep = 0.1, and m = 10-5”. Should be “svalley = 0.1”.
+\end{reviewerquote}
+
+\begin{reviewerquote}
+9. Page 8: “Figure 5b shows the expected pattern that deeper valleys in smaller populations take longer to cross”. This seems contrary to earlier arguments for easier crossing in smaller populations due to weaker selection on deleterious intermediates. Please clarify.
+\end{reviewerquote}
+
+\begin{reviewerquote}
+10. Page 10: The authors mention the contrast of their results to those of Ochs and Desai. Can they offer any explanations as to the reason?
+\end{reviewerquote}
+
+
+\end{document}
