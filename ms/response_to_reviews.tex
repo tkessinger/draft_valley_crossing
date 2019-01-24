@@ -61,9 +61,13 @@
 As mentioned by all referees, the non-standard setup of the simulation scheme makes it very difficult to relate the results to previous work. Although your main conclusion may well be confirmed for a standard infinite-sites model without constraining the background variance, this is by no means guaranteed (see the remarks about the infinitesimal limit by referee 2). To address this point (in the absence of analytical results), there is probably no way around individual-based simulations.
 \end{reviewerquote}
 
+We have redone most of the simulations in this paper using \texttt{WaveFit}, a custom simulation package written in Julia. Both the original \texttt{FFPopSim} simulations and the new ones are individual-based, though groups of individuals identical in fitness are abstracted away as "clones" during the natural selection step. We have made this clearer.
+
 \begin{reviewerquote}
 The first point by referee 2 is particularly important: Indeed, it is not clear that serial substitutions and tunneling will dominate in the same parameter regions as for drift (it also may depend on the depth of the fitness valley and on other parameters like the background mutation rate). In your simulations, this point is not addressed at all. However, in the absence of theoretical results, we need an even more comprehensive numerical study.
 \end{reviewerquote}
+
+We have amended the results section to clarify that we are not claiming the parameter regimes in the cases of drift and draft are identical. In addition, we have explored a larger chunk of the relevant state space.
 
 \begin{reviewerquote}
 As mentioned by both referees, also your parameter choices are too limited. Note that additional figures can always be part of an electronic supplement.
@@ -104,26 +108,31 @@ In principle, it should be possible to increase the range of parameters explored
 1. Page 2, column 2: “Alleles whose dynamics are primarily governed by genetic drift can be effectively modeled by a diffusion approximation” and “drafting populations experience quite large jumps in allele frequencies that cannot be encapsulated by a diffusion approximation”: I’m not sure this is correct: allele frequency trajectories can in fact be modeled by a diffusion equation, albeit a more complicated one (e.g. the reference cited, Neher and Shraiman (2011a), uses such an approach). I’m also not sure what is meant by ‘jumps’ here – allele frequency trajectories tend to be no less smooth in drafting populations than in drifting populations.
 \end{reviewerquote}
 
+(I need to think about this.)
 
 \begin{reviewerquote}
 2. Page 3, column 1: “small bubbles are more common, but large bubbles are very rare”: I don’t think the first half of this statement is correct. If mutations arise equally frequently in both cases, small bubbles must be equally common.
 \end{reviewerquote}
 
+The fitness distribution drops off as $1/n^2$ in the draft case rather than $1/n$ in the drift case. This means most bubbles are short-lived, and long-lived bubbles are the exception.
 
 \begin{reviewerquote}
 3. Page 3, column 2: “In previous approaches, these stochastic effects were smoothed out due to the presence of recombination”: Perhaps I don’t understand what is meant here, but this strikes me as inaccurate. The effects of drift are in the nose of the dis- tribution are of critical importance in the case considered by Neher and Shraiman (2011a): these authors do take them into account to obtain the establishment prob- abilities and allele frequency trajectories (e.g. Eq. 4 in that work).
 \end{reviewerquote}
 
+We agree that the effects of drift on mutations in the nose are of critical importance, even in the presence of recombination. But high recombination rates have the effect of "flattening" the nose by limiting the fat-tailedness of the fitness distribution and making it more Gaussian: see the supplementary figures in that work. In asexual models, there is no equivalent. Fitness distributions tend to be even more fat-tailed and the nose dynamics are even more critical. (Technically, of course, even the concept of a Gaussian fitness distribution, especially in an asexual population, will be an abstraction: the "true" fitness distribution will be a series of delta functions which ensemble-averages out to an ideal form. That ideal form is less Gaussian in asexual populations than in sexual ones.) We have amended the text to be clearer on this front.
 
 \begin{reviewerquote}
 4. Page 3, column 2: “This is consistent with the fact that all forms of adaptation are slowed down due to clonal interference and genetic background effects”: Does it mean to imply that the rate at which valleys are crossed is reduced by the same amount by the rate at which beneficial mutations of effect s are likely to fix compared to NUbs? This is a quantitative claim, and I don’t think it’s been shown. If I’m missing it, then perhaps a reference to a figure would be appropriate.
 \end{reviewerquote}
 
+We agree that this wording is confusing. We have fixed it to clarify that we are explicitly referring to selective sweeps acting on loci of strong effect ($Ns > 1$).
 
 \begin{reviewerquote}
 5. Page 4, column 1: “By Fisher’s “fundamental theorem”, the rate v at which the mean fitness advances is set to σ2”: this implies that v = σ2, ignoring the μ⟨s⟩ term [in v = σ2 + μ⟨s⟩] that arises in the full moment expansion, e.g. see Neher and Shraiman (2011b) for a recent review. This term is sometimes subdominant, but not in all regimes (and it’s not obvious it’s subdominant in the simulations carried out by the authors).
 \end{reviewerquote}
 
+We agree. The fact that selection coefficients of background mutations are altered every generation so as to keep the fitness variance fixed means that adding an explicit mutation term, featuring a fixed distribution of selection coefficients, is difficult. In our \texttt{WaveFit} simulations, we explicitly force all background mutations to have an identical fitness effect $\beta$ (which is scaled up or down depending on the instantaneous fitness variance each generation). However, by construction, the value of $\beta$ is irrelevant, including whether it is positive or negative. So in a sense, the mutation term can be papered over: one can simply imagine that the distribution of fitness effects is symmetric around 0, so that different mutational contributions cancel out.
 
 \begin{reviewerquote}
 6. Page 4, column 2: The analysis of timescales seems inaccurate: the estimate that T0 is of order 1 log(Ns) is not appropriate for drafting populations.
@@ -136,26 +145,34 @@ In principle, it should be possible to increase the range of parameters explored
 However, in my opinion the manuscript does not satisfy the criteria of quality and scientific substance required for publication in Genetics, for two main reasons. First, the modeling setup seems in several respects arbitrary and poorly motivated. Rather than using a true 'infinite sites' model for the background mutations as is standard in the fitness wave studies mentioned above, the authors choose a genome of 200 loci, two of which are designated as focal; the positioning of the focal loci is specified, though obviously this cannot matter in the absence of recombination. Although the authors do not explicitly say so, I assume that the background fitness is additive or multiplicative across loci. However, rather than simply letting background loci mutate to a new state with a randomly chosen selection coefficients, the authors impose a mutation scheme where a locus mutates whenever it becomes monomorphic. This seems like a highly unrealistic and awkward choice which makes it effectively impossible to externally control parameters such as the background mutation rate and selection coefficients. I find it hard to assess to what extent the results presented here generalize to a more reasonable modeling framework. 
 \end{reviewerquote}
 
+The choice of a 200-locus genome, with background mutations being injected randomly to keep each locus polymorphic, was made due to our use of \texttt{FFPopSim}. We have re-performed most of the relevant simulations with \texttt{WaveFit}, which allows for an explicit infinite-sites model and allows the background mutation rate to be controlled. Varying the selection coefficients is unfortunately necessary to keep the background fitness variance fixed.
 
 \begin{reviewerquote}
 Compared to the extensive (and well-written) review of the state of the art on pages 1-5, the results section* of the paper is remarkably meager. Results are exclusively numerical, subject to large error bars, and largely qualitative. Again, arbitrary parameter choices make it hard to assess the generality of these results. For example, for the comparison between the times required for a valley 
 crossing and the sweep of a single beneficial mutation the authors arbitrarily choose the 'valley' selection coefficient to be ten times that of the sweep. It would seem that choosing the selection coefficients to be same would be more informative.
 \end{reviewerquote}
 
+We fix $s$ to be larger in the case of the valley than in the sweep to model a situation wherein a population is forced to "choose" between an immediately available, easily accessible, but weak adaptation or a difficult-to-access but stronger adaptation that is hidden by a fitness valley. This parallels Ochs and Desai (2013).
 
 \begin{reviewerquote}
 1. page 5, second column: It seems to me that in the discussion below Eq.(1), the background fitness x should be replaced by $x - \bar{x}$ (fitness relative to mean fitness). 
 \end{reviewerquote}
 
+We agree. We have fixed this.
+
 \begin{reviewerquote}
 2. page 6, second column, second paragraph: Here the authors say that backward mutations at the focal loci are allowed. This contradicts the statement in the first column on page 4.
 \end{reviewerquote}
 
+We have fixed this.
 
 \begin{reviewerquote}
 3. page 7, first paragraph of Results: Why is the null expectation that genetic draft increases the time for valley crossing? At least in their abstract, Neher \& Shraiman (2011) appear to claim the opposite trend (last sentence). Or is this only true in the presence of recombination?
 \end{reviewerquote}
 
+We agree that the null expectation is not really clear in this case. We have amended the text accordingly.
+
+Neher and Shraiman (2011) determined that the opposite trend applies in the case where $1/N < \delta \ltrsim sigma$. In this case, the stochastic effects of genetic draft can propel a deleterious mutation to high frequencies, allowing valley crossing to occur more quickly. The bubble size distribution, which determines the number of opportunities there are for a successful complex adaptation to appear and establish, drops off more quickly in the case of draft ($1/n^2$) than drift ($1/n$). So the overall rate of crossing should be higher in the draft case \emph{for neutral intermediates, or intermediates of small effect}. When the effect is large, the drift bubble size distribution is harshly cut off around $1/\delta^2$. The draft bubble size distribution is not. So the crossing rate is \emph{lower} in the case of neutral or weak intermediates. In addition, in a drafting population, clonal interference/multiple mutation effects retard the growth and fixation of the complex adaptation once it appears. So that, too, slows down the crossing rate in the draft case.
 
 \begin{reviewerquote}
 4. page 8, second column, line 14: $s_{sweep}$ -> $s_{valley}$
@@ -168,41 +185,60 @@ crossing and the sweep of a single beneficial mutation the authors arbitrarily c
 How do the authors reconcile this suggestion with the fact that natural populations of Drosophila show very small levels of LD? (e.g. Mackay et al. 2012)
 \end{reviewerquote}
 
+(I need to think about this.)
+
 \begin{reviewerquote}
 2. Pages 3-6: A long discussion of analytical math is provided in the introduction only to conclude that it is not applicable to the scenario investigated in this paper - which only uses simulations. The math section* should be shortened significantly or moved to the supplement.
 \end{reviewerquote}
+
+We agree.
 
 \begin{reviewerquote}
 3. Page 6: It seems like only beneficial mutations are modeled in the background loci. The reality is that most background mutations are deleterious, so beneficial focal mutations are more likely to be “dragged” down by linked deleterious alleles than “drafted” up by beneficial ones. Is it realistic to completely ignore negative selection on linked sites?
 \end{reviewerquote}
 
+By design, whether background mutations are mostly deleterious or mostly beneficial does not matter in our simulations, since the fitness coefficients are adjusted each generation so as to keep the fitness variance fixed. Similar results have been observed for wide-fitness-variance populations in which the background fitness is due primarily to beneficial or deleterious mutations.
+
 \begin{reviewerquote}
 4. Page 6: “the population experiences a constant influx of beneficial mutations at the background loci. These mutations’ fitness effects are drawn from an exponential distribution”. In page 4 (mathematical description of the system): “If x is the background fitness of a lineage, then the distribution of background fitnesses f (x) is assumed to be roughly Gaussian”. How can sampling from an exponential distribution produce a Gaussian background? Any part of the mathematical discussion that does not pertain to the assumptions of this study should either be removed or explicitly mentioned to be not relevant to simulations done here.
 \end{reviewerquote}
+
+We are not sure what the issue is here. Each selection coefficient is exponentially distributed, but the overall fitness distribution is the sum of the effects of a large number of mutations--by the central limit theorem, it turns out to be roughly Gaussian. We agree, however, that the mathematical background takes up too much of the paper.
 
 \begin{reviewerquote}
 5. Page 6: “any time a locus becomes monomorphic, a mutation at that locus is injected into a random individual in the population. In this way, the population experiences a constant influx of beneficial mutations at the background loci.” This practice seems to me to mask one of the important effects of population size: the total number of mutations introduced every generation. So, it does not seem appropriate at least when the question is the effect of Ne on likelihood or time of valley crossing.
 \end{reviewerquote}
 
+We have clarified this: that procedure is followed only at the \emph{background} loci, not the \emph{focal} loci which will ultimately contribute to the complex adaptation. At those loci, mutations are introduced at a fixed rate, so indeed N does matter. In addition, in our \texttt{WaveFit} simulations, this is no longer an issue.
+
 \begin{reviewerquote}
 6. Pages 7-9: Do all simulations always successfully cross the valley? If not, the rate of success should be reported in addition to the required time.
 \end{reviewerquote}
+
+We carry out our simulations until a pre-ordained number of valley crossings has occurred. But there is no in principle reason why we could not report the probability of crossing instead, with the caveat that the crossing probability is often low, meaning this is likely to be noisily estimated.
 
 \begin{reviewerquote}
 7. Page 7-9: As the authors discuss, when 𝜎 is high, the effect of linked background loci might be more important in determining the fate of a lineage than the focal loci. A question then arises: what is the distribution of background fitness of the lineages that make the crossing? Do only focal mutations on favorable backgrounds cross the valley? If all of them cross, then a plot or summary statistics of dependence of 𝜏 on the lineages’ background fitness (averaged over loci and time to simplify) would be informative.
 \end{reviewerquote}
 
+We have performed simulations to probe this.
+
 \begin{reviewerquote}
 8. Page 8, right column: “In Figure 5, we set ssweep = 0.01, ssweep = 0.1, and m = 10-5”. Should be “svalley = 0.1”.
 \end{reviewerquote}
+
+Fixed.
 
 \begin{reviewerquote}
 9. Page 8: “Figure 5b shows the expected pattern that deeper valleys in smaller populations take longer to cross”. This seems contrary to earlier arguments for easier crossing in smaller populations due to weaker selection on deleterious intermediates. Please clarify.
 \end{reviewerquote}
 
+We have clarified this.
+
 \begin{reviewerquote}
 10. Page 10: The authors mention the contrast of their results to those of Ochs and Desai. Can they offer any explanations as to the reason?
 \end{reviewerquote}
 
+We have clarified this. The differences between our results and those of Ochs and Desai are somewhat minor. One model difference is that theirs concerned explicit \emph{competition} between a simple sweep and a valley-crossing adaptation. Our model treats these cases separately. In addition, there was no draft in the Ochs-Desai simulations.
 
 \end{document}
