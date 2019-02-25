@@ -117,22 +117,34 @@ These observations add to the growing intuition that complex adaptations that in
 \end{figure}
 
 Our model features a population of $N$ haploid individuals in which an effectively infinite number of ``background" loci, with weak fitness effects, are currently segregating.
-We focus on two loci, which are initially fixed for alleles $a$ and $b$.
-These alleles mutate to $A$ and $B$ at rates $\mu_A$ and $\mu_B$, respectively (we neglect back mutations).
-Genotypes $ab$, $Ab$, $aB$, and $AB$ have fitnesses $1$, $1-\delta_A$, $1-\delta_B$, and $1+s$ respectively, with $\delta \geq 0$ (intermediate genotypes are deleterious) and $1/N < s < 1$ (double mutant $AB$ is strongly beneficial); see \ref{fig:landscape}.
-For the remainder of our analysis, we will assume that $\mu_A = \mu_B = \mu$ and $\delta_A = \delta_B = \delta$.
-We further assume that the large number of loci of weak effect contribute to a constant background fitness variance $\sigma^2$.
-By Fisher's ``fundamental theorem" of natural selection \citep{Fisher:1930}, the rate $v$ at which the mean fitness advances due to selection is set to $\sigma^{2}$.
-Let $x$ be the background fitness of a lineage.
-The distribution of background fitnesses $f(x)$ will generally be a series of (Dirac) $\delta$ functions, but its ensemble average will be roughly Gaussian \citep{good_desai_2014}: $f(x) = \frac{1}{\sqrt{2\pi}\sigma} \exp (\frac{(x-\bar{x})^2}{2\sigma^2})$.
-Given this background fitness distribution, we are interested in the expected time $\mathbb{E}\left[ T\right]$ for the double mutant $AB$ (our so-called ``complex adaptation'') to arise and fix in the population.
-We emphasize that $\sigma^2$ is only a \emph{background} fitness variance and does not include the effects of the focal loci.
-For the most part, we assume that the focal loci are either at low enough frequency that they do not substantially affect the total fitness variance or that they are on the way to fixation and the population is destined to become roughly monomorphic (until new beneficial background mutations can be introduced).
+A complex adaptation can occur in the population via mutations at two ``focal" loci (which are treated separately from the background loci).
+The mutation rate is $\mu_1$ at the first focal locus and $\mu_2$ at the second locus.
+Individuals who are mutant at one locus and wild-type at the other have reduced fitness relative to the wild type, but the double mutant state corresponds to a ``complex" adaptation that increases fitness.
+For simplicity, we assume that individuals must mutate at the first locus \emph{before} they can mutate at the second locus, so that $\mu_1$ is the mutation rate into the deleterious intermediate state and $\mu_2$ is the mutation rate toward the full complex adaptation.
+The fitnesses of these states are $1-\delta$ and $1+s$, respectively, with $\delta \leq 0$ and $1/N < s \ll 1$ (so-called ``strong selection").
+This setup closely mirrors that of \citep{weissman_2009}.
 
-In very large populations, enough double mutants are generated that the valley crossing time is dominated by the time required for a double mutant to sweep through the population.
-At the other extreme, in small populations, the crossing time is dominated by the wait for a deleterious single mutant to fix: only thereafter does a successful double mutant appear.
-We zero in on the intermediate case: stochastic tunneling, the most interesting and mathematically demanding mode of valley crossing.
-We will review existing theory for this case, discuss the difficulty in the mathematical analysis due to genetic draft, and then present results for valley crossing times using forward-time simulations across a range of population sizes that include the sequential fixation, stochastic tunneling, and semi-deterministic tunneling cases.
+We further assume that the large number of background loci of weak effect contribute to a constant background fitness variance $\sigma^2$.
+Let $x$ be the background fitness of a lineage.
+If the number of background loci is large, the distribution of background fitnesses $f(x)$ will generally be a series of (Dirac) $\delta$ functions, but its ensemble average will be roughly Gaussian \citep{good_desai_2014}: $f(x) = \frac{1}{\sqrt{2\pi}\sigma} \exp (\frac{(x-\bar{x})^2}{2\sigma^2})$.
+By Fisher's ``fundamental theorem", the mean fitness $\bar{x}$ will advance due to selection at a rate equal to $\sigma^2$: the total rate of advance will depend also on contributions from drift and the average effect of mutations.
+
+Given this background fitness distribution, we are interested in the expected time $\mathbb{E}\left[ T\right]$ for a beneficial double mutant at the focal loci (a ``complex adaptation'') to arise and fix in the population.
+We emphasize that $\sigma^2$ is only a \emph{background} fitness variance and does not include the effects of the focal loci.
+For the most part, we assume that mutations at the focal loci are either at low enough frequency, so that they do not substantially affect the total fitness variance, or that they are on the way to fixation, and hence the population is destined to become fixed at those loci.
+
+\citet{weissman_2009} divided the possible modes of asexual valley crossing into several distinct regimes.
+We classify them, broadly, as \emph{sequential fixation}, \emph{deterministic fixation}, and \emph{tunneling}.
+What follows is a brief outline of the process of valley crossing in each of these regimes, as well as how these are likely to differ in our model.
+We then present results for valley crossing times using forward-time simulations across a range of parameter values that includes each of these major regimes.
+
+The \emph{sequential fixation} regime arises at small population sizes.
+The wait time $\mathbb{E}\left[ T\right]$ can be partitioned into two components: the time $\tau_1$ until an intermediate mutation arises \emph{that is destined to fix} and the time $\tau_2$ until the complex adaptation arises and is likewise destined to fix.
+$\tau_1$ is one divided by the rate $N\mu_1 p$ at which intermediate mutants arise that are destined to fix: on average, $N\mu_1$ mutants appear every generation, and the diffusion approximation yields $p = (e^\delta - 1)/(e^{N\delta} - 1)$.
+$\tau_2$, similarly, is approximately one divided by $N\mu_2 s$ and in general will be dwarfed by $\tau_1$.
+When genetic draft is more important than genetic drift, $p$ in $\tau_1$ takes on a much more complicated form similar to that in \citet{good_desai_2014}: in general, the dependence on $\delta$ is lessened provided that $\sigma \gtrsim \delta$, as deleterious mutations that arise on significantly fitter-than-average backgrounds can be destined to fix.
+$\tau_2$ likewise has lessened dependence on $s$, as a complex adaptation that does \emph{not} arise on a fitter-than-average background lineage may be doomed to extinction.
+
 
 There are three components to the process of stochastic tunneling.
 First, a single mutant lineage must appear, which occurs with rate $N\mu$.
@@ -199,7 +211,7 @@ We record that a crossing event has occurred when the complex adaptation (i.e., 
 
 For all simulations, we initialize a homogeneous wild type population (in which each individual has zero background mutations) of size $N = K$.
 The precise value of $UL$ seems not to affect the valley crossing dynamics provided it is large enough for the ensemble average of the fitness distribution to be roughly Gaussian.
-Accordingly, we set $UL = 0.1$, as a value less than $1$ cuts down on the number of operations needed for the mutation step.
+Accordingly, we set $UL = 0.1$, as a value less than $1$ reduces the number of operations needed for the mutation step.
 We permit the population to equilibrate for $N/10$ generations.
 While this is usually less than the coalescence time, it is long enough for the average number of clones to reach its approximate equilibrium value (at which the creation of new clones by mutation roughly cancels out the extinction of unfit clones).
 After the population has equilibrated, we set the mutation rates at the focal loci to their pre-selected values $\mu_1$ and $\mu_2$.
