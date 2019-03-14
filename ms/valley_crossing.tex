@@ -1,4 +1,4 @@
-\documentclass[rmp]{revtex4}
+\documentclass[10pt,twocolumn,twoside]{gsajnl}
 \articletype{inv} % article type: {inv} Investigation
 
 \usepackage{breqn}
@@ -150,25 +150,36 @@ There are three components to the process of stochastic tunneling.
 First, a single mutant lineage must appear, which occurs with rate $N\mu$.
 If this lineage arises at time $t_0$ and persists until time $T$, then it gives rise to $W = \int_{t_0}^T n(t) dt$ total individuals before going extinct, where $n(t)$ is the number of mutant individuals extant at time $t$.
 As in the introduction, we refer to such a short-lived mutant lineage, and all the individuals generated within that lineage, as a mutant ``bubble": the time integrated number of individuals $W$ is the ``weight" of the bubble.
-During the lifetime of a bubble, the complex adaptation must appear and establish; that is, it must rise to a high enough frequency that fixation is almost guaranteed, which occurs at rate $\mu \pfix$ where $\pfix$ is the probability that the double mutant reaches fixation from a single initial individual.
 If it establishes, the complex adaptation will quickly sweep to fixation.
 The first two steps can be folded in together and considered as one process, so that what is relevant is the expected time until a single mutant lineage arises that is destined to produce a successful double mutant.
 In this way, $\mathbb{E}\left[ T \right] = \mathbb{E} \left[ T_0 + T_1 \right]$, where $T_0$ is the time to the first successful bubble--the first that produces a double mutant that is destined for fixation--and $T_1$ is the time required for the double mutant to sweep.
-We assume that $T_0 \gg T_1$, so that the wait time is dominated by the first term: the time required for $T_1$ to establish will be of order $1/s$ \citep{desai_fisher_2007}, and the sweep time will be of order $1/s \log (Ns)$, but $T_0$ can be many orders of magnitude greater.
+We assume that $T_0 \gg T_1$, so that the wait time is dominated by the first term: in the drift case, the time required for $T_1$ to establish will be of order $1/s$ \citep{desai_fisher_2007}, and the sweep time will be of order $1/s \log (Ns)$, but $T_0$ can be many orders of magnitude greater.
 
+This process is well understood in the drift case, and at first brush it seems possible to extend this understanding to the draft case.
 Most of the time, a bubble will simply arise and go extinct.
 If mutation and fixation are sufficiently rare events, then fixation of the double mutant can be modeled as a Poisson process: with probability $1-e^{-\mu \pfix W}$, the bubble with total size $W$ will give rise to a successful double mutant.
 Computing the expected value of this quantity over all bubble sizes, $\phi = \left< 1-e^{\mu \pfix W} \right>$, gives the probability that some bubble will lead to a successful valley crossing.
-One difficulty in computing the rate of tunneling in the high $N\sigma$ case (where genetic draft is significant) is that the expected bubble size and fixation probability will both turn out to depend on the background fitness of an individual.
+In the draft case, the expected bubble size and fixation probability will both turn out to depend on the background fitness of an individual.
 That is to say, it is not possible to simply compute $\pfix$ and the weight distribution by themselves, but rather one must convolute both of them over the background fitness.
 Individuals whose background fitness is near the nose of the fitness distribution will tend to give rise to longer-lived lineages, and if those individuals give rise to the complex adaptation, it will therefore likewise be more likely to fix.
-Thus, $W$ will depend on the background fitness $x$ and the valley depth $\delta$, and $\pfix$ will depend on $x$ and the peak height $s$.
-These will have to be integrated over the fitness distribution $f(x)$ in order to obtain the total crossing probability $\upPhi(s,\delta) = \int_{-\infty}^\infty \phi(x,s,\delta) f(x) dx$.
-The expected valley crossing time then becomes $1/N\mu\upPhi$.
-An additional difficulty is that technically, $\pfix$ will depend not on the fitness of the initial lineage in a bubble but on the fitness of the specific background on which the double mutant arose.
-These will not necessarily be the same; for example, individuals within the single mutant lineage may accumulate additional background mutations.
-Assuming that this does \emph{not} happen, that is, assuming that $\pfix$ depends on the fitness $x$ of the founding single mutant lineage, is tantamount to assuming that bubbles are too short lived to accumulate background mutations that significantly affect their fitness.
+Thus, the distribution of $W$ will depend on the background fitness $x$ and the valley depth $\delta$, and $\pfix$ will depend on $x$ and the peak height $s$.
+Once $\phi$ is obtained, it will have to be integrated over the fitness distribution $f(x)$ in order to obtain the total crossing probability $\upPhi(s,\delta) = \int_{-\infty}^\infty \phi(x,s,\delta) f(x) dx$.
+The expected valley crossing time would then be $1/N\mu\upPhi$.
 
+Unfortunately, a number of complicating factors prevent a full analytical description of this process.
+First, $\pfix$ will not depend solely on the background fitness $x$ of a lineage.
+Individuals in each lineage will accumulate mutations, broadening the fitness distribution \emph{of that lineage}, so $\pfix$ will depend specifically on the background fitness of the precise individual within said lineage that gives rise to the complex adaptation.
+This issue can be swept aside by assuming that bubbles do not last long enough for their own distribution of fitnesses to become very broad.
+The second issue is somewhat more severe: there is no principled way to compute the Laplace transform of the bubble size distribution.
+Previous approaches such as \citep{weissman_2009} and \citep{neher_shraiman_2011} have relied on branching process approximations.
+\citep{neher_shraiman_2009} in particular were able to derive the asymptotics of the bubble size distribution in a facultatively sexual population: they began by writing down a master equation for the distribution of bubble sizes with a birth rate that decreases in time as the mean fitness advances.
+However, they relied on a recombination model that allowed them to directly obtain the integrated Laplace transform $\int_{-\infty}^\infty p(x) \phi(x) dx$ without the need to explicitly solve the branching process model; our model being an asexual one, this option is not available to us.
+In addition, they evaded the need to send time to infinity in the model.
+In principle this is necessary to integrate over all possible bubble sizes: but in practice, because the birth rate of a lineage decreases with time, this would yield the absurd result that $\phi$ itself decreases with time.
+Since it seems unlikely that analytical approaches will yield a principled way of approximating the valley crossing time in the drift case, we focus on simulation methods to estimate the valley crossing time.
+
+
+\iffalse
 We begin by considering the dynamics of $\pfix(x,s)$ before moving on to consider the distribution of bubble sizes.
 We focus on the case where background mutations are frequent but of weak effect--that is, the mean effect of background mutations $\bar{\epsilon}$ is small compared to $\sigma$, but background mutations occur at a high rate $U_b$.
 \citet{hallatschek_2011} and \citet{good_2014} showed that the fixation probability in this regime obeys the differential equation 
@@ -190,6 +201,7 @@ but their analysis also included a recombination term that made it possible to p
 They also avoided the need to explicitly send time to infinity, which is necessary to incorporate all possible bubble sizes and lifetimes.
 Unfortunately this method is not available to us, and the nose dominance of the bubble size distribution, combined with the $x$ dependence of $z$ (via $z = \mu \pfix(x)$), lead to difficulty in deriving a simple closed form expression for $\upPhi$.
 Therefore, we focus on simulation methods to study the dynamics of valley crossing.
+\fi
 
 \section{Simulation methods}
 
