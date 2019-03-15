@@ -172,10 +172,12 @@ Individuals in each lineage will accumulate mutations, broadening the fitness di
 This issue can be swept aside by assuming that bubbles do not last long enough for their own distribution of fitnesses to become very broad.
 The second issue is somewhat more severe: there is no principled way to compute the Laplace transform of the bubble size distribution.
 Previous approaches such as \citep{weissman_2009} and \citep{neher_shraiman_2011} have relied on branching process approximations.
-\citep{neher_shraiman_2009} in particular were able to derive the asymptotics of the bubble size distribution in a facultatively sexual population: they began by writing down a master equation for the distribution of bubble sizes with a birth rate that decreases in time as the mean fitness advances.
+\citep{neher_shraiman_2009} in particular were able to derive the asymptotics of the bubble size distribution in a facultatively sexual population: they began by deriving a master equation for the distribution of bubble sizes with a birth rate that decreases in time as the mean fitness advances.
 However, they relied on a recombination model that allowed them to directly obtain the integrated Laplace transform $\int_{-\infty}^\infty p(x) \phi(x) dx$ without the need to explicitly solve the branching process model; our model being an asexual one, this option is not available to us.
+\iffalse
 In addition, they evaded the need to send time to infinity in the model.
 In principle this is necessary to integrate over all possible bubble sizes: but in practice, because the birth rate of a lineage decreases with time, this would yield the absurd result that $\phi$ itself decreases with time.
+\fi
 Since it seems unlikely that analytical approaches will yield a principled way of approximating the valley crossing time in the drift case, we focus on simulation methods to estimate the valley crossing time.
 
 
@@ -237,7 +239,7 @@ By increasing $N$ far above the $1/\mu$ limit, multiple deleterious mutants are 
 At still higher population sizes ($N \gtrsim s/\mu^2$), multiple double mutants are likely to appear every generation, and their dynamics can be modeled as deterministic.
 
 Finally, we compared the dynamics of valley crossing versus sweeping mutations.
-We performed simulations with a sweeping focal beneficial mutation, with selection coefficient $s_{\mathrm{sweep}}$, at position $L/2$, with the background loci kept polymorphic as in the valley crossing simulations.
+We performed simulations with a sweeping focal beneficial mutation, with selection coefficient $s_{\mathrm{sweep}}$, and a constant influx of background beneficial mutations of weak effect as in the valley crossing simulations.
 We recorded the time for a beneficial mutation to arise and reach frequency $0.5$, considering it to have fixed at that point.
 We then computed the ratio of the sweep time to the valley crossing time for a complex adaptation, with valley depth $\delta$ and larger fitness advantage $s_{\mathrm{valley}}$.
 To determine the effect of $\sigma$ on this ratio, we performed simulations at both high and low $\sigma$ and computed the ratio of these ratios: the result is a measure of the extent to which rapid adaptation increases the likelihood of valley crossing relative to the speed of simple sweeps.
@@ -247,6 +249,24 @@ To determine the effect of $\sigma$ on this ratio, we performed simulations at b
 Simulation and analysis scripts needed to replicate the results are available at \url{https://github.com/tkessinger/draft_valley_crossing} under the Creative Commons BY-NC-SA license (\url{https://creativecommons.org/licenses/by-nc-sa/4.0/}).
 
 \section{Results}
+
+\begin{figure}[t]
+\begin{subfigure}[b]{0.4\textwidth}
+\includegraphics[width=\textwidth]{Figures/det_tunnel.pdf}
+\end{subfigure}
+\begin{subfigure}[b]{0.4\textwidth}
+\includegraphics[width=\textwidth]{Figures/det_fix.pdf}
+\end{subfigure}
+\begin{subfigure}[c]{0.4\textwidth}
+\includegraphics[width=\textwidth]{Figures/det_fix.pdf}
+\end{subfigure}
+\begin{subfigure}[d]{0.4\textwidth}
+\includegraphics[width=\textwidth]{Figures/det_fix.pdf}
+\end{subfigure}
+\caption{Valley crossing times across a range of parameter values mirroring those of \citet{weissman_2009}. In figures (a) and (b), the population size is varied: increasing the size causes valley crossing to transition from tunneling to semi-deterministic fixation. In figure (c), the valley depth $\delta$ is varied: at negative $\delta$, our simulations closely match the expectation for beneficial mutations. In figure (d), the intermediate mutation rate $\mu_2$ is varied.}
+\label{fig:weissman}
+\end{figure}
+
 
 \begin{figure}[t]
 \begin{subfigure}[b]{0.4\textwidth}
