@@ -255,29 +255,29 @@ Simulation and analysis scripts needed to replicate the results are available at
 \section{Results}
 
 \begin{figure*}[t]
-\begin{subfigure}[b]{0.5\textwidth}
+\begin{subfigure}[t]{0.48\textwidth}
 \includegraphics[width=\textwidth]{Figures/julia_weissman_5a.pdf}
 %\label{fig:weissmana}
 \end{subfigure}
-\begin{subfigure}[b]{0.5\textwidth}
+\begin{subfigure}[b]{0.48\textwidth}
 \includegraphics[width=\textwidth]{Figures/julia_weissman_5b.pdf}
 %\label{fig:weissmanb}
 \end{subfigure}
-\begin{subfigure}[c]{0.5\textwidth}
+\begin{subfigure}[c]{0.48\textwidth}
 \includegraphics[width=\textwidth]{Figures/julia_weissman_5c.pdf}
 %\label{fig:weissmanc}
 \end{subfigure}
-\begin{subfigure}[d]{0.5\textwidth}
+\begin{subfigure}[d]{0.48\textwidth}
 \includegraphics[width=\textwidth]{Figures/julia_weissman_5d.pdf}
 %\label{fig:weissmand}
 \end{subfigure}
-\caption{Valley crossing times across a range of parameter values mirroring those of \citet{weissman_2009}. In figures (a) and (b), the population size is varied: increasing the size causes valley crossing to transition from tunneling to semi-deterministic fixation. In figure (c), the valley depth $\delta$ is varied: at negative $\delta$, our simulations closely match the expectation for beneficial mutations. In figure (d), the intermediate mutation rate $\mu_2$ is varied. Dotted lines represent the theoretical predictions from \citet{weissman_2009}.}
+\caption{Valley crossing times across a range of parameter values mirroring those of \citet{weissman_2009}. In each case, we set $s = 0.1$. In figures (a) and (b), the population size is varied: increasing the size causes valley crossing to transition from tunneling to semi-deterministic fixation. In (a), $\mu_1 = 10^{-5}$, $\mu_2 = 10^{-4}$, and $\delta = 2 \times 10^{-4}$, so that the valley depth is effectively neutral; in (b), $\mu_1 = 10^{-5}$, $\mu_2 = 10^{-6}$, and $\delta = 7 \times 10^{-3}$. In figure (c), we set $N = 10^5$, $\mu_1 = 10^{-6}$, and $\mu_2 = 4 \times 10^{-5}$. The valley depth $\delta$ is varied: at negative $\delta$, our simulations closely match the expectation for beneficial mutations. In figure (d), the intermediate mutation rate $\mu_2$ is varied, with $N = 10^{5}$, $\mu_1 = 10^{-6}$, and $\delta = 3 \times 10^{-3}$. Dotted lines represent the theoretical predictions from \citet{weissman_2009}.}
 \label{fig:weissman}
 \end{figure*}
 
 Here we present the key results of our simulation analysis.
 Figure \ref{fig:weissman} summarizes the major differences between the drift (low $\sigma$) and draft (high $\sigma$) regimes in valley crossing.
-Note that the theoretical predictions differ slightly from those of \citet{weissman_2009} due to their use of a Moran model, compared to our Wright-Fisher model: this is comparable to an order of 2 difference in the population size.
+Note that the theoretical predictions differ slightly from those of \citet{weissman_2009} due to their use of a Moran model, compared to our modified Wright-Fisher model: this is comparable to an order of 2 difference in the population size.
 The general trend is that draft causes valley crossing to take more time but be less sensitive to the underlying parameter values.
 In figure \ref{fig:weissman}a, tunneling at low $\sigma$ occurs via neutral sequential fixation at low $N$ before transitioning into neutral tunneling and semi-deterministic tunneling at higher $N$; these are visible as minor kinks in the theoretical predictions (dotted line).
 At low $\sigma$, our results agree with those predictions, but as $\sigma$ increases, the dependence on $N$ is lessened: at higher $\sigma$, the population effectively behaves as though there is a very small $N_e$, resulting in no dependence on $N$.
@@ -335,18 +335,22 @@ This implies that draft tends reduce the valley crossing time relative to the ti
 
 \begin{figure*}[t]
 \includegraphics[width=\textwidth]{Figures/log_taumu.pdf}
-\caption{Ratio of $\alpha$ values at high and low $\sigma$ ($\log \left( \alpha_{\sigma_2} / \alpha_{\sigma_1} \right)$ where $\sigma_1=5 \times 10^{-8}$ and $\sigma_2= 5 \times 10^{-2}$), for varied values of $\mu$. Genetic draft is helpful for crossing deep valleys in the sequential fixation and tunneling regimes, though at large population sizes it can slow down the crossing rate for deep valleys; at higher values of $\mu$ this limitation disappears. (Dummy caption. Need to fix.)}
-\label{fig:alpha_ratio}
+\caption{The product of the crossing time $\tau$ and mutation rate $\mu_1$ at the first locus, as a function of $s$ and $\sigma$. The dotted line is $s = \sigma$. When $\sigma \gg s$, the genetic background dwarfs the fitness effect of the complex adaptation, and fixation is essentially neutral; when $\sigma \ll s$, the fixation time decreases with $s$. Note that, in the middle column, $s_{\mathrm{valley}} = s_{\mathrm{sweep}}$.}
+\label{fig:tau-mu}
 \end{figure*}
 
-We can get a clearer picture of how draft affects valley crossing times relative to single beneficial sweeps by considering the ratio $\alpha_{\sigma_2} / \alpha_{\sigma_1}$ where $\sigma_1=5 \times 10^{-8}$ and $\sigma_2$ is allowed to vary. This is a measure of the extent to which rapid adaptation speeds up valley crossing relative to sweeping (lower values indicate that rapid adaptation favors valley crossing).
+We can get a clearer picture of how draft affects valley crossing times relative to single beneficial sweeps by considering the ratio $\alpha_{\sigma_2} / \alpha_{\sigma_1}$ where $\sigma_1=5 \times 10^{-8}$ and $\sigma_2$ is allowed to vary.
+This is a measure of the extent to which rapid adaptation speeds up valley crossing relative to sweeping (lower values indicate that rapid adaptation favors valley crossing).
 The ratio can be seen in Figure \ref{fig:alpha-ratios}.
-Overall, we find that raising $\sigma$ increases the extent to which valley crossing is favored for lower population sizes: for this combination of parameters, the condition is $N < 10^5$.
+Overall, we find that raising $\sigma$ increases the extent to which valley crossing is favored, especially for lower population sizes.
 In this regime, raising $\delta$ also increases the degree to which valley crossing is favored under draft, which means that the deeper the valley, the more that draft increases the likelihood of valley crossing relative to a single beneficial mutation.
-The exception is at very high values of $N$ and $\delta$ and low values of $\mu$, where draft turns out again not to be helpful; see the lower right part of the leftmost plot.
-In this regime, $\delta$ is on the order of $\sigma$ in our draft simulations, meaning that single mutant lineages are rapidly cut off by the advancing mean fitness and are likely almost never present in the nose of the fitness distribution.
-Essentially, the population size is large enough that intermediate mutants can be ``seen" by selection, but the fitness detriment is severe enough compared to $\sigma$ that draft is no longer helpful in allowing mutant lineages to reach high frequency.
-This problem disappears as $\mu$ increases (center and right plots) and the population is beyond the deleterious tunneling barrier where the valley crossing time depends on the depth of the valley $\delta$.
+The effect being exacerbated at low $N$ suggests that deleterious intermediates are surfing to very high frequency as the fitness wave advances.
+The middle column is of special interest, as $s_{\mathrm{valley}} = s_{\mathrm{sweep}}$.
+
+We further probe the effects of increasing $\sigma$ in Figure \ref{fig:tau-mu}.
+At low values of $\sigma$, a strongly selected complex adaptation (high $s$) is essentially far ahead of the fitness wave and behaves as though governed by genetic drift, not draft.
+This is consistent with the treatment of \citet{good_2012}, who found that, for beneficial lineages whose fitness $x + s$ is very far ahead of a critical fitness $x_c$, the fixation probability effectively scales with $x+s$.
+Raising $\sigma$ far above $s$ (i.e., above the dotted line) causes the effect of $s$ to be overwhelmed by the advancing mean fitness, and fixation appears to be effectively neutral.
 
 \section{Discussion}
 
